@@ -16,12 +16,12 @@
 
 推荐顺序（可根据论文实际需要调整）：
 
-1. `02-introduction-story` + `03-related-work-story`：确定背景、动机、最近邻工作与真正的缺口。
-2. `04-method-story`：按照读者可跟踪的数据流、定义、设计理由改写方法。
-3. `05-experiment-story`：检查实验是否一一回应主张；保留竞争解释、负结果和资源公平性。
-4. `07-figure-story` + `10-latex-table-story` + `11-research-plot-story` + `12-pptx-visual-story`：按图表类型分别开展论证设计、数值图绘制、排版和可编辑图示制作，确保图、表、图注与正文是同一术语体系。
-5. `01-abstract-story` + `08-title-heading-story`：根据实际内容凝练摘要和标题；避免先写一个证据不支持的“大故事”。
-6. `06-discussion-conclusion-story`：推导科学意义，说明适用边界并回扣研究问题。
+1. `02-introduction` + `03-related-work`：确定背景、动机、最近邻工作与真正的缺口。
+2. `04-method`：按照读者可跟踪的数据流、定义、设计理由改写方法。
+3. `05-experiment`：检查实验是否一一回应主张；保留竞争解释、负结果和资源公平性。
+4. `07-figure` + `10-latex-table` + `11-research-plot` + `12-pptx-visual`：按图表类型分别开展论证设计、数值图绘制、排版和可编辑图示制作，确保图、表、图注与正文是同一术语体系。
+5. `01-abstract` + `08-title-heading`：根据实际内容凝练摘要和标题；避免先写一个证据不支持的“大故事”。
+6. `06-discussion-conclusion`：推导科学意义，说明适用边界并回扣研究问题。
 7. `09-consistency-validation`：完成最终主张、事实、引文、图表、术语和 PDF 顺读审查。
 
 ## 第四步：审稿人顺读测试

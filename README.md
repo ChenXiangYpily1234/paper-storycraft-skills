@@ -30,11 +30,11 @@ A Chinese-language skill collection for evidence-grounded research storytelling.
 
 | 你遇到的问题 | 建议从这里开始 |
 |---|---|
-| “每段都读得懂，连起来却不知道在讲什么。” | [总纲领](总纲领.md) + [引言](02-introduction-story/SKILL.md) |
-| “方法写成了模块说明书，设计动机接不上。” | [方法叙事](04-method-story/SKILL.md) |
-| “实验很多，但没有直接回答论文的主张。” | [实验叙事](05-experiment-story/SKILL.md) |
-| “图很好看，但读者看不出它想证明什么。” | [科研图示](07-figure-story/SKILL.md) + 对应图表 Skill |
-| “摘要和标题很宏大，正文证据却撑不住。” | [摘要](01-abstract-story/SKILL.md) + [标题](08-title-heading-story/SKILL.md) |
+| “每段都读得懂，连起来却不知道在讲什么。” | [总纲领](总纲领.md) + [引言](02-introduction/SKILL.md) |
+| “方法写成了模块说明书，设计动机接不上。” | [方法叙事](04-method/SKILL.md) |
+| “实验很多，但没有直接回答论文的主张。” | [实验叙事](05-experiment/SKILL.md) |
+| “图很好看，但读者看不出它想证明什么。” | [科研图示](07-figure/SKILL.md) + 对应图表 Skill |
+| “摘要和标题很宏大，正文证据却撑不住。” | [摘要](01-abstract/SKILL.md) + [标题](08-title-heading/SKILL.md) |
 | “投稿前想检查术语、数字、图注与主张是否一致。” | [终稿一致性审查](09-consistency-validation/SKILL.md) |
 
 ## 快速上手
@@ -75,7 +75,7 @@ cd paper-storycraft-skills
 
 ```text
 请读取 paper-storycraft-skills/总纲领.md
-和 04-method-story/SKILL.md，按刚才的诊断重构方法章节。
+和 04-method/SKILL.md，按刚才的诊断重构方法章节。
 
 只修改：[填写目标文件或章节]
 保持公式、数值、引用、标签和其他章节不变。
@@ -100,18 +100,18 @@ cd paper-storycraft-skills
 
 | Skill | 解决的核心问题 |
 |---|---|
-| [01 · 摘要](01-abstract-story/SKILL.md) | 在有限篇幅内交代问题、贡献、证据与边界 |
-| [02 · 引言](02-introduction-story/SKILL.md) | 让背景、研究缺口与方法动机自然衔接 |
-| [03 · 相关工作](03-related-work-story/SKILL.md) | 讲清与最相近工作的实际差异 |
-| [04 · 方法](04-method-story/SKILL.md) | 把定义、符号、设计理由和数据流讲明白 |
-| [05 · 实验](05-experiment-story/SKILL.md) | 让实验逐项回应主张，检查对照与统计推断 |
-| [06 · 讨论与结论](06-discussion-conclusion-story/SKILL.md) | 回答研究意义、适用范围与局限 |
-| [07 · 科研图示](07-figure-story/SKILL.md) | 让概念图、结构图和证据图承担清楚的论证职责 |
-| [08 · 标题与小标题](08-title-heading-story/SKILL.md) | 用标题、图题和表题准确传达内容 |
+| [01 · 摘要](01-abstract/SKILL.md) | 在有限篇幅内交代问题、贡献、证据与边界 |
+| [02 · 引言](02-introduction/SKILL.md) | 让背景、研究缺口与方法动机自然衔接 |
+| [03 · 相关工作](03-related-work/SKILL.md) | 讲清与最相近工作的实际差异 |
+| [04 · 方法](04-method/SKILL.md) | 把定义、符号、设计理由和数据流讲明白 |
+| [05 · 实验](05-experiment/SKILL.md) | 让实验逐项回应主张，检查对照与统计推断 |
+| [06 · 讨论与结论](06-discussion-conclusion/SKILL.md) | 回答研究意义、适用范围与局限 |
+| [07 · 科研图示](07-figure/SKILL.md) | 让概念图、结构图和证据图承担清楚的论证职责 |
+| [08 · 标题与小标题](08-title-heading/SKILL.md) | 用标题、图题和表题准确传达内容 |
 | [09 · 一致性审查](09-consistency-validation/SKILL.md) | 核对事实、主张、引用、术语与图表 |
-| [10 · LaTeX 表格](10-latex-table-story/SKILL.md) | 组织表格证据、解释缩写并检查排版 |
-| [11 · 科研结果图](11-research-plot-story/SKILL.md) | 根据真实数据绘图，附绘图脚本与参考模式 |
-| [12 · 可编辑 PPTX 图示](12-pptx-visual-story/SKILL.md) | 规划可编辑图示的叙事、图元语义与交付检查 |
+| [10 · LaTeX 表格](10-latex-table/SKILL.md) | 组织表格证据、解释缩写并检查排版 |
+| [11 · 科研结果图](11-research-plot/SKILL.md) | 根据真实数据绘图，附绘图脚本与参考模式 |
+| [12 · 可编辑 PPTX 图示](12-pptx-visual/SKILL.md) | 规划可编辑图示的叙事、图元语义与交付检查 |
 
 所有子 Skill 以 [总纲领](总纲领.md) 为共同入口：首次出现的术语就近解释，同一概念使用同一名称，论证与真实证据对应。
 
