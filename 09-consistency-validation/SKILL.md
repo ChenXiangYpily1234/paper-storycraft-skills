@@ -1,168 +1,93 @@
 ---
-name: consistency-validation
-description: 独立审计科研论文的主张、证据、文献、图表、术语、统计、交叉引用与终稿一致性，不依赖特定会议和固定页数。
+name: paper-consistency-validation
+description: Conduct a submission-level scientific, narrative, citation, statistical, LaTeX, visual, and terminology consistency audit independent of any conference template.
 ---
 
-> **全局统领**：执行本 Skill 时，先遵守包根目录 `总纲领.md` 的「审稿人理解优先、概念首次引入就近解释、全文术语一词一义、问题—证据闭环」规则；如本节建议与总纲领冲突，以不损害科学正确性和阅读理解的规则为准。
-# 论文叙事与科学一致性终审 Skill
+# Full-Paper Scientific and Narrative Validation
 
-## 目标与范围
+Read [PRINCIPLES.md](../PRINCIPLES.md). This is an **independent audit**, not a cosmetic language polish. Do not accept "already fixed" without checking the actual latest artifact.
 
-这是**submission-ready scientific and narrative consistency audit**，并非单纯语言润色。对方法、实验、图表、引用、结论及论文主线进行独立验证：不仅检验“能否编译”，更检验**叙事是否由可核查证据支撑**，重点识别过度宣称、统计单位混淆、引用错配、跨章节矛盾和版式导致的误读。
+## 1. Evidence and artifacts
 
-适用于使用 LaTeX、Word、Markdown 或其他排版方式的计算机科学及相邻学科论文。不预设投稿会议、某年模板、固定页数、固定摘要字数、双盲制度或双栏形式。**如用户提供具体投稿指南，则以真实、当前、明确的该指南另行核验；不把其规则固化进此通用 Skill。**
+Read the latest available manuscript and, where supplied, LaTeX source, bibliography, compiled PDF, figures, tables, supplementary materials, statistical protocol, and underlying results.
 
-## 1. 输入与证据优先级
+For visual/layout claims, inspect the **rendered PDF**; use source files to locate causes and bibliography metadata to check references. If no compiled PDF or actual experiment data is available, mark that class of verification as **not performed** rather than PASS.
 
-尽可能读取最新正文源文件、参考文献库、实际编译/导出的 PDF、原始图表、实验表格或日志、补充材料、用户提供的目标主张和实际评审规范。
+Venue formatting, anonymity, artifact packaging, and length checks apply only if the user supplies or identifies the actual current submission requirements; impose **no AAMAS, year, page count, or global template rule** by default.
 
-- **对最终可见内容**：以最新导出 PDF 或最终展示物为准。
-- **对技术修改位置**：用 LaTeX/Word 源文件定位，不应假设源文件与 PDF 同步。
-- **对引用元数据**：优先出版机构、DOI 官方登记、正式会议论文库或作者公开的原始版本。
-- **对数值主张**：以可追踪的实验记录、表格、脚本及明确统计单位为准。
-- **对图中含义**：核对其源文件与正文定义。
+## 2. Global narrative audit
 
-若关键文件不可得，报告“未验证”，不能把缺少错误证据当成通过。
+Trace each title, abstract, and Introduction claim to an actual theorem, experiment, dataset validation, or appropriate source. Test whether the proposed method directly addresses the stated gap and whether the conclusion correctly reflects the result.
 
-## 2. 全文故事主线一致性
+Review in reading order to find unexplained first-use terms and missing transitions. Maintain the same canonical vocabulary across abstract, body, figures, captions, formulas, appendix, and README-like supplements.
 
-审计题目、摘要、引言、相关工作、方法、实验、讨论与结论之间的逻辑映射：
+## 3. P0: scientific and factual blockers
 
-| 环节 | 审查问题 |
-|---|---|
-| 题目 | 是否准确承诺论文真正研究的范围？ |
-| 摘要 | 是否以真实证据回答核心研究问题？ |
-| 引言 | 缺口是否来自可核查文献，方法是否对准缺口？ |
-| 相关工作 | 是否公平定位最接近研究，避免虚构差异？ |
-| 方法 | 实际实现是否与文字、公式、图示一致？ |
-| 实验 | 有无公平对照排除主要竞争解释？ |
-| 讨论 | 是否只解释证据支持的现象？ |
-| 结论 | 是否回答了最初问题而未扩大适用范围？ |
+Check:
+- Incorrect mathematical assumptions, variable definitions, units, denominator, or sampling unit.
+- Claim broader than what a comparison, proof, or experimental condition establishes.
+- Relative percent mistaken for absolute percentage points.
+- Correlation reported as causation or non-significance reported as equivalence.
+- Baselines compared with unequal information, extra pretraining, unequal search space, or incomparable tuning budgets without disclosure.
+- Fabricated references, wrong citations, unsupported numbers, or evidence selected only after seeing test performance.
+- Data contamination, test leakage, invalid filtering, pseudo-replication, misleading uncertainty, or multiplicity issues where relevant.
+- Headline figures differing between Abstract, Introduction, Results, plots, and Conclusion.
 
-构建“**科学主张 → 对应段落/公式/实验 → 最强证据 → 约束条件 → 风险状态**”矩阵。若某醒目贡献在证据链上无法闭合，列为高优先级问题。
+A finding from one paper should not become a universal instruction. For example, performance recovered by a separate method is not recovery of an original model, and failure to reproduce a result does not prove the original mechanism necessary.
 
-## 3. P0：必须解决的科学或事实错误
+## 4. Citations and bibliographic integrity
 
-- 编译错误、未解析引用、错误交叉引用、重复标号。
-- 同一关键数值在摘要、主图、正文、结论中不一致。
-- 统计单位、分母、样本量、实验次数、百分点与相对收益混淆。
-- 不受实验支持的“最好、所有、证明、必要、通用、显著”。
-- 数据泄漏、训练/测试污染、候选覆盖偏差、资源不公平等足以动摇中心结论的问题。
-- 将观察相关性说成因果、将局部消融说成普遍机制必要性、将独立替代结果说成内部组件替换。
-- 基线/数据集的真实身份、训练条件、比较对象或来源与论文陈述不一致。
-- 错误图示让人误解实验比较的统计单位或机制行为。
+Verify each used reference against an authoritative record when possible: title, authors, year, venue, DOI/URL, and claimed contribution. Do not guess unknown metadata or invent BibTeX keys.
 
-记录问题时必须说明**其如何影响科学主张**，不能只给“建议改好一点”式批注。
+Attach citations near the entity or smallest substantive claim supported. A cited paper must truly support the statement. First meaningful mentions of external methods, models, datasets, tools, and evaluation protocols require appropriate attribution; repeated claims may require repeated citations.
 
-## 4. 引用、交叉引用与公式审计
+Detect duplicate keys, duplicated records, undefined citations, and stale unused entries. Separate a novel argument made by this paper from work it cites as motivation.
 
-### 交叉引用
+## 5. LaTeX and cross-reference integrity
 
-检查所有 `\ref`、`\eqref`、`\cite`、自动交叉引用及可见跳转是否解析且指向**语义正确**的对象。对 Figure/Table/Equation/Section 的引用须与真实编号、题意、正文描述匹配。
+Where LaTeX source is available, inspect:
+- Undefined references/citations, duplicate labels, misleading or stale section pointers.
+- Figure/table first-reference order and correct target identifiers.
+- Equation numbers only where useful, consistent references and symbol definitions.
+- Orphan labels, malformed math, missing units, and reused variables with different meanings.
+- Figure legends, captions, table notes, and statistics decoded for independent reading.
+- Actual compiled float order, text overflow, visual holes, typography, and legibility.
 
-优先用稳定的标签或自动交叉引用，少用“下一节、上文、如下所示”等易随结构调整失效的模糊导航。引用公式的句子应指向真正需要被引用的公式；不应只因公式出现就强制编号。
+Do not impose a blanket ban on citations or cross-references inside table notes; respect the document class, venue rules, and author style where appropriate.
 
-图表应在正文中被合理介绍和解释，但其物理显示顺序可能受排版系统影响；“图一定要在首次提及之后才可排版”等不是跨投稿模板的绝对规则。对于表格内部是否允许文献引用或交叉引用，遵循适用排版规范与可读性，而不是预设禁令。
+## 6. Quantitative claim pressure test
 
-### 文献真实性
+For every important number ask: Which groups/objects were compared? Which denominator? What is the unit of independence? Is the effect absolute or relative? Which runs/seeds and uncertainty method? What was pre-specified? What data access and resource budget differed? Can the comparison survive a stronger fair baseline?
 
-核查实际使用的每条引用的标题、作者、发表/更新年份、出处、DOI/URL、会议/期刊名称及版本。重点排查虚构文献、错误作者和年份、引用键重复、题名重复或 DOI 冲突、正文中引用对象错配。
+Check paired versus unpaired inference, one- versus two-sided intervals, coverage/censoring effects, and threshold origins when applicable. Do not conflate a statistical bound with an observed value.
 
-引文紧靠其支持的事实：引用一个模型用于证明该模型的结构，不能自动作为更广泛理论断言的证据。首次实质性提及数据集、方法、模型、评价协议和外部资源时要确保必要出处；后续如再次讨论其独特实现也可以重新引用。
+## 7. Figure/table audit
 
-元数据不确定时标注待核验，不猜测。没有新检索或原始论文时，不声称参考文献全部真实。
+Cross-check visual labels, model names, metric definitions, evaluation scope, units, sampling units, and main results with manuscript language. Inspect colors in grayscale and verify that images do not imply an unsupported count or causal relation. Check the actual figure source and rendered manuscript independently when possible.
 
-## 5. 数值与统计主张的压力测试
+## 8. Submission hygiene when relevant
 
-对于每个 headline result 逐项记录：
+If a double-blind review is required, audit author metadata, acknowledgments, source comments, paths, repository identities, figure metadata, supplements, and stale submission identifiers in **all** distributed files, not just the PDF. If anonymity is not required, do not treat visible authorship as an error.
 
-- 谁与谁比较、使用什么指标、指标方向；
-- 统计单位和分母（样本、用户、实验 run、seed、数据集或成对比较）；
-- 报告数值是均值、单次结果、最优轮次还是经过汇总的统计量；
-- 相对提升、绝对差、百分点差、对数变化是否区分；
-- 是否配对、独立、分层、重复测量；
-- 使用的置信区间、检验方向和显著性准则是否适配；
-- 是否有预先定义的阈值或事后挑选最有利的子集；
-- 多重比较、模型选择、超参数搜寻和种子方差是否得到恰当处理；
-- 评价协议是否隐含候选覆盖上限或筛选偏差。
+If a venue requires formatting, verify its *current* rules independently; never assume a specific page limit or year.
 
-**特别区分**：单侧非劣的下置信界、双侧配对区间、等效性检验和“均值看起来接近”并不等价。统计非显著不能作为效果相同的充分证据。未找到某类替代方案，不能据此宣称不存在任意替代方案。
+## 9. Mechanical search starters
 
-## 6. 图表与正文的一一对应
+Search for unresolved references, `TODO`, `FIXME`, deprecated method names, abandoned venue identifiers, unqualified `best`/`first`/`significant` claims, inconsistent percentage formatting, unexplained acronyms, and vague directional language like `above` or `next section`. Findings require semantic inspection, not automatic deletion.
 
-对主图、关键表格、算法流程图检查：
+## Reporting format
 
-1. 术语、模型名、设置名、指标、数字、比较条件是否逐字/逐义一致；
-2. 图的箭头是否符合真正的数据流或干预规则；
-3. 图中结论是否受到正文实验或理论保证支持；
-4. 图例、坐标、缩写及误差含义是否完整；
-5. 色彩是不是唯一语义通道；灰度打印或色觉缺陷条件下是否可辨；
-6. 视觉编码是否错误暗示样本量、比较次数、置信度或因果关系。
+Use four categories:
 
-图题和表题应尽量自包含。任何图内醒目结果必须匹配正文中**同一分母和基线**的计算。
+- **P0 — Must fix:** scientific error, unsupported core claim, broken evidence or citation, invalid inference, major missing definition.
+- **P1 — Strongly recommended:** terminology conflicts, unfair comparisons, missing information, misleading figure/table, broken narrative progression.
+- **P2 — Optional polish:** local expression, layout, navigation, or noncritical metadata.
+- **PASS — Actually verified:** checks completed with named artifacts and evidence.
 
-## 7. 符号、缩写与术语表
+For each finding, report **location → current issue → why it matters → precise fix → whether the fix changes the scientific claim**. Preserve user-provided results and citations unless verification warrants an explicit correction.
 
-建立“概念 → 标准术语 → 首次定义位置 → 所有出现位置”字典。检查相同概念是否被混称，不同概念是否被误合并；技术缩写和数学符号在首次需要时定义。表内专用缩写至少由表注、图注或正文解释一次。
+## Required outputs
 
-审查符号重用、未定义下标、维度不匹配、指标简写和公式引用的一致性。方法描述应与算法伪代码、图示及实验实际计算单位一致。
+Return claim–evidence–scope audit, terminology/first-use audit, per-file or per-section P0/P1/P2/PASS issues, optional proposed patch, and an explicit **not checked / cannot verify** list.
 
-## 8. 匿名、元数据、来源和材料清洁度（按适用条件）
-
-仅在作者要求匿名或适用规范要求匿名时，检查导出文件作者元数据、图片水印、源文件绝对路径、代码仓库账户、致谢、supplement 文件名、README、图源属性等是否泄露身份。
-
-不应无条件删除可帮助复现的作者信息、声明、项目链接或伦理信息；遵循用户提供的真实投稿要求。检查不同历史版本遗留的会议名、旧模板命令、旧投稿编号、旧实验结果和旧声明，并逐项决定是否需要更正。
-
-## 9. 排版与信息结构
-
-检查图表编号、正文首次介绍、浮动位置是否妨碍理解、图注是否解释必要条件、是否存在被截断的文本与公式、脚注是否可见、标题层级是否清晰。LaTeX 的 `[H]`、`\FloatBarrier` 或浮动建议只能作为可选工程工具；不能把某一种双栏规范当作所有论文的固定规则。
-
-**完全不设置预定义正文页数、参考文献起始位置、摘要字数或某页必须放置某对象的检查。** 如果用户提供具体版面要求，另行建立“外部规则核验表”，以用户目标会议/期刊最新规范为准。
-
-## 10. 补充材料的科学边界
-
-正文应足以理解和评判主问题：关键实验比较、必要的方法定义、公平控制、统计标准、核心局限和主要结论。补充材料可存放更详细的实现、完整随机种子结果、补充证明、次要消融和附加表格。
-
-任何使主张成立的关键信息都不应只因叙事紧凑而被隐去。补充材料包含重要反例时，正文必须公正概括。
-
-## 11. 自动化全局检索（模板，可扩充）
-
-检查 `??`、`[?]`、`TODO`、`FIXME`、`TBD`、`undefined`、`next section`、`previous section`、`above`、`below`、`best`、`strongest`、`significant`、`prove`，以及论文中的主要方法名、指标名、所有 headline 数值、被更名的模型/设置名称。
-
-**检索结果是待检查线索，不是删除指令。** 英文关键词仅在文稿确实使用英语时适用；中文论文也需检索“最好、首次、显著、证明、必要、下一节、上文”等。
-
-## 12. 问题分级与可核验输出
-
-- **P0 必须修改**：直接影响科学真实性、关键数值/引用、正确性或适用外部规则的错误。
-- **P1 强烈建议**：术语冲突、关键图表歧义、重要文献字段未核实、实验条件表达不足。
-- **P2 可选精修**：不损害科学解释的排版、用词、少量冗余与风格改善。
-- **PASS 已验证**：已经实际审查且有依据的项目；未检查的项目不得写 PASS。
-
-每个问题必须给出：文件/章节/行或附近原文位置；当前表达；问题与证据；建议改法；是否影响科学 claim；优先级；**当前验证状态**（实证验证、源文核对、推断、待确认）。
-
-## 13. 最终审计顺序
-
-1. 确认各文件是同一版本并记录不可获得的材料。
-2. 提取全部中心主张与指标/方法名。
-3. 比对题目→摘要→引言→方法→结果→讨论→结论。
-4. 核验关键数值和统计单位，再核验图文对应。
-5. 审计最接近工作、引文位置和真实参考文献元数据。
-6. 核查公式、交叉引用、术语及图表编号。
-7. 仅在有依据时检查匿名、外部格式及最终导出元数据。
-8. 输出 P0/P1/P2/PASS 清单与按影响排序的具体修订方案。
-
-## 14. 必须输出
-
-**审计摘要**：主线是否闭合、当前证据支持范围、最重大的未解决风险。
-
-**问题台账**：P0/P1/P2/PASS，精确定位、原文、建议修订、证据来源与科学影响。
-
-**跨章节对齐表**：每项中心贡献在哪些章节被如何陈述、是否矛盾。
-
-**未验证项目**：缺失文件、参考元数据、实验日志及需外部核查的具体条目。
-
-**一次性调用示例**：
-
-> 请按“论文叙事与科学一致性终审 Skill”独立审查我提供的最新论文源文件、最终 PDF、参考文献、图表及相关实验记录。重点对齐题目、摘要、引言、方法、结果、讨论与结论的同一故事，检查引用真实性、关键数值与统计单位、图文表达、实验公平性、过度主张和结论边界；不要预设任何会议的页数或格式。按 P0/P1/P2/PASS 输出可定位、可修改且标明核验状态的报告。
-
-**最终原则**：修辞修正应服从科学正确性。未获得证据时标注“不足以确认”，不要将猜测、自动检查通过或主观评分冒充已经证明。
+**Acceptance:** A reviewer can follow the complete scientific argument and check its evidence without being misled by inconsistent terminology, numbers, references, or presentation.

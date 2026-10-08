@@ -1,37 +1,55 @@
-# 科研论文整体故事线与图表协同工作流
+# Reviewer-First Research Storytelling Workflow
 
-**先读 [`总纲领.md`](总纲领.md)。** 本文件将 12 个子 Skill 按科学问题、审稿人阅读顺序和工具职责组合，而不是要求所有论文机械照着固定章节表写作。
+**Start with [PRINCIPLES.md](PRINCIPLES.md).** This workflow coordinates 12 independent Skills. It is a flexible dependency map, not a compulsory chapter order.
 
-## 第一步：全稿独立诊断
+## Step 1 — Independently diagnose the scientific argument
 
-读取可用的最新正文、参考文献、图表、方法定义、结果和评估协议，判断研究属于方法、系统、理论、实证、基准还是复现类型。写出中心问题、确切研究差异和主张—证据—边界账本，并核对竞争解释。证据不足的主张先降级，不直接润色或夸大。
+Read the latest accessible source paper, key tables, figures, bibliography, evaluation protocol, and evidence. Identify whether the paper primarily contributes a method, system, theorem, dataset, benchmark, empirical finding, replication, or mechanism test.
 
-## 第二步：建立术语台账并标记首次引入
+Produce a one-paragraph scientific question; a verified gap; a concrete contribution; the strongest directly supporting evidence; and a claim–evidence–scope ledger with alternative explanations.
 
-从标题、摘要、正文、公式、图内标签、表头、图注和附录抓取所有核心术语、缩写、符号、指标、比较对象和模块名。先判定同义/异义，再固定每个概念的唯一规范名称。
+**Do not rewrite for persuasion before diagnosing unsupported claims.**
 
-在每个概念的**首次出现位置**，检查前一句、同一句或后一句是否能解释“是什么、做什么、有何边界”；图表与摘要属于常被独立阅读的单元，也应保持自包含的最小释义。
+## Step 2 — Build a canonical terminology ledger
 
-## 第三步：先改结构，再改句子
+Record the central objects, terms, abbreviations, mathematical symbols, datasets, evaluation conditions, and metric definitions.
 
-推荐顺序（可根据论文实际需要调整）：
+For each first meaningful occurrence, check whether the term is decipherable in the same sentence or immediately adjacent one. Include title, abstract, main text, formulas, figures, captions, tables, and appendices. Independent reading units require enough local explanation to stand alone.
 
-1. `02-introduction` + `03-related-work`：确定背景、动机、最近邻工作与真正的缺口。
-2. `04-method`：按照读者可跟踪的数据流、定义、设计理由改写方法。
-3. `05-experiment`：检查实验是否一一回应主张；保留竞争解释、负结果和资源公平性。
-4. `07-figure` + `10-latex-table` + `11-research-plot` + `12-pptx-visual`：按图表类型分别开展论证设计、数值图绘制、排版和可编辑图示制作，确保图、表、图注与正文是同一术语体系。
-5. `01-abstract` + `08-title-heading`：根据实际内容凝练摘要和标题；避免先写一个证据不支持的“大故事”。
-6. `06-discussion-conclusion`：推导科学意义，说明适用边界并回扣研究问题。
-7. `09-consistency-validation`：完成最终主张、事实、引文、图表、术语和 PDF 顺读审查。
+When two phrases denote one concept, select one canonical term. When one phrase accidentally denotes different concepts, disambiguate the terms. Track actual manuscript locations.
 
-## 第四步：审稿人顺读测试
+## Step 3 — Rebuild structure before rewriting sentences
 
-按实际论文顺序朗读或通读，不预先查内部文档。每遇到不理解的新概念立即标记；每遇到转折问下一步是否由前面的科学问题自然引出。每一张表和图应能说明问题、对象、单位与结论边界。禁止通过事后解释替代论文中缺失的定义。
+Suggested order, adaptable to paper type:
 
-## 第五步：交付和验收
+1. **02 Introduction + 03 Related Work:** derive the research question, closest comparisons, and real gap.
+2. **04 Method:** present design requirements, actual operations or proof sequence, notation, and assumptions.
+3. **05 Experiments:** align each test with a specific claim; inspect controls, confounds, baselines, statistics, negative results, and limits.
+4. **07 Figure + 10 Tables + 11 Plots + 12 PPTX:** match visual forms to scientific functions and keep naming consistent with manuscript.
+5. **01 Abstract + 08 Titles/Headings:** summarize stable scientific contributions without creating a promise the paper does not fulfill.
+6. **06 Discussion/Conclusion:** interpret genuine evidence and explain boundaries, rival explanations, and implications.
+7. **09 Consistency Validation:** independently audit citations, numbers, first-use explanations, cross-references, and final rendered layout.
 
-输出：故事线图谱、主张—证据—边界账本、术语台账、首次引入阻塞点、段落调整、图表与正文映射、修订稿、P0/P1/P2/PASS 清单。注明哪些步骤有实际文件或实验支持，哪些仍待核验。
+For a theory paper, use the available lemmas and assumptions instead of pretending an empirical test is required.
 
-## 统一调用语句
+## Step 4 — Conduct the blind reviewer read-through
 
-> 请读取本包 `总纲领.md` 和对应子 Skill，对我的科研论文进行审稿人视角的故事线重构。确保研究问题、方法、实验和结论循序渐进；新术语、指标、缩写和符号在首次出现的前后就近解释；全文用同一名称指称同一概念，并覆盖所有图表与图注；保持主张与实证/理论证据的严格对应。不要引入任何默认会议、页数限制或不属于本论文的实验事实。最后提交术语台账、主要修改、可能的审稿人疑问和 P0/P1/P2/PASS 报告。
+Read in actual manuscript order, without hidden project notes. At every first-use technical term ask "What is this? What does it do? Why does it appear now?" At each paragraph transition ask "What question has the previous text left, and how does the next text answer it?"
+
+At each table/figure inspect object, method, comparison scope, statistical unit, label meanings, legend and caption. Record blockers precisely; do not excuse them by noting that the author can explain later.
+
+## Step 5 — Audit scientific defensibility and narrative strength
+
+Use **clear, non-defensive phrasing** to emphasize the study's genuine contribution. A related reference is [anti-defensive-writing-en](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill/blob/main/skills/anti-defensive-writing-en/SKILL.md) by Adkid-Zephyr. Its framing is complementary, **not a license to conceal relevant negative outcomes or omit limitations**.
+
+For each headline claim ask whether a credible simpler mechanism, stronger baseline, unequal resources, selective reporting, or alternative sampling process could explain it. Reduce claim strength if needed.
+
+## Step 6 — Deliver and verify
+
+Deliver an argument map, claim–evidence–scope ledger, canonical terminology ledger, first-use blockers, concrete revision plan, revised content in manuscript language, figure/text map, and P0/P1/P2/PASS findings.
+
+Explicitly mark checks as **verified**, **unverified**, or **not performed**. Source-only review does not establish visual PDF correctness, and missing data cannot establish numerical claims.
+
+### Reusable invocation
+
+> Read `PRINCIPLES.md` and the relevant `SKILL.md`. Revise my paper from the perspective of an unfamiliar but competent reviewer. Derive each new section from what has already been established; define every unfamiliar term near its first use; use a canonical vocabulary consistently across body text, formulas, tables, and diagrams; trace claims to evidence and state material limits. Keep my actual scientific results, citations, and assumptions intact. Return a narrative diagnosis, terminology ledger, evidence map, recommended changes, and a P0/P1/P2/PASS audit. Do not impose a default venue or page limit.

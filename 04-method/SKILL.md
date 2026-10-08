@@ -1,214 +1,115 @@
 ---
 name: method-story
-description: 从研究问题、定义与设计动机出发，以数据流和数学可验证性组织通用技术论文的方法章节。
+description: Explain formal definitions, design rationale, computations, interfaces, and reproducibility in a method section through a coherent, reviewer-followable data or reasoning flow.
 ---
 
-> **全局统领**：执行本 Skill 时，先遵守包根目录 `总纲领.md` 的「审稿人理解优先、概念首次引入就近解释、全文术语一词一义、问题—证据闭环」规则；如本节建议与总纲领冲突，以不损害科学正确性和阅读理解的规则为准。
-# 方法章节的故事性构建与科学精修 Skill
+# Method: Explain Why, Then How
 
-## 0. 适用范围
+Read [PRINCIPLES.md](../PRINCIPLES.md) first. Use this Skill for algorithms, mathematical methods, systems, multi-stage pipelines, and theoretical constructions. The objective is **technical reproducibility with conceptual comprehension**, not a list of code modules.
 
-用于计算机科学及相近技术学科的 Method、Approach、Framework、Model、System Design、Problem Formulation 和 Algorithm 章节，特别适用于概念较多、公式较密、模块/分支共享信息、理论形式化与具体实现相互交织的论文。涵盖学习方法、检索与推荐、图学习、多模态、自然语言处理、视觉、智能体、优化、计算机系统、因果分析、机制审计等方向。
+## 1. Plan the reader's dependency path
 
-目标不是把章节写成严密却难懂的定义列表，而是让读者顺序回答：**要解决哪个问题？成立条件是什么？方法每一步做什么？为什么需要这一步？输出是什么？如何在实验中检验？** 不假定所有研究都必须有两层架构、神经网络模块或统计检验。
+Before editing, write down: the task and its inputs/outputs; what the current approach cannot establish or achieve; the design requirement; the new operation or proof idea; assumptions; intermediate representations; outputs; and the testable implications.
 
-## 1. 先定整章故事，再决定小节
+A useful high-level progression is:
 
-写出不超过一段的“方法主线”，例如：
+**Problem and constraints → essential definitions → core idea → operational steps → properties/trade-offs → links to evaluation.**
 
-> 先定义输入、可观测信息及优化目标；再解释哪些限制使已有做法不足；之后介绍核心设计及其操作次序；最后定义输出、算法执行或模型学习过程，并交代可验证的预测。
+Do not assume every paper needs the same subsections. A short algorithm can combine stages; a theory paper may require assumptions and lemmas before a construction.
 
-对于方法创新侧重“挑战→设计原则→核心操作→形式定义→实现”；对理论论文侧重“设定→定义→主要命题→证明结构”；对系统论文侧重“需求与约束→接口→关键设计→执行流程→复杂度或系统行为”。结构来自贡献类型，而非模板固定段数。
+## 2. Separate problem definition from construction
 
-先为已有每段标注职责：动机、前提、定义、运算、公式解释、实现、例子、实验设置、结果。实验结果与方法动机混杂时优先重新分层，再修句子。
+**Problem definition:** What objects and variables exist? Which information is available? Which predictions, decisions, or guarantees are sought? What constitutes a valid solution?
 
-## 2. 将方法分成“问题/框架定义”与“具体构造”两类内容
+**Construction:** Which computations, rules, algorithms, models, or proofs actually produce the desired outputs? What is new, and what is inherited from standard tools?
 
-这是一种可选但常见的组织方式。
+Transition explicitly: "Under these inputs and constraints, the method must ...; we therefore construct ..." Never imply a guarantee merely by announcing a design intent.
 
-**层 A：问题或框架定义**。交代对象、变量、输入范围、信息访问、目标函数、评价对象、边界条件；定义“什么算有效的解决方案”。读者应清楚论文的形式化问题，不必提前知道模型所有组件。
+## 3. Define concepts where they become necessary
 
-**层 B：具体方法构造**。交代如何构造一个实际算法或系统，哪些操作由输入触发，输出如何产生，训练和推理分别执行什么，何种操作构成真正贡献。
+Introduce a real-world or computational object before abstracting it. At first appearance of each variable, supply meaning, type, dimensionality or domain where relevant, and its role in later expressions. Introduce a mathematical set, distribution, or mapping only if it is used and helps make the method unambiguous.
 
-从 A 到 B 的桥接要说明：“在前述可行性条件和目标下，我们用何种设计实现它。”若论文只有一个简单算法，可合并两层，但逻辑上仍要区分要求与解决方案。
+**Near-first-use rule:** in the same sentence or immediately adjacent sentence, state what the new term does, what it operates on, and how it differs from nearby concepts. A symbol glossary in the appendix does not excuse undefined first use.
 
-## 3. 每个定义必须有实际用途
+Examples of questions a reviewer must not have to guess: Is an index a sample, task, timestep, layer, or trial? Is a matrix learned or fixed? Is a score a probability? Is a limit global or per request? Is a comparison system independent or integrated into the target?
 
-首次使用变量时交代其类型、含义、取值范围和必要维度；对于重要集合、映射、随机变量和约束，给出数学定义及可读的解释。不要先抛出一串抽象定义，直到后面才让读者明白它们在算法中扮演什么角色。
+## 4. Organize subsections by scientific responsibility
 
-采用“**具体对象 → 必要抽象 → 可操作定义 → 后续引用**”的顺序。例如先定义样本及其特征，再引入共享样本索引；先解释目标概率的现实含义，再正式写条件分布。
+Good subsection questions: How is the input represented? How is the shared state constructed? How does a decision rule use it? Why is calibration needed? Which objective is optimized? What is the theoretical or statistical guarantee?
 
-一个概念在首次出现时完整解释一次，后续以标准术语引用；不应在多章重复相同定义，也不应第一次出现时只给缩写而缺少含义。
+Avoid copying software file names into section titles when those file boundaries do not correspond to independent scientific ideas. Merge implementation-only variants; split sections that conflate unrelated assumptions, algorithms, and evaluation protocols.
 
-## 4. 小节由读者问题决定，而不是由代码文件决定
+## 5. Follow actual data and control flow
 
-好的小节能够回答一个明确问题，如“如何表示输入”“如何融合不同信息”“如何作出最终决策”“为何需要校准”“如何求解优化目标”。不应简单把实现工程中的 `encoder.py`、`router.py`、`head.py` 原样变成论文章节。
+For each stage, identify: **input → operation → output → consumer → reason**. Explain the central novel transformation in greater depth than standard infrastructure.
 
-一个小节只解释一个科学或计算职责。多个小节若只是同一算子的不同超参数，可以合并；一个小节若同时含独立理论前提、算法和实验协议，通常需要拆分。
+If a method has multiple branches, define the common interface and shared information first, then each branch's distinct operation and final aggregation. Mark explicitly whether components share parameters or merely share a diagram symbol.
 
-## 5. 共享模块与特定分支：先建立公共接口
+Respect the actual architecture: iterations, feedback, asynchronous operations, parallel branches, backward passes, and stochastic decisions must not be converted into a fictitious one-way chain. Distinguish data flow from control flow in both text and figures.
 
-当方法有多任务、多模态或多阶段分支时，先明确：
+## 6. Motivate formulas before displaying them
 
-1. 哪些输入和预处理对所有分支相同；
-2. 是否共享编码器、表征空间、评分函数或通信接口；
-3. 哪些分支具有特定决策条件或损失；
-4. 如何从公共接口得到各自输出；
-5. 多分支结果如何汇总并形成最终目标。
+Each major equation must answer: *What is being defined or computed? Why does the method need it here? How does it connect to existing quantities?* Give a short purpose statement, then the formula, then precise explanations of terms and constraints.
 
-共享内容只定义一次；但如果为了理解需要在图上重复展示，应标明其是同一共享组件。任务特有的分支不应混在公共模块描述中，以免读者误解可用信息或计算预算。
+A mathematical expression does not replace an intuition; an intuitive sentence does not replace reproducible mathematics. Use equation numbers when the main text refers back to them, not as decoration.
 
-一个常见合理顺序是“共享输入和表示 → 共享计算接口 → 任务/条件特定操作 → 汇总及输出”。只有当系统实际上遵循该流程时才使用。
+Check notational hygiene:
+- Scalar/vector/matrix conventions, capitalization, units, domains, and shape constraints.
+- Subscripts for sample, condition, timestep, task, seed, or model.
+- Summation/index bounds, probability conditioning, indicator definitions, and normalization.
+- Implicit independence assumptions and how random variables are sampled.
+- Reused symbols whose meaning changes between sections.
+- Edge cases such as empty inputs, ties, missing data, or zero denominators where material.
 
-## 6. 依照数据流而非模块清单写算法
+## 7. Explain specialized operations only when present
 
-让读者能跟随一个输入实例经历算法实际的处理顺序。对每步明确：输入是什么，发生什么变换，产生什么中间量，中间量如何进入下一步，关键运算为何能改善所述瓶颈。
+**Routing/gating:** identify the available actions, scoring information, selection rule, and tie handling. Do not call a deterministic procedure an adaptive learned policy unless it is.
 
-数据流不等于必须自左向右执行；循环、反向传播、迭代优化、异步系统或双向注意力应忠实表达。若图示采用简化方向，正文应解释遗漏的反馈或并行关系。
+**Calibration:** identify the error being corrected, the reference population, fitting data, application time, and scope. Score transformation alone does not establish lack of bias.
 
-不要从细枝末节开场。核心贡献所在运算的解释深度应高于常规组件；通用的训练技巧、常见优化器或工程粘合代码通常放到实现细节。
+**Regularization:** explain which behavior the term penalizes and why the direction of optimization is appropriate. One penalty does not automatically prove several benefits.
 
-## 7. 公式出现之前先提供动机
+**Shared/multi-task modules:** state the shared representation, task-specific decision, loss, and aggregation points. Show which information or parameters transfer across tasks.
 
-每个重要公式都应回答：**这个表达式定义了什么？为什么在这里需要它？与上一步产生的量是什么关系？** 推荐先用简短文字指出目标，再给公式，随后解释变量或变换如何满足目标。
+**Mechanism comparisons:** clarify what is held constant, what is removed, and whether an alternative system is independent rather than an in-model intervention.
 
-反例：把复杂公式放在段首，再逐项补充“其中 A 是……，B 是……”而读者仍不知为何要计算。改进：先指出“为同时利用局部和全局信息，需要一个权重受约束的聚合规则”，再写准确公式。
+## 8. Keep "why" and "how" distinct
 
-数学表达用来保证无歧义，不能代替概念解释。对于简单规则，若文字或行内公式更清楚，不必强制陈列成单独编号公式。应仅给正文需要回指的公式编号，避免无意义编号占据注意力。
+A clear micro-structure is: motivation or needed property → exact definition and operation → explanation of how the property might hold or will be tested. A design hypothesis is not an established property; label theoretical guarantees, empirical observations, and conjectures separately.
 
-## 8. 变量命名与符号审计
+Prefer concrete verbs such as compute, estimate, select, constrain, aggregate, update, and verify. Replace inflated words such as "empowers" and "deeply captures" unless the paper supplies an operational definition.
 
-逐个重要符号检查：
+## 9. Separate method from experimental instantiation
 
-- 是否**先定义、后使用**；
-- 是否有固定含义、类型及维度；
-- 同一个字母是否在不同小节无提示重用；
-- 上下标究竟表示样本、节点、任务、时间步、运行轮次还是模型；
-- 大写/小写、向量/标量、随机变量/实现值是否一致；
-- 抽象索引是否在真实对象之后引入；
-- 单位、归一化、阈值和边界情况是否说明；
-- 求和范围、指示函数、概率分布与条件集合是否匹配。
+The Method should define the algorithm, assumptions, model access, and essential properties. Evaluation should specify dataset versions, actual hyperparameters, baselines, training budgets, statistical tests, and observed outcomes.
 
-对指示函数等符号应给出条件何时成立、取值与数学式中作用。不要为追求形式化引入仅使用一次而无解释价值的新符号。
+When a test protocol is itself the contribution, define its scientific question, statistical unit, comparison object, and decision criterion before introducing dense notation. A non-inferiority test is not an ordinary two-sided difference test; a causal identification claim requires more than a controlled metric comparison.
 
-## 9. 复杂选择器、校准、门控与惩罚项的写法
+Disclose access to external data, pretrained representations, or extra compute whenever it changes the scientific interpretation of the method.
 
-只有当方法确实包含此类操作时使用：
+## 10. Flexible outlines
 
-**门控/路由**：先说明决策依据和候选动作，再定义打分、选择与执行条件；如果规则是确定的，写清同分处理和边界输入。
+- **Algorithm:** task formulation → design insight → component computations → objective/solver → inference → complexity or properties.
+- **System:** requirements and constraints → architecture interfaces → request lifecycle → trade-offs → failure handling → measured implications.
+- **Theory:** assumptions and notation → statement → key lemmas/construction → proof sketch or full proof → counterexamples and boundaries.
+- **Multi-task:** shared inputs → common representation/interface → branch-specific objectives and operations → combination and final output.
 
-**校准**：先指明原输出存在何种系统性偏差，再定义校准的参考对象、估计方式、应用阶段和作用范围；不要仅因数值有所变化就称“无偏”。
+Choose only sections justified by the actual study.
 
-**正则化/惩罚**：解释它约束的行为、量纲与优化方向；避免一个损失项承担超出数学定义的多种未经验证的功效。
+## 11. Failure checks
 
-**共享聚合**：清楚分离共同表示的生成与任务特定选择的执行，以防把中间分数与最终决策混同。
+| Failure | Repair |
+| --- | --- |
+| Readers see a module inventory, not a method | Reorder by task and input-to-output transformation |
+| Definitions appear long before they are useful | Move them to first necessity and introduce incrementally |
+| Formula lacks a purpose statement | Explain the requirement before the formula |
+| Shared and branch-specific parameters are ambiguous | State interface, sharing, and update rules |
+| Training settings are mistaken for the method | Separate general algorithm from one experimental instance |
+| Too many claimed benefits lack proof or comparison | Reclassify as motivation or hypothesis |
+| A diagram shows impossible access or fictional links | Match the source algorithm and resource assumptions |
 
-## 10. 解释“为什么”与“怎么做”要分层
+## Required outputs
 
-一种稳定的段落分工：
+Provide (1) problem/design/data-flow map, (2) symbol and definition ledger, (3) section/paragraph reordering plan, (4) revised Method when requested, (5) unverified assumptions and reproducibility gaps, and (6) connections to experiments that would discriminate the main claims.
 
-- **动机段**：说明现有流程暴露的障碍及所需性质。
-- **定义段**：精确定义对象、运算、步骤与约束。
-- **解释句**：说明定义为何具有所需性质，是否来自定理或实验假设。
-
-并非每个小节都必须写成这三段；若概念简单，可直接一段完成。防止把背景、理论推理、操作步骤和实验结果塞进单个超长段落。
-
-## 11. 统计与评价协议在方法中如何呈现
-
-若统计标准本身属于方法贡献，须从实际随机变量、统计单位和比较对象引入，再给出检验准则。不要从一串置信区间符号开始，也不要将具体实验种子、表格成绩等提前塞入方法定义。
-
-若统计检验只是通用实验工具，方法章节可以概括其目标，详细协议放入 Evaluation。注意显著性检验、非劣检验、等效检验、因果识别和描述性区间有不同统计含义，不能互换术语。
-
-## 12. 对照条件与计算资源的写法
-
-对影响科学主张的必要约束（可用输入、是否使用预训练表示、训练数据、模型访问权限、候选范围、运行预算）必须清楚描述，但不要在每个公式旁反复提醒。
-
-若不同模型使用了不同信息，图与方法不能声称“完全同条件”；若研究希望归因于某个模块，应在方法中清楚定义实际被操纵和保持不变的部分。
-
-## 13. Method 与 Experiment 的职责边界
-
-Method 说明算法和问题的可复现定义。Experiment 说明具体数据、模型实例、超参数选取、训练预算、基线以及怎样评价。系统论文的实施约束可能属于方法关键部分，但仍应区分算法本身与某次测量的场景。
-
-示例：
-
-- Method：“对输入表示执行归一化后，通过共享分数确定输出候选。”
-- Experiment：“使用指定数据划分和固定搜索预算比较候选输出。”
-
-不要把实验性能数据拿来当作算法定义的一部分；如果某条流程只在特定设置下存在，应写清其可变性而非冒充通用步骤。
-
-## 14. 章节间的真实过渡
-
-从问题定义到算法：上一节提出哪些必须满足的条件，下一节逐一提供构造。
-
-从方法到实验：方法中哪个最重要的科学主张尚待验证，实验要怎样区分支持与反对的证据。
-
-避免泛化连接词反复出现而缺少信息上的承接，例如每段机械写“接下来我们进一步描述”。段落应以具体未解决问题引出下一段的行动。
-
-## 15. 学术语言清晰度
-
-优先使用可以还原为操作的动词：定义、计算、聚合、比较、估计、选择、更新、最小化、约束、输出、验证。诸如“赋能、刻画、有效捕获、实现深层协同”等术语只有在具有明确技术含义时才应出现。
-
-避免过度抽象、长定语堆积、每段重复同一优势、把一个变量讲成一个科学贡献。设计动作最好能被读者根据文字复现；方法主张最好能够通过对照实验或定理区分。
-
-## 16. 常见失败模式及解决方案
-
-| 失败模式 | 为什么有害 | 优先修复 |
-|---|---|---|
-| 按代码模块逐项清点 | 看不到整体输入到输出关系 | 按数据流重排 |
-| 符号一次引入过多 | 读者记不住对象与关系 | 先具体对象，再逐步抽象 |
-| 定义出现后不被使用 | 形式化没有贡献 | 删除或移到需要位置 |
-| 重复解释同一组件 | 概念漂移、篇幅膨胀 | 使用唯一标准定义 |
-| 过早写实现细节 | 核心思想被遮蔽 | 后移无关训练参数 |
-| 方法和实验混写 | 难以区分算法与实例 | 明确分节职责 |
-| 分支差别不清 | 误解信息访问和方法作用 | 先定义共享接口再分支 |
-| 公式缺少目标句 | 读者只能机械解符号 | 在公式前交代原因 |
-| 过度夸大作用 | 设计动机被误写为结论 | 用假设/待验证表述 |
-
-## 17. 可选章节蓝图
-
-### 蓝图 A：算法型论文
-
-研究设定 → 输入与目标 → 核心设计原则 → 算法步骤/形式化 → 训练与推断 → 复杂度/适用条件。
-
-### 蓝图 B：系统论文
-
-工作负载与设计要求 → 模块接口 → 主要数据/控制流 → 容错或资源策略 → 可复现实现要点 → 评估问题。
-
-### 蓝图 C：理论论文
-
-假设与形式问题 → 关键定义 → 主结果 → 证明轮廓 → 反例/限制 → 算法或实践含义。
-
-### 蓝图 D：多分支/多任务论文
-
-公共输入 → 共享表示或计算接口 → 各任务特定逻辑 → 融合或汇总 → 统一输出与可检验主张。
-
-使用一个蓝图不意味着必须采用其全部小节；根据实际论证裁剪。
-
-## 18. 完整修订工作流
-
-**Pass 1** 写一句整章故事线，确认与引言缺口一致。**Pass 2** 给每段标注唯一主要任务。**Pass 3** 确定定义与构造、公共部分与任务特定部分的层次。**Pass 4** 把操作顺序写成真实数据流。**Pass 5** 审计所有数学符号的定义、维度和引用。**Pass 6** 检查公式前后的动机与解释。**Pass 7** 移出非核心实现和实验细节。**Pass 8** 检查过渡及重复。**Pass 9** 对照代码、伪代码、实验和主图验证描述真实性。
-
-若发现某个模型组件不存在于实现或某个假设未满足，先更正科学事实，不继续纯语言优化。
-
-## 19. 必须输出
-
-1. **方法故事诊断**：现有结构、信息流断点、过度定义、遗漏条件。
-2. **新的论证顺序**：以“前提→操作→中间量→输出→验证”的链条呈现。
-3. **章节/小节重构方案**：每个小节解决哪个读者问题，解释哪些对象。
-4. **完整修订文本**：尽量保留原始公式、符号含义、交叉引用、真实信息与稿件语言。
-5. **符号与输入访问审计表**：标明未定义变量、维度不明、实验条件不一致及修复方案。
-6. **关键变更记录**：区分文字简化、结构移动、科学定义调整和需要作者核验的推断。
-
-## 20. 终审清单
-
-- [ ] 读者能在首次阅读说明算法从输入到输出的完整流程。
-- [ ] 核心贡献和普通工程实现被清楚区分。
-- [ ] 定义、符号、维度、条件和目标函数不存在前后冲突。
-- [ ] 每个主要公式在出现前都有真实问题动机。
-- [ ] 多分支之间的共享、专用和融合逻辑明示。
-- [ ] 方法图与文字、伪代码及实际实现一致。
-- [ ] 并未用方法动机冒充已经验证的实验效果。
-- [ ] 统计和实验协议仅在适当位置出现，且与结果叙事一致。
-- [ ] 没有为迎合某个固定篇幅、会议模板或特定任务假设而删去关键正确性信息。
-
-**核心原则**：形式化应让方法更清晰，而非更难理解；科学叙事必须与算法的实际计算过程相符。
+**Acceptance:** A technically trained reviewer can follow one example input through the described computation or reasoning and independently identify the actual innovation, formal assumptions, and evidence requirements.

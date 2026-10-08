@@ -1,41 +1,34 @@
-% Layout examples only: symbolic entries are NOT experimental results.
-% Requires booktabs in the host document. Replace labels before integration.
+% SYMBOLIC LAYOUT EXAMPLES ONLY. No actual research results.
+% Requires a compatible host document and the booktabs package.
+% Replace all placeholders, titles, and labels before use.
 \begin{table}[t]
   \centering
-  \caption{System roles and representation controls. Definitions appear in the text.}
-  \label{tab:example-system-map}
+  \caption{Illustrative method comparison. Inputs and definitions must be specified in the manuscript.}
+  \label{tab:example-method-comparison}
   \small
-  \setlength{\tabcolsep}{3pt}
-  \renewcommand{\arraystretch}{1.05}
-  \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}llll@{}}
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{@{}llll@{}}
     \toprule
-    System & Role & Mechanism & Prior \\
+    Approach & Core operation & Required input & Output \\
     \midrule
-    A & Primary & ID generation & Different \\
-    B & Matched & Semantic IDs & Shared \\
-    C & Alternative & Score fusion & Shared \\
+    Method A & Transform & Data type X & Quantity Y \\
+    Method B & Aggregate & Data type X & Quantity Y \\
+    Proposed & Constrain & Data type X & Quantity Y \\
     \bottomrule
-  \end{tabular*}
+  \end{tabular}
 \end{table}
 
 \begin{table}[t]
   \centering
-  \caption{Paired comparison by evaluation scope. Entries are symbolic layout placeholders.}
-  \label{tab:example-panels}
+  \caption{Illustrative result layout with symbolic estimates. Define the metric and uncertainty procedure before presenting real data.}
+  \label{tab:example-results}
   \small
-  \setlength{\tabcolsep}{3pt}
-  \renewcommand{\arraystretch}{1.05}
-  \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lrrr@{}}
+  \begin{tabular}{@{}lrrr@{}}
     \toprule
-    Method & R@10 & $\Delta$ & R@10 drop (\%) \\
+    Approach & Metric (unit) & Difference & Cost (unit) \\
     \midrule
-    \multicolumn{4}{@{}l}{Panel A: all users ($n=N$)} \\
-    Controller & $a$ & $d$ & $p$ \\
-    Fixed policy & $b$ & $0$ & $0$ \\
-    \midrule
-    \multicolumn{4}{@{}l}{Panel B: valid outputs ($n=M$)} \\
-    Controller & $c$ & $e$ & $q$ \\
-    Fixed policy & $f$ & $0$ & $0$ \\
+    Baseline & $m_{0}$ & --- & $c_{0}$ \\
+    Proposed & $m_{1}$ & $m_{1}-m_{0}$ & $c_{1}$ \\
     \bottomrule
-  \end{tabular*}
+  \end{tabular}
 \end{table}

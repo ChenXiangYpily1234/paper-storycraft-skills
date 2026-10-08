@@ -1,124 +1,55 @@
 ---
 name: title-heading-story
-description: 从研究问题、真实贡献和论证层次出发，设计科学准确的论文标题、章节标题、图题、表题与方法名称。
+description: Revise paper titles, section headings, figure titles, and table captions to accurately signal research questions, contributions, and evidence boundaries.
 ---
 
-> **全局统领**：执行本 Skill 时，先遵守包根目录 `总纲领.md` 的「审稿人理解优先、概念首次引入就近解释、全文术语一词一义、问题—证据闭环」规则；如本节建议与总纲领冲突，以不损害科学正确性和阅读理解的规则为准。
-# 论文标题与各级小标题的叙事设计 Skill
+# Titles and Headings as a Narrative Map
 
-## 目标
+Follow [PRINCIPLES.md](../PRINCIPLES.md). Titles and headings are navigation aids; they should clarify the paper's argument rather than exaggerate its novelty.
 
-设计或修订论文总标题、章节/小节标题、图题、表题、面板标签、方法名、结果提示语，使读者仅浏览目录和标题也能看出论文“讨论什么问题、提出何种贡献、以何种证据逐步回答”。适用于 CS/AI 研究、系统、理论、实证和基准论文，**不依赖任何固定会议模板或版面长度**。
+## 1. Write the paper title from the actual contribution
 
-标题要传达信息，而不是制造口号。总标题、摘要、引言和结论必须共享同一研究对象与主张强度。
+Identify the scientific object, distinguishing contribution, and supported scope. Useful strategies vary by type:
+- **Method:** task or problem + core methodological innovation.
+- **System:** operating goal + architectural or engineering contribution.
+- **Theory:** precise problem class + guarantee or new result.
+- **Benchmark/dataset:** evaluated construct + artifact or validation contribution.
+- **Empirical/replication:** central question + evidence type, without unsupported universality.
 
-## 1. 总标题先表述科学对象与核心贡献
+A method acronym may appear when meaningful, but should not consume the entire title. Avoid overly broad claims such as "solves", "universal", "optimal", or "first" without proof or comprehensive evidence.
 
-从论文中提取：
+A question-form title must be answered by the study. A declarative title must be true within the specified population, assumptions, and metric.
 
-- **对象/问题**：研究哪个任务、现象或限制？
-- **核心动作**：提出算法、重新检验假设、建立理论界限，还是提供数据/工具？
-- **独特区别**：与最相近工作相比真正改变什么？
-- **证据边界**：性能、理论或系统方面验证到什么程度？
+## 2. Let sections reveal reasoning, not only topics
 
-标题优先包含能区分论文的内容，不以新造缩写替代研究问题。对于熟悉度高的领域术语，使用标准表达；对生造术语，先解释其意义再考虑纳入标题。
+The reader should be able to scan headings to infer the path from problem to solution/test to evidence and interpretation. A good heading names the specific responsibility of a section.
 
-### 按贡献类型匹配标题策略
+Avoid headings that make every method subsection sound like a new contribution merely because it is a named component. Prefer operational labels such as "Constructing the Shared Representation" or "Evaluating Distribution Shift" when accurate.
 
-| 类型 | 推荐侧重点 | 风险 |
-|---|---|---|
-| 方法论文 | 任务 + 关键设计思想 | 只写方法名但没有研究对象 |
-| 理论论文 | 对象 + 新界/保证/反例 | 忽略假设条件，声称普遍结果 |
-| 系统论文 | 约束 + 设计原则或能力 | 性能口号没有明确评估范围 |
-| 机制/审计研究 | 可区分的科学问题 + 方法 | 将局部实验写成广泛必要性结论 |
-| 数据集/基准 | 测量盲区 + 新资源定位 | 用基准名掩盖数据适用范围 |
-| 复现/负结果 | 被检验主张 + 证据性质 | 以轰动性语言代替复现条件 |
+Use consistent scope and specificity across sibling headings. If "Results" means all evaluated settings, avoid a nearby "Analysis" heading that secretly contains an additional primary result.
 
-## 2. 问句型标题、陈述型标题与副标题
+## 3. Write figure and table titles carefully
 
-只有当论文能直接回答问题时，问句型标题才合适。问句不应暗示已经证明尚未核实的结论；陈述型标题应与实验或定理支持的强度一致。
+- **Figure caption:** identify what is shown, data/setting if necessary, visual conventions, and the key scientific contrast.
+- **Table caption:** identify metric, compared objects, evaluation population/denominator, direction of improvement, and important abbreviations or statistical definitions.
+- **Section headings:** organize reasoning, not repeat the full caption or an unsupported headline number.
 
-副标题用于补充明确的任务、方法范围、实验对象或理论框架，而不是重复主标题。若题目已经包含完整任务和贡献，不必强加冒号结构。
+Distinguish measured quantity from interpretation, effect from association, and a comparison outcome from a mechanism claim.
 
-避免的词：在缺少覆盖证据时使用“普适、彻底、首次、全面超越、证明无用、革命性”；在普通性能比较中使用会暗示因果识别的“决定、必然、导致”。
+## 4. Canonical naming and first-use rule
 
-## 3. 章节标题应呈现论文的论证结构
+Use the same method, module, metric, benchmark, and condition names as body text. Explain an unfamiliar title term through nearby descriptive words when possible. In captions, expand specialized acronyms and decode symbols because visuals are read independently.
 
-目录可作为“隐藏摘要”阅读：
+Do not substitute one word for another only to avoid repetition: a controller, routing policy, and selection rule might have genuinely different semantics.
 
-**研究问题/背景 → 相关解释或方法缺口 → 新定义/方法 → 实验检验 → 证据解释和边界。**
+## 5. Pressure tests
 
-这是常见路线而非必需的固定章节。技术文章可根据内容改成“任务定义 → 系统架构 → 实现 → 系统评估”，理论文章可按“设定 → 主要定理 → 证明结构 → 推论”组织。
+Ask whether a heading would remain correct if the most favorable example were removed; whether an evaluator could identify its comparison population; whether the terminology agrees with figures and methods; and whether any conclusion exceeds the actual data.
 
-章节标题的抽象级别应一致：不要在同一级出现“Methodology”“Ablation of encoder X”“Experiments 2”这种职责层次差别过大的名称。标题要承诺本节真正解释或验证的内容，而不是照搬已有的内部组件名。
+For each suggested title, explain the implicit claim and evidence needed to defend it.
 
-## 4. 小节标题用来回答一个读者问题
+## Required outputs
 
-常见有效形式：
+Provide a title/heading diagnosis, several candidate titles when alternatives are useful, a consistent heading tree, caption wording if requested, and a scope/overclaim audit.
 
-- “任务定义与评估目标”回答**研究对象如何界定**；
-- “共享表示与信息接口”回答**分支如何使用共同输入**；
-- “关键设计的受控消融”回答**哪些组件与收益相关**；
-- “跨数据分布的稳健性”回答**效果在哪些条件仍成立**；
-- “计算开销与性能权衡”回答**收益要付出什么代价**。
-
-不建议强迫每个小节都用问号；比形式更重要的是避免一节同时承担不相干的多项职责。
-
-## 5. 图题与表题的科学职责不同
-
-**图题**要说出可视化正在展示的对象或关系，如“共享特征与任务特定决策的处理流程”；不需要在标题中解释全部节点。图注补充图例、变量、指标、协议和适用范围。
-
-**表题**要清楚说明比较对象、评价指标与必要条件，如“相同训练预算下不同模型的测试性能”；不要只写“Experimental Results”。对于主要基线，表标题或表注解释是否为相同数据划分或候选集合。
-
-当图中出现统计结论，图题/注不能让读者误以为所有点均显著。标注相对收益时写清参考基线；一张图含多个设置时保持同一称谓体系。
-
-## 6. 结果标签须明确比较对象
-
-以下两种标签信息量不同：
-
-- 不清楚：“更强的表现”“大幅提升”“最优结果”；
-- 清楚：“与已测试基线相比的主指标提升”“固定预算下的延迟—准确率权衡”。
-
-若使用 “+X%”，明确 X 是相对变化、百分点，还是绝对数值变化；必须有被比较者与同一统计口径。不能把某数据集的个别结果当成整个论文的标题结论。
-
-## 7. 方法名称应容易记，但不能挤占论文贡献
-
-方法名要简短、不混淆已有技术、与实际机制有语义关联。名字若需要大量解释才能理解，不能用它取代任务和科学问题。若新方法只是评价工具而非部署替代方案，名称与标题都应反映其作用。
-
-检查方法名是否与标题、摘要、图中、算法伪代码、表格和实验设置完全一致。必要时建立“唯一标准术语”字典，允许缩写，但不允许为避免重复频繁改名。
-
-## 8. 标题层级的视觉规则
-
-- 总标题最高层；章节标题表达一个论证阶段；小节标题表达阶段内的问题；面板标签仅用于区分比较组。
-- 同一层级尽量采用平行语法，例如都以名词性主题开头或都描述实验问题。
-- 避免将同一信息写入总标题、章节、子章节与图面板多次。
-- 长度以准确且能一眼识别为准，不设置硬性的字数或行数门槛。
-- 多栏或狭窄图面板应通过内容抽象和层级设计保持可读，而不是强制特定版面尺寸。
-
-## 9. 反例与压力测试
-
-对于拟定的每个标题问：
-
-1. 会不会让读者推断出正文没有证明的结论？
-2. 是否遗漏对新颖性至关重要的任务或条件？
-3. 最接近论文是否可以不加修改地使用相同标题？若可以，差异化可能不足。
-4. 是否存在陌生术语阻碍非本领域读者理解？
-5. 目录中的小节名能否形成连贯的逻辑推进？
-6. 图题/表题是否与实际数据、比较对象、统计单位一一对应？
-7. 将营销词删除后，标题是否仍然准确而有区分度？
-
-## 10. 修订操作流程
-
-1. 抽取论文中心问句及真实证据范围。
-2. 列出当前全部标题/标签，标注其信息功能。
-3. 设计若干不同聚焦的总标题候选（问题导向、方法导向、证据导向）。
-4. 确认所选标题能由论文证据支持。
-5. 按论证顺序设计章节和子章节标题，删除同义重复。
-6. 对图题、表题、结果标签做单独的对象与指标核对。
-7. 执行术语一致性、语法并行性和过度宣称审查。
-
-## 11. 必须输出
-
-① 当前标题的科学含义与风险；② 若干总标题候选及不同侧重点；③ 推荐版本及其必要前提；④ 新旧章节标题映射表；⑤ 图题/表题/面板标签修改清单；⑥ 跨全文 canonical terms 字典；⑦ 尚需证据核验的强主张。若用户只要求修订某一级标题，只交付该级及必要上下文。
-
-**最终标准**：审稿人浏览标题与目录后，是否能够准确推断论文要解决的问题、提出的实际贡献以及证据走向，而不会被误导为未经证实的更强结论？
+**Acceptance:** The heading hierarchy serves as an accurate mini-map of the paper, and each title promises no more than the content delivers.

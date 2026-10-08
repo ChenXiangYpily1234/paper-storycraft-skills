@@ -1,118 +1,47 @@
 ---
 name: related-work-story
-description: 按研究问题与证据角色组织相关工作，建立精确、可查证的差异化定位和论文叙事。
+description: Position a research paper against verifiable closest work, grouping literature by scientific questions and comparison dimensions rather than a citation catalog.
 ---
 
-> **全局统领**：执行本 Skill 时，先遵守包根目录 `总纲领.md` 的「审稿人理解优先、概念首次引入就近解释、全文术语一词一义、问题—证据闭环」规则；如本节建议与总纲领冲突，以不损害科学正确性和阅读理解的规则为准。
-# 相关工作论证与研究定位 Skill
+# Related Work as Scientific Positioning
 
-## 目标
+Follow [PRINCIPLES.md](../PRINCIPLES.md), especially evidence precision, terminology, and reviewer-first dependencies.
 
-将 Related Work 从按作者罗列的“文献清单”，重写成回答“前人做到哪里、哪些解释仍有竞争、本文相对最相近工作真正新增什么”的**论证结构**。适用于多种 CS/AI 子领域。原材料中对机制审计、系统性能与机制归因的区分保留为可选分析工具，不预设每篇论文研究机制必要性。
+## Purpose and source discipline
+The goal is to explain **what is known, which important differences remain, and precisely where this paper fits**. Gather genuine bibliographic records and read primary sources where possible. Do not invent papers, methods, limitations, publication years, or citation keys. Label unverified bibliographic claims.
 
-## 所需材料
+## Organize by question and mechanism, not just chronology
+Useful grouping axes include task definition, available information, modeling or algorithmic principle, supervision, evaluation target, assumptions, computational cost, and deployment constraints. A group must lead to a clear point of comparison; "traditional versus recent" is often too vague.
 
-论文题目、摘要、引言、具体方法与结果；现有相关工作段落和 `.bib`；可访问的原始论文或元数据。若没有核对原文，明确标注“引用陈述待核实”，不可编造作者、贡献、结论、发表年份或论文之间的关系。
+For theory, organize assumptions, guarantees, problem classes, and known impossibility cases. For systems, organize constraints and architecture trade-offs. For benchmarks, organize construct coverage, collection protocol, and validity. Adapt categories to the actual contribution.
 
-## 1. 先明确相关工作的职责
+## Identify closest work explicitly
+Construct a comparison matrix:
 
-引言回答“为什么存在这个研究问题”；相关工作回答“哪些研究最接近，它们与本文的**可检验差异**在哪里”。避免在 Related Work 重写一遍背景或反复陈述同一个缺口。
+| Closest study | Shared goal | Critical methodological difference | Data/assumption difference | What its evidence shows | What remains unresolved |
+| --- | --- | --- | --- | --- | --- |
 
-为每条引文标注一个具体角色：
+A claim of novelty must specify **the dimension of novelty**: problem setting, design, objective, evaluation protocol, theorem, or evidence. "Unlike prior work" needs a true comparison, not an assertion. Address strong counterexamples and contemporaneous work fairly.
 
-| 角色 | 应回答的问题 |
-|---|---|
-| 问题来源 | 谁研究过同一任务或相近设置？ |
-| 方法先驱 | 本文继承了何种算法、模块或思想？ |
-| 直接竞争 | 哪些方法是最强且公平可比的 baseline？ |
-| 互补路线 | 哪些工作从不同角度解决问题？ |
-| 评估先例 | 已有的指标、协议、审计或消融方法是什么？ |
-| 反例/边界 | 哪些证据限制了本研究的潜在主张？ |
+## Compare at the right evidence level
+A previous paper's reported experiment supports the result it measured under its protocol; it does not automatically support all explanations of why it worked. Keep distinctions such as association versus causation, model quality versus mechanism necessity, and implementation change versus method novelty.
 
-不具有任何论证角色的引用，要么移至适当位置，要么删除，但不能仅为增加引用数量而保留。
+Do not say "no work has studied X" unless a sufficiently systematic search justifies it. Safer alternatives specify the precise untested property or mismatch demonstrated by the surveyed literature.
 
-## 2. 按“研究问题—方法思想—比较维度”分组
+## Paragraph construction
+Each paragraph should (1) establish a research category, (2) synthesize representative contributions with verifiable citations, (3) compare the features relevant to the present paper, and (4) lead to the next category or remaining gap. Avoid author-by-author shopping lists that require the reader to infer the scientific meaning.
 
-优先按可比较的科学问题和方法机制分组，而不是“2019 某方法、2020 某方法……”的流水账。各组内部按照下面的逻辑构建：
+Introduce unfamiliar technique families with a short description before their labels. Use the terminology ledger so the same comparison object receives the same name in Related Work and Methods.
 
-**共同目标 → 代表性思路 → 这些方法确实解决的问题 → 相对本文尚未覆盖的维度 → 本文与其精确关系。**
+## Anti-patterns
+- Calling every predecessor "limited" without specifying and citing a limitation.
+- Cherry-picking weak predecessors while ignoring strong nearby systems.
+- Treating different evaluation information or budgets as fair comparisons.
+- Conflating older publication date with conceptual inferiority.
+- Citing review articles as if they directly prove a narrow method-specific statement.
+- Repeating the Introduction verbatim instead of deepening the comparison.
 
-可选分组角度：模型结构、监督信号、数据访问、资源预算、保证类型、评估对象、推理协议、稳健性或部署场景。分类维度必须可以区分方法；不要用“传统方法 / 先进方法”这样的价值标签。
+## Deliverables
+Provide a literature grouping plan, a closest-work comparison matrix, revised paragraphs when requested, citation verification gaps, and a novelty-claim risk assessment.
 
-## 3. 避免虚假的历史进步线
-
-发表时间的先后不等于方法上的因果继承。“A 后来发展为 B”需要 B 明确建立在 A 之上的证据。若两篇工作只是并行路径，应写成“另一类研究采用……”而非“随后研究改进为……”。
-
-同样，不能凭一个未覆盖的设置就断言先前方法有缺陷。较好的对照是：“A 在输入/目标/指标为 X 的条件下提供了证据；本文检验额外条件 Y。”
-
-## 4. 识别最接近研究并建立差异矩阵
-
-至少针对能够获得的最相关工作比较：
-
-- 研究问题是否相同；
-- 实际可用信息、数据或训练资源是否相同；
-- 系统组成和作用位置是否相同；
-- 优化目标、输出及统计单位是否相同；
-- 原实验已经支持什么结论；
-- 本研究新增什么设计、证据或理论保证。
-
-不要只与最弱的旧工作比较，也不能用“没有完全一样的组合”充当实质创新。**真正的定位应说明为何差异会改变研究问题的答案。**
-
-## 5. 对证据层级保持敏感
-
-效果比较、消融、干预、随机实验、形式化证明与必要性论证不具有相同推断能力。例如：
-
-- 一个端到端性能结果说明系统在特定协议下的表现，不自动识别内部因果机制。
-- 去掉模型内部组件后性能下降，支持该实现对组件存在依赖，但不足以证明所有替代方案都无法达到相同性能。
-- 一项独立替代系统的实验能够提供另一条实现路径的证据，但不意味着已对原模型内部执行组件替换。
-- 在一个基准上赢过若干方法不意味着已超过全部现有方法。
-
-上述区分根据论文本身使用，不要无端把一般论文改写为“必要性审计”。
-
-## 6. 引文与信息层级
-
-- 对模型、数据集、软件或特定技术的**首次实质性提及**应放置适当引用。
-- 引文跟随它直接支持的最小完整事实或论断，而不是堆在段尾成为装饰。
-- 只有原始论文真正支持时才使用“证明、首次、领先、统一、必要”等词。
-- 方法性文献可在 Method/Experiment 处详细引用，Related Work 不需事无巨细复述。
-- 相关工作优先解释“研究方向及边界”；完整数学形式放入更合适的章节。
-- 没有可靠证据时保留不确定性，不用貌似权威的陈述补齐空白。
-
-## 7. 段落衔接要有语义变化
-
-允许的真实衔接：由宽到窄、同问题不同路径、从构造转向评价、从结果转向归因、从已知前提转向未检验边界。避免仅靠“除此之外、此外、近期研究”伪装逻辑。
-
-两个小节若最终重复得出同一个缺口，应考虑合并或让其中一个小节承载真正不同的比较维度。不强制固定小节数；少量强比较胜过多个空泛子标题。
-
-## 8. 语言与篇章的精修
-
-偏好直接动词：“采用、定义、比较、检验、估计、证明、提出”。避免“探索了丰富且复杂的协同关系”等难以具体解释的套话。过长句应拆成“前人做了什么—本文与其不同在哪里”两句。
-
-不要在每个引文后重复“但未考虑我们的问题”；在段落层面对相邻研究形成综合判断，再清楚陈述差异。不能把所有前人研究都描述为“只关注性能”，除非文献确实如此。
-
-## 9. 修订步骤
-
-1. 从引言提取准确的中心问题与贡献边界。
-2. 为每篇被引用文献标注角色及事实核验状态。
-3. 按比较维度而非文献数量重组段落。
-4. 寻找最接近工作，建立输入、目标、机制、证据的对照。
-5. 合并重复缺口，删除引用堆叠和虚假历史链。
-6. 检查所有引文是否真正支持其所附断言。
-7. 与引言交叉检查，消除重复但保留必要承接。
-8. 执行对抗性检验：有无被遗漏的更强基线或可反驳的创新主张？
-
-## 10. 常见失败模式
-
-- “A 提出……；B 提出……；C 提出……”却从不比较。
-- 对文献作过时排序，忽略真正最接近的近期方法。
-- 将相似任务说成相同协议，把不可比结果并列。
-- 用引用数量代替信息密度，错误地将引文堆放在段末。
-- 对前人提出难以证实的全称否定。
-- 重复引言缺口或者将技术细节提前塞满相关工作。
-- 声称本文是“首次”却没列出可核验的限定范围。
-
-## 11. 必须输出
-
-① 文献论证结构诊断；② 相关研究分组及每组的论证任务；③ 最接近工作差异矩阵；④ 修订后的完整 Related Work（以稿件原语言输出）；⑤ 关键引用的“主张→原文支持→不确定性”核验清单；⑥ 被调整引用的理由。
-
-**最终检验**：审稿人能否准确说出“现有研究具体已经回答什么、本文的新信息是什么、为什么这不是只换组件名称”？
+**Acceptance:** A reviewer can identify the closest competing ideas, understand the actual difference, and verify why the new question or contribution is distinct.

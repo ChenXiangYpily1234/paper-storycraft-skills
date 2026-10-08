@@ -1,119 +1,50 @@
 ---
 name: introduction-story
-description: 以问题、缺口、贡献和证据构建具有逻辑连续性且不过度宣称的计算机科学论文引言。
+description: Restructure an Introduction so that background, genuine research gap, design requirement, method, evidence, and contributions follow a reviewer-comprehensible argument.
 ---
 
-> **全局统领**：执行本 Skill 时，先遵守包根目录 `总纲领.md` 的「审稿人理解优先、概念首次引入就近解释、全文术语一词一义、问题—证据闭环」规则；如本节建议与总纲领冲突，以不损害科学正确性和阅读理解的规则为准。
-# 引言故事线构建与修订 Skill
+# Introduction: From Problem to Evidence
 
-## 目标与适用条件
+Read [PRINCIPLES.md](../PRINCIPLES.md) before editing. Preserve scientific accuracy, verified citations, experimental boundaries, and canonical terms.
 
-让读者从背景自然走向具体研究问题，再理解为何需要当前工作、方法如何回应该问题、证据为何足以支持贡献。适用于方法、系统、理论、实证、数据集/基准、负结果以及机制研究；不能假设所有论文都以“证明某机制不必要”为目标。
+## Diagnose before revising
+Identify the existing paragraph functions, central question, claimed gap, closest alternatives, actual contribution, available proof or experiment, and unsupported leaps. Mark sentences that sound academic but convey no actionable information. Distinguish conceptual contribution from an implementation example used to test it.
 
-默认尊重作者已有事实、引用键、数量结果、章节关系和贡献边界。未读取的文献不声称已核实；禁止编造相关工作与性能数据。
+## A flexible dependency chain
+**Concrete context → meaningful problem → what prior evidence does and does not show → requirement for a solution/test → proposed contribution → relevant evaluation → supported finding → scope → contributions.**
 
-## 1. 开始修订前先诊断
+This is not a mandatory paragraph template. For a theory paper, proof obligations may replace experimental results. For a dataset paper, construction validity and coverage may be central. For an empirical analysis, an evaluation protocol may be the main contribution.
 
-提取并对齐以下六项：研究对象、中心问题、现有工作确切缺口、论文独特做法、核心实证/理论证据、已知边界。比对题目与摘要：术语或研究问题不一致时先列出冲突，不直接润色造成“表面一致”。
+## Paragraph responsibilities
+- **Context:** specify the task, real-world or theoretical setting, and the relevant object. Avoid generic "rapid growth" openings.
+- **Problem:** state what is not solved or not established; support the claim with appropriately scoped literature and concrete counterexamples.
+- **Gap:** identify what a strong existing baseline, earlier theorem, or common evaluation fails to answer. Never equate "different from our approach" with "deficient."
+- **Requirement:** derive a property a proposed method or test must satisfy. This bridges problem and method.
+- **Method:** give a simple purpose statement and a clear operational description before internal names or formulas.
+- **Evidence:** explain *why* the experimental conditions or proof distinguish competing explanations. Highlight results relevant to the opening question.
+- **Contributions:** summarize conceptual, practical, and evidential novelty at a higher level than the preceding result descriptions.
 
-建议写出一条可检验的主链：
+A paragraph should leave a question or requirement that the next paragraph actually answers. Audit connections by deleting generic transition words and testing whether the logic still flows.
 
-**具体现象/任务 → 未解决问题 → 现有做法或证据的局限 → 新方法/新视角 → 验证路线 → 主要发现 → 意义与边界 → 贡献。**
+## First-use and terminology discipline
+Introduce every new mechanism, setting, metric, component, and abbreviation with a nearby functional explanation. Use the canonical name from the terminology ledger afterward. Avoid shifting between synonyms for stylistic variety. Use names of datasets and baselines only when they make the scientific claim more concrete; exhaustive lists belong in the evaluation.
 
-此链条不是固定段数。理论论文可用“问题→已有界限→新定理→证明思路→推论”；数据集论文可用“现有测量失真→设计要求→新资源→有效性评估”。只有当论文真实存在某种证据缺口时才使用该缺口。
+Scope results precisely: "the tested performance is recovered" is not "the system is recovered"; "an independent alternative achieves comparable results" is not "a mechanism inside the original system is replaced." These distinctions apply conditionally when the paper actually studies such claims.
 
-## 2. 开头：提供足够但不冗余的背景
+## Literature and evidence discipline
+Attach citations to exact supported propositions. Do not cite prior literature as if it had already made the paper's novel conceptual argument. Distinguish end-to-end performance, mechanism identification, causal identification, and generalization; one does not automatically establish the others.
 
-- 起句说明“在什么场景中，哪个系统/对象做什么，为何重要”。
-- 介绍读者理解问题必需的先验概念，而不是立即堆砌 framework、能力、必要性、可恢复性等抽象名词。
-- 不以“广泛应用”“快速发展”代替具体挑战；最好用任务或观察说明价值。
-- 第一个自然段结束时，读者应能看见尚待解决的问题或需要检验的假设。
+Use meaningful numerical evidence, not all seed-level scores. Keep failure cases visible when they change the main conclusion; move secondary qualifications to the appropriate Results or Limitations section rather than hiding them.
 
-**语义检查**：若删除首句，论文问题是否仍然可识别？若可以，首句可能只是模板化背景。
+## Revision workflow
+1. Write the central research question in ordinary language.
+2. Map existing paragraphs to their narrative functions; flag duplicates, missing prerequisites, and overly early terminology.
+3. Reorder around logical dependencies; add the minimum missing explanation.
+4. Ensure the contribution responds directly to the real gap.
+5. Audit transitions, numbers, comparison scopes, citations, and canonical terms against other sections.
+6. Pressure-test the argument: could a simpler baseline, extra data, alternative mechanism, or changed evaluation protocol explain the headline result?
 
-## 3. 缺口：说清过去的工作证明了什么、没证明什么
+## Deliverables and acceptance
+Return a story diagnosis, story spine, paragraph-by-paragraph plan, complete revised Introduction if requested, citation-support notes, and a change log. Preserve actual citation keys, quantitative values, LaTeX references, and limitations unless explicitly authorized to change them.
 
-将主张分别标为：已有事实、已验证的比较结果、理论推导、待验证假设。不要从“已有方法性能不佳”直接推导“研究方向错误”，也不要从“实验效果好”推导“机制具有因果必要性”。
-
-可用的缺口类型：表示能力限制、鲁棒性不足、计算/资源约束、分布迁移、评估偏差、可解释性/可识别性缺口、理论假设过强、数据覆盖不足、工程部署鸿沟。必须与本论文真正解决的部分对应。
-
-一句缺口陈述应能回答：**现有证据在哪个条件、变量或结论上不足？为什么这阻止我们回答研究问题？**
-
-## 4. 方法：明确回应缺口，而非罗列组件
-
-在读者理解问题后再引入方法名。先用一句话说明新方法进行哪种操作、控制哪个变量、产生什么结果，随后解释关键设计为何对准前述缺口。
-
-区分：研究目标、具体算法、独立实现、实验干预、评价协议与理论保证。不能把一个“对照测试工具”写成可以普遍替代现有系统的方法，也不能把“在实验条件下观察到”升级为普遍定律。
-
-建议结构：
-
-1. 方法名称与核心思路。
-2. 关键机制或设计决策及其因果/逻辑理由。
-3. 需要的输入、假设和输出。
-4. 该设计如何形成可检验的主张。
-
-不提前把超参数、置信区间公式、组件细节和完整训练协议塞进引言。
-
-## 5. 验证路线：先解释“为什么这样评估”
-
-多实验论文：先指出每个实验承担的**论证角色**，再给必要名称。常见论证角色包括有效性、归因、公平对照、消融、稳健性、跨域泛化、效率、失败边界。单实验论文不强制拆分设置；理论论文可交代定理条件、紧致性和反例。
-
-当数据集或模型名字对结论至关重要时可以明确写出；否则保留主要类别，防止引言沦为 baseline 清单。每个关键结果需说明比较范围和指标。强主张不能只援引个别最佳 seed 或最亮眼的子集。
-
-## 6. 主要发现：结果必须返回研究问题
-
-使用“证据 A + 证据 B → 有条件的科学解释”，而非仅列数字。区分关联与因果、性能相当与统计意义上的非劣、无法拒绝零假设与证实等效。
-
-例如在机制研究中，应区分“替代实现达到相近性能”和“目标模型内移除了原机制”；两者的实验含义不同。对于观察不到恢复效果的情况，只能说明该设置下尚未得到恢复证据，不能反向证明原机制普遍必要。
-
-限定语要具体：评估的数据、方法族、任务目标、资源预算、假设或统计准则。引言只需准确说明最有代表性的证据，次要失败和消融可留在结果及局限章节，不能因此隐匿反证。
-
-## 7. 贡献列表：概括而不是重复结果段
-
-若需要贡献列表，每一点明确：**提出什么新东西、作者实际上做了什么、这为何有意义**。常见维度：概念/问题定义；方法/系统/资源；理论或经验发现；分析与范围。条目数按真实贡献选择，不强制固定数量。
-
-避免把 baseline 上的一次分数改进当作方法、科学和分析三项贡献。对于贡献谓词“首次”“证明”“必要”“通用”“超越所有”，要求可明确核查的范围。
-
-## 8. 段落衔接：靠逻辑依赖而非连接词
-
-使用“上一段遗留的问题→下一段直接作答”的结构。例如，上一段结束为“仅靠最终准确率不能区分解释 A 与 B”，下一段起句应说明新的对照如何区分 A 与 B。不要靠反复使用“然而、此外、进一步、本节”制造形式上的连续。
-
-每段只承担一个主要功能；若一段同时解释背景、方法和详细实验，应拆分。若两段重复陈述同一缺口或结论，应合并。
-
-## 9. 术语、句子与引文审查
-
-- 一概念对应一个正式术语；首次使用时解释，必要时再引入缩写。
-- 句子要有明确施事、动作、对象与比较条件。减少含糊的“反映、体现、赋能、赋予、表征”等空泛动词；在技术上准确时可以使用。
-- 引文只支持其实际证明的命题。相关论文“研究过相似主题”不等于“证明了本文提出的理论”。
-- 将文献支持的现状判断和本文作者提出的新逻辑分开；不能给自己的推理错误地附上别人的引用。
-- 引言不应逐句复写摘要；保留不同层次的解释和证据。
-
-## 10. 压力测试与反例
-
-逐项询问：最强可比工作是否遗漏？新方法是否仅凭更大模型、更长训练、更大数据或不同输入获益？主张的关键证据是否在引言中被选择性呈现？将主张缩小至实际协议后是否仍有贡献？是否存在更简单解释？
-
-如果答案使主要故事失效，应优先修正问题陈述或补充实验需求，而不是继续进行修辞加工。
-
-## 11. 操作流程
-
-**Pass 1** 从题目、摘要、全文提取中心研究问句；**Pass 2** 标注每段功能与核心断言；**Pass 3** 重排成逻辑链；**Pass 4** 统一术语及引文范围；**Pass 5** 让每段末尾为下一段留下真实问题；**Pass 6** 对照方法和结果逐句核验；**Pass 7** 删除重复和过度抽象表达；**Pass 8** 用不熟悉论文的研究者视角重读。
-
-## 12. 必须输出
-
-1. **故事诊断**：现有主线、逻辑断点、含糊句、缺失证据。
-2. **修正主轴**：用箭头串联实际研究的论证步骤。
-3. **逐段蓝图**：段落目标、应保留信息、前后逻辑关系。
-4. **完整修订稿**：保留稿件原语言、现有数字、引用键和科学边界。
-5. **引用和事实核验表**：逐项标明“直接支持 / 间接相关 / 尚未验证”。
-6. **关键修改说明**：逻辑重排、术语归一、删除冗余、避免夸大。
-
-## 13. 终审清单
-
-- [ ] 标题、摘要、引言围绕同一中心问题。
-- [ ] 研究对象和缺口在方法名出现前已经清楚。
-- [ ] 每个重要主张都能被定位到证据、定理或限定前提。
-- [ ] 主要实验不是简单成绩陈列，而是科学问题的检验。
-- [ ] 段落之间存在真实问题承接，且没有重复论证。
-- [ ] 未混淆性能恢复、机制替代、因果与相关。
-- [ ] 正反证据和已知局限没有被美化或隐去。
-- [ ] 非本细分领域的计算机研究者能够首次通读理解。
+**Acceptance:** The reader understands the scientific question before unfamiliar jargon, and each next paragraph follows naturally from the previous one.

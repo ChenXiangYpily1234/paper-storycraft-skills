@@ -1,123 +1,63 @@
 ---
 name: discussion-conclusion-story
-description: 将讨论、局限、未来工作和结论组织为与论文开篇互相呼应的科学论证闭环。
+description: Interpret evidence, articulate scientific and practical implications, report limitations, and close the paper without overstating what was demonstrated.
 ---
 
-> **全局统领**：执行本 Skill 时，先遵守包根目录 `总纲领.md` 的「审稿人理解优先、概念首次引入就近解释、全文术语一词一义、问题—证据闭环」规则；如本节建议与总纲领冲突，以不损害科学正确性和阅读理解的规则为准。
-# 讨论、局限与结论的叙事闭环 Skill
+# Discussion, Limitations, and Conclusion
 
-## 目标
+Read [PRINCIPLES.md](../PRINCIPLES.md). This Skill produces an evidence-aligned narrative ending, not a second abstract or a place to quietly introduce unsupported contributions.
 
-帮助计算机科学论文在结尾回答“我们学到了什么、为何重要、结论能用于哪里、什么仍未解决”。适用于研究论文、系统论文、理论论文、基准、审计、复现及负结果。要求以**意义 → 适用范围 → 局限 → 推论/未来工作 → 核心问题的答案**形成闭环，而不是再写一遍实验流水账。
+## 1. Derive the ending from the opening question
 
-若原稿没有单独的 Discussion 或 Conclusion，应基于论证需求决定是否合并，不机械要求章节数量、结论段数或特定篇幅。
+List the question and contributions promised in the Introduction. For each one, find its direct proof, analysis, or experimental evidence, plus material counterexamples. If there is a mismatch, revise either the promise or conclusion; do not paper over it with confident wording.
 
-## 1. 从论文开篇反推结尾结构
+Build an ending map: **question → key observed result → warranted interpretation → scientific/practical implication → boundary → next research question**.
 
-收集题目、摘要、引言的研究问题与贡献清单，再标注实验和理论结果分别支持哪项贡献。制作如下对应关系：
+## 2. Distinguish functions
 
-| 开篇提出的问题 | 主证据 | 当前最强结论 | 限定前提 | 未解决部分 |
-|---|---|---|---|---|
-| 论文实际中心问句 | 表/图/定理编号 | 有条件的解释 | 任务、方法、数据、假设 | 尚缺哪些测试 |
+**Discussion** interprets why observations may matter, compares alternative explanations, separates what was established from what is plausible, discusses methodological trade-offs, and explores transfer conditions.
 
-如果某结论没有对应证据，应降级为假设或删除。如果结果反驳了引言的设想，不要为维护漂亮故事而抹去反例；应修正开篇的研究叙事。
+**Limitations/Threats to validity** state conditions under which results may differ, assumptions that matter, missing controls, external validity, and the scientific effect of those uncertainties. Do not bury a central threat in a generic list.
 
-## 2. Discussion 与 Conclusion 的职责
+**Conclusion** closes the original question with a short, accurately scoped takeaway. It should not introduce a new theorem, new metric, new mechanism, or previously unseen headline result.
 
-**Discussion 讨论为何得出这样的认识。** 它解释主结果的科学含义、与已有工作的关系、可能的竞争解释、实践后果、适用范围和关键局限。
+The paper may combine or separate these sections depending on content and requirements.
 
-**Conclusion 回答核心研究问题。** 它用精炼的证据回顾支撑最准确的结论，并给出在限定前提下的科学或设计启示。不要在 Conclusion 首次声称之前未检验的新成果。
+## 3. Make claims proportional to evidence
 
-若研究是纯理论性质，可把“实验结果”替换为“定理、证明条件、界与反例”；若是数据资源论文，可讨论评估覆盖与潜在偏差。
+Differentiate:
+- a reported observation from an explanation of its cause;
+- a component's measured contribution from universal necessity;
+- association from causal identification;
+- success under specified information access from unrestricted performance;
+- no detected difference from equivalence;
+- a valid theorem under assumptions from an unconstrained guarantee;
+- a result on tested data from out-of-distribution or deployment generalization.
 
-## 3. 先解释发现，再讨论局限
+When an independent alternative works, its success does not imply that an original model component was internally replaced. If a recovery attempt fails, necessity remains unresolved unless a stronger identification argument exists.
 
-讨论部分首段最好说明最重要的**新认识**，而不是立即展开道歉式清单。所谓“新认识”可以是：一项方法在某约束下更有效；一种长期假定只在某些条件成立；某项度量暴露出评估盲点；某个系统设计改变了精度与资源的权衡。
+## 4. State useful scope along multiple dimensions
 
-但不能宣称“颠覆了 X”或“彻底解决 Y”而没有广泛的对照与证据。讨论应回答“相比读实验表格，我们更明白了什么”。
+Relevant boundaries may include population and sampling, task and output space, dataset version, train–test split, hardware and runtime environment, model capacity, pretrained information, resource budget, statistical power, failure handling, adversarial inputs, and proof assumptions.
 
-### 科学含义 vs. 实践含义
+Only mention dimensions actually relevant to the central claim. Explain *how* a limitation affects interpretation, not just that it exists.
 
-科学含义解释理论、方法、现象或现有解释被如何更新；实践含义解释设计、部署、成本、风险或选择策略有何影响。这两者可以相关，但不能将实验室中性能相近直接等价为真实生产系统中成本更低、风险更小或可靠性更高。
+## 5. Treat negative evidence explicitly
 
-## 4. 以多个维度精确定义适用边界
+Acknowledge important counterexamples and heterogeneous groups. Avoid replacing "one material failure occurred" with a misleading "almost always succeeds." Distinguish inconclusive, underpowered, mixed, and directly contrary results.
 
-至少视论文情形检查以下维度：
+A failure can motivate a new experiment; it cannot automatically establish its preferred causal explanation. Proposed future experiments must be presented as future work, not as already completed evidence.
 
-- **任务维度**：目标任务、标签定义、用户/场景/输入分布。
-- **方法维度**：测试的方法族、模型规模、模块替代或干预方式。
-- **统计维度**：样本量、统计单位、区间精度、多重检验与结论准则。
-- **资源维度**：训练、推理、硬件、数据标注、调用预算。
-- **信息维度**：可用输入、先验表示、额外预训练数据、候选集合。
-- **时间与迁移维度**：静态与在线、分布内与分布外、已知与新领域。
+## 6. Derive future work from the identified boundary
 
-不相关维度无需硬加。范围句应精确到“在 A 的评估协议和 B 的输入条件下支持 C”，而不是无条件“这种机制不重要/该方法具有通用性”。
+A good next step tests a specific unresolved explanation, new condition, stronger baseline, or deployment constraint. Avoid interchangeable closing lines such as "we will explore more domains" unless the reason and intended test are concrete.
 
-## 5. 区分局限、失败与威胁有效性
+## 7. Cross-document closure checks
 
-**局限（limitation）**：论文没有覆盖的范围或真实设计代价。
+Verify that the conclusion's subject, comparison target, primary metric, strongest number, and conditions match title, abstract, Introduction, Results, main figure, and terminology ledger. Conclusions should emphasize scientific meaning, not restate every row of results.
 
-**负结果（negative result）**：在已测试条件下发生且需要报告的不利发现。
+## Required outputs
 
-**内部有效性威胁**：竞争解释未被充分排除，例如比较组的训练预算不一致。
+Provide an opening-to-ending claim mapping, Discussion and Conclusion revision plan, full revised text when requested, an evidence-strength audit, important limitations and alternative explanations, and unresolved verification items.
 
-**外部有效性威胁**：只在小范围数据集、硬件或人群验证，迁移尚不确定。
-
-**结论有效性威胁**：检验功效不足、统计单位混淆、事后挑选或缺失区间。
-
-不要把“缺少某个数据集”自动当成最重要的局限；优先报告**可能改变论文中心结论**的限制。
-
-## 6. 处理成功与失败证据的非对称性
-
-若研究测试“在特定条件下能否找到可达到某性能的替代方案”，找到一个有效替代可以提供存在性证据；没有找到替代通常不能证明不存在任何替代。这是搜索/存在性问题的逻辑不对称，不应推广到所有统计问题。
-
-同样：观察到提升不自动证明具体内部机制的因果作用；不显著不等于等价；测试某个代理系统不等于修改了原系统。根据实际研究设计选择精确措辞。
-
-## 7. 局限不应变成实验清单
-
-不要机械列出“没有测试数据集 A、B、C”来填充篇幅。对关键边界使用以下结构：
-
-1. **当前证据的适用条件**是什么；
-2. **若超出条件，会引入哪个不确定性**；
-3. **哪种新实验或理论分析可区分竞争解释**。
-
-例如，若只有静态离线评估，未来需要在线反馈实验来检验系统交互效应，而不能直接宣称离线方法在真实环境中更高效。
-
-## 8. 未来工作应由局限自然推导
-
-可选择研究对象扩大、方法族扩大、目标指标扩展、理论保证增强、协议变更、现实部署验证等方向。每个 future-work 方向应回答“当前哪项证据不足 → 为什么重要 → 何种新验证最有判别力”。
-
-避免空泛的“未来将扩展至更多数据集并提升性能”。对重大风险，不应把必须解决的公平性、数据污染或安全问题全部推到未来工作而保持现有强结论不变。
-
-## 9. 结论要回应标题与研究主张
-
-一个可信的结论通常包含：研究问题/目标的直接答案、支撑答案的关键方法或证据、确切适用边界及更一般性的有限启示。顺序可调整，但不应该重新引入大量数字和实验细节。
-
-表达强度依据证据：
-
-| 证据状态 | 推荐表述 | 避免表述 |
-|---|---|---|
-| 受控实验证明条件下优势 | “在所评估的 X 条件下，Y 优于 Z” | “Y 全面优于现有方法” |
-| 非劣检验通过 | “在预设界限和协议下达到非劣” | “两者完全相同” |
-| 定理有明确假设 | “当 A 与 B 满足时可保证 C” | “普遍保证 C” |
-| 未能拒绝零假设 | “尚缺足够证据确认差异” | “证明不存在差异” |
-| 效果未恢复 | “当前替代方案未实现目标” | “证明原机制必不可少” |
-
-## 10. 全文闭环检查
-
-- 引言用哪个问句制造研究动机？结论是否直接回答它？
-- Discussion 的解释是否由结果支持，是否忽略了反例？
-- 科学贡献与工程收益是否有相应独立证据？
-- 研究边界是否与实际测试对象一致？
-- 是否复述过多精确结果而缺少解释？
-- 是否因为担心负面评价而模糊报告重要失败？
-- 是否误把“待解释的现象”写成“已证实的因果机制”？
-- 是否引入了引言与方法均不存在的新目标或新贡献？
-
-## 11. 推荐工作流与输出
-
-首先建立“问题—证据—解释—范围”映射，随后重排 Discussion，挑出最可能改变结论的局限，为其对应可验证的未来实验，最后以限定后的中心答案重写 Conclusion。
-
-交付：① 当前结束部分逻辑诊断；② 讨论与局限结构图；③ 按稿件原语言改写的完整文本；④ 每条结论的证据与范围映射；⑤ 需要补强的实验/理论验证；⑥ 不实或过度宣称的更正说明。
-
-**最终标准**：一位审稿人能否区分作者“观察到了什么”“合理解释了什么”“尚不能证明什么”，同时准确复述这项工作的真正贡献？
+**Acceptance:** The conclusion answers the opening question in language a reviewer can defend using only the paper's actual evidence and declared assumptions.

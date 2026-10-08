@@ -1,42 +1,34 @@
 ---
 name: pptx-paper-figure-story
-description: 使用可编辑 PowerPoint/PPTX 构建或修改科研概念图、方法流程图、对比图及论文图示，遵守科研叙事和术语一致性总纲领。
+description: Design and revise editable PowerPoint research diagrams with reviewer-first visual semantics, consistent scientific terms, and evidence-bound claims.
 ---
 
-# 基于 PPTX 的科研论文图示叙事与编辑 Skill
+# Editable Research Diagrams with PPTX
 
-> **最高优先级**：先读包根目录 `总纲领.md`，并与 `07-figure/SKILL.md` 联合使用。PPTX 是**实现可编辑图示的工具**，不是可以绕过科研事实、文字定义或图注解释的理由。公开版提供论文图示叙事指南；PPTX 编辑和渲染需使用用户自行合法安装的工具。
+Read [PRINCIPLES.md](../PRINCIPLES.md) and [Figure Story](../07-figure/SKILL.md). PowerPoint is an editing format—not permission to invent components, data, arrows, or results.
 
-## 使用范围
+## Appropriate use
+Use editable PPTX for architecture summaries, algorithm flows, study protocols, comparison diagrams, ablation schematics, and conceptual maps. For measured numeric results, start with [Research Plotting](../11-research-plot/SKILL.md). For numerical tables, use [LaTeX Tables](../10-latex-table/SKILL.md).
 
-- 论文中可编辑的框架总览图、模块关系图、任务流程图、方案对照图、消融示意图。
-- 读取、修改、合并或拆分 `.pptx`；将 PPTX 图示导出为论文实际使用的图像格式，依原稿需要交付可编辑源文件。
-- 不能从漂亮的流程图推出不存在的模块、因果关系、信息流或实验结论。
-- 如果任务是**真实数值结果图**，首先使用 `11-research-plot` 的数据和统计核验流程；如果任务是 LaTeX 表格，使用 `10-latex-table`。
+## Narrative-first design process
+1. **Define one reader question.** What should the diagram clarify that prose alone does not?
+2. **Ground all objects.** Extract actual inputs, outputs, module roles, training/inference boundaries, shared parameters, and decision conditions from verified source material.
+3. **Plan the logical reading path.** Typically context/input → central operation → output/evidence, unless real feedback, iteration, or parallelism requires another form.
+4. **Use canonical terminology.** Every label must match the manuscript ledger. Explain a new acronym or named operation in the figure/caption or at its first adjacent mention.
+5. **Declare visual semantics.** Arrows must have accurate data, control, logical, or causal meanings. Distinguish a shared module from duplicate modules and an external comparator from an in-model replacement.
+6. **Keep shapes editable where feasible.** Maintain alignment, sensible grouping, readable type, and reproducible export dimensions; retain source artifacts.
+7. **Audit the manuscript integration.** Compare PPTX, exported image, caption, first body reference, and Methods or Results definitions line by line.
 
-## 叙事优先的作图流程
+## Scientific and visual acceptance gates
+- A reviewer understands the figure's question from the title/caption without internal project knowledge.
+- New module names are locally decipherable; no symbol silently changes meaning.
+- No arrow suggests causality or access to information not supported by the actual system.
+- The design does not erase negative conditions, unsupported branches, or data dependencies.
+- Exported visuals remain readable at final paper size and in grayscale.
+- Captions, text, and figure do not disagree on performance, sample unit, or scope.
 
-1. **确定图的阅读目的。** 明确读者看完后需回答的唯一主要问题，以及图在正文的第一次引用位置。
-2. **收集事实与术语。** 从方法正文、符号说明、实验协议核验所有输入、输出、模块、处理顺序、指标，构建图示用词与正文标准术语的映射。未知事实先标记“待核验”，不自行填补。
-3. **先排列故事，不先选颜色。** 推荐按阅读顺序展示「研究对象/输入 → 关键限制 → 方法核心操作 → 输出/证据」；对于并行结构，确保比较对象、共享条件、改变的变量可辨。
-4. **先解释新词，再缩写。** 图示中新出现的术语应通过图内简短说明、图注或紧邻正文立即解释；图中文字不能擅自另起别名。图独立传播时，应尽可能自包含关键缩写释义。
-5. **区分图元语义。** 箭头必须代表明确的计算流、控制流、依赖关系或真实因果关系之一；用图例解释线型、颜色、虚实、加粗及边框，不因视觉平衡凭空增加连线。
-6. **编辑与导出。** 优先保持元素可编辑、对齐、可放大检查文字、字体与裁切，并记录使用的原图和改动。
-7. **跨文稿对照。** 检查 PPTX、导出图、论文图注与正文是否一词一义、数字一致、分支一致、限制条件一致；最后查看嵌入论文后的实际成图。
+## Tooling and redistribution
+This public repository provides visual-story guidance, not proprietary PPTX editing software or third-party manuals. Use authorized tools for editing, rendering, and exporting PPTX files; do not imply that a source presentation has been edited unless it has.
 
-## 审稿人快速理解门禁
-
-- 不看正文仅看图题与图注，是否能知道图的研究对象和用途？
-- 顺着箭头读图时，是否能解释每条主要边的意义？
-- 首次出现的模块名、方法名、缩写，能否在图或紧邻文字找到解释？
-- 图中是否使用了正文未定义的新标签，或将同一模块写成多个不同名称？
-- 是否将相关性画成因果箭头，将示例画成一般结论，将独立系统画成替换了模型内部机制？
-- 导出到最终论文尺寸后，所有必要文字是否仍可辨认？
-
-## 技术工具
-
-公开版不包含第三方 PPTX 技术手册、脚本及参考资料。请使用自行合法安装的 PPTX 工具完成编辑、导出与渲染检查。
-
-## 交付内容
-
-提供图的核心论证目的、图元与正文术语映射、可编辑源文件/导出图（若实际生成）、正文首次引用位置建议、图注草案、发现的科学或视觉问题清单。未完成的渲染与实际论文嵌入检查应明确标注为未验证。
+## Required outputs
+Provide scientific purpose, element-to-terminology mapping, layout plan, caption, editable file/export only if created, and explicit verification status for rendering and embedding.

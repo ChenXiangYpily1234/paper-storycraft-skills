@@ -1,4 +1,4 @@
 interface:
-  display_name: "科研绘图"
-  short_description: "使用 seaborn 制作可复现科研图，保留真实数据并检查论文尺寸下的可读性"
-  default_prompt: "使用 $research-plotting 根据现有实验数据绘制论文图，并导出 PDF、PNG 和可复现脚本。"
+  display_name: "Research Plotting"
+  short_description: "Make reproducible plots from verified results with accurate uncertainty and accessible labels."
+  default_prompt: "Use $research-plotting to plot verified experiment data, export publication-ready PDF/PNG, and check scientific interpretation."
