@@ -2,7 +2,7 @@
 
 **Evidence-grounded storytelling Skills for scientific and technical research papers.**
 
-[English](README.md) | [简体中文](README.zh-CN.md) | [Global principles](PRINCIPLES.md) | [Workflow](WORKFLOW.md)
+[English](README.md) | [Chinese](README.zh-CN.md) | [Global principles](PRINCIPLES.md) | [Workflow](WORKFLOW.md)
 
 [![GitHub stars](https://img.shields.io/github/stars/ChenXiangYpily1234/paper-storycraft-skills?style=social)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/stargazers)
 ![Skills](https://img.shields.io/badge/Skills-12-blue)
