@@ -1,113 +1,163 @@
-# Paper StoryCraft：科研论文故事线构建 Skills
+<div align="center">
 
-**以证据为基础，让审稿人顺畅理解研究问题、核心创新与结论边界。**
+# Paper StoryCraft
 
-**简体中文** | [English](README_EN.md) | [英文总纲领](PRINCIPLES.md) | [英文工作流](WORKFLOW.md)
+### 让审稿人读懂你的研究，而不是猜懂你的研究。
 
-[![GitHub stars](https://img.shields.io/github/stars/ChenXiangYpily1234/paper-storycraft-skills?style=social)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/stargazers)
-![Skills](https://img.shields.io/badge/Skills-12-blue)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Skill language](https://img.shields.io/badge/Skills-English-informational)
+**12 个开源 AI Skills · 论文故事线重构 · 术语统一 · 图文协同 · 证据审查**
 
-一篇论文即便技术上正确，也可能让审稿人看不懂：专业术语提前出现却没有解释，方法章节只是模块清单，图示与正文名称不一致，实验也没有直接回答引言提出的问题。
+[![GitHub Stars](https://img.shields.io/github/stars/ChenXiangYpily1234/paper-storycraft-skills?style=social)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/stargazers)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Skills](https://img.shields.io/badge/Research_Skills-12-blue.svg)](#12-个-skills一套完整工作流)
+[![Language](https://img.shields.io/badge/README-中文为主-orange.svg)](README_EN.md)
 
-**Paper StoryCraft** 提供 **12 个独立的 Markdown Skill**，帮助研究者围绕可信的科学证据建立一条完整论证链：
+**简体中文** · [English](README_EN.md) · [总纲领 Principles](PRINCIPLES.md) · [完整工作流](WORKFLOW.md)
 
-**研究背景 → 具体问题 → 可核验的研究缺口 → 方法或研究设计 → 证据 → 有边界的结论。**
+**[30 秒试用](#30-秒试用) · [看改写示例](#一个例子看懂它在做什么) · [选择 Skill](#12-个-skills一套完整工作流) · [⭐ Star 收藏](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)**
 
-适用于机器学习、自然语言处理、计算机视觉、系统、算法、理论、数据科学、推荐、基准评测、复现研究等计算机与相近技术领域。**不预设特定会议、年份、固定页数或实验数量。**
+</div>
 
-## 统一原则
+---
 
-- **以审稿人为中心：** 假设读者具备学科基础，但不了解作者内部的概念与命名。新内容必须由已解释的内容自然引出。
-- **术语首次出现就近解释：** 新模块、方法名、缩写、指标、变量和符号应在本句或紧邻句中说明“是什么、做什么、必要边界是什么”。摘要和图注也应尽量自包含。
-- **全文术语一词一义：** 标题、摘要、引言、相关工作、方法、实验、公式、图示、表格和附录使用一致的规范名称。
-- **主张—证据—边界闭环：** 每个重要结论要找到实验、定理或可靠引用支撑，明确竞争解释、假设和适用条件。
-- **突出真实贡献，而非自我贬低：** 避免流水账和不必要的道歉式措辞，但不能掩盖关键负结果或影响结论的局限性。
+> **论文不是实验日志，也不只是语言润色。**
+>
+> 真正重要的是让审稿人循序渐进地理解：**为什么这个问题值得研究？现有证据缺什么？你的方法为什么这样设计？实验究竟支持了什么？**
 
-所有 Skill 共同遵守 **[PRINCIPLES.md（英文总纲领）](PRINCIPLES.md)**。
+如果你的论文存在这些问题：
 
-## 快速使用
+- 引言写了很多背景，却迟迟说不清 **研究问题和真正的 gap**。
+- 方法介绍了一堆模块，但读者不知道 **为什么需要它们、它们怎样协作**。
+- 缩写、符号、指标第一次出现时 **没有解释**，后面还换了名称。
+- 实验和图表很多，读者却无法对应到 **具体研究主张**。
+- 摘要、正文、图注和结论对 **同一概念或结果的表述不一致**。
 
-克隆仓库：
+**Paper StoryCraft** 就是为这类问题整理的一套可直接提供给 AI 写作/编程助手的科研论文修订指南。它不是“一键生成论文”，而是把已有研究组织成**读得懂、查得到证据、不过度宣称**的科学论证。
+
+**一条主线：** 研究背景 → 科学问题 → 可核验的研究缺口 → 设计逻辑 → 方法/验证 → 证据 → 结论与边界。
+
+适用于机器学习、NLP、CV、推荐系统、系统论文、算法、理论、基准评测、数据集、复现与其他相近技术研究；**不限会议、不设默认页数，也不强制固定实验数量**。
+
+## 一个例子，看懂它在做什么
+
+以下是**虚构的写作示例**，仅展示叙事方法，不代表真实论文的科学结果。
+
+| 常见写法 | StoryCraft 希望实现的表达 |
+| --- | --- |
+| “我们提出 MAF 模块，并取得显著提升。” | “当不同输入的信息质量变化时，固定融合权重可能不合适。为处理这一问题，我们采用**多阶段自适应融合（MAF）**：先估计各信息来源的可靠性，再据此调整融合权重。其作用需要通过受控实验检验。” |
+| “实验结果证明我们的方法很好。” | “在**明确的数据、指标、对照和预算**下报告实际结果，再说明结果支持哪项主张，以及哪些解释仍未排除。” |
+| 图里叫“Router”，正文叫“Controller”，表里叫“Policy”。 | 若三者确实指同一对象，选择一个**规范术语**并贯穿全文；若含义不同，首次出现时解释区别。 |
+
+**这套 Skills 的核心不是把论文写得更夸张，而是减少审稿人的理解成本。**
+
+## 30 秒试用
+
+**无需先安装额外程序。** 如果你的 AI 助手可以读取 GitHub/本地文件，可以直接提供本仓库文件及你的论文材料；如果不能读取链接，先克隆或下载仓库，再让助手读取文件。
+
+**① 获取仓库**
 
 ```bash
 git clone https://github.com/ChenXiangYpily1234/paper-storycraft-skills.git
 cd paper-storycraft-skills
 ```
 
-让能够读取本地文件的 AI 助手读取相应 Markdown，并提供论文、实验数据、引用文件以及（如有）最新编译的 PDF。**克隆仓库并不等于所有 AI 平台都自动注册 Skill**，具体取决于所用工具。
-
-**推荐的全稿诊断提示词：**
+**② 复制下面的提示词，让 AI 先诊断、再修改**
 
 ```text
-请先读取 PRINCIPLES.md、WORKFLOW.md 和
-09-consistency-validation/SKILL.md，随后检查我的真实论文材料。
+请先阅读 paper-storycraft-skills/PRINCIPLES.md、
+paper-storycraft-skills/WORKFLOW.md 和
+paper-storycraft-skills/09-consistency-validation/SKILL.md。
 
-1. 识别核心研究问题、现有工作的真实缺口和具体贡献。
-2. 建立主张—证据—适用边界表，指出证据不充分的部分。
-3. 检查每个新术语、缩写、数学符号是否在首次出现处解释。
-4. 建立覆盖正文、图表、图注与附录的统一术语台账。
-5. 检查实验公平性、竞争性解释以及章节之间的逻辑跳跃。
-6. 输出 P0/P1/P2/PASS 审查结果，并明确未完成的核验。
+结合我提供的论文、实验结果和引用材料，先做审稿人视角的诊断：
+1. 用一句话概括研究问题、主要贡献和证据支持的结论。
+2. 标记每处逻辑跳跃、研究 gap 不明确或段落衔接断裂的位置。
+3. 找出首次出现却没有就近解释的术语、缩写和数学符号。
+4. 建立全稿统一术语表，包含图、表、公式和图注。
+5. 建立「主张—证据—适用边界」对应表，检查反例与竞争解释。
+6. 按 P0/P1/P2/PASS 给出有位置、有理由的修改建议。
 
-不得编造实验、数据、引用、创新点或未经核实的优越性。
+请先报告问题，不要直接改写整篇论文；
+不得编造引用、实验、结果或创新点。
 ```
 
-**单独修改方法章节：**
+**③ 按诊断结果进入对应 Skill**
+
+例如只想改引言：
 
 ```text
-请读取 PRINCIPLES.md 和 04-method/SKILL.md，
-仅重构我提供的 Method 内容。新概念要在第一次出现时解释；
-先交代设计动机，再给运算与公式；依实际数据流组织正文；
-保留真实公式、数据、引用、标签和科学结论边界。
-最后给出修改稿、统一术语台账和待验证问题。
+请读取 paper-storycraft-skills/PRINCIPLES.md 和
+paper-storycraft-skills/02-introduction/SKILL.md，
+重构我提供的 Introduction。确保问题逐步引出方法，
+新术语首次出现就近解释，全文名称与实验保持一致。
+保留真实事实、引用、数值和结论边界。
 ```
 
-**语言说明：** 核心 Skill 和辅助指南统一采用英文编写，但 AI 生成的论文内容应默认保持原稿语言，不会因为 Skill 是英文就强制把中文论文改成英文。
+> **注意：** 本项目是 Markdown 指南集合，不是自动安装的插件；不同 AI 工具需要采用各自的文件访问/Skill 导入方式。核心 Skill 使用英文编写，**论文改写默认保留原稿语言**。
 
-## 12 个 Skill 一览
+## 12 个 Skills，一套完整工作流
 
-| Skill | 用途 |
+| 模块 | Skill | 主要解决的问题 |
+| --- | --- | --- |
+| 论文叙事 | [01 · 摘要](01-abstract/SKILL.md) | 让问题、方法、证据和结论在摘要中闭环 |
+| 论文叙事 | [02 · 引言](02-introduction/SKILL.md) | 从具体背景自然引出真实 gap 和方法动机 |
+| 论文叙事 | [03 · 相关工作](03-related-work/SKILL.md) | 与最相关工作公平比较，而非罗列引用 |
+| 论文叙事 | [04 · 方法](04-method/SKILL.md) | 先解释“为什么”，再讲设计、公式和数据流 |
+| 论文叙事 | [05 · 实验](05-experiment/SKILL.md) | 每个实验回答一个问题，检查公平性与统计结论 |
+| 论文叙事 | [06 · 讨论与结论](06-discussion-conclusion/SKILL.md) | 解释意义、替代解释、失败条件与适用边界 |
+| 图表叙事 | [07 · 科研图示](07-figure/SKILL.md) | 让图承担清晰的科学论证职责 |
+| 文字结构 | [08 · 标题与小标题](08-title-heading/SKILL.md) | 让标题成为论文论证逻辑的导航 |
+| 质量审查 | [09 · 终稿一致性](09-consistency-validation/SKILL.md) | 审查术语、数据、引用、统计和图文冲突 |
+| 图表工具 | [10 · LaTeX 表格](10-latex-table/SKILL.md) | 表格结构清晰、数字不失真、表注可理解 |
+| 图表工具 | [11 · 科研绘图](11-research-plot/SKILL.md) | 根据真实数据制作可复现结果图 |
+| 图表工具 | [12 · PPTX 可编辑图示](12-pptx-visual/SKILL.md) | 构建准确、可编辑且与正文一致的流程/架构图 |
+
+### 为什么强调“总纲领”？
+
+**[PRINCIPLES.md](PRINCIPLES.md)** 是 12 个 Skill 的共同约束：
+
+1. **审稿人首次阅读能跟上：** 先给问题和直觉，再给专有概念与数学形式。
+2. **新术语必须就近解释：** 首次出现的前一句、同一句或紧邻下一句必须让人知道“是什么、做什么、为何需要”。
+3. **一词一义、全文统一：** 方法名、模块、指标、缩写、符号在正文、图表和附录中保持一致。
+4. **主张必须有证据：** 实验、定理和引用支撑相应结论，明确前提与未能排除的解释。
+5. **突出真正的研究价值：** 避免自我削弱式叙事，但不能隐藏重要负结果或夸大有效性。
+
+## 不知道从哪里开始？
+
+| 你的当前问题 | 最适合先读 |
 | --- | --- |
-| [01 摘要](01-abstract/SKILL.md) | 清楚传达问题、贡献、证据和结论边界 |
-| [02 引言](02-introduction/SKILL.md) | 从研究背景循序渐进推导真正的研究问题 |
-| [03 相关工作](03-related-work/SKILL.md) | 公正比较最相近文献与实际创新点 |
-| [04 方法](04-method/SKILL.md) | 解释设计动机、定义、公式与真实数据流 |
-| [05 实验](05-experiment/SKILL.md) | 设计公平对照、统计推断及证据链 |
-| [06 讨论与结论](06-discussion-conclusion/SKILL.md) | 解释发现、局限和实际意义 |
-| [07 科研图示](07-figure/SKILL.md) | 让图真正承担科学叙事职责 |
-| [08 标题与小标题](08-title-heading/SKILL.md) | 让章节结构成为读者理解的导航 |
-| [09 一致性审查](09-consistency-validation/SKILL.md) | 核对事实、引用、数值、术语和图表 |
-| [10 LaTeX 表格](10-latex-table/SKILL.md) | 组织清楚、不扭曲统计含义的表格 |
-| [11 科研绘图](11-research-plot/SKILL.md) | 根据可核验数据生成可复现结果图 |
-| [12 可编辑 PPTX 图示](12-pptx-visual/SKILL.md) | 规划并核验论文中的可编辑图示 |
+| “论文每段都能看懂，但连起来不像一个故事。” | [总纲领](PRINCIPLES.md) + [引言](02-introduction/SKILL.md) |
+| “方法创新点被模块和公式淹没了。” | [方法](04-method/SKILL.md) + [标题](08-title-heading/SKILL.md) |
+| “实验指标不少，却没有证明论文的关键主张。” | [实验](05-experiment/SKILL.md) + [一致性审查](09-consistency-validation/SKILL.md) |
+| “图表美观，但解释不了它们回答什么问题。” | [科研图示](07-figure/SKILL.md) + [科研绘图](11-research-plot/SKILL.md) |
+| “准备投稿，希望提前发现审稿人可能提出的疑问。” | [终稿审查](09-consistency-validation/SKILL.md) |
 
-## 推荐工作流
+推荐阅读顺序：**全稿诊断 → 引言/相关工作 → 方法 → 实验/图表 → 摘要/标题 → 讨论/结论 → 全文审查**。根据论文类型调整，详见 [WORKFLOW.md](WORKFLOW.md)。
 
-**全稿诊断 → 引言与相关工作 → 方法 → 实验及图表 → 摘要与标题 → 讨论与结论 → 独立终稿审查。**
+按这些指南执行时，建议要求 AI 输出：**故事线图谱、统一术语台账、主张—证据—边界表、改写稿、审稿人可能的疑问、P0/P1/P2/PASS 审查结果**。没有实际核验的项目不能标为 PASS。
 
-具体步骤见 [WORKFLOW.md](WORKFLOW.md)。理论论文、系统论文或纯实证研究可以按实际逻辑调整，不需要机械套用结构。
+## 如果它对你有用，欢迎点一个 Star
 
-建议的交付物包括：故事线图谱、主张—证据—边界台账、规范术语台账、首次解释阻塞点、修改稿、图表与正文对应表，以及按严重度分级的审查结果。
+**Star 能帮助你以后快速找回项目，也能让更多正在改论文的研究者发现这套工具。**
+
+[**⭐ Star Paper StoryCraft**](https://github.com/ChenXiangYpily1234/paper-storycraft-skills) · [提出建议或反馈问题](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/issues)
+
+如果你想参与改进，欢迎通过 Issue 分享可公开的学术写作问题、错误案例、适用学科或改进建议；避免上传未公开论文、个人信息或保密实验数据。欢迎贡献更通用的叙事检查规则和示例。
 
 ## 相关项目与致谢
 
-**推荐参考：** [**anti-defensive-writing-en**](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill/blob/main/skills/anti-defensive-writing-en/SKILL.md)，来自 [Adkid-Zephyr/anti-defensive-writing-Skill](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill)（上游项目采用 MIT 许可证）。
+推荐参考 [**anti-defensive-writing-en**](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill/blob/main/skills/anti-defensive-writing-en/SKILL.md)，来自 [Adkid-Zephyr/anti-defensive-writing-Skill](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill)。它关于突出真实优势、避免流水账和不必要自我贬低的思路具有参考价值；本仓库进一步要求**不得隐藏影响结论的重要负结果与局限**。二者是独立项目，未直接复制上游 Skill。见 [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md)。
 
-该项目强调：论文应围绕**真实优势和清晰的研究价值**组织，而不是写成实验流水账或频繁自我否定的工作总结。Paper StoryCraft 与之形成互补，额外强调**不能为了叙事效果隐藏重要负结果、混淆对照或省略会改变科学结论的局限性**。本项目是独立的指南集合，并非该项目的官方分支，也没有直接复制上游 Skill 内容。详细说明见 [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md)。
+## 使用边界与许可证
 
-## 使用边界
+本仓库不能代替真实实验、严谨的文献核验、人工审稿或最终 PDF 检查。示例与占位符**不代表真实研究结果**；表格和绘图工具需要使用实际可核验数据。第三方 PPTX 工具不包含在本仓库中。
 
-- Skill 不能替代真实实验、正式文献核验、人工审稿或最终 PDF 检查。
-- 不主动设置会议、年份或固定篇幅限制；明确提供的投稿规范优先。
-- 表格示例包含符号占位符，绘图脚本要求输入真实且正确汇总的数据。
-- 不捆绑第三方 PPTX 商业软件或不允许再分发的工具文档。
+本仓库原创内容采用 **[MIT License](LICENSE)**（Copyright © 2026 ChenXiangYpily1234），允许在保留许可与版权声明的条件下使用、修改和分发。被引用或链接的第三方项目仍遵守其各自许可证。
 
-## 许可证
+---
 
-本仓库的**原创 Skill、文档、示例脚本及模板统一采用 [MIT License](LICENSE)**（Copyright © 2026 ChenXiangYpily1234）。在保留许可证及版权声明的条件下，可以使用、复制、修改、分发并用于商业用途。软件及文档按“原样”提供，不附带担保。
+<div align="center">
 
-外部项目（包括 [anti-defensive-writing-en](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill/blob/main/skills/anti-defensive-writing-en/SKILL.md)）仍受其各自的许可证约束；本仓库引用链接或致谢**不代表**这些第三方内容由本许可证重新授权。详见 [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md)。
+**Make your research understandable. Make every claim defensible.**
 
-反馈：[GitHub Issues](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/issues)。
+[中文 README](README.md) · [English README](README_EN.md) · [开始阅读总纲领](PRINCIPLES.md)
+
+</div>
