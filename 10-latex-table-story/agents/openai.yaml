@@ -1,0 +1,4 @@
+interface:
+  display_name: "论文表格设计"
+  short_description: "设计紧凑一致的 LaTeX 科研表格，优化表头、表注、引用位置和最终 PDF 阅读顺序"
+  default_prompt: "使用 $latex-table-design 优化论文表格的字号、单行表头、表注和浮动位置，并编译检查 PDF。"

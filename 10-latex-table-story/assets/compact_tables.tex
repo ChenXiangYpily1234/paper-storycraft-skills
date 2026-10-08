@@ -1,0 +1,41 @@
+% Layout examples only: symbolic entries are NOT experimental results.
+% Requires booktabs in the host document. Replace labels before integration.
+\begin{table}[t]
+  \centering
+  \caption{System roles and representation controls. Definitions appear in the text.}
+  \label{tab:example-system-map}
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \renewcommand{\arraystretch}{1.05}
+  \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}llll@{}}
+    \toprule
+    System & Role & Mechanism & Prior \\
+    \midrule
+    A & Primary & ID generation & Different \\
+    B & Matched & Semantic IDs & Shared \\
+    C & Alternative & Score fusion & Shared \\
+    \bottomrule
+  \end{tabular*}
+\end{table}
+
+\begin{table}[t]
+  \centering
+  \caption{Paired comparison by evaluation scope. Entries are symbolic layout placeholders.}
+  \label{tab:example-panels}
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \renewcommand{\arraystretch}{1.05}
+  \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lrrr@{}}
+    \toprule
+    Method & R@10 & $\Delta$ & R@10 drop (\%) \\
+    \midrule
+    \multicolumn{4}{@{}l}{Panel A: all users ($n=N$)} \\
+    Controller & $a$ & $d$ & $p$ \\
+    Fixed policy & $b$ & $0$ & $0$ \\
+    \midrule
+    \multicolumn{4}{@{}l}{Panel B: valid outputs ($n=M$)} \\
+    Controller & $c$ & $e$ & $q$ \\
+    Fixed policy & $f$ & $0$ & $0$ \\
+    \bottomrule
+  \end{tabular*}
+\end{table}
