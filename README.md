@@ -6,6 +6,7 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/ChenXiangYpily1234/paper-storycraft-skills?style=social)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/stargazers)
 ![Skills](https://img.shields.io/badge/Skills-12-blue)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Skill language](https://img.shields.io/badge/Skills-English-informational)
 
 一篇论文即便技术上正确，也可能让审稿人看不懂：专业术语提前出现却没有解释，方法章节只是模块清单，图示与正文名称不一致，实验也没有直接回答引言提出的问题。
@@ -102,6 +103,11 @@ cd paper-storycraft-skills
 - 不主动设置会议、年份或固定篇幅限制；明确提供的投稿规范优先。
 - 表格示例包含符号占位符，绘图脚本要求输入真实且正确汇总的数据。
 - 不捆绑第三方 PPTX 商业软件或不允许再分发的工具文档。
-- **本仓库尚未声明统一开源许可证。** 被引用的其他项目拥有自己的独立许可证，不代表本仓库自动获得相同许可。
+
+## 许可证
+
+本仓库的**原创 Skill、文档、示例脚本及模板统一采用 [MIT License](LICENSE)**（Copyright © 2026 ChenXiangYpily1234）。在保留许可证及版权声明的条件下，可以使用、复制、修改、分发并用于商业用途。软件及文档按“原样”提供，不附带担保。
+
+外部项目（包括 [anti-defensive-writing-en](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill/blob/main/skills/anti-defensive-writing-en/SKILL.md)）仍受其各自的许可证约束；本仓库引用链接或致谢**不代表**这些第三方内容由本许可证重新授权。详见 [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md)。
 
 反馈：[GitHub Issues](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/issues)。

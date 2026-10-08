@@ -6,6 +6,7 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/ChenXiangYpily1234/paper-storycraft-skills?style=social)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/stargazers)
 ![Skills](https://img.shields.io/badge/Skills-12-blue)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Core language](https://img.shields.io/badge/Core-English-informational)
 
 A technically correct paper may still be difficult to review: concepts appear before explanation, the Method is a component inventory, figures use inconsistent names, and the experiments fail to answer the question promised in the Introduction.
@@ -108,6 +109,11 @@ That project's strength-first, anti-defensive framing is useful for avoiding chr
 - Does not impose venue/year/page limits; supplied submission requirements take precedence.
 - The sample LaTeX values are **symbolic** and the plotting script expects verified aggregated data.
 - Third-party PPTX manuals and proprietary utilities are not bundled.
-- **No repository-wide license has been added**; refer to the individual upstream project for its separate license. Listing a referenced project does not grant reuse rights over unrelated files in this repository.
+
+## License
+
+The **original Skills, documentation, example scripts, and templates in this repository are licensed under the [MIT License](LICENSE)** (Copyright © 2026 ChenXiangYpily1234), unless otherwise stated. You may use, copy, modify, distribute, and commercially reuse this original content, provided that you retain the license and copyright notice. The content is provided without warranty.
+
+Linked or credited third-party projects, including [anti-defensive-writing-en](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill/blob/main/skills/anti-defensive-writing-en/SKILL.md), remain governed by their **own** licenses. Our MIT license does not relicense third-party material. See [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md).
 
 Feedback: [GitHub Issues](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/issues).
