@@ -77,6 +77,17 @@ Distinguish genuinely worse performance, insufficient power, protocol incompatib
 
 Keep the decisive protocol, controls, core results, and headline limitations in the main narrative. Supplementary materials may contain full hyperparameters, secondary plots, extra metrics, and per-seed data; do not use them to hide qualifications necessary to judge the claim.
 
+## Evidence hierarchy and anti-stacking revision
+
+If several tables and figures are present, create a **one-exhibit / one-primary-question ledger** with exhibit label, comparator, statistical unit, scope, claim supported and main alternative explanation. Sort experiments by inferential role: task-level performance, direct test of the central hypothesis, explanatory/targeted control, robustness/sensitivity, and failure boundary. Use only categories justified by existing experiments—this is not a required subsection count.
+
+For each block write **question → setup/control → primary observation → bounded interpretation → unresolved rival explanation → bridge**. Avoid repeating the same number as a new finding across the main table, audit table and summary. Explain why successive tests are necessary. A component ablation can support a claim about an alternative's behavior without establishing which internal mechanism the original system used.
+
+If two tables share a nominal model configuration, first check whether they share run provenance, seeds, candidate set, experimental unit, and pairing; never merge distinct evidence sources merely because rounded means agree. High binary agreement under low positive coverage may be driven by joint misses: coverage and conditional informativeness matter.
+
+For an explicit **retain all tables and images** constraint, preserve complete floats, labels, captions and numerical entries; reorganize prose and subsection hierarchy instead. Do not move evidence to an appendix without permission. For a full rewrite, apply [13 Cross-Section Revision](../13-section-revision/SKILL.md).
+
+
 ## Progressive experimental storytelling
 
 A strong sequence is **capability → targeted test of the central claim → ablation or explanatory control → robustness → boundary**, when the evidence supports it. Introduce why each next test follows from the previous result. Do not stack unrelated results as a lab log. Describe independent benchmark summaries, paired statistical tests and component repetitions as distinct evidence sources.
