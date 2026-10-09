@@ -37,6 +37,10 @@ Follow the project's real build command and document class. Do not assume `pdfla
 
 No successful compilation or rendered inspection → label these checks **not verified**.
 
+## STEM table cases
+
+Use tables for measurement conditions, instrument accuracy, units and uncertainties; solver convergence; benchmark comparisons; component studies; engineering operating conditions; or theorem assumptions. Tables are optional for theory-only research. Explicitly label panels from independent experimental run groups so readers do not infer an invalid paired comparison. Preserve scientific notation, units and provenance.
+
 ## References and deliverables
 - [Table patterns and audit checklist](references/table-patterns.md).
 - [Illustrative table layout](assets/compact_tables.tex): placeholder symbols, **not data**.

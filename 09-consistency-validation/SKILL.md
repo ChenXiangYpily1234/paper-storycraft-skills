@@ -86,6 +86,12 @@ Use four categories:
 
 For each finding, report **location → current issue → why it matters → precise fix → whether the fix changes the scientific claim**. Preserve user-provided results and citations unless verification warrants an explicit correction.
 
+## Select discipline-appropriate verification
+
+**Mathematics:** hypotheses, quantifiers, proof steps, references and counterexamples. **Physical and life sciences:** measurement units, calibration, experimental units, uncertainties and ethics where relevant. **Engineering:** operating conditions, hardware/workloads, failure boundaries and cost. **Numerical:** model assumptions, convergence, reproducibility and validation. **Computational experiments:** data leakage, seeds, model access, multiplicity and statistical units.
+
+Also audit the complete story in actual reading order: opening → literature gap → method rationale → sequential experimental evidence → Results versus Discussion versus Conclusion. Do not mark a statistical or visual check PASS without the original data or rendered artifact.
+
 ## Required outputs
 
 Return claim–evidence–scope audit, terminology/first-use audit, per-file or per-section P0/P1/P2/PASS issues, optional proposed patch, and an explicit **not checked / cannot verify** list.

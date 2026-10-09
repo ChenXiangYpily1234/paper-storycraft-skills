@@ -1,10 +1,41 @@
 # Reviewer-First Research Storytelling Workflow
 
-**Start with [PRINCIPLES.md](PRINCIPLES.md).** This workflow coordinates 12 independent Skills. It is a flexible dependency map, not a compulsory chapter order.
+**Start with [PRINCIPLES.md](PRINCIPLES.md).** This workflow coordinates 12 independent Skills across STEM research, from proofs and experimental science to engineering and numerical methods. Read [STEM_GUIDE.md](STEM_GUIDE.md). It is a flexible dependency map, not a compulsory chapter order.
+
+## Skills workflow diagram
+
+The Mermaid graph depicts **editing dependencies**, not causal relations or mandatory chapter order. The `05-experiment` route is optional for proof-only manuscripts; visual tools are optional.
+
+```mermaid
+flowchart TD
+ A["Manuscript, question and primary evidence"] --> B["PRINCIPLES + STEM_GUIDE"]
+ B --> C["09 · Initial claims and terminology audit"]
+ C --> D["02 · Introduction + 03 · Related work"]
+ D --> E["04 · Method, research design or proof"]
+ E --> F{"Evidence route?"}
+ F -->|Experiments, observations, simulations| G["05 · Experiments and findings"]
+ F -->|Theory and mathematical proof| H["Theorems, derivations and examples; 05 optional"]
+ G --> I["06 · Discussion and conclusion"]
+ H --> I
+ I --> J["01 · Abstract + 08 · Titles"]
+ E -.optional figures.-> K["07 · Figures"]
+ G -.optional figures.-> K
+ K --> L{"Output form?"}
+ L --> M["10 · LaTeX tables"]
+ L --> N["11 · Research plots"]
+ L --> O["12 · Editable PPTX figures"]
+ J --> P["09 · Final consistency audit"]
+ M --> P
+ N --> P
+ O --> P
+ P --> Q{"Issues resolved?"}
+ Q -->|No: revise| D
+ Q -->|Yes| R["Human verification and submission"]
+```
 
 ## Step 1 — Independently diagnose the scientific argument
 
-Read the latest accessible source paper, key tables, figures, bibliography, evaluation protocol, and evidence. Identify whether the paper primarily contributes a method, system, theorem, dataset, benchmark, empirical finding, replication, or mechanism test.
+Read the latest accessible manuscript, proofs or experimental records, measurement and calibration methods, simulations, bibliography, figures and evidence as relevant. Identify whether its contribution is mathematical, experimental, observational, numerical, engineering, empirical, or methodological.
 
 Produce a one-paragraph scientific question; a verified gap; a concrete contribution; the strongest directly supporting evidence; and a claim–evidence–scope ledger with alternative explanations.
 
@@ -24,8 +55,8 @@ Suggested order, adaptable to paper type:
 
 1. **02 Introduction + 03 Related Work:** derive the research question, closest comparisons, and real gap.
 2. **04 Method:** present design requirements, actual operations or proof sequence, notation, and assumptions.
-3. **05 Experiments:** align each test with a specific claim; inspect controls, confounds, baselines, statistics, negative results, and limits.
-4. **07 Figure + 10 Tables + 11 Plots + 12 PPTX:** match visual forms to scientific functions and keep naming consistent with manuscript.
+3. **05 Experiments (if applicable):** align each result or test with a claim; inspect controls, sampling, baselines, confounds and inference. For proof-only work, audit lemmas, assumptions and counterexamples instead.
+4. **07 Figure + 10 Tables + 11 Plots + 12 PPTX (optional):** use only visuals that explain real operations, physical apparatus, proof relationships or evidence.
 5. **01 Abstract + 08 Titles/Headings:** summarize stable scientific contributions without creating a promise the paper does not fulfill.
 6. **06 Discussion/Conclusion:** interpret genuine evidence and explain boundaries, rival explanations, and implications.
 7. **09 Consistency Validation:** independently audit citations, numbers, first-use explanations, cross-references, and final rendered layout.

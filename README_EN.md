@@ -11,7 +11,7 @@
 [![Skills](https://img.shields.io/badge/Research_Skills-12-blue.svg)](#12-skills-one-coherent-workflow)
 [![Language](https://img.shields.io/badge/Core_Skills-English-informational.svg)](PRINCIPLES.md)
 
-[简体中文（默认）](README.md) · **English** · [Global principles](PRINCIPLES.md) · [Workflow](WORKFLOW.md)
+[简体中文（默认）](README.md) · **English** · [Global principles](PRINCIPLES.md) · [STEM guide](STEM_GUIDE.md) · [Workflow](WORKFLOW.md)
 
 **[Quick start](#try-it-in-30-seconds) · [Before / after](#what-changes-a-concrete-example) · [Explore the Skills](#12-skills-one-coherent-workflow) · [⭐ Star this repo](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)**
 
@@ -35,7 +35,7 @@ Does your manuscript have any of these problems?
 
 **One argument:** Context → question → demonstrated gap → design rationale → method or test → evidence → qualified conclusion.
 
-Useful for ML, NLP, CV, recommender systems, systems, algorithms, theory, benchmarks, datasets, replication, and adjacent technical fields. **No built-in conference, page-limit, or experiment-count assumptions.**
+Focused on **STEM research**: mathematics, physics, chemistry, biology, earth/environmental science, materials, engineering, computing, numerical methods and technical interdisciplinary research. **Not a general humanities, legal or non-technical social-science writing guide.** No built-in venue, page-limit, or experiment-count assumptions. See [STEM Guide](STEM_GUIDE.md).
 
 ## What changes? A concrete example
 
@@ -92,6 +92,39 @@ first use and preserve actual results, citations, and limitations.
 ```
 
 > These are **Markdown guides, not a universally auto-installing plugin**. Your assistant must be able to read their contents. The core guides are in English, but revised manuscript text should retain the manuscript's original language unless translation is requested.
+
+## Skills workflow diagram
+
+Choose the applicable **proof, experiment, observation, simulation, or engineering validation** route. This is a dependency map, not a required chapter sequence. Figure tools are optional.
+
+```mermaid
+flowchart TD
+ A["Manuscript, question and primary evidence"] --> B["PRINCIPLES + STEM_GUIDE"]
+ B --> C["09 · Initial claims and terminology audit"]
+ C --> D["02 · Introduction + 03 · Related work"]
+ D --> E["04 · Method, research design or proof"]
+ E --> F{"Evidence route?"}
+ F -->|Experiments, observations, simulations| G["05 · Experiments and findings"]
+ F -->|Theory and mathematical proof| H["Theorems, derivations and examples; 05 optional"]
+ G --> I["06 · Discussion and conclusion"]
+ H --> I
+ I --> J["01 · Abstract + 08 · Titles"]
+ E -.optional figures.-> K["07 · Figures"]
+ G -.optional figures.-> K
+ K --> L{"Output form?"}
+ L --> M["10 · LaTeX tables"]
+ L --> N["11 · Research plots"]
+ L --> O["12 · Editable PPTX figures"]
+ J --> P["09 · Final consistency audit"]
+ M --> P
+ N --> P
+ O --> P
+ P --> Q{"Issues resolved?"}
+ Q -->|No: revise| D
+ Q -->|Yes| R["Human verification and submission"]
+```
+
+See [WORKFLOW.md](WORKFLOW.md) and [STEM_GUIDE.md](STEM_GUIDE.md).
 
 ## 12 Skills, one coherent workflow
 

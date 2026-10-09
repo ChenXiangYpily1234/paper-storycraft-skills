@@ -5,7 +5,7 @@ description: Explain formal definitions, design rationale, computations, interfa
 
 # Method: Explain Why, Then How
 
-Read [PRINCIPLES.md](../PRINCIPLES.md) first. Use this Skill for algorithms, mathematical methods, systems, multi-stage pipelines, and theoretical constructions. The objective is **technical reproducibility with conceptual comprehension**, not a list of code modules.
+Read [PRINCIPLES.md](../PRINCIPLES.md) first. Use this Skill for STEM methods, including algorithms, proofs, lab protocols, numerical models, engineering systems and multi-stage pipelines. The objective is **technical reproducibility with conceptual comprehension**, not a list of code modules.
 
 ## 1. Plan the reader's dependency path
 
@@ -107,6 +107,16 @@ Choose only sections justified by the actual study.
 | Training settings are mistaken for the method | Separate general algorithm from one experimental instance |
 | Too many claimed benefits lack proof or comparison | Reclassify as motivation or hypothesis |
 | A diagram shows impossible access or fictional links | Match the source algorithm and resource assumptions |
+
+## Match the STEM method to its evidence
+
+- **Theory:** objects and assumptions → statements → proof dependencies → exact boundaries.
+- **Lab/field science:** question → samples/instrument → calibration and units → analysis → validity conditions.
+- **Engineering:** requirements → constraints → design decisions → operation/failure handling.
+- **Numerical science:** model → discretization/solver → convergence verification → external validation where possible.
+- **Computational methods:** shared information → branch-specific operations → mathematical rules → candidate set and output.
+
+For each equation state its purpose, domain, summation range, units and edge cases. For a framework figure, distinguish shared inputs, alternative branches and actual control flow; do not add a redundant architecture graphic if the overview already does the job.
 
 ## Required outputs
 

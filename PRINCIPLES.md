@@ -1,6 +1,6 @@
 # Paper StoryCraft: Global Principles
 
-> **Scope:** Research papers in computer science and neighboring technical disciplines: methods, algorithms, systems, theory, empirical analysis, benchmarks, datasets, replications, negative results, and mechanism studies.
+> **Scope:** Science, technology, engineering and mathematics (STEM) research, including natural sciences, mathematics, engineering, computing, numerical modeling and technical interdisciplinary studies. See [STEM_GUIDE.md](STEM_GUIDE.md).
 >
 > **Non-negotiable rule:** Storytelling must clarify the evidence, never manufacture a gap, result, contribution, causal mechanism, or guarantee.
 
@@ -10,7 +10,7 @@ This document governs every `SKILL.md`, workflow, figure, table, and supporting 
 
 When recommendations conflict, apply the following order:
 
-1. **Factual and scientific correctness:** data, results, definitions, mathematics, citations, and evaluation protocols.
+1. **Scientific correctness:** measurements, data, results, proofs, assumptions, units, citations and study protocols relevant to the STEM field.
 2. **Explicit author and venue requirements:** follow actual provided requirements; impose no default conference, year, template, or page limit.
 3. **First-pass reviewer comprehension:** no unexplained names, symbols, hidden assumptions, or missing transitions.
 4. **Cross-document semantic consistency:** one canonical term for each concept and one clear meaning for each term.
@@ -24,8 +24,8 @@ Assume a technically competent reviewer who has **not** participated in the proj
 
 - **What is being studied?** Task, object, inputs, outputs, and environment.
 - **Why is it a research problem?** Which limitation or unanswered question is demonstrated, rather than merely asserted?
-- **What exactly changes?** The proposed idea, how it addresses the problem, and how it differs from the closest alternatives.
-- **How can the claim be evaluated?** Relevant baselines, assumptions, measured quantities, and competing explanations.
+- **What is contributed?** A method, proof, design, instrument, measurement, model, test or finding, and how it differs from the closest alternatives.
+- **What directly supports the claim?** Relevant proofs, baselines, calibrated measurements, assumptions, simulations, design tests and competing explanations.
 - **What does the evidence permit us to conclude?** Conditions, uncertainty, failure cases, and limits of generalization.
 
 A **reader blocker** occurs whenever the next sentence, equation, arrow, or figure label requires guessing a definition, searching ahead for a necessary explanation, or inferring an unstated comparison. Repair the blocker at the point of use, not with an after-the-fact explanation elsewhere.
@@ -46,8 +46,15 @@ This is a *logical dependency*, not a compulsory paragraph template. Adapt it:
 | Dataset or benchmark | measurement gap → construction → validation → bias and use limits | equating data volume with validity |
 | Empirical, replication, negative result | testable claim → discriminating protocol → observations → alternative explanations | mistaking non-significance for equivalence |
 | Mechanism or causal study | competing explanations → controlled intervention → result → identification limits | declaring a mechanism necessary from failure to find an alternative |
+| Laboratory and field science | measured phenomenon → experiment or observation → analysis → interpretation → limits | describing association as a proven mechanism |
+| Numerical science | model assumptions → discretization → solver → convergence/verification → validation | confusing converged simulation with real-world validation |
+| Engineering | requirement → constraints → design choice → operational test → failure regime | presenting an architecture without its rationale |
 
 If the results do not support the original narrative, **revise the claim or question**. Do not hide contradictory evidence.
+
+### STEM-specific evidence standards
+
+First identify whether the principal support is a **proof, calibrated observation, experiment, simulation, benchmark, system validation or their justified combination**. Proof-only work does not require p-values, and numerical convergence does not alone establish physical validity. Do not impose one STEM subfield's methods on another. For all work, connect the strongest claim to its specific evidence and scope. See [STEM_GUIDE.md](STEM_GUIDE.md).
 
 ## 4. Explain a new concept at its first meaningful appearance
 
@@ -117,6 +124,10 @@ Match diagram terms to the terminology ledger and quantitative displays to the u
 - **Ablating multiple components is not a single-variable causal test.**
 - **A significant p-value is not an effect-size or practical-significance guarantee.**
 - **A strong story cannot compensate for missing essential controls.**
+
+### Evidence-to-narrative continuity checks
+
+Read the paper in order: Does the opening clearly show *why this specific question arises*? Does Related Work explain what earlier evidence does and does not establish? Are formulas, proof steps and modules motivated before introduction? Does each next experiment answer a question arising from the prior comparison? Do Results, Discussion and Conclusion perform different functions—**observation, interpretation, direct answer**? Define every newly introduced technical term near first use rather than in a distant appendix.
 
 ## 10. Reviewer read-through and acceptance gates
 

@@ -48,6 +48,10 @@ Ask whether a heading would remain correct if the most favorable example were re
 
 For each suggested title, explain the implicit claim and evidence needed to defend it.
 
+## Headings as STEM reasoning steps
+
+Check whether scanning titles reveals the actual question → method/proof → discriminating test → interpretation. Avoid headings that claim superiority, statistical equivalence, necessity or a formal proof when the corresponding section only supplies descriptive evidence. Use section names that reflect real scientific work, not software module names alone.
+
 ## Required outputs
 
 Provide a title/heading diagnosis, several candidate titles when alternatives are useful, a consistent heading tree, caption wording if requested, and a scope/overclaim audit.

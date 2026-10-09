@@ -8,7 +8,7 @@ description: Build or revise research abstracts around a verifiable question, a 
 **Global rule:** Read [PRINCIPLES.md](../PRINCIPLES.md) first. Apply its reviewer-first narrative, first-use definitions, terminology ledger, and claim–evidence–scope checks.
 
 ## Scope and inputs
-Applies to methodological, theoretical, systems, empirical, dataset, benchmark, replication, negative-result, and mechanism studies. Obtain the paper's actual title, core claims, introduction, method, key results, and conclusion where available. If only the abstract is supplied, identify facts that cannot be verified instead of inventing supporting evidence.
+Applies across STEM: theoretical work, laboratory and field science, numerical simulations, systems, benchmarks, replication, and mechanism studies. Obtain the paper's actual title, core claims, introduction, method, key results, and conclusion where available. If only the abstract is supplied, identify facts that cannot be verified instead of inventing supporting evidence.
 
 ## Build the story before writing sentences
 Answer six questions: (1) What precise task, phenomenon, or object is being studied? (2) What genuine limitation of existing methods or evidence motivates the work? (3) What is the research question? (4) What was actually introduced, tested, or demonstrated? (5) Which result most directly answers the question? (6) Under which conditions can the conclusion hold?
@@ -42,6 +42,10 @@ Define any specialized term or abbreviation at first use in the abstract, even i
 - Claim that a method proves a mechanism unnecessary everywhere → restrict to evaluated conditions.
 - Number reported differently from a table → correct against verified results.
 - Long list of datasets and seeds → highlight only evidence that advances the central argument.
+
+## STEM adaptation and concise opening
+
+Select evidence appropriate to a theorem, calibrated experiment, field observation, numerical simulation, engineering evaluation or machine-learning benchmark. Open with a clear motivating scientific tension rather than a string of broad background claims. Present the key result at its actual inferential strength, not as a universal guarantee. Follow the venue's abstract paragraph and length requirements; do not invent an experiment for theory papers.
 
 ## Required outputs
 Provide (1) narrative diagnosis, (2) ordered story outline, (3) full revised abstract in the manuscript's language, (4) claims/numbers/citations needing verification, and (5) concise revision notes. If the user requests only an audit, omit unsolicited rewriting.

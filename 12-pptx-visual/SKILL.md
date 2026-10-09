@@ -30,5 +30,9 @@ Use editable PPTX for architecture summaries, algorithm flows, study protocols, 
 ## Tooling and redistribution
 This public repository provides visual-story guidance, not proprietary PPTX editing software or third-party manuals. Use authorized tools for editing, rendering, and exporting PPTX files; do not imply that a source presentation has been edited unless it has.
 
+## STEM editable visual forms
+
+Beyond ML architectures, editable diagrams may show laboratory apparatus, sampling procedures, numerical methods, proof relationships, mechanical/electrical systems or engineering workflows. Draw only grounded objects and actual information/material/control paths. First decide whether an existing overview diagram should be improved instead of duplicated. Match all labels with the manuscript and verify export readability.
+
 ## Required outputs
 Provide scientific purpose, element-to-terminology mapping, layout plan, caption, editable file/export only if created, and explicit verification status for rendering and embedding.

@@ -44,6 +44,10 @@ Use meaningful numerical evidence, not all seed-level scores. Keep failure cases
 5. Audit transitions, numbers, comparison scopes, citations, and canonical terms against other sections.
 6. Pressure-test the argument: could a simpler baseline, extra data, alternative mechanism, or changed evaluation protocol explain the headline result?
 
+## Question-first opening and transitions
+
+A useful STEM opening is **observed performance or phenomenon → tempting inference or limitation → why existing evidence does not settle it → direct research question**. Do not attribute an assumption to an entire field without evidence. Read each pair of adjacent paragraphs and check what question the first leaves and how the next answers it. Replace abstract noun chains with concrete questions. Define new models, datasets and technical terms at first use.
+
 ## Deliverables and acceptance
 Return a story diagnosis, story spine, paragraph-by-paragraph plan, complete revised Introduction if requested, citation-support notes, and a change log. Preserve actual citation keys, quantitative values, LaTeX references, and limitations unless explicitly authorized to change them.
 

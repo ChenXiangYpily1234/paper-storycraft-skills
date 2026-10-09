@@ -36,5 +36,9 @@ Use canonical names from the manuscript. Provide a caption stating population/co
 
 Inspect the exported image and its final manuscript placement; check non-overlapping markers, label clipping, small negative/zero points, and text readability. A successfully executed script is not sufficient visual validation.
 
+## STEM plot routes
+
+Choose spectra, time series, calibration curves, residuals, distributions, convergence graphs, phase relationships, workload trade-offs or paired comparisons **according to the verified data and scientific question**. State units, uncertainty, model/measurement distinction and meaningful scales. Never synthesize numeric evidence or include a graph only for visual decoration.
+
 ## Deliverables
 Provide plotted files and code only when actually generated, verified data provenance, transformations performed, caption draft, consistency check against paper results, and any unresolved assumptions.

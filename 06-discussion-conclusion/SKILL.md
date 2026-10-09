@@ -56,6 +56,10 @@ A good next step tests a specific unresolved explanation, new condition, stronge
 
 Verify that the conclusion's subject, comparison target, primary metric, strongest number, and conditions match title, abstract, Introduction, Results, main figure, and terminology ledger. Conclusions should emphasize scientific meaning, not restate every row of results.
 
+## Make the last three steps distinct
+
+**Results:** report the supported observation and its boundaries. **Discussion:** interpret the evidence, rival explanations and scope (including proof assumptions or physical-validation limits). **Conclusion:** directly answer the opening question in concise scientific language. Do not repeat every figure result or describe weaker subgroup performance as inability to operate. A negative result marks the limits of the tested approach; it is not automatic proof that a particular mechanism is necessary.
+
 ## Required outputs
 
 Provide an opening-to-ending claim mapping, Discussion and Conclusion revision plan, full revised text when requested, an evidence-strength audit, important limitations and alternative explanations, and unresolved verification items.

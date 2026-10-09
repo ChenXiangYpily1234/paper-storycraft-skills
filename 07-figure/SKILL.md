@@ -65,6 +65,10 @@ Check exported and **embedded** renderings at actual publication size: labels, m
 2. **Semantic:** labels, captions, and text refer to identical concepts and scopes.
 3. **Visual:** main comparison is clear without zooming; annotations are legible and accessible.
 
+## Decide whether a STEM framework figure is necessary
+
+Use system architecture, apparatus, workflow, proof-dependency, solver or experiment-design diagrams only when they explain something prose does not. If the Introduction already contains a useful overview, prioritize improving its shared-input → distinct method branch → result flow before creating a second figure. Arrows must correctly distinguish data flow, control flow and causal evidence. The repository's Skills flowchart is available in [WORKFLOW.md](../WORKFLOW.md).
+
 ## Required outputs
 
 Provide figure purpose, a content/layout plan, element-to-term map, caption draft, scientific/visual risk list, and created editable/rendered files only if actually produced. Clearly label any visual inspection or export step not performed.

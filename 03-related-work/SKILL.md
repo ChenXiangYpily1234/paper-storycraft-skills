@@ -41,6 +41,10 @@ Introduce unfamiliar technique families with a short description before their la
 - Citing review articles as if they directly prove a narrow method-specific statement.
 - Repeating the Introduction verbatim instead of deepening the comparison.
 
+## Position related STEM evidence
+
+Group earlier contributions by what they **establish**: physical measurements, mechanisms, theorem assumptions, computational approaches, simulation accuracy or comparison protocols. Explain the actual difference in questions or evidence rather than listing citations or making a blanket "prior work cannot" claim. A useful progression is existing systems/findings → evaluation or explanation methods → the remaining precise gap.
+
 ## Deliverables
 Provide a literature grouping plan, a closest-work comparison matrix, revised paragraphs when requested, citation verification gaps, and a novelty-claim risk assessment.
 

@@ -5,7 +5,7 @@ description: Turn experiments into a reproducible chain of questions, controls, 
 
 # Experiments as an Evidence-Based Argument
 
-Read [PRINCIPLES.md](../PRINCIPLES.md) first. Use for evaluation sections in empirical, algorithmic, systems, benchmark, replication, mechanism, and experimental theory papers.
+Read [PRINCIPLES.md](../PRINCIPLES.md) first. Use for empirical, numerical and engineering evidence sections in STEM; it is optional for proof-only papers.
 
 ## 1. Start from claims, not datasets
 
@@ -76,6 +76,12 @@ For non-inferiority or recovery claims, name the margin, estimand, comparator, p
 Distinguish genuinely worse performance, insufficient power, protocol incompatibility, missing observations, and unsupported extrapolation. Robustness is about scientifically meaningful perturbations (randomness, hyperparameters, distribution, input noise, scale, compute budget), not merely adding many tables.
 
 Keep the decisive protocol, controls, core results, and headline limitations in the main narrative. Supplementary materials may contain full hyperparameters, secondary plots, extra metrics, and per-seed data; do not use them to hide qualifications necessary to judge the claim.
+
+## Progressive experimental storytelling
+
+A strong sequence is **capability → targeted test of the central claim → ablation or explanatory control → robustness → boundary**, when the evidence supports it. Introduce why each next test follows from the previous result. Do not stack unrelated results as a lab log. Describe independent benchmark summaries, paired statistical tests and component repetitions as distinct evidence sources.
+
+For laboratory work validate the instrument, units, replicates and uncertainty; for engineering validate realistic workloads and costs; for numerical work separate solver convergence from physical validation. Proof-only papers need no experimental section. Define experimental labels and metrics locally, and do not overload the main finding with training hyperparameters before presenting it.
 
 ## Required outputs
 

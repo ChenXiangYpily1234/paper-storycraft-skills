@@ -11,7 +11,7 @@
 [![Skills](https://img.shields.io/badge/Research_Skills-12-blue.svg)](#12-个-skills一套完整工作流)
 [![Language](https://img.shields.io/badge/README-中文为主-orange.svg)](README_EN.md)
 
-**简体中文** · [English](README_EN.md) · [总纲领 Principles](PRINCIPLES.md) · [完整工作流](WORKFLOW.md)
+**简体中文** · [English](README_EN.md) · [总纲领 Principles](PRINCIPLES.md) · [理工科指南](STEM_GUIDE.md) · [完整工作流](WORKFLOW.md)
 
 **[30 秒试用](#30-秒试用) · [看改写示例](#一个例子看懂它在做什么) · [选择 Skill](#12-个-skills一套完整工作流) · [⭐ Star 收藏](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)**
 
@@ -35,7 +35,7 @@
 
 **一条主线：** 研究背景 → 科学问题 → 可核验的研究缺口 → 设计逻辑 → 方法/验证 → 证据 → 结论与边界。
 
-适用于机器学习、NLP、CV、推荐系统、系统论文、算法、理论、基准评测、数据集、复现与其他相近技术研究；**不限会议、不设默认页数，也不强制固定实验数量**。
+**面向理工科（STEM）研究论文**：数学与理论、物理、化学、生物、地球与环境科学、材料、工程、计算机、数值仿真、实验研究、数据集与复现。**不扩展至人文、法律及非技术社会科学。** 不限会议、不设默认页数，不强制固定实验数量。详见 [理工科指南](STEM_GUIDE.md)。
 
 ## 一个例子，看懂它在做什么
 
@@ -92,6 +92,39 @@ paper-storycraft-skills/02-introduction/SKILL.md，
 ```
 
 > **注意：** 本项目是 Markdown 指南集合，不是自动安装的插件；不同 AI 工具需要采用各自的文件访问/Skill 导入方式。核心 Skill 使用英文编写，**论文改写默认保留原稿语言**。
+
+## Skills 工作流程图
+
+理工科论文应根据主要证据选择**证明、实验、观测、仿真或工程验证**路径。流程为建议依赖关系，图表技能均按需使用。
+
+```mermaid
+flowchart TD
+ A["论文、研究问题与原始证据"] --> B["PRINCIPLES + STEM_GUIDE"]
+ B --> C["09 · 初步审计：主张与术语"]
+ C --> D["02 · 引言 + 03 · 相关工作"]
+ D --> E["04 · 方法、研究设计或证明"]
+ E --> F{"证据路线？"}
+ F -->|实验、观测、仿真| G["05 · 实验与结果"]
+ F -->|理论与数学证明| H["定理、推导、反例；05 按需使用"]
+ G --> I["06 · 讨论与结论"]
+ H --> I
+ I --> J["01 · 摘要 + 08 · 标题"]
+ E -.可选图示.-> K["07 · 科研图示"]
+ G -.可选图示.-> K
+ K --> L{"输出形式？"}
+ L --> M["10 · LaTeX 表格"]
+ L --> N["11 · 科研绘图"]
+ L --> O["12 · PPTX 可编辑图示"]
+ J --> P["09 · 最终一致性验证"]
+ M --> P
+ N --> P
+ O --> P
+ P --> Q{"问题是否解决？"}
+ Q -->|否：返回修改| D
+ Q -->|是| R["人工核查与投稿"]
+```
+
+详见 [完整工作流](WORKFLOW.md) 与 [STEM_GUIDE.md](STEM_GUIDE.md)。
 
 ## 12 个 Skills，一套完整工作流
 
