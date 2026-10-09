@@ -4,16 +4,16 @@
 
 ### Help reviewers follow your research—not guess what you mean.
 
-**12 open-source AI Skills · Research narratives · Terminology consistency · Figures & tables · Evidence checks**
+**13 open-source AI Skills · Research narratives · Terminology consistency · Figures & tables · Evidence checks**
 
 [![GitHub Stars](https://img.shields.io/github/stars/ChenXiangYpily1234/paper-storycraft-skills?style=social)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/stargazers)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/Research_Skills-12-blue.svg)](#12-skills-one-coherent-workflow)
+[![Skills](https://img.shields.io/badge/Research_Skills-13-blue.svg)](#13-skills-one-coherent-workflow)
 [![Language](https://img.shields.io/badge/Core_Skills-English-informational.svg)](PRINCIPLES.md)
 
 [简体中文（默认）](README.md) · **English** · [Global principles](PRINCIPLES.md) · [STEM guide](STEM_GUIDE.md) · [Workflow](WORKFLOW.md)
 
-**[Quick start](#try-it-in-30-seconds) · [Before / after](#what-changes-a-concrete-example) · [Explore the Skills](#12-skills-one-coherent-workflow) · [⭐ Star this repo](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)**
+**[Quick start](#try-it-in-30-seconds) · [Before / after](#what-changes-a-concrete-example) · [Explore the Skills](#13-skills-one-coherent-workflow) · [⭐ Star this repo](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)**
 
 </div>
 
@@ -31,7 +31,7 @@ Does your manuscript have any of these problems?
 - Experiments and figures accumulate without mapping to **specific scientific claims**.
 - The Abstract, main text, captions, and Conclusion **disagree on terminology or evidence scope**.
 
-**Paper StoryCraft** is a collection of **12 Markdown-based research-writing Skills** that can guide an AI writing or coding assistant through scientific narrative diagnosis and revision. It does not generate new research or magically guarantee acceptance. Its purpose is to make an existing scientific argument **easier to follow, verify, and critique**.
+**Paper StoryCraft** is a collection of **13 Markdown-based research-writing Skills** that can guide an AI writing or coding assistant through scientific narrative diagnosis and revision. It does not generate new research or magically guarantee acceptance. Its purpose is to make an existing scientific argument **easier to follow, verify, and critique**.
 
 **One argument:** Context → question → demonstrated gap → design rationale → method or test → evidence → qualified conclusion.
 
@@ -126,7 +126,7 @@ flowchart TD
 
 See [WORKFLOW.md](WORKFLOW.md) and [STEM_GUIDE.md](STEM_GUIDE.md).
 
-## 12 Skills, one coherent workflow
+## 13 Skills, one coherent workflow
 
 | Area | Skill | What it addresses |
 | --- | --- | --- |
@@ -142,16 +142,36 @@ See [WORKFLOW.md](WORKFLOW.md) and [STEM_GUIDE.md](STEM_GUIDE.md).
 | Tables | [10 LaTeX Tables](10-latex-table/SKILL.md) | Readable, statistically faithful evidence tables |
 | Plots | [11 Research Plotting](11-research-plot/SKILL.md) | Reproducible figures from verified data |
 | Diagrams | [12 Editable PPTX Visuals](12-pptx-visual/SKILL.md) | Editable visuals aligned with the manuscript |
+| Revision | [13 Cross-Section Revision](13-section-revision/SKILL.md) | Connect formalism and experiments without dropping existing LaTeX evidence |
 
 ### One global standard
 
-[**PRINCIPLES.md**](PRINCIPLES.md) governs the 12 Skills:
+[**PRINCIPLES.md**](PRINCIPLES.md) governs the 13 Skills:
 
 1. **Reviewer-first:** explain the problem before the unfamiliar terminology.
 2. **First-use definitions:** describe every new term, acronym, metric, and symbol in the same or immediately adjacent sentence.
 3. **Canonical vocabulary:** use consistent names across title, abstract, text, equations, figures, tables, and appendices.
 4. **Evidence-bound claims:** link claims to direct evidence, explicit assumptions, and meaningful alternative explanations.
 5. **Strong but honest framing:** highlight genuine contributions without hiding material negative results.
+
+## New: lossless cross-section rewriting
+
+Use [13 Cross-Section Revision](13-section-revision/SKILL.md) if several middle sections read like disconnected formulas and experiments. The Skill maps **research question → formal criterion → method → direct test → diagnostic evidence → boundary** (as supported by the actual study), then revises transitions and subsection roles.
+
+Every central equation needs a scientific purpose and downstream use. Each table or image needs one main evidence role. Do not confuse benchmark accuracy, paired statistical claims, ablations and robustness; a substitute's success is not automatically a causal claim about the original model.
+
+**Copyable prompt:**
+
+```text
+Read PRINCIPLES.md, 04-method/SKILL.md, 05-experiment/SKILL.md,
+09-consistency-validation/SKILL.md and 13-section-revision/SKILL.md.
+Rewrite adjacent sections into a question-driven argument.
+Preserve every existing table, figure, equation, caption, label,
+numeric result and citation. Return replacement LaTeX plus a
+preservation inventory and NOT CHECKED items (logs, PDF, etc.).
+Do not invent evidence or overstate causal or statistical conclusions.
+```
+
 
 ## Where should I start?
 

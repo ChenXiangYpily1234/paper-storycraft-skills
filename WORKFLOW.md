@@ -1,6 +1,6 @@
 # Reviewer-First Research Storytelling Workflow
 
-**Start with [PRINCIPLES.md](PRINCIPLES.md).** This workflow coordinates 12 independent Skills across STEM research, from proofs and experimental science to engineering and numerical methods. Read [STEM_GUIDE.md](STEM_GUIDE.md). It is a flexible dependency map, not a compulsory chapter order.
+**Start with [PRINCIPLES.md](PRINCIPLES.md).** This workflow coordinates 13 independent Skills across STEM research, from proofs and experimental science to engineering and numerical methods. Read [STEM_GUIDE.md](STEM_GUIDE.md). It is a flexible dependency map, not a compulsory chapter order.
 
 ## Skills workflow diagram
 
@@ -11,6 +11,8 @@ flowchart TD
  A["Manuscript, question and primary evidence"] --> B["PRINCIPLES + STEM_GUIDE"]
  B --> C["09 · Initial claims and terminology audit"]
  C --> D["02 · Introduction + 03 · Related work"]
+ C -. optional multi-section rewrite .-> T["13 · Cross-section revision"]
+ T -. revised sources .-> P
  D --> E["04 · Method, research design or proof"]
  E --> F{"Evidence route?"}
  F -->|Experiments, observations, simulations| G["05 · Experiments and findings"]
@@ -62,6 +64,13 @@ Suggested order, adaptable to paper type:
 7. **09 Consistency Validation:** independently audit citations, numbers, first-use explanations, cross-references, and final rendered layout.
 
 For a theory paper, use the available lemmas and assumptions instead of pretending an empirical test is required.
+
+## Optional: rewrite linked sections while retaining artifacts
+
+For a request such as "rewrite Sections 3–5, preserving all tables and figures," invoke [13 Cross-Section Revision](13-section-revision/SKILL.md) with the Method, Experiment and Validation Skills. First inventory formulas, floats, captions, labels, image paths, citations and reported values. Then organize **scientific question → formal criterion → construction → direct evidence → explanatory controls → boundaries**, adapting roles to the actual paper.
+
+Improve transitions and the distribution of explanation, not the source evidence. Produce a preservation manifest and separate status for source, PDF and raw-log checks. Do not claim successful LaTeX rendering without compiling and inspecting the target document.
+
 
 ## Step 4 — Conduct the blind reviewer read-through
 

@@ -4,16 +4,16 @@
 
 ### 让审稿人读懂你的研究，而不是猜懂你的研究。
 
-**12 个开源 AI Skills · 论文故事线重构 · 术语统一 · 图文协同 · 证据审查**
+**13 个开源 AI Skills · 论文故事线重构 · 术语统一 · 图文协同 · 证据审查**
 
 [![GitHub Stars](https://img.shields.io/github/stars/ChenXiangYpily1234/paper-storycraft-skills?style=social)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/stargazers)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/Research_Skills-12-blue.svg)](#12-个-skills一套完整工作流)
+[![Skills](https://img.shields.io/badge/Research_Skills-13-blue.svg)](#13-个-skills一套完整工作流)
 [![Language](https://img.shields.io/badge/README-中文为主-orange.svg)](README_EN.md)
 
 **简体中文** · [English](README_EN.md) · [总纲领 Principles](PRINCIPLES.md) · [理工科指南](STEM_GUIDE.md) · [完整工作流](WORKFLOW.md)
 
-**[30 秒试用](#30-秒试用) · [看改写示例](#一个例子看懂它在做什么) · [选择 Skill](#12-个-skills一套完整工作流) · [⭐ Star 收藏](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)**
+**[30 秒试用](#30-秒试用) · [看改写示例](#一个例子看懂它在做什么) · [选择 Skill](#13-个-skills一套完整工作流) · [⭐ Star 收藏](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)**
 
 </div>
 
@@ -126,7 +126,7 @@ flowchart TD
 
 详见 [完整工作流](WORKFLOW.md) 与 [STEM_GUIDE.md](STEM_GUIDE.md)。
 
-## 12 个 Skills，一套完整工作流
+## 13 个 Skills，一套完整工作流
 
 | 模块 | Skill | 主要解决的问题 |
 | --- | --- | --- |
@@ -142,16 +142,35 @@ flowchart TD
 | 图表工具 | [10 · LaTeX 表格](10-latex-table/SKILL.md) | 表格结构清晰、数字不失真、表注可理解 |
 | 图表工具 | [11 · 科研绘图](11-research-plot/SKILL.md) | 根据真实数据制作可复现结果图 |
 | 图表工具 | [12 · PPTX 可编辑图示](12-pptx-visual/SKILL.md) | 构建准确、可编辑且与正文一致的流程/架构图 |
+| 章节重构 | [13 · 跨章节无损改写](13-section-revision/SKILL.md) | 防止公式与实验堆砌，保留既有 LaTeX 图表并重建论证链 |
 
 ### 为什么强调“总纲领”？
 
-**[PRINCIPLES.md](PRINCIPLES.md)** 是 12 个 Skill 的共同约束：
+**[PRINCIPLES.md](PRINCIPLES.md)** 是 13 个 Skill 的共同约束：
 
 1. **审稿人首次阅读能跟上：** 先给问题和直觉，再给专有概念与数学形式。
 2. **新术语必须就近解释：** 首次出现的前一句、同一句或紧邻下一句必须让人知道“是什么、做什么、为何需要”。
 3. **一词一义、全文统一：** 方法名、模块、指标、缩写、符号在正文、图表和附录中保持一致。
 4. **主张必须有证据：** 实验、定理和引用支撑相应结论，明确前提与未能排除的解释。
 5. **突出真正的研究价值：** 避免自我削弱式叙事，但不能隐藏重要负结果或夸大有效性。
+
+## 新增：跨章节无损改写
+
+如果“方法公式多、实验丰富，但论文像清单”，建议先使用 [13 · 跨章节无损改写](13-section-revision/SKILL.md)。它先建立**研究问题 → 正式判定 → 方法构造 → 直接证据 → 解释性实验 → 适用边界**的依赖关系（不是所有论文都必须按这个顺序），再重组过渡段和结果解释。
+
+核心约束：**每个关键公式说明动机和后续用途，每张图表承担一个主要证据职责**。主性能、统计审计、组件消融和鲁棒性结果不可混称为同一种证据；组件消融通常也不能证明参照模型内部机制的因果必要性。
+
+**无损改写指令：**
+
+```text
+请读取 PRINCIPLES.md、04-method/SKILL.md、05-experiment/SKILL.md、
+09-consistency-validation/SKILL.md 和 13-section-revision/SKILL.md。
+改写我论文的相邻章节，使公式、方法、实验形成连贯科学论证。
+不删除或改变任何现有表格、图片、公式、数值、caption、label 和引用。
+提供替换用 LaTeX、原始图表/公式保留清单、修改摘要及未验证事项。
+未看过实验日志或编译 PDF 时，不得声称已验证可复现性或版式。
+```
+
 
 ## 不知道从哪里开始？
 

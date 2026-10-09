@@ -65,6 +65,15 @@ Check paired versus unpaired inference, one- versus two-sided intervals, coverag
 
 Cross-check visual labels, model names, metric definitions, evaluation scope, units, sampling units, and main results with manuscript language. Inspect colors in grayscale and verify that images do not imply an unsupported count or causal relation. Check the actual figure source and rendered manuscript independently when possible.
 
+## Lossless revision verification
+
+For a source-level rewrite with no-deletion requirements, compare **the latest input LaTeX** against the output: the full contents of each float (not only counts), citations, labels, figure paths, captions, displayed equations, values, units, and material qualifiers. Record any authorized moved or modified environment explicitly. Check that every preserved exhibit still has a correctly scoped textual reference.
+
+Report two independent statuses: **internal manuscript consistency** (same dataset/metric/configuration/aggregation/provenance means matching reported numbers) versus **empirical reproducibility** (raw records, run IDs, predictions, statistical code substantiate those results). A clean manuscript is not verified experimental provenance. Without source artifacts, use **NOT CHECKED**.
+
+Audit narrative fidelity too: the key formulas must have motivating questions; related experiments must answer distinct questions; section bridges must not imply stronger causal, equivalence, or mechanism-necessity conclusions than the evidence supports. See [13 Cross-Section Revision](../13-section-revision/SKILL.md).
+
+
 ## 8. Submission hygiene when relevant
 
 If a double-blind review is required, audit author metadata, acknowledgments, source comments, paths, repository identities, figure metadata, supplements, and stale submission identifiers in **all** distributed files, not just the PDF. If anonymity is not required, do not treat visible authorship as an error.

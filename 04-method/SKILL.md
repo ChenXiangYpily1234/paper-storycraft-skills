@@ -61,6 +61,12 @@ Check notational hygiene:
 - Reused symbols whose meaning changes between sections.
 - Edge cases such as empty inputs, ties, missing data, or zero denominators where material.
 
+### Formula-to-argument gate
+
+Before finalizing a formula-dense section, map **equation → scientific requirement → operation/decision → downstream experiment or proof**. A central equation should answer "why here?" in the preceding text and "what follows?" in the next text. Classify other displays as supporting definitions versus implementation details; do not drop them if the author requires all formulas preserved.
+
+When transitioning from an audit or theoretical criterion to a constructive method, explicitly state what the criterion *tests*, which information the alternative retains, which operation it excludes, and why this makes the comparison relevant. Separate design motivation from empirically established properties. For linked-section revisions, use [13 Cross-Section Revision](../13-section-revision/SKILL.md).
+
 ## 7. Explain specialized operations only when present
 
 **Routing/gating:** identify the available actions, scoring information, selection rule, and tie handling. Do not call a deterministic procedure an adaptive learned policy unless it is.

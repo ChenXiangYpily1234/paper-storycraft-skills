@@ -154,3 +154,11 @@ Unless the user narrows the task, provide:
 7. A P0/P1/P2/PASS report with unresolved verifications.
 
 **Final test:** Can a reviewer unfamiliar with the project follow why each new concept appears, what it means, and how the evidence justifies the final claim without guessing?
+
+## 12. Source-preserving revision contract
+
+When the user asks for clearer writing **without removing existing material**, the default is to preserve complete figures and tables (including values, captions, labels and file paths), mathematical statements, assumptions, citations, reported numbers and statistical qualifications. Structural editing does **not** authorize inventing a better-looking result or strengthening causal language.
+
+Before and after revision, inventory and compare exhibits and math, references, numbers and qualifiers, plus the section-to-section argument. Document authorized changes and unresolved conflicts. **Internal numerical consistency, experimental reproducibility and final-PDF correctness are different checks**; report each separately.
+
+For linked framework, method and experimental rewrites, follow [13 Cross-Section Revision](13-section-revision/SKILL.md).
