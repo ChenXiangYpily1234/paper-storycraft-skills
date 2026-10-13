@@ -7,8 +7,6 @@ description: Use when a researcher needs an editable PowerPoint diagram for a ve
 
 ## Execute this skill
 
-**Use for:** a researcher needs an editable PowerPoint diagram for a verified pipeline, conceptual mechanism, experiment setup or paper figure.
-
 **Typical request:** “把算法结构图做成可编辑的 PPTX。”
 
 **Procedure**
@@ -20,8 +18,6 @@ description: Use when a researcher needs an editable PowerPoint diagram for a ve
 **Deliver:** Return editable PPTX only when creation tools are available; otherwise provide an implementable layout specification and NOT CREATED status.
 
 **Evidence boundary:** Do not claim an editable file was built merely from a static rendering.
-
-**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. For a narrow task, return only the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and [CITATION_GUIDE.md](../CITATION_GUIDE.md) for externally sourced claims.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) and [Figure Story](../07-figure/SKILL.md). PowerPoint is an editing format—not permission to invent components, data, arrows, or results.
 
@@ -51,6 +47,3 @@ This public repository provides visual-story guidance, not proprietary PPTX edit
 ## STEM editable visual forms
 
 Beyond ML architectures, editable diagrams may show laboratory apparatus, sampling procedures, numerical methods, proof relationships, mechanical/electrical systems or engineering workflows. Draw only grounded objects and actual information/material/control paths. First decide whether an existing overview diagram should be improved instead of duplicated. Match all labels with the manuscript and verify export readability.
-
-## Required outputs
-Provide scientific purpose, element-to-terminology mapping, layout plan, caption, editable file/export only if created, and explicit verification status for rendering and embedding.
