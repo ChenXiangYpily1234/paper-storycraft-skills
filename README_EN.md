@@ -2,52 +2,57 @@
 
 # Paper StoryCraft
 
-### Good research deserves a clearer paper.
+### Don't just polish sentences. Make your research understandable to reviewers.
 
-**Turn research questions, methods, experimental results, and citations into an argument reviewers can actually follow.**
+**13 composable STEM paper-writing and review Skills** · Questions · Methods · Evidence · Citations
 
-13 composable STEM writing & review Skills · Beyond grammar polishing · Evidence-first
+[![GitHub Stars](https://img.shields.io/github/stars/ChenXiangYpily1234/paper-storycraft-skills?style=social)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)
+[![Docs CI](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/actions/workflows/skill-quality.yml/badge.svg)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/actions/workflows/skill-quality.yml)
+[![MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-[**⭐ Star this repo**](https://github.com/ChenXiangYpily1234/paper-storycraft-skills) · [**⚡ Try it in 3 minutes**](#quick-start) · [**🎬 Watch the examples**](#what-changes-in-a-revision) · [简体中文](README.md)
+**[⭐ Star this repository](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)** · [Animated examples](#what-changes-in-a-revision) · **[Quick start](#quick-start)** · [Choose a Skill](#choose-a-skill) · [简体中文](README.md)
 
-[![Skill documentation validation](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/actions/workflows/skill-quality.yml/badge.svg)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/actions/workflows/skill-quality.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+<sub>If this could save time in your next paper revision, click ⭐ Star in the top-right corner to bookmark the project.</sub>
 
 </div>
 
 ---
 
-**Your paper may not need another experiment. It may need a stronger explanation of the evidence you already have.** A Methods section can contain many modules without explaining their purpose; Related Work can cite dozens of studies without clarifying the difference; an experiment section can be full of tables without testing the headline claim.
+You may have built a genuine method and run extensive experiments, yet your paper can still read like **background notes, a module inventory, and a list of scores**.
 
-Paper StoryCraft provides **actionable Skills for writing, revising, and reviewing**: question assumptions before polishing, connect design decisions to needs, attach results to testable claims, and give models, benchmarks, and datasets verifiable provenance.
+Reviewers need clear answers to three questions: **Why this problem? Why this design? What do these experiments establish?**
 
-**If this could help your next revision, [give the project a Star](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)** so it's easy to find again.
+Paper StoryCraft gives AI assistants an actionable set of research-writing Skills: **clarify the scientific argument before polishing the prose**, without inventing evidence or hiding relevant limitations.
 
 ## What changes in a revision?
 
-### Animated example ① — From a list of claims to a defensible argument
+Two short animations illustrate how the **argument structure** can change. They are teaching examples, not measured model improvements.
 
-![Animated before-and-after writing example: vague module and result statements become question, design, evidence, and scope](assets/demo-argument-en.gif)
+### ① Methods: from a module list to a motivated design
 
-The goal is **not more confident wording**. The animation walks through four information slots that a reviewer needs: **question → design → evidence → scope**. Bracketed content represents **missing information to be filled with authentic sources and results**, not reported experiments. Static alternative: “We introduce A, B, and C and improve performance” must explain *what problem motivates the design, why these stages exist, which comparison tests them, and where the conclusion holds*.
+![Animated example: the Methods section is reorganized around a problem, a design requirement, a concrete operation and a testable claim](assets/demo-argument-en.gif)
 
-### Animated example ② — Put citations where the attribution belongs
+**Before:** “We introduce modules A, B and C to improve robustness.”
 
-![Animated citation example: separate source labels appear next to Method A, Model B, and Dataset C rather than at the end of one sentence](assets/demo-citation-en.gif)
+**Better approach:** Describe the **specific input or task difficulty**, derive a design requirement, explain each module's inputs, operations and outputs, and identify the experiment that could test the proposed mechanism. Do not merely expand each module into a longer paragraph.
 
-A method, a model, and a dataset may require **different primary sources**, placed near their first meaningful mentions. A distinct performance claim needs a source that actually supports that claim. Labels such as “[method source]” are **not bibliographic records**. See [CITATION_GUIDE.md](CITATION_GUIDE.md).
+### ② Related Work: from citation dumping to meaningful comparisons
 
-### Why it goes beyond proofreading
+![Animated example: Related Work is grouped by relevant methodological distinctions with citations attached to the named methods and supported claims](assets/demo-citation-en.gif)
 
-| Typical problem | What the Skills check |
-| --- | --- |
-| “Existing work has obvious limitations” without support | Identify the closest work and make the research gap **specific and verifiable** |
-| Methods lists A, B, and C without rationale | Trace **need → input → operation → output → downstream use** |
-| Every table gets a generic “better” claim | Match **claim → baseline → data/budget → metric → result → alternative explanation** |
-| Citations sit at sentence ends; benchmarks go unattributed | Verify methods, models, benchmarks, and datasets separately; mark unknown sources unresolved |
+**Before:** “Several distillation approaches have been explored (many citations).”
 
-> **These are writing demonstrations, not evidence of real research gains or an independently evaluated improvement in writing quality.** Without manuscript evidence, the Skills cannot produce valid empirical claims.
+**Better approach:** Compare verified dimensions such as fixed versus student-generated data, learning objectives and information access. Cite a **verified primary source next to a named method** when appropriate; cite specific performance or limitation claims at the relevant statement. Attribute models, benchmarks and constituent datasets separately.
 
-**Want to test this on your paper?** Go to [Quick start](#quick-start) and try it on one Related Work paragraph.
+### ③ Experiments: from score announcements to defensible claims
+
+**Before:** “Our method significantly outperforms existing baselines.”
+
+**Better approach:** On **[actual dataset/version]** with **[metric and comparable protocol]**, report **[verified difference and uncertainty]** versus **[baseline]**, then distinguish what the experiment establishes from untested generalization.
+
+> **The GIFs and examples are illustrative**, not genuine experimental findings, verified references or behavioral benchmarks. Actual revisions depend on supplied or independently checked manuscript evidence.
+
+**Want to use this the next time you're revising a paper? [⭐ Star Paper StoryCraft](https://github.com/ChenXiangYpily1234/paper-storycraft-skills) and try the workflow below.**
 
 ## Quick start
 
