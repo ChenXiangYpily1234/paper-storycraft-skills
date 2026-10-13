@@ -21,6 +21,12 @@ description: Use when Discussion, Limitations or Conclusion repeats results, ove
 
 Read [PRINCIPLES.md](../PRINCIPLES.md). This Skill produces an evidence-aligned narrative ending, not a second abstract or a place to quietly introduce unsupported contributions.
 
+## Section-specific editorial judgement
+
+**Editorial choice:** The Discussion interprets *why* the observed result may matter; the Conclusion answers *what the study established*. Remove hedging stacked purely for politeness and blanket negative judgements about the whole method. Mention meaningful limitations precisely where they qualify the result; don't hide them, and don't add a new dramatic caveat in the last sentence. A surprising or unfavorable observation may be the key scientific finding.
+
+Consult the [Editorial Playbook](../EDITORIAL_PLAYBOOK.md) **only** when narrative focus, paragraph flow, Nature-style framing or defensive wording is relevant; keep scientific and source-preservation rules in [PRINCIPLES.md](../PRINCIPLES.md) higher priority.
+
 ### Decision and failure test
 
 - Discussion may propose competing explanations but must distinguish interpretations from directly measured results.
