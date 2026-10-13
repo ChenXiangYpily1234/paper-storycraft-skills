@@ -1,9 +1,27 @@
 ---
-name: figure-story
-description: Design and review research figures that explain a scientific mechanism, comparison, or finding accurately using consistent terminology, visual semantics, and captions.
+name: 07-figure
+description: Use when planning, editing or reviewing scientific figures, architecture diagrams, workflows or explanatory captions for a manuscript.
 ---
 
 # Figures That Advance the Paper's Argument
+
+## Execute this skill
+
+**Use for:** planning, editing or reviewing scientific figures, architecture diagrams, workflows or explanatory captions for a manuscript.
+
+**Typical request:** “框架图看起来很好但没有说明数据如何流动。”
+
+**Procedure**
+
+1. State the single scientific question the figure should resolve; identify its data source or verified architecture.
+2. Choose an honest visual grammar for direction, uncertainty, causal versus associative links, legends and variables.
+3. Read the final figure and caption as a standalone reviewer; check alignment with text, labels and source values.
+
+**Deliver:** Return figure specification or revision instructions, caption draft and a visual-data consistency checklist.
+
+**Evidence boundary:** Do not invent data, structural connections or quantitative labels to improve appearance.
+
+**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md). Coordinate with [Research Plotting](../11-research-plot/SKILL.md) for quantitative plots and [Editable PPTX Visuals](../12-pptx-visual/SKILL.md) for conceptual diagrams.
 
