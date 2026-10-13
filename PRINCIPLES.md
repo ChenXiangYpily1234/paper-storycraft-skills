@@ -103,6 +103,14 @@ Label material as **verified fact**, **evidence-supported interpretation**, **un
 
 Before asserting causality, ask whether intervention, identification assumptions, and controls rule out rival explanations. Before asserting superiority, check information access, training data, tuning budget, seeds, and uncertainty.
 
+### Citation coverage, provenance and placement
+
+**Mandatory attribution audit:** Cite verified original or authoritative sources for externally sourced **methods, model families/checkpoints, benchmarks, datasets**, and other research objects whose provenance matters. Model, benchmark and constituent dataset may each require separate sources. Include entities appearing only in tables, figures, captions, or appendices. For original/unpublished assets, identify provenance; never invent a reference.
+
+**Cite at the point of attribution or evidence:** A citation can follow a named entity immediately (for example, “DistillM (Ko et al., 2024)”), precede a name in an author-led construction, or follow the particular finding it supports. **Do not force citations to the ends of sentences.** Match the manuscript's actual author–year/numeric and LaTeX citation package. Validate that the cited work supports the attribution or precise claim.
+
+Maintain an entity–source ledger, reconcile in-text citations with real bibliography entries, and check that the reference list renders in the final manuscript. Missing or uncertain metadata is a verification task, not a license to generate plausible BibTeX. Follow [CITATION_GUIDE.md](CITATION_GUIDE.md) for examples, version checks, bibliography audits, and P0/P1/P2 gates.
+
 ## 7. Use paragraph-level information dependencies
 
 Give each paragraph one main argumentative job. End a paragraph with a concrete unresolved question or requirement, and begin the next with the corresponding answer or design step. Transitions should remain logical even if words such as "however", "moreover", and "therefore" are removed.
