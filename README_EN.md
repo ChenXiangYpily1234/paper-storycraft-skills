@@ -2,35 +2,52 @@
 
 # Paper StoryCraft
 
-### Beyond proofreading: make every important research claim traceable to evidence
+### Good research deserves a clearer paper.
 
-**13 composable writing and review Skills for STEM manuscripts** · Structure · Methods & evidence · Citations · Figures & tables
+**Turn research questions, methods, experimental results, and citations into an argument reviewers can actually follow.**
 
-[Quick start](#quick-start) · [Before & after](#what-changes-in-a-revision) · [Choose a Skill](#choose-a-skill) · [简体中文](README.md)
+13 composable STEM writing & review Skills · Beyond grammar polishing · Evidence-first
+
+[**⭐ Star this repo**](https://github.com/ChenXiangYpily1234/paper-storycraft-skills) · [**⚡ Try it in 3 minutes**](#quick-start) · [**🎬 Watch the examples**](#what-changes-in-a-revision) · [简体中文](README.md)
+
+[![Skill documentation validation](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/actions/workflows/skill-quality.yml/badge.svg)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/actions/workflows/skill-quality.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 </div>
 
 ---
 
-> **This project will not invent research for you.** It helps an AI assistant explain existing work: where the question comes from, why the design is necessary, which evidence supports which claim, and where the conclusion stops applying.
+**Your paper may not need another experiment. It may need a stronger explanation of the evidence you already have.** A Methods section can contain many modules without explaining their purpose; Related Work can cite dozens of studies without clarifying the difference; an experiment section can be full of tables without testing the headline claim.
+
+Paper StoryCraft provides **actionable Skills for writing, revising, and reviewing**: question assumptions before polishing, connect design decisions to needs, attach results to testable claims, and give models, benchmarks, and datasets verifiable provenance.
+
+**If this could help your next revision, [give the project a Star](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)** so it's easy to find again.
 
 ## What changes in a revision?
 
-![Animated Paper StoryCraft workflow: a vague research claim becomes a checklist for the question, method, evidence, and scope](assets/storycraft-demo.gif)
+### Animated example ① — From a list of claims to a defensible argument
 
-*Animated illustration only, not a verified paper or experimental result. Sequence: vague claim → research question → actual method → supporting evidence → scope. If the GIF does not animate, use the static examples below.*
+![Animated before-and-after writing example: vague module and result statements become question, design, evidence, and scope](assets/demo-argument-en.gif)
 
+The goal is **not more confident wording**. The animation walks through four information slots that a reviewer needs: **question → design → evidence → scope**. Bracketed content represents **missing information to be filled with authentic sources and results**, not reported experiments. Static alternative: “We introduce A, B, and C and improve performance” must explain *what problem motivates the design, why these stages exist, which comparison tests them, and where the conclusion holds*.
 
-All examples below are **illustrative placeholders**, not verified research claims. Replace bracketed text with evidence from your manuscript.
+### Animated example ② — Put citations where the attribution belongs
 
-| Common draft | Intended revision |
+![Animated citation example: separate source labels appear next to Method A, Model B, and Dataset C rather than at the end of one sentence](assets/demo-citation-en.gif)
+
+A method, a model, and a dataset may require **different primary sources**, placed near their first meaningful mentions. A distinct performance claim needs a source that actually supports that claim. Labels such as “[method source]” are **not bibliographic records**. See [CITATION_GUIDE.md](CITATION_GUIDE.md).
+
+### Why it goes beyond proofreading
+
+| Typical problem | What the Skills check |
 | --- | --- |
-| “Existing methods have significant limitations. We propose Method A.” | “Previous [closest method] addresses [verified task], but has not evaluated [specific question] under [documented condition]. To test that question, we design [actual operation].” |
-| “We introduce modules A, B, and C.” | “To meet [design requirement], A performs [operation], B consumes its output to address [specific need], and C produces [final output]. Define inputs, outputs, and notation at first use.” |
-| “Our approach significantly outperforms baselines.” | “On [dataset/version] under [metric] and [matched budget], the observed difference from [baseline] is [verified result and uncertainty]. This does not establish behavior under [untested shift].” |
-| “We use Model X and Benchmark Y.” | “Attach verified sources to **Model X (model source)**, **Benchmark Y (benchmark source)**, and **Dataset Z (dataset source)** at first relevant use; attach citations for performance claims to those particular claims.” |
+| “Existing work has obvious limitations” without support | Identify the closest work and make the research gap **specific and verifiable** |
+| Methods lists A, B, and C without rationale | Trace **need → input → operation → output → downstream use** |
+| Every table gets a generic “better” claim | Match **claim → baseline → data/budget → metric → result → alternative explanation** |
+| Citations sit at sentence ends; benchmarks go unattributed | Verify methods, models, benchmarks, and datasets separately; mark unknown sources unresolved |
 
-The goal is not longer prose. It is prose in which statements have clear jobs: **definition, reasoning, evidence, or qualification**.
+> **These are writing demonstrations, not evidence of real research gains or an independently evaluated improvement in writing quality.** Without manuscript evidence, the Skills cannot produce valid empirical claims.
+
+**Want to test this on your paper?** Go to [Quick start](#quick-start) and try it on one Related Work paragraph.
 
 ## Quick start
 
@@ -138,6 +155,10 @@ python scripts/check_skills.py
 Checks cover **static contracts** such as Skill naming/frontmatter, links, shared documentation and README entry points. See [tests/skill-scenarios.md](tests/skill-scenarios.md) for realistic behavioral scenarios. Passing static checks is **not** evidence of model behavior quality, bibliographic accuracy, experimental reproducibility or rendered PDF correctness.
 
 Design references include [Anthropic Skills](https://github.com/anthropics/skills), [Superpowers](https://github.com/obra/superpowers), and [Academic Writing Skills](https://github.com/WenyuChiou/academic-writing-skills). This project is an independent set of research-writing rules, not an official extension or validated benchmark of those projects.
+
+## Follow updates
+
+If these research-writing checks would be useful in a future revision, [**⭐ Star the repository**](https://github.com/ChenXiangYpily1234/paper-storycraft-skills) to keep it handy. Concrete failures and suggestions are best shared in Issues.
 
 ## Contribute and license
 
