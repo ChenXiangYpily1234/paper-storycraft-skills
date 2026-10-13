@@ -21,6 +21,12 @@ description: Use when designing, rewriting or auditing experiments, results or b
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) first. Use for empirical, numerical and engineering evidence sections in STEM; it is optional for proof-only papers.
 
+## Section-specific editorial judgement
+
+**Editorial choice:** Lead with the decisive, fairly controlled observation and explain why it answers a study question. Do not read the table row by row or claim "wins across the board" when the data show a trade-off. Preserve negative results that constrain the headline claim; remove only irrelevant process chronology. A metric chosen after seeing outcomes cannot be rewritten as the preregistered target. Distinguish verified gains from plausible explanations for those gains.
+
+Consult the [Editorial Playbook](../EDITORIAL_PLAYBOOK.md) **only** when narrative focus, paragraph flow, Nature-style framing or defensive wording is relevant; keep scientific and source-preservation rules in [PRINCIPLES.md](../PRINCIPLES.md) higher priority.
+
 ### Decision and failure test
 
 - Separate results obtained by this paper from values copied from earlier work; identify run provenance before assuming same-budget comparisons.
