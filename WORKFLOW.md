@@ -35,6 +35,12 @@ flowchart TD
  Q -->|Yes| R["Human verification and submission"]
 ```
 
+## Editorial routing — argument before polish
+
+Determine **task mode** (diagnose / rewrite / create / preserve-and-restructure), **paper type** (proof, algorithm, experiment, system, dataset or mixed), **audience/venue**, **requested section**, and **available evidence**. Do not assume the user is targeting Nature merely because they want clearer prose. For a single paragraph or caption, read the relevant Skill and global principles; consult the [Editorial Playbook](EDITORIAL_PLAYBOOK.md) only when improving narrative focus, anti-defensive language or reader flow. For citations use [CITATION_GUIDE.md](CITATION_GUIDE.md). For domain-specific rigor use [STEM_GUIDE.md](STEM_GUIDE.md).
+
+**Strength-first, evidence-safe:** identify the best supported insight early; omit irrelevant development chronology, not adverse findings that alter interpretation. Separate post-hoc interpretations from prespecified tests. If an outline or claim cannot be supported, narrow it before polishing and report the missing evidence.
+
 ## Choose the smallest useful workflow first
 
 Identify whether the user wants an **audit without edits**, a **single-section rewrite**, a **validated figure/table**, or a **coordinated full-paper revision**. Use the matching primary Skill rather than loading all 13 indiscriminately. Common boundaries: **07 Figure** checks conceptual visual meaning; **11 Research Plot** handles quantitative data visualizations; **12 PPTX Visual** handles editable PowerPoint creation; **10 LaTeX Table** handles table source. **09 Consistency Validation** is review-only unless the user requests changes; **13 Cross-Section Revision** performs authorized linked revisions with an artifact manifest.
