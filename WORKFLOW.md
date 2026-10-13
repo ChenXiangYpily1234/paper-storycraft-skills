@@ -72,6 +72,10 @@ For a request such as "rewrite Sections 3–5, preserving all tables and figures
 Improve transitions and the distribution of explanation, not the source evidence. Produce a preservation manifest and separate status for source, PDF and raw-log checks. Do not claim successful LaTeX rendering without compiling and inspecting the target document.
 
 
+### Citation and bibliography checkpoint
+
+Before finalizing each section, follow [CITATION_GUIDE.md](CITATION_GUIDE.md): inventory all externally sourced methods, models, benchmarks and datasets, connect each to a verified original/official reference and exact variant, and choose entity-adjacent versus claim-adjacent citation placement. Include names appearing only in captions and results tables. Verify that the manuscript bibliography contains the corresponding entries and that the actual citation commands are compatible. Missing source metadata belongs in a verification backlog, never in fabricated records. Run a final reference-list and undefined-citation build check only when the manuscript toolchain is available.
+
 ## Step 4 — Conduct the blind reviewer read-through
 
 Read in actual manuscript order, without hidden project notes. At every first-use technical term ask "What is this? What does it do? Why does it appear now?" At each paragraph transition ask "What question has the previous text left, and how does the next text answer it?"
