@@ -21,6 +21,12 @@ description: Use when a Methods section presents unexplained modules, symbols, f
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) first. Use this Skill for STEM methods, including algorithms, proofs, lab protocols, numerical models, engineering systems and multi-stage pipelines. The objective is **technical reproducibility with conceptual comprehension**, not a list of code modules.
 
+## Section-specific editorial judgement
+
+**Editorial choice:** Avoid "first we do A, then B, finally C" when this merely narrates code order; explain *the design requirement that makes each stage necessary*. Define the new transformation more deeply than inherited infrastructure. Do not invent causal advantages for modules: say "designed to address X" before showing experimental confirmation. If a figure already explains the entire pipeline, use prose to motivate and disambiguate it rather than restating every arrow.
+
+Consult the [Editorial Playbook](../EDITORIAL_PLAYBOOK.md) **only** when narrative focus, paragraph flow, Nature-style framing or defensive wording is relevant; keep scientific and source-preservation rules in [PRINCIPLES.md](../PRINCIPLES.md) higher priority.
+
 ### Decision and failure test
 
 - Label which components are **new**, **reused**, or **standard infrastructure**; do not present inherited modules as contributions.
