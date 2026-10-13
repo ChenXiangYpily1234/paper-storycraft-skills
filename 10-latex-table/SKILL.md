@@ -7,8 +7,6 @@ description: Use when creating, fixing or reviewing LaTeX research tables with s
 
 ## Execute this skill
 
-**Use for:** creating, fixing or reviewing LaTeX research tables with scientific measurements, benchmark scores, significance markers or captions.
-
 **Typical request:** “把这张 LaTeX 表格排得紧凑但不能更改数值。”
 
 **Procedure**
@@ -20,8 +18,6 @@ description: Use when creating, fixing or reviewing LaTeX research tables with s
 **Deliver:** Return valid table source or a precise patch, with a values-preserved and compilation-status note.
 
 **Evidence boundary:** Formatting does not authorize rounding or changing statistics unless the user requests and verifies it.
-
-**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) and [Figure Story](../07-figure/SKILL.md). Use this guide for manuscript tables, not for inventing experimental results.
 
@@ -63,4 +59,3 @@ Use tables for measurement conditions, instrument accuracy, units and uncertaint
 - [Table patterns and audit checklist](references/table-patterns.md).
 - [Illustrative table layout](assets/compact_tables.tex): placeholder symbols, **not data**.
 
-Return an evidence mapping, table revision, explanation of layout changes, metric/denominator checks, and an explicit list of unverified compilation or PDF checks.
