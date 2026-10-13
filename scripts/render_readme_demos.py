@@ -1,158 +1,212 @@
 #!/usr/bin/env python3
-"""Render lightweight, illustrative GIFs for the bilingual READMEs.
+"""Create evidence-safe, bilingual animated README examples.
 
-Animations contain placeholders rather than experimental evidence.
-Requires Pillow and Noto Sans CJK fonts; no network access at runtime.
+Requires Pillow and Noto Sans CJK (installed in the GitHub rendering workflow).
+All papers, labels and comparisons shown in the animation are illustrative.
 """
+from functools import lru_cache
 from pathlib import Path
+import math
 import subprocess
+
 from PIL import Image, ImageDraw, ImageFont
 
-OUT = Path(__file__).resolve().parents[1] / 'assets'
+OUT = Path(__file__).resolve().parents[1] / "assets"
 OUT.mkdir(parents=True, exist_ok=True)
 
-BG = '#0C1423'
-CARD = '#172237'
-CARD2 = '#11313B'
-WHITE = '#EDF7FF'
-MUTED = '#93A8BC'
-ACCENT = '#5DE6BD'
-LINE = '#344357'
+W, H = 1080, 580
+INK, PAPER, MUTE = "#081321", "#EAF6FF", "#99B5CE"
+CYAN, VIOLET, AMBER, CORAL = "#5CF3D1", "#B7A0FF", "#FDD17D", "#FF929C"
+PALETTE = [CYAN, VIOLET, AMBER, CORAL]
 
 
+@lru_cache(maxsize=24)
 def font(size, bold=False):
-    family = 'Noto Sans CJK SC:style=Bold' if bold else 'Noto Sans CJK SC'
-    path = subprocess.check_output(['fc-match', '-f', '%{file}', family], text=True).strip()
+    family = "Noto Sans CJK SC:style=Bold" if bold else "Noto Sans CJK SC"
+    path = subprocess.check_output(["fc-match", "-f", "%{file}", family], text=True).strip()
     return ImageFont.truetype(path, size)
 
 
-def text(d, x, y, value, size=24, color=WHITE, bold=False):
-    d.text((x, y), value, font=font(size, bold), fill=color, stroke_width=0)
+def put(draw, xy, value, size=20, color=PAPER, bold=False):
+    draw.text(xy, str(value), font=font(size, bold), fill=color)
 
 
-def background(width, height, eyebrow, title, subtitle):
-    im = Image.new('RGB', (width, height), BG)
-    d = ImageDraw.Draw(im)
-    for i in range(0, 17):
-        d.rounded_rectangle(
-            (width - 195 - i * 17, -170 + i * 12, width + 80, 165 + i * 8),
-            radius=36, outline='#132A3B', width=1,
-        )
-    d.rounded_rectangle((40, 27, 190, 63), radius=16, fill='#193E44')
-    text(d, 57, 33, eyebrow, 17, ACCENT, True)
-    text(d, 40, 69, title, 37, WHITE, True)
-    text(d, 42, 121, subtitle, 19, MUTED)
-    return im, d
+def card(image, rect, fill="#172941", outline="#325477", radius=18):
+    d = ImageDraw.Draw(image)
+    d.rounded_rectangle(rect, radius=radius, fill=fill, outline=outline, width=2)
+    return d
 
 
-def save(frames, basename, durations):
-    frames = [im.quantize(colors=64, method=Image.Quantize.MEDIANCUT) for im in frames]
-    target = OUT / basename
-    frames[0].save(
-        target, save_all=True, append_images=frames[1:],
-        duration=durations, disposal=2, optimize=True, loop=0,
-    )
-    print(target, f'{target.stat().st_size / 1024:.1f} KiB')
+def halo(image, cx, cy, color, radius=22):
+    d = ImageDraw.Draw(image)
+    for r, width in ((radius + 18, 1), (radius + 9, 2), (radius, 2)):
+        d.ellipse((cx-r, cy-r, cx+r, cy+r), outline=color, width=width)
 
 
-def argument_demo(lang):
-    zh = lang == 'zh'
-    title = '从流水账，到有证据的研究论证' if zh else 'From a list of claims to an evidence-led argument'
-    subtitle = '演示内容均为占位符 · 请替换为真实论文信息' if zh else 'Illustrative placeholders only · replace with verified findings'
-    left = [
-        '我们提出三个模块 A、B、C。' if zh else 'We introduce modules A, B, and C.',
-        '实验结果表明方法更好。' if zh else 'Our experiments show improvements.',
-        '因此方法具有广泛适用性。' if zh else 'The approach generalizes broadly.',
-    ]
-    right = [
-        ('问题', '[证据支持的具体研究缺口]') if zh else ('QUESTION', '[precise, sourced research gap]'),
-        ('设计', 'A → B → C 的必要关系') if zh else ('DESIGN', 'why A → B → C is needed'),
-        ('证据', '[对照 / 指标 / 真实结果]') if zh else ('EVIDENCE', '[baseline / metric / verified result]'),
-        ('边界', '仅支持已测试场景') if zh else ('SCOPE', 'limited to evaluated settings'),
-    ]
-    frames = []
-    for stage in [0, 1, 2, 3, 4, 4]:
-        im, d = background(1080, 584, 'PAPER STORYCRAFT', title, subtitle)
-        d.rounded_rectangle((40, 177, 516, 495), radius=22, fill=CARD)
-        d.rounded_rectangle((535, 177, 1040, 495), radius=22, fill=CARD2)
-        text(d, 67, 196, 'BEFORE' if not zh else '修改前  /  BEFORE', 18, '#FAA9A0', True)
-        text(d, 563, 196, 'AFTER' if not zh else '修改后  /  AFTER', 18, ACCENT, True)
-        d.line((66, 238, 490, 238), fill=LINE, width=2)
-        d.line((562, 238, 1014, 238), fill='#2B5661', width=2)
-        for i, line in enumerate(left):
-            yy = 267 + i * 67
-            d.rounded_rectangle((66, yy, 73, yy + 32), radius=3, fill='#B56669')
-            text(d, 91, yy, line, 20 if not zh else 22, '#B6C2D3')
-        for i, (tag, message) in enumerate(right):
-            yy = 260 + i * 53
-            unlocked = i < stage
-            d.rounded_rectangle(
-                (560, yy - 5, 1014, yy + 44), radius=10,
-                fill='#1D5153' if unlocked and i == stage - 1 else '#173B44',
+def base(section, title, subtitle, frame):
+    image = Image.new("RGB", (W, H), INK)
+    # Stable gradient and star-grid: visual interest without flashing frames.
+    px = image.load()
+    for y in range(H):
+        for x in range(W):
+            glow = max(0, 1 - math.hypot(x - 950, y - 130) / 650)
+            shade = y / H
+            px[x, y] = (
+                int(8 + 5 * shade + 8 * glow),
+                int(18 + 12 * shade + 11 * glow),
+                int(34 + 17 * shade + 18 * glow),
             )
-            if unlocked:
-                text(d, 575, yy + 1, tag, 16, ACCENT, True)
-                text(d, 674 if zh else 690, yy + 1, message, 19 if zh else 17, WHITE)
-            else:
-                text(d, 578, yy + 3, f'{i + 1:02}', 16, '#64898E', True)
-                text(d, 677, yy + 3, '— — — — — — —', 18, '#466E73')
-        text(
-            d, 41, 523,
-            '问题  →  设计  →  证据  →  边界' if zh else 'QUESTION  →  DESIGN  →  EVIDENCE  →  SCOPE',
-            20, ACCENT, True,
-        )
-        text(d, 880, 528, f'{min(stage, 4)}/4', 20, MUTED)
-        for k in range(4):
-            d.rounded_rectangle(
-                (929 + k * 21, 540, 943 + k * 21, 549), radius=5,
-                fill=ACCENT if k < stage else '#354C5B',
-            )
-        frames.append(im)
-    save(frames, f'demo-argument-{lang}.gif', [650, 800, 800, 800, 1600, 950])
+    d = ImageDraw.Draw(image)
+    for x in range(24, W - 10, 40):
+        for y in range(22, H - 14, 40):
+            d.ellipse((x, y, x + 2, y + 2), fill="#23415B")
+    d.rounded_rectangle((39, 30, 254, 63), radius=12,
+                        fill="#123644", outline="#377979", width=1)
+    put(d, (54, 35), f"PAPER STORYCRAFT  /  {section}", 15, CYAN, True)
+    put(d, (39, 73), title, 35, PAPER, True)
+    put(d, (41, 124), subtitle, 17, MUTE)
+    d.line((40, 161, 1039, 161), fill="#294860", width=2)
+    for i in range(6):
+        x = 904 + 23 * i
+        d.rounded_rectangle((x, 40, x + 14, 46), radius=3,
+                            fill=CYAN if i <= frame else "#38556C")
+    put(d, (40, 544), "ILLUSTRATIVE ONLY  ·  NOT RESEARCH EVIDENCE", 14, "#7D99B0")
+    return image
 
 
-def citation_demo(lang):
-    zh = lang == 'zh'
-    title = '引用放在专名旁，不必全部挤到句末' if zh else 'Cite names where they appear — not only at sentence ends'
-    subtitle = '示意引用位置，并非真实文献条目' if zh else 'Citation-position example only · not bibliographic records'
-    labels = (
-        (('方法 A', '[方法来源]'), ('模型 B', '[模型来源]'), ('数据集 C', '[数据来源]'))
-        if zh else
-        (('Method A', '[method source]'), ('Model B', '[model source]'), ('Dataset C', '[dataset source]'))
-    )
+def write(frames, filename):
+    frames = [im.quantize(colors=48, method=Image.Quantize.FASTOCTREE,
+                          dither=Image.Dither.NONE) for im in frames]
+    path = OUT / filename
+    frames[0].save(path, save_all=True, append_images=frames[1:],
+                   loop=0, duration=[700, 920, 920, 920, 1600, 900],
+                   optimize=True, disposal=2)
+    print(f"{filename}: {path.stat().st_size / 1024:.1f} KiB")
+
+
+def argument_demo(language):
+    zh = language == "zh"
+    title = ("别再堆模块：让论文形成证据链" if zh else
+             "Beyond modules: build a defensible research argument")
+    subtitle = ("明确问题 → 解释设计 → 对齐实验 → 限定结论" if zh else
+                "Make the question, design, evidence and scope connect")
+    stages = [
+        ("研究问题", "待核查的具体困难"),
+        ("设计逻辑", "A → B → C 的必要作用"),
+        ("验证证据", "对照 · 指标 · 不确定性"),
+        ("结论边界", "仅覆盖实际验证的条件"),
+    ] if zh else [
+        ("QUESTION", "specific, sourced difficulty"),
+        ("DESIGN", "why A → B → C is needed"),
+        ("EVIDENCE", "controls · metrics · uncertainty"),
+        ("SCOPE", "only tested conditions"),
+    ]
+    before = ["我们提出 A、B、C。", "效果比基线更好。", "适用于所有任务。"] if zh else [
+        "We introduce modules A, B, C.", "Our method is better.", "It works for all tasks."]
     frames = []
-    for stage in [0, 1, 2, 3, 3]:
-        im, d = background(1080, 386, 'SOURCE FIRST', title, subtitle)
-        d.rounded_rectangle((40, 176, 1040, 347), radius=20, fill=CARD)
-        text(d, 65, 194, 'BEFORE' if not zh else '修改前', 17, '#FAA9A0', True)
-        old = (
-            '方法 A、模型 B 和数据集 C 的结果更好。[1–3]'
-            if zh else 'Method A, Model B and Dataset C performed better. [1–3]'
-        )
-        text(d, 170, 192, old, 20, '#AEBBC9')
-        d.line((65, 242, 1010, 242), fill=LINE, width=2)
-        text(d, 65, 263, 'AFTER' if not zh else '修改后', 17, ACCENT, True)
-        x = 170
-        for i, (name, source) in enumerate(labels):
-            if i < stage:
-                segment = f'{name} {source}'
-                color = ACCENT if i == stage - 1 else WHITE
+    for stage in range(6):
+        im = base("01", title, subtitle, stage)
+        d = card(im, (40, 191, 375, 511), "#19253B", "#45506E")
+        put(d, (60, 209), "BEFORE  /  原始写法" if zh else
+            "BEFORE  /  VAGUE CLAIMS", 18, CORAL, True)
+        d.line((61, 247, 350, 247), fill="#3D4C67", width=2)
+        for i, sentence in enumerate(before):
+            y = 283 + i * 69
+            d.rounded_rectangle((60, y, 68, y + 31), radius=4, fill=CORAL)
+            put(d, (82, y + 1), sentence, 18, "#D4D9E4")
+        d = card(im, (395, 191, 1040, 511), "#112E40", "#377A80")
+        put(d, (418, 208), "AFTER  /  论证链" if zh else
+            "AFTER  /  ARGUMENT MAP", 18, CYAN, True)
+        for i, (label, note) in enumerate(stages):
+            y = 256 + i * 59
+            active = stage >= i + 1
+            color = PALETTE[i]
+            if active:
+                hot = i == min(stage, 4) - 1
+                d.rounded_rectangle((432, y-7, 999, y+42), radius=13,
+                    fill="#1B4256" if hot else "#1A374B",
+                    outline=color if hot else "#365F77", width=2)
+                d.ellipse((448, y+5, 475, y+32), fill=color)
+                put(d, (456, y+5), i+1, 16, INK, True)
+                put(d, (489, y), label, 20, color, True)
+                put(d, (669 if zh else 636, y+2), note, 17)
             else:
-                segment = f'{name} (...)'
-                color = '#6E8799'
-            text(d, x, 263, segment, 18 if zh else 17, color, i == stage - 1)
-            x += 292 if zh else 290
-        text(
-            d, 65, 317,
-            '对应来源与具体论断分别核验'
-            if zh else 'Verify source attribution and each factual claim separately',
-            16, MUTED,
-        )
+                d.rounded_rectangle((432, y-7, 999, y+42), radius=13,
+                    fill="#182B3B", outline="#365066", width=1)
+                put(d, (452, y+3), f"{i+1:02}", 17, "#57768C", True)
+                put(d, (494, y+4), "—  —  —  —  —  —", 16, "#557187")
+            if i < 3:
+                d.line((463, y+42, 463, y+52), fill=color if
+                       stage >= i+2 else "#415B74", width=3)
+        if stage >= 4:
+            halo(im, 1009, 457, CYAN, 20)
+        put(d, (822, 540), f"{min(stage,4)}/4", 16, CYAN, True)
         frames.append(im)
-    save(frames, f'demo-citation-{lang}.gif', [900, 1150, 1150, 1800, 900])
+    write(frames, f"demo-argument-{language}.gif")
 
 
-if __name__ == '__main__':
-    for language in ('zh', 'en'):
-        argument_demo(language)
-        citation_demo(language)
+def related_work_demo(language):
+    zh = language == "zh"
+    title = ("Related Work：从引文清单到研究地图" if zh else
+             "Related Work: turn citations into a research map")
+    subtitle = ("按机制分组，同维度比较；研究空白必须经文献核查" if zh else
+                "Group by mechanism; compare shared axes; verify the gap")
+    frames = []
+    for stage in range(6):
+        im = base("02", title, subtitle, stage)
+        d = card(im, (40, 187, 405, 511), "#18263A", "#47526A")
+        put(d, (62, 207), "BEFORE  /  引用流水账" if zh else
+            "BEFORE  /  CITATION LIST", 17, CORAL, True)
+        put(d, (62, 243), "01 → 02 → 03 → 04 → 05 → 06", 17, "#9EAFC7")
+        for i in range(6):
+            x = 62 + (i % 2) * 168
+            y = 282 + (i // 2) * 60
+            d.rounded_rectangle((x, y, x+150, y+45), radius=12,
+                fill="#667F91" if stage >= 2 else "#32445D",
+                outline="#586C88", width=1)
+            put(d, (x+16, y+9), f"Paper {i+1:02}", 16, "#E4E9F4")
+        d = card(im, (426, 187, 1040, 511), "#102F40", "#3B8491")
+        put(d, (449, 205), "AFTER  /  机制驱动的比较" if zh else
+            "AFTER  /  MECHANISM MAP", 17, CYAN, True)
+        axis = ("共同比较轴：数据 | 目标函数 | 信息访问" if zh else
+                "Shared axes: data | objective | information access")
+        put(d, (451, 238), axis, 17, MUTE)
+        groups = [
+            ("路径 A · 固定数据", CYAN),
+            ("路径 B · 生成数据", VIOLET),
+        ] if zh else [
+            ("FAMILY A · FIXED DATA", CYAN),
+            ("FAMILY B · GENERATED DATA", VIOLET),
+        ]
+        for j, (label, color) in enumerate(groups):
+            y = 284 + 97 * j
+            active = stage >= j + 1
+            d.rounded_rectangle((449, y, 1018, y+77), radius=16,
+                fill="#194457" if active else "#1A3043",
+                outline=color if active else "#33566B", width=2)
+            put(d, (470, y+8), label, 18, color if active else "#7A98AE", True)
+            if active:
+                for k, x in enumerate((475, 646, 817)):
+                    d.rounded_rectangle((x, y+38, x+136, y+64), radius=8,
+                        fill="#245265", outline="#456F80", width=1)
+                    put(d, (x+16, y+40), f"Study {j*3+k+1:02}", 14)
+                if stage >= j+3:
+                    halo(im, 990, y+34, color)
+            else:
+                put(d, (470, y+43), "—  —  —", 16, "#617C90")
+        if stage >= 3:
+            d.rounded_rectangle((450, 469, 1017, 505), radius=11,
+                fill="#3E3446", outline=AMBER, width=2)
+            put(d, (467, 476),
+                "待验证的研究空白 ≠ “没有人做过”" if zh else
+                'OPEN QUESTION ≠ "No prior work exists"',
+                16, AMBER, True)
+        put(d, (825, 540), f"{min(stage,4)}/4", 16, CYAN, True)
+        frames.append(im)
+    write(frames, f"demo-related-work-{language}.gif")
+
+
+if __name__ == "__main__":
+    for lang in ("zh", "en"):
+        argument_demo(lang)
+        related_work_demo(lang)
