@@ -43,6 +43,10 @@ Attach citations near the entity or smallest substantive claim supported. A cite
 
 Detect duplicate keys, duplicated records, undefined citations, and stale unused entries. Separate a novel argument made by this paper from work it cites as motivation.
 
+Run the [CITATION_GUIDE.md](../CITATION_GUIDE.md) **entity–source audit**, not just a reference-count scan. Inventory every named external method, **model/checkpoint, benchmark, dataset**, evaluation protocol, and adapted resource across prose, tables, captions and supplements. Cross-check original/official sources, versions, bibliography keys, and which claims the sources establish. Attribute benchmark and underlying dataset separately when they have different sources. Check that first meaningful mentions carry accurate adjacent attribution, but do **not** require citations at sentence ends.
+
+Check the **actual reference list**, not only syntax: the bibliography resource/path and output command must fit the document format; inspect undefined and duplicate BibTeX entries, missing keys and author–year mismatches. If compilation is possible, verify the produced PDF's References section and undefined-citation warnings. Report **entity coverage**, **claim support**, **key/bibliography integrity**, and **rendered reference-list verification** as separate PASS / issue / NOT CHECKED outcomes. Never claim a PDF check passed without compiling.
+
 ## 5. LaTeX and cross-reference integrity
 
 Where LaTeX source is available, inspect:
