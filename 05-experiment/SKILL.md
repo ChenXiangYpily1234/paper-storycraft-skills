@@ -7,8 +7,6 @@ description: Use when designing, rewriting or auditing experiments, results or b
 
 ## Execute this skill
 
-**Use for:** designing, rewriting or auditing experiments, results or benchmark comparisons. Connect each research claim to matched controls, metrics, evidence and limits.
-
 **Typical request:** “帮我检查实验是否真的支撑优于 baseline 的结论。”
 
 **Procedure**
@@ -20,8 +18,6 @@ description: Use when designing, rewriting or auditing experiments, results or b
 **Deliver:** Return a question-to-evidence matrix, revised experiment narrative (if requested), and P0/P1 validity gaps.
 
 **Evidence boundary:** Never invent seeds, statistical significance, runs or missing baselines; label proposed controls as proposals.
-
-**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) first. Use for empirical, numerical and engineering evidence sections in STEM; it is optional for proof-only papers.
 
@@ -118,8 +114,6 @@ A strong sequence is **capability → targeted test of the central claim → abl
 
 For laboratory work validate the instrument, units, replicates and uncertainty; for engineering validate realistic workloads and costs; for numerical work separate solver convergence from physical validation. Proof-only papers need no experimental section. Define experimental labels and metrics locally, and do not overload the main finding with training hyperparameters before presenting it.
 
-## Required outputs
-
-Deliver a claim-to-experiment matrix, fairness/confound audit by severity, revised evidence sequence, revised paragraphs if requested, precisely scoped conclusions, missing-control recommendations explicitly marked as **proposed**, and a figure/table/text consistency check.
+## Acceptance check
 
 **Acceptance:** For every major claim, a reviewer can identify what was compared, under which protocol, at what statistical unit, and why simpler rival explanations are or are not excluded.
