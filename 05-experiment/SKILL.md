@@ -23,7 +23,7 @@ Read [PRINCIPLES.md](../PRINCIPLES.md) first. Use for empirical, numerical and e
 
 ## Section-specific editorial judgement
 
-**Editorial choice:** Lead with the decisive, fairly controlled observation and explain why it answers a study question. Do not read the table row by row or claim "wins across the board" when the data show a trade-off. Preserve negative results that constrain the headline claim; remove only irrelevant process chronology. A metric chosen after seeing outcomes cannot be rewritten as the preregistered target. Distinguish verified gains from plausible explanations for those gains.
+**Editorial choice:** Lead with decisive, fairly controlled findings, not a row-by-row score diary. Reserve main-text space for core conclusions and claim-changing trade-offs; extensive secondary negative or exploratory results can appear in appendices or supplements, with main-text qualification where material. A metric selected post hoc must not be portrayed as a prespecified endpoint. Distinguish directly verified gains from inferred explanations.
 
 Consult the [Editorial Playbook](../EDITORIAL_PLAYBOOK.md) **only** when narrative focus, paragraph flow, Nature-style framing or defensive wording is relevant; keep scientific and source-preservation rules in [PRINCIPLES.md](../PRINCIPLES.md) higher priority.
 
@@ -103,11 +103,13 @@ For systems evaluations, describe hardware, batch/concurrency, warmup, caching, 
 
 For non-inferiority or recovery claims, name the margin, estimand, comparator, pairing, unit, and valid one-sided or interval-based decision criterion. Failure to establish recovery is not proof that the original mechanism is necessary.
 
-## 7. Show negative results and limitations without concealment
+## 7. Lead with decisive evidence; put secondary unfavorable detail in supplements
 
 Distinguish genuinely worse performance, insufficient power, protocol incompatibility, missing observations, and unsupported extrapolation. Robustness is about scientifically meaningful perturbations (randomness, hyperparameters, distribution, input noise, scale, compute budget), not merely adding many tables.
 
-Keep the decisive protocol, controls, core results, and headline limitations in the main narrative. Supplementary materials may contain full hyperparameters, secondary plots, extra metrics, and per-seed data; do not use them to hide qualifications necessary to judge the claim.
+**Use an evidence placement triage:** (a) *claim-critical* results—including a decisive baseline loss, failed critical ablation, primary-endpoint failure or material trade-off—need concise main-text disclosure with the consequence for the claim; (b) *secondary or exploratory* unfavorable findings, additional baselines, extended robustness, subgroup analyses, per-seed tables and extra metrics **may move to the appendix/submitted supplementary files** and need not occupy equal space in the main Results narrative; (c) irrelevant process history may be shortened if reporting obligations permit.
+
+For supplemental findings, preserve complete values and protocols, label preplanned versus exploratory analyses honestly, provide precise appendix/table references when needed, and ensure the supplementary files accompany the paper. The main text should still be accurate when read on its own. Selection based solely on the sign of a result is not a defensible reason to omit material evidence. For actual source edits, obey the user's no-deletion and exhibit-preservation contract and request permission before moving exhibits.
 
 ## Evidence hierarchy and anti-stacking revision
 
