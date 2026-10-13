@@ -25,6 +25,8 @@ Do not assume every paper needs the same subsections. A short algorithm can comb
 
 Transition explicitly: "Under these inputs and constraints, the method must ...; we therefore construct ..." Never imply a guarantee merely by announcing a design intent.
 
+When a construction reuses a pretrained model, backbone, algorithm, dataset, external simulator, or evaluation protocol, attribute that object at its first meaningful named use. Distinguish a model-family paper from the checkpoint/release actually used, and a base dataset from a derived benchmark. Verify primary sources and bibliography keys; follow [CITATION_GUIDE.md](../CITATION_GUIDE.md). These attributions do not make inherited components into this paper's contributions.
+
 ## 3. Define concepts where they become necessary
 
 Introduce a real-world or computational object before abstracting it. At first appearance of each variable, supply meaning, type, dimensionality or domain where relevant, and its role in later expressions. Introduce a mathematical set, distribution, or mapping only if it is used and helps make the method unambiguous.
