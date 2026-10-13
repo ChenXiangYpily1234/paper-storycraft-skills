@@ -21,6 +21,12 @@ description: Use when drafting, rewriting or auditing a research paper abstract.
 
 **Global rule:** Read [PRINCIPLES.md](../PRINCIPLES.md) first. Apply its reviewer-first narrative, first-use definitions, terminology ledger, and claim–evidence–scope checks.
 
+### Decision and failure test
+
+- If the user supplied only a draft abstract, improve its internal logic **without claiming** its results or citations were independently verified.
+- If an abstract asserts superiority without a comparator, metric, or supporting result, downgrade that assertion or mark the missing evidence; do not fill it with plausible numbers.
+- Check the last sentence against the actual primary finding and its evaluation scope, rather than ending with a generic impact claim.
+
 ## Scope and inputs
 Applies across STEM: theoretical work, laboratory and field science, numerical simulations, systems, benchmarks, replication, and mechanism studies. Obtain the paper's actual title, core claims, introduction, method, key results, and conclusion where available. If only the abstract is supplied, identify facts that cannot be verified instead of inventing supporting evidence.
 
