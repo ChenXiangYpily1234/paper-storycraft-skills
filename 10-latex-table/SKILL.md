@@ -1,9 +1,27 @@
 ---
-name: latex-table-design
-description: Create scientifically faithful, readable LaTeX tables that support a research claim and match the paper's metrics, labels, statistical units, and terminology.
+name: 10-latex-table
+description: Use when creating, fixing or reviewing LaTeX research tables with scientific measurements, benchmark scores, significance markers or captions.
 ---
 
 # Evidence-Centered LaTeX Tables
+
+## Execute this skill
+
+**Use for:** creating, fixing or reviewing LaTeX research tables with scientific measurements, benchmark scores, significance markers or captions.
+
+**Typical request:** “把这张 LaTeX 表格排得紧凑但不能更改数值。”
+
+**Procedure**
+
+1. State the comparison, unit and metric direction before touching formatting.
+2. Preserve every sourced value, uncertainty, citation and label; check groups, denominators and significance notation.
+3. Improve alignment, whitespace and caption readability; compile/inspect only if LaTeX tooling is available.
+
+**Deliver:** Return valid table source or a precise patch, with a values-preserved and compilation-status note.
+
+**Evidence boundary:** Formatting does not authorize rounding or changing statistics unless the user requests and verifies it.
+
+**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) and [Figure Story](../07-figure/SKILL.md). Use this guide for manuscript tables, not for inventing experimental results.
 
