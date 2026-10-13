@@ -1,9 +1,27 @@
 ---
-name: research-plotting
-description: Produce or review reproducible scientific plots from verified data, protecting statistical meaning, traceability, accessible design, and manuscript terminology.
+name: 11-research-plot
+description: Use when producing or reviewing research plots from actual data, including error bars, subgroup comparisons and reproducible plotting scripts.
 ---
 
 # Reproducible Research Plots
+
+## Execute this skill
+
+**Use for:** producing or reviewing research plots from actual data, including error bars, subgroup comparisons and reproducible plotting scripts.
+
+**Typical request:** “把真实结果画成带误差棒的可复现图。”
+
+**Procedure**
+
+1. Record input provenance, data units, group mapping, uncertainty and intended claim.
+2. Choose an appropriate plot/scale without truncation or visual exaggeration; annotate units and statistical unit.
+3. Generate reproducible source when data/tools exist; compare plotted values to the source and check caption scope.
+
+**Deliver:** Return the chart/source when possible, data-to-mark mapping, caption and explicit verification status.
+
+**Evidence boundary:** Never draw quantitative results from illustrative or unprovided values.
+
+**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. For a narrow task, return only the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and [CITATION_GUIDE.md](../CITATION_GUIDE.md) for externally sourced claims.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) and [Figure Story](../07-figure/SKILL.md) first.
 
