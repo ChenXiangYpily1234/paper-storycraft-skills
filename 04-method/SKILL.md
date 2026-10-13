@@ -21,6 +21,12 @@ description: Use when a Methods section presents unexplained modules, symbols, f
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) first. Use this Skill for STEM methods, including algorithms, proofs, lab protocols, numerical models, engineering systems and multi-stage pipelines. The objective is **technical reproducibility with conceptual comprehension**, not a list of code modules.
 
+### Decision and failure test
+
+- Label which components are **new**, **reused**, or **standard infrastructure**; do not present inherited modules as contributions.
+- Before explaining each important equation, identify what it computes and which downstream decision or proof needs it. Remove invented purpose statements.
+- If the provided architecture or source is incomplete, mark inferred pipeline steps as **unverified**. Never change the algorithm merely to make the narrative linear.
+
 ## 1. Plan the reader's dependency path
 
 Before editing, write down: the task and its inputs/outputs; what the current approach cannot establish or achieve; the design requirement; the new operation or proof idea; assumptions; intermediate representations; outputs; and the testable implications.
