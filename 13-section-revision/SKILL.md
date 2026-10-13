@@ -25,7 +25,7 @@ Read [PRINCIPLES.md](../PRINCIPLES.md) first. Then use [04 Method](../04-method/
 
 ## Section-specific editorial judgement
 
-**Editorial choice:** Reverse-outline the linked sections as question → design reason → operations → direct evidence → bounded interpretation. Remove only redundant implementation chronology, not scientifically material failed controls or negative results. A stronger-sounding claim should be a *more precise* claim, never a suppressed conflicting observation. Recheck figure/table contents, values and citation keys after every structural move.
+**Editorial choice:** Reverse-outline linked sections as question → design reason → operations → direct evidence → bounded interpretation. Foreground the strongest supported result and, with authorization, move extended secondary unfavorable findings to appendices or supplements. Keep claim-changing failed controls visible in the main argument. Stronger writing means a more precise claim, not suppression of contradictory evidence. Verify numerical and LaTeX invariants after every move.
 
 Consult [EDITORIAL_PLAYBOOK.md](../EDITORIAL_PLAYBOOK.md) only for relevant editorial work; scientific and source-preservation rules in [PRINCIPLES.md](../PRINCIPLES.md) take priority.
 
@@ -47,6 +47,10 @@ Read the *latest* supplied manuscript rather than an older draft. For each secti
 | Diagnosis and boundary | What alternative explanations and failure cases remain? | Controls, ablations, perturbations, shifts | What qualified conclusion survives? | Generalization limits |
 
 Change the questions and section count to match the actual study. The goal is a **dependency between sections**, not forced symmetry or a predetermined success story.
+
+### Reallocate supplementary evidence without silently deleting it
+
+When a user authorizes restructuring, create a **placement ledger** for every proposed move: claim, exhibit/number, original section, new appendix/supplement path, whether the result is prespecified or exploratory, its effect on the paper's headline conclusion, and updated textual reference. Move *secondary* unfavorable details to appendix/supplement when the main-text account remains complete; **retain a main-text qualification** for any outcome that changes the core claim. Preserve exact float content, metric names, labels, citation keys and data; ensure files are included in the output. If the user requested no movement or the supplemental artifact cannot be generated, present a relocation proposal instead. Never silently move or drop a claim-critical failed control.
 
 ## 2. Freeze the author-prescribed artifacts
 
