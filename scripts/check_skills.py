@@ -44,13 +44,16 @@ def main():
         assert "CITATION_GUIDE.md" in (root / rel).read_text(encoding="utf-8"), \
             f"Citation guide not referenced by {rel}"
 
-    gif = (root / "assets/storycraft-demo.gif").read_bytes()
-    assert gif.startswith((b"GIF87a", b"GIF89a")) and gif.endswith(b";"), "Invalid demo GIF signature/trailer"
-    assert gif.count(bytes((0x21, 0xF9, 0x04))) >= 2, "Demo GIF must contain multiple frames"
-    assert len(gif) < 200_000, "Demo GIF should remain lightweight"
-    for file in ("README.md", "README_EN.md"):
-        page = (root / file).read_text(encoding="utf-8")
-        assert "assets/storycraft-demo.gif" in page, f"Demo GIF not documented in {file}"
+    # Both language READMEs show reproducible, small animated examples.
+    for lang, page_name in (("zh", "README.md"), ("en", "README_EN.md")):
+        page = (root / page_name).read_text(encoding="utf-8")
+        for topic in ("argument", "citation"):
+            image_path = f"assets/demo-{topic}-{lang}.gif"
+            image = (root / image_path).read_bytes()
+            assert image.startswith((b"GIF87a", b"GIF89a")) and image.endswith(b";"), image_path
+            assert image.count(bytes((0x21, 0xF9, 0x04))) >= 3, image_path
+            assert len(image) < 300_000, f"README animation too large: {image_path}"
+            assert image_path in page, f"README missing animated example: {image_path}"
     for path in files:
         body = path.read_text(encoding="utf-8")
         assert "### Decision and failure test" in body, f"Missing skill-specific failure gate: {path}"
