@@ -23,6 +23,12 @@ Read [PRINCIPLES.md](../PRINCIPLES.md) first. Then use [04 Method](../04-method/
 
 **Trigger:** a user requests changes to multiple connected paper sections, asks whether the writing is a "stack of formulas / experiments", or requires a full LaTeX rewrite **without deleting tables or figures**.
 
+## Section-specific editorial judgement
+
+**Editorial choice:** Reverse-outline the linked sections as question → design reason → operations → direct evidence → bounded interpretation. Remove only redundant implementation chronology, not scientifically material failed controls or negative results. A stronger-sounding claim should be a *more precise* claim, never a suppressed conflicting observation. Recheck figure/table contents, values and citation keys after every structural move.
+
+Consult [EDITORIAL_PLAYBOOK.md](../EDITORIAL_PLAYBOOK.md) only for relevant editorial work; scientific and source-preservation rules in [PRINCIPLES.md](../PRINCIPLES.md) take priority.
+
 ### Decision and failure test
 
 - Inventory before rewriting: equation environments, citations, labels, table/figure content, caption text, numerical values and scientific qualifications.
