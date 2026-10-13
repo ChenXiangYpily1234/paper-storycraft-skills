@@ -154,6 +154,10 @@ See [WORKFLOW.md](WORKFLOW.md) and [STEM_GUIDE.md](STEM_GUIDE.md).
 4. **Evidence-bound claims:** link claims to direct evidence, explicit assumptions, and meaningful alternative explanations.
 5. **Strong but honest framing:** highlight genuine contributions without hiding material negative results.
 
+## Citation placement and reference integrity
+
+The new [**Citation Guide**](CITATION_GUIDE.md) requires verified attribution for external **models, benchmarks, datasets, and methods**. A citation may sit directly after the entity name—for example, “DistillM (Ko et al., 2024)” illustrates author–year placement—rather than being forced to the end of a sentence. Verify the actual bibliographic record before use, and distinguish benchmark sources from underlying datasets. The guide covers existing BibTeX keys, bibliography inclusion, unsupported claims, and rendered reference-list checks.
+
 ## New: lossless cross-section rewriting
 
 Use [13 Cross-Section Revision](13-section-revision/SKILL.md) if several middle sections read like disconnected formulas and experiments. The Skill maps **research question → formal criterion → method → direct test → diagnostic evidence → boundary** (as supported by the actual study), then revises transitions and subsection roles.
