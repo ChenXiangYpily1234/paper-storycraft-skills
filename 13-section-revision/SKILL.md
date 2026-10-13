@@ -7,8 +7,6 @@ description: Use for coordinated rewrites across adjacent manuscript sections wh
 
 ## Execute this skill
 
-**Use for:** coordinated rewrites across adjacent manuscript sections while preserving existing LaTeX, figures, tables, equations, labels, citations and empirical claims.
-
 **Typical request:** “重写第 3–5 节，保留所有表格、公式和 label。”
 
 **Procedure**
@@ -20,8 +18,6 @@ description: Use for coordinated rewrites across adjacent manuscript sections wh
 **Deliver:** Return revised sections, an artifact change manifest and separate source/PDF/results verification statuses.
 
 **Evidence boundary:** If a genuine scientific contradiction appears, flag it for author decision rather than 'fixing' an experiment.
-
-**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. For a narrow task, return only the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and [CITATION_GUIDE.md](../CITATION_GUIDE.md) for externally sourced claims.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) first. Then use [04 Method](../04-method/SKILL.md), [05 Experiment](../05-experiment/SKILL.md), and [09 Consistency Validation](../09-consistency-validation/SKILL.md) as needed. This skill coordinates existing skills; it does not replace their domain-specific checks.
 
@@ -109,8 +105,6 @@ When the source is available, compare:
 
 **Counts alone are not enough**: equal numbers of tables do not establish equal content. Distinguish **source-text integrity**, **PDF rendering**, **statistical validity**, and **raw-result reproducibility** as four separate verification statuses. Only mark performed tests PASS. PDF layout cannot be confirmed without the rendered output and required compilation assets; numerical agreement in a .tex file cannot verify raw experiment logs.
 
-## 8. Required outputs
-
-For an actual revision, return (a) an argument map, (b) revised stand-alone section LaTeX, (c) a merged manuscript when full original source exists, (d) artifact preservation/change manifest, (e) qualified claim–evidence–boundary notes, and (f) P0/P1/P2/PASS/NOT CHECKED report.
+## Acceptance check
 
 **Acceptance:** a reviewer can explain the necessity of each core formula, the distinct role of each experiment, and the limits of the conclusion; no user-protected LaTeX artifact or scientific result was silently lost or changed.
