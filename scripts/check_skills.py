@@ -57,6 +57,8 @@ def main():
     # Shared editorial guidance is exported and linked from every Skill.
     editorial = (root / "EDITORIAL_PLAYBOOK.md").read_text(encoding="utf-8")
     assert "negative results" in editorial.lower() and "nature" in editorial.lower()
+    assert "appendix" in editorial.lower() and "supplement" in editorial.lower()
+    assert "prespecified" in editorial.lower(), "Evidence triage must protect primary outcomes"
     exported = (root / "scripts/export_skills.py").read_text(encoding="utf-8")
     assert '"EDITORIAL_PLAYBOOK.md"' in exported
     for path in files:
@@ -67,7 +69,7 @@ def main():
     assert (root / "scripts/export_skills.py").exists(), "Missing portable Skill export"
     assert (root / "tests/skill-scenarios.md").exists(), "Missing behavior review scenarios"
     scenarios = (root / "tests/skill-scenarios.md").read_text(encoding="utf-8")
-    for required in ("Scenario 11", "Scenario 12", "Scenario 13", "Scenario 16",
+    for required in ("Scenario 11", "Scenario 12", "Scenario 13", "Scenario 16", "Scenario 17", "Scenario 18", "Scenario 19",
                      "PASS / FAIL / NOT CHECKED"):
         assert required in scenarios, f"Missing targeted behavior test: {required}"
     for file in ("README.md", "README_EN.md"):
