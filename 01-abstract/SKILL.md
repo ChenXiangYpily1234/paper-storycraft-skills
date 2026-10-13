@@ -7,8 +7,6 @@ description: Use when drafting, rewriting or auditing a research paper abstract.
 
 ## Execute this skill
 
-**Use for:** drafting, rewriting or auditing a research paper abstract. Turn verified problem, method and results into a concise, evidence-bounded summary; do not invent outcomes.
-
 **Typical request:** “把这个摘要改得更有逻辑，但不要编造数字。”
 
 **Procedure**
@@ -20,8 +18,6 @@ description: Use when drafting, rewriting or auditing a research paper abstract.
 **Deliver:** Return a revised abstract (if requested), a short evidence/missing-input note, and any unsupported claim to resolve.
 
 **Evidence boundary:** If results are absent, offer an explicitly provisional abstract without made-up metrics.
-
-**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 **Global rule:** Read [PRINCIPLES.md](../PRINCIPLES.md) first. Apply its reviewer-first narrative, first-use definitions, terminology ledger, and claim–evidence–scope checks.
 
@@ -65,7 +61,6 @@ Define any specialized term or abbreviation at first use in the abstract, even i
 
 Select evidence appropriate to a theorem, calibrated experiment, field observation, numerical simulation, engineering evaluation or machine-learning benchmark. Open with a clear motivating scientific tension rather than a string of broad background claims. Present the key result at its actual inferential strength, not as a universal guarantee. Follow the venue's abstract paragraph and length requirements; do not invent an experiment for theory papers.
 
-## Required outputs
-Provide (1) narrative diagnosis, (2) ordered story outline, (3) full revised abstract in the manuscript's language, (4) claims/numbers/citations needing verification, and (5) concise revision notes. If the user requests only an audit, omit unsolicited rewriting.
+## Acceptance check
 
 **Acceptance:** A reader can explain the question, difference, evidence, and scope after one reading, without guessing what a newly introduced term means.
