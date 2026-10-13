@@ -19,7 +19,7 @@ import tempfile
 from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
-SHARED = ("PRINCIPLES.md", "CITATION_GUIDE.md", "STEM_GUIDE.md", "WORKFLOW.md")
+SHARED = ("PRINCIPLES.md", "CITATION_GUIDE.md", "EDITORIAL_PLAYBOOK.md", "STEM_GUIDE.md", "WORKFLOW.md")
 LINK = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
 
 
