@@ -18,7 +18,7 @@ jobs:
           python - <<'PY'
           from PIL import Image
           for lang in ('zh', 'en'):
-              for topic in ('argument', 'citation'):
+              for topic in ('argument', 'related-work'):
                   path = f'assets/demo-{topic}-{lang}.gif'
                   with Image.open(path) as im:
                       assert im.n_frames >= 3, f'Expected animated GIF: {path}'
