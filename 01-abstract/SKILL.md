@@ -21,6 +21,12 @@ description: Use when drafting, rewriting or auditing a research paper abstract.
 
 **Global rule:** Read [PRINCIPLES.md](../PRINCIPLES.md) first. Apply its reviewer-first narrative, first-use definitions, terminology ledger, and claim–evidence–scope checks.
 
+## Section-specific editorial judgement
+
+**Editorial choice:** Put the actual result or theorem in the abstract's foreground without inventing wider significance. Replace empty openings ("Recently, X has attracted attention") with the concrete task or phenomenon when the evidence supports it. If the venue targets broad disciplinary readers, explain the stakes before specialized notation; check the exact abstract requirements rather than imposing a Nature template. Do not end with a sudden, exaggerated apology about limitations.
+
+Consult the [Editorial Playbook](../EDITORIAL_PLAYBOOK.md) **only** when narrative focus, paragraph flow, Nature-style framing or defensive wording is relevant; keep scientific and source-preservation rules in [PRINCIPLES.md](../PRINCIPLES.md) higher priority.
+
 ### Decision and failure test
 
 - If the user supplied only a draft abstract, improve its internal logic **without claiming** its results or citations were independently verified.
