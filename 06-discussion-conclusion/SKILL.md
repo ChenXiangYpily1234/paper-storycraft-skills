@@ -1,9 +1,27 @@
 ---
-name: discussion-conclusion-story
-description: Interpret evidence, articulate scientific and practical implications, report limitations, and close the paper without overstating what was demonstrated.
+name: 06-discussion-conclusion
+description: Use when Discussion, Limitations or Conclusion repeats results, overclaims mechanisms or fails to answer the paper's research question.
 ---
 
 # Discussion, Limitations, and Conclusion
+
+## Execute this skill
+
+**Use for:** Discussion, Limitations or Conclusion repeats results, overclaims mechanisms or fails to answer the paper's research question.
+
+**Typical request:** “结论夸大了泛化性，改成证据支持的表述。”
+
+**Procedure**
+
+1. Separate observations, plausible explanations and practical implications into distinct levels of certainty.
+2. Explain material limitations by affected population, setting, measurements or assumptions; preserve inconvenient evidence.
+3. Write a conclusion that directly answers the opening question and does not introduce a new untested contribution.
+
+**Deliver:** Return revised requested closing section, claim-scope alignment notes and unresolved limitations.
+
+**Evidence boundary:** Failure to find an effect is not proof that the effect is zero.
+
+**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md). This Skill produces an evidence-aligned narrative ending, not a second abstract or a place to quietly introduce unsupported contributions.
 
