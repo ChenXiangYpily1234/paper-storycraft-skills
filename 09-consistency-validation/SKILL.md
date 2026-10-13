@@ -21,6 +21,12 @@ description: Use for independent full-paper or pre-submission audits of claims, 
 
 Read [PRINCIPLES.md](../PRINCIPLES.md). This is an **independent audit**, not a cosmetic language polish. Do not accept "already fixed" without checking the actual latest artifact.
 
+## Section-specific editorial judgement
+
+**Editorial choice:** Audit both overstatement **and** needless defensive weakening. Check whether the paper makes its strongest supported contribution recognizable, whether major contradictory evidence is disclosed, and whether limitation phrasing is proportional rather than generic. Treat a Nature-style journal claim or blanket punctuation rule as unverified until the actual venue guidance is checked. Do not confuse persuasive clarity with selective reporting.
+
+Consult the [Editorial Playbook](../EDITORIAL_PLAYBOOK.md) **only** when narrative focus, paragraph flow, Nature-style framing or defensive wording is relevant; keep scientific and source-preservation rules in [PRINCIPLES.md](../PRINCIPLES.md) higher priority.
+
 ### Decision and failure test
 
 - This Skill is **review-only by default**. Do not rewrite manuscript source or change files unless the user explicitly authorizes edits.
