@@ -21,6 +21,12 @@ description: Use when writing or revising Related Work, literature positioning o
 
 Follow [PRINCIPLES.md](../PRINCIPLES.md), especially evidence precision, terminology, and reviewer-first dependencies.
 
+### Decision and failure test
+
+- When citations are supplied without papers or abstracts, classify comparisons as **source-unverified** instead of inventing the methods' objectives or disadvantages.
+- Each literature group must end in an explicit dimension of comparison; author chronology alone is not a scientific organizing principle.
+- Test the novelty story against the strongest plausible counterexample; if a predecessor already covers the claimed gap, narrow the novelty claim.
+
 ## Purpose and source discipline
 The goal is to explain **what is known, which important differences remain, and precisely where this paper fits**. Gather genuine bibliographic records and read primary sources where possible. Do not invent papers, methods, limitations, publication years, or citation keys. Label unverified bibliographic claims.
 
