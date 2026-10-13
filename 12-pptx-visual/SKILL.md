@@ -21,6 +21,12 @@ description: Use when a researcher needs an editable PowerPoint diagram for a ve
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) and [Figure Story](../07-figure/SKILL.md). PowerPoint is an editing format—not permission to invent components, data, arrows, or results.
 
+### Decision and failure test
+
+- A static rendered image is **not** an editable PowerPoint diagram. Verify the deliverable is a real PPTX containing manipulable elements, if that is what the user requested.
+- Do not imply experimental causality via arrows or invent unprovided internal architecture details.
+- State separately whether the file was created, opened, and visually inspected. Tool or file unavailability must be reported, not masked by a conceptual drawing.
+
 ## Appropriate use
 Use editable PPTX for architecture summaries, algorithm flows, study protocols, comparison diagrams, ablation schematics, and conceptual maps. For measured numeric results, start with [Research Plotting](../11-research-plot/SKILL.md). For numerical tables, use [LaTeX Tables](../10-latex-table/SKILL.md).
 
