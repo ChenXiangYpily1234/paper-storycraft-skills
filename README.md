@@ -2,9 +2,9 @@
 
 # Paper StoryCraft
 
-### 不止润色句子，让审稿人看懂你的科研贡献。
+### 好的研究，不该被平庸的论文叙事埋没。
 
-**13 个科研论文写作与审阅 Skills** · 从研究问题、方法逻辑到实验与引文核验
+**13 个 STEM 写作与审稿 Skills** · 构建问题—设计—证据链 · 突出真实优势 · 守住科研诚信
 
 [![GitHub Stars](https://img.shields.io/github/stars/ChenXiangYpily1234/paper-storycraft-skills?style=social)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)
 [![Docs CI](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/actions/workflows/skill-quality.yml/badge.svg)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/actions/workflows/skill-quality.yml)
@@ -26,9 +26,9 @@ Paper StoryCraft 提供一套可供 AI 助手读取、执行的科研写作 Skil
 
 ## 改写前后有什么不同？
 
-先看两个动图示例：它们展示的是**写作结构如何变化**，而不是某个模型经过评测后的成绩提升。
+先看两组 **深色科研工作流动图**。它们展示如何重组论证，不是声称 AI 已在真实论文上达到某项写作性能。
 
-### ① Methods：从「列模块」到「有原因的设计」
+### ① 研究论证：从模块清单到证据链
 
 ![中文动态图：论文 Methods 从模块堆砌改为研究问题、设计要求、方法操作和证据检验之间的连接](assets/demo-argument-zh.gif)
 
@@ -36,13 +36,13 @@ Paper StoryCraft 提供一套可供 AI 助手读取、执行的科研写作 Skil
 
 **改写方向：** 解释**输入或任务的具体困难**，由此推导出设计要求；再说明每个模块的输入、操作、输出以及下一步如何使用；最后指出哪些实验能够检验核心设计。不是简单地把三个模块写成更长的三个段落。
 
-### ② Related Work：从「引文堆砌」到「可比较的研究路线」
+### ② Related Work：从文献流水账到机制对比地图
 
-![中文动态图：Related Work 根据技术机制对研究分组，区分专名引用与具体证据引用](assets/demo-citation-zh.gif)
+![中文动态图：六个论文占位符按固定数据和生成数据两类技术机制归组，通过同一组比较维度寻找仍待核验的研究问题](assets/demo-related-work-zh.gif)
 
 **普通写法：** “Several distillation approaches have been explored (many citations).”
 
-**改写方向：** 根据真正影响研究问题的维度归类，如固定数据和学生生成数据、目标函数或信息访问条件；在**首次介绍已有方法时紧邻名称标注经核实的引用**，在陈述性能与局限性时引用对应证据。模型、benchmark 和数据集分别核对原始出处。
+**改写方向：** 先按与研究问题相关的机制分组，再使用**相同的比较维度**（如训练数据来源、目标函数、信息访问与评测协议）解释各路线的已知证据。最强的前人工作应得到公平对比。研究空白必须核验，不能凭动图推断“前人都没做过”。**引用规则仍在 [CITATION_GUIDE.md](CITATION_GUIDE.md)**，支持在方法名后紧邻放置来源。
 
 ### ③ Experiments：从「成绩播报」到「有边界的结论」
 
@@ -54,9 +54,13 @@ Paper StoryCraft 提供一套可供 AI 助手读取、执行的科研写作 Skil
 
 **想在下次写 Introduction、Related Work 或 Experiments 时直接用？[⭐ 给 Paper StoryCraft 一个 Star](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)，再看下面的上手方法。**
 
+## 为什么不直接套用 Nature 或“反防御性写作”？
+
+**借鉴思路，不机械照搬。** 我们参考 [nature-skills](https://github.com/Yuan1z0825/nature-skills) 的按章节、论文类型、语言与期刊选择写作指导，以及 [anti-defensive-writing-Skill](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill) 的优势优先写法；但**不会把对比失利的结果藏起来，也不会把 Nature 模板强加给任意期刊**。真正的原则是：准确指出研究贡献，保留改变结论的反证，遵守具体投稿规范。可执行细则见 [EDITORIAL_PLAYBOOK.md](EDITORIAL_PLAYBOOK.md)。
+
 ## 3 分钟上手
 
-**方式 A：直接用仓库文档指导现有 AI 助手**。适合只想改一节论文、无需安装 Skill 的情况。
+**方式 A：免安装，给现有 AI 助手一个明确任务。** 将论文片段与三个相关文档交给能读取本仓库链接的助手；如果助手不能直接读 GitHub，可先克隆到本地。
 
 ~~~bash
 git clone https://github.com/ChenXiangYpily1234/paper-storycraft-skills.git
@@ -72,6 +76,7 @@ cd paper-storycraft-skills
 不要机械地把所有文献放句末。模型、benchmark、数据集分别核验来源。
 只使用我提供或你确实核实过的文献；缺失来源列清单，不得编造 BibTeX。
 保留原始科学结论与已有引用键，输出修改稿和仍需核查的部分。
+不必因为语言不够“自信”就隐藏不利结果。
 ~~~
 
 **方式 B：把 13 个目录导出为可扫描的 Skills 集合**，适合支持 Agent Skills 文件夹加载的工具：
@@ -138,7 +143,7 @@ python scripts/export_skills.py --output ./my-agent-skills
 - **审阅与改写分离：** 若只要求审查，不擅自修改论文；已有 LaTeX 内容可按无损修订契约核对。
 - **分离“核验过”和“尚未检查”：** 文本一致性、编译成功、原始实验可复现性是不同层次的证据。
 
-总约束在 [PRINCIPLES.md](PRINCIPLES.md)，学科差异见 [STEM_GUIDE.md](STEM_GUIDE.md)，引用规范在 [CITATION_GUIDE.md](CITATION_GUIDE.md)。
+总约束见 [PRINCIPLES.md](PRINCIPLES.md)，[学科差异](STEM_GUIDE.md)、[引文规范](CITATION_GUIDE.md)和[写作判断框架](EDITORIAL_PLAYBOOK.md)按需加载。
 
 ## 适用范围与边界
 
