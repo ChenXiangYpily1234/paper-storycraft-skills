@@ -7,8 +7,6 @@ description: Use when writing or revising Related Work, literature positioning o
 
 ## Execute this skill
 
-**Use for:** writing or revising Related Work, literature positioning or novelty comparisons. Group verified primary sources by technical differences rather than listing papers in sequence.
-
 **Typical request:** “这段 Related Work 是文献流水账，帮我按机制比较。”
 
 **Procedure**
@@ -20,8 +18,6 @@ description: Use when writing or revising Related Work, literature positioning o
 **Deliver:** Return a grouped Related Work draft (if requested), closest-work comparison and missing-source ledger.
 
 **Evidence boundary:** Never claim 'first' or 'no prior work' without a suitably systematic search.
-
-**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Follow [PRINCIPLES.md](../PRINCIPLES.md), especially evidence precision, terminology, and reviewer-first dependencies.
 
@@ -69,7 +65,6 @@ Introduce unfamiliar technique families with a short description before their la
 
 Group earlier contributions by what they **establish**: physical measurements, mechanisms, theorem assumptions, computational approaches, simulation accuracy or comparison protocols. Explain the actual difference in questions or evidence rather than listing citations or making a blanket "prior work cannot" claim. A useful progression is existing systems/findings → evaluation or explanation methods → the remaining precise gap.
 
-## Deliverables
-Provide a literature grouping plan, a closest-work comparison matrix, revised paragraphs when requested, citation verification gaps, and a novelty-claim risk assessment.
+## Acceptance check
 
 **Acceptance:** A reviewer can identify the closest competing ideas, understand the actual difference, and verify why the new question or contribution is distinct.
