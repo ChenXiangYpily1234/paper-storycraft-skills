@@ -7,8 +7,6 @@ description: Use when producing or reviewing research plots from actual data, in
 
 ## Execute this skill
 
-**Use for:** producing or reviewing research plots from actual data, including error bars, subgroup comparisons and reproducible plotting scripts.
-
 **Typical request:** “把真实结果画成带误差棒的可复现图。”
 
 **Procedure**
@@ -20,8 +18,6 @@ description: Use when producing or reviewing research plots from actual data, in
 **Deliver:** Return the chart/source when possible, data-to-mark mapping, caption and explicit verification status.
 
 **Evidence boundary:** Never draw quantitative results from illustrative or unprovided values.
-
-**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. For a narrow task, return only the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and [CITATION_GUIDE.md](../CITATION_GUIDE.md) for externally sourced claims.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) and [Figure Story](../07-figure/SKILL.md) first.
 
@@ -57,6 +53,3 @@ Inspect the exported image and its final manuscript placement; check non-overlap
 ## STEM plot routes
 
 Choose spectra, time series, calibration curves, residuals, distributions, convergence graphs, phase relationships, workload trade-offs or paired comparisons **according to the verified data and scientific question**. State units, uncertainty, model/measurement distinction and meaningful scales. Never synthesize numeric evidence or include a graph only for visual decoration.
-
-## Deliverables
-Provide plotted files and code only when actually generated, verified data provenance, transformations performed, caption draft, consistency check against paper results, and any unresolved assumptions.
