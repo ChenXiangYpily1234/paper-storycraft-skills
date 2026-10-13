@@ -60,6 +60,10 @@ Two **animated research maps** show how an argument becomes easier to follow. Th
 
 ## Quick start
 
+**Fastest path: copy the [English quick-start prompt](prompts/quick-start-en.md)** and supply your manuscript excerpt and actual evidence to your assistant. No installation needed to test the rules. [中文版](prompts/quick-start-zh.md).
+
+
+
 **Option A — No install: use the files as guidance.** Give your manuscript excerpt and the linked documents to an assistant that can read the repository; clone locally only if direct GitHub access is unavailable.
 
 ~~~bash
