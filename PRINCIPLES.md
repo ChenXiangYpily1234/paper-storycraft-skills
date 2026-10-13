@@ -117,6 +117,12 @@ Before asserting causality, ask whether intervention, identification assumptions
 
 Maintain an entity–source ledger, reconcile in-text citations with real bibliography entries, and check that the reference list renders in the final manuscript. Missing or uncertain metadata is a verification task, not a license to generate plausible BibTeX. Follow [CITATION_GUIDE.md](CITATION_GUIDE.md) for examples, version checks, bibliography audits, and P0/P1/P2 gates.
 
+### Editorial confidence without evidence suppression
+
+**Lead with the strongest defensible contribution rather than self-undermining language.** Identify what the paper actually establishes and explain its importance using the real comparison or proof. Avoid a chronological lab diary when the reader needs design logic. Replace gratuitous apologies with precise scope statements, but never conceal a negative result, unfair comparison, failed control or limitation that changes the central conclusion. Post-hoc metric selection must not be disguised as a prespecified primary endpoint.
+
+**Journal style is conditional.** A request for "Nature-style" writing calls for accessible framing and reader-friendly explanations; it does not license imposing Nature-specific page limits, abstract structure or section conventions without checking the exact journal and article type. Choose the paper type, user language and section before opening specialist guidance; use [EDITORIAL_PLAYBOOK.md](EDITORIAL_PLAYBOOK.md) **only when editorial framing, paragraph flow or defensive rhetoric is part of the task**.
+
 ## 7. Use paragraph-level information dependencies
 
 Give each paragraph one main argumentative job. Where the next paragraph depends on a specific unresolved question or design requirement, make that connection explicit; **do not force every paragraph to end as a question or cliffhanger**. Results, definitions and section summaries may legitimately end with a resolved point. Transitions should remain logical even if words such as "however", "moreover", and "therefore" are removed.
