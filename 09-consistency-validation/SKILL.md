@@ -1,9 +1,27 @@
 ---
-name: paper-consistency-validation
-description: Conduct a submission-level scientific, narrative, citation, statistical, LaTeX, visual, and terminology consistency audit independent of any conference template.
+name: 09-consistency-validation
+description: Use for independent full-paper or pre-submission audits of claims, references, formulas, statistics, cross-references, figures and document integrity. Review only unless edits are explicitly requested.
 ---
 
 # Full-Paper Scientific and Narrative Validation
+
+## Execute this skill
+
+**Use for:** independent full-paper or pre-submission audits of claims, references, formulas, statistics, cross-references, figures and document integrity. Review only unless edits are explicitly requested.
+
+**Typical request:** “投稿前检查引用、公式、表格和实验结论的一致性。”
+
+**Procedure**
+
+1. Read the latest manuscript and accessible evidence; record what artifacts are missing before checking.
+2. Audit claims, entity citations, metrics, figure/table references, values and terminology with exact file/section locations.
+3. Prioritize scientific blockers over prose; separate source-only, compiled-PDF and raw-result checks.
+
+**Deliver:** Return location → risk → evidence → precise fix, ranked P0/P1/P2, plus PASS/NOT CHECKED by verification class.
+
+**Evidence boundary:** Do not claim reproducibility or rendered layout PASS without the logs/build needed to test it.
+
+**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md). This is an **independent audit**, not a cosmetic language polish. Do not accept "already fixed" without checking the actual latest artifact.
 
