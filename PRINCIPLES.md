@@ -18,6 +18,12 @@ When recommendations conflict, apply the following order:
 
 A readable paper need not follow one fixed section count, number of experiments, or narrative template.
 
+### Task mode and minimal sufficient output
+
+Choose the operation **before** starting: **audit** (identify problems, no source edits), **rewrite** (edit only the authorized text), **create** (make the requested artifact from supplied/verified data), or **cross-section revision** (coordinate edits with a preservation manifest). A request to identify flaws or give feedback does **not** authorize rewriting or changing files. Follow explicit user scope, preservation constraints, target language and venue style.
+
+For a single caption, paragraph, citation check or table, deliver that artifact plus material blockers; do not automatically create an entire paper-review package or demand irrelevant experiments. For a full-paper revision, include the cross-section consistency work needed to support it. Treat unavailable sources, data, PDF or tools as **NOT CHECKED**, not as evidence that a task succeeded.
+
 ## 2. Follow the reviewer, not the author's internal implementation
 
 Assume a technically competent reviewer who has **not** participated in the project. At every transition, the reviewer should be able to answer:
