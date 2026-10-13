@@ -2,7 +2,7 @@
 
 # Paper StoryCraft
 
-### Turn a collection of research results into an argument reviewers can verify
+### Beyond proofreading: make every important research claim traceable to evidence
 
 **13 composable writing and review Skills for STEM manuscripts** · Structure · Methods & evidence · Citations · Figures & tables
 
@@ -15,6 +15,11 @@
 > **This project will not invent research for you.** It helps an AI assistant explain existing work: where the question comes from, why the design is necessary, which evidence supports which claim, and where the conclusion stops applying.
 
 ## What changes in a revision?
+
+![Animated Paper StoryCraft workflow: a vague research claim becomes a checklist for the question, method, evidence, and scope](assets/storycraft-demo.gif)
+
+*Animated illustration only, not a verified paper or experimental result. Sequence: vague claim → research question → actual method → supporting evidence → scope. If the GIF does not animate, use the static examples below.*
+
 
 All examples below are **illustrative placeholders**, not verified research claims. Replace bracketed text with evidence from your manuscript.
 
