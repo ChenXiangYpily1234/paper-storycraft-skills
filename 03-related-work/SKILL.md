@@ -1,9 +1,27 @@
 ---
-name: related-work-story
-description: Position a research paper against verifiable closest work, grouping literature by scientific questions and comparison dimensions rather than a citation catalog.
+name: 03-related-work
+description: Use when writing or revising Related Work, literature positioning or novelty comparisons. Group verified primary sources by technical differences rather than listing papers in sequence.
 ---
 
 # Related Work as Scientific Positioning
+
+## Execute this skill
+
+**Use for:** writing or revising Related Work, literature positioning or novelty comparisons. Group verified primary sources by technical differences rather than listing papers in sequence.
+
+**Typical request:** “这段 Related Work 是文献流水账，帮我按机制比较。”
+
+**Procedure**
+
+1. Identify three to five closest relevant alternatives where available; collect only verified source claims.
+2. Compare assumptions, training/evaluation data, computation and evidence at the same level; state what remains untested.
+3. Group paragraphs by the scientific question or mechanism; cite method names immediately when useful and results at the claim.
+
+**Deliver:** Return a grouped Related Work draft (if requested), closest-work comparison and missing-source ledger.
+
+**Evidence boundary:** Never claim 'first' or 'no prior work' without a suitably systematic search.
+
+**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Follow [PRINCIPLES.md](../PRINCIPLES.md), especially evidence precision, terminology, and reviewer-first dependencies.
 
