@@ -26,6 +26,12 @@ Shared protocol: data provenance/version and splits; task definition; primary me
 
 Before the first results table, explain what each comparison object is, what information it receives, what it is allowed to do, and why it is appropriate. Define abbreviations in text and make captions independently decodable.
 
+## 2a. Attribute every external model, benchmark and dataset
+
+Before reporting results, construct a **model–benchmark–dataset citation inventory**. For each named baseline, backbone/checkpoint, dataset, benchmark suite and externally defined evaluation protocol, record its exact variant/version, original or official source, first use in prose/tables, and verified bibliography key. **All externally sourced benchmark, model and dataset names require corresponding citations**, not merely a citation to a paper that happens to use them.
+
+A benchmark may reuse several datasets; cite the benchmark specification **and** source datasets where appropriate. A model's original paper may differ from a fine-tuned checkpoint's release. In standalone results tables, attach citations to entity names or a clearly mapped caption/table note so readers can identify sources without hunting backward. Avoid repeating a citation in every table cell. Verify external baseline scores and metric implementations against the actual source and protocol. Follow [CITATION_GUIDE.md](../CITATION_GUIDE.md); do not invent keys or metadata.
+
 ## 3. Verify the actual estimand and metric
 
 State the evaluation unit (sample, user, patient, device, prompt, task, trial, run, seed, or dataset), denominator, aggregation, direction of improvement, filtering/censoring, pairing, and uncertainty procedure.
