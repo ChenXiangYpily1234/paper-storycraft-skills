@@ -21,6 +21,12 @@ description: Use when planning, editing or reviewing scientific figures, archite
 
 Read [PRINCIPLES.md](../PRINCIPLES.md). Coordinate with [Research Plotting](../11-research-plot/SKILL.md) for quantitative plots and [Editable PPTX Visuals](../12-pptx-visual/SKILL.md) for conceptual diagrams.
 
+## Section-specific editorial judgement
+
+**Editorial choice:** Prefer one visual contrast the reviewer can decode quickly over decorative complexity. Make a title/caption communicate the central distinction and what is observed versus hypothesized. Do not use glowing color, pictorial effects or suggestive arrows to imply a proven superiority or causal mechanism unsupported by data. If an adapted reference image is used, attribute its source and identify adaptations.
+
+Consult the [Editorial Playbook](../EDITORIAL_PLAYBOOK.md) **only** when narrative focus, paragraph flow, Nature-style framing or defensive wording is relevant; keep scientific and source-preservation rules in [PRINCIPLES.md](../PRINCIPLES.md) higher priority.
+
 ### Decision and failure test
 
 - Decide first whether a figure provides information that prose or a compact table cannot convey; if not, recommend not adding it.
