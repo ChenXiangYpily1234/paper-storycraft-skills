@@ -1,9 +1,27 @@
 ---
-name: experiment-story
-description: Turn experiments into a reproducible chain of questions, controls, findings, competing explanations, and limitations with statistically valid claims.
+name: 05-experiment
+description: Use when designing, rewriting or auditing experiments, results or benchmark comparisons. Connect each research claim to matched controls, metrics, evidence and limits.
 ---
 
 # Experiments as an Evidence-Based Argument
+
+## Execute this skill
+
+**Use for:** designing, rewriting or auditing experiments, results or benchmark comparisons. Connect each research claim to matched controls, metrics, evidence and limits.
+
+**Typical request:** “帮我检查实验是否真的支撑优于 baseline 的结论。”
+
+**Procedure**
+
+1. Build claim → comparator → data/split → metric/unit → budget → result → interpretation for each experiment.
+2. Verify named models, benchmarks, datasets and citation provenance; distinguish external reported numbers from the author's runs.
+3. Order evidence by inferential job, check fair comparisons and alternative explanations, then write bounded findings.
+
+**Deliver:** Return a question-to-evidence matrix, revised experiment narrative (if requested), and P0/P1 validity gaps.
+
+**Evidence boundary:** Never invent seeds, statistical significance, runs or missing baselines; label proposed controls as proposals.
+
+**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) first. Use for empirical, numerical and engineering evidence sections in STEM; it is optional for proof-only papers.
 
