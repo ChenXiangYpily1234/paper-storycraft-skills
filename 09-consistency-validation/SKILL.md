@@ -61,6 +61,10 @@ Check:
 
 A finding from one paper should not become a universal instruction. For example, performance recovered by a separate method is not recovery of an original model, and failure to reproduce a result does not prove the original mechanism necessary.
 
+### Check fair placement of unfavorable evidence
+
+Compare the main Results/Discussion with all available appendices and submitted supplements. **PASS** only if the strongest supported finding is clear **and** a main-text-only reader is not misled. Secondary unfavorable figures, additional metrics, exploratory analyses and per-seed tables may be in supplements; flag them only when their omission changes interpretation, violates preregistered reporting or venue requirements, or the cited files are absent. A primary endpoint failure, decisive unfairly omitted baseline, claim-critical ablation or major safety/cost drawback must be acknowledged in the main paper, even if the detailed table is supplemental. Record a cross-reference and location audit separately from statistical validity and source-integrity checks. Do not treat "all negative results in main text" as a universal requirement.
+
 ## 4. Citations and bibliographic integrity
 
 Verify each used reference against an authoritative record when possible: title, authors, year, venue, DOI/URL, and claimed contribution. Do not guess unknown metadata or invent BibTeX keys.
