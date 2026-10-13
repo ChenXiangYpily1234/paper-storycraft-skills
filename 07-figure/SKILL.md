@@ -21,6 +21,12 @@ description: Use when planning, editing or reviewing scientific figures, archite
 
 Read [PRINCIPLES.md](../PRINCIPLES.md). Coordinate with [Research Plotting](../11-research-plot/SKILL.md) for quantitative plots and [Editable PPTX Visuals](../12-pptx-visual/SKILL.md) for conceptual diagrams.
 
+### Decision and failure test
+
+- Decide first whether a figure provides information that prose or a compact table cannot convey; if not, recommend not adding it.
+- Do not turn association, sequence or adjacency into a causal arrow. Distinguish observed relationships from hypothesized mechanisms.
+- If the underlying architecture or data is unavailable, offer a labeled conceptual draft, **not** a claim of scientific fidelity or verified numerical accuracy.
+
 ## 1. Give every figure a scientific job
 
 Before drawing, state one question that the figure must answer. Examples: What information enters the system? Which design step is novel? How are groups compared? Where does an observed improvement disappear?
