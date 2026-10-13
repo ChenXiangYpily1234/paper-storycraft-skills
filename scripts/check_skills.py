@@ -18,6 +18,13 @@ def main():
         name = re.search(r"(?m)^name:\s*(\S.*)$", front)
         desc = re.search(r"(?m)^description:\s*(\S.*)$", front)
         assert name and desc, f"Missing Skill metadata: {path}"
+        # The Agent Skills specification requires name == parent directory.
+        assert name.group(1) == path.parent.name, f"Invalid skill name in {path}: {name.group(1)}"
+        assert re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name.group(1)), path
+        assert len(desc.group(1)) <= 1024 and desc.group(1).startswith("Use "), \
+            f"Skill description needs a clear when-to-use trigger: {path}"
+        for needle in ("## Execute this skill", "**Procedure**", "**Deliver:**", "**Evidence boundary:**"):
+            assert needle in src, f"Skill missing actionable contract {needle}: {path}"
         names.append(name.group(1))
     assert len(names) == len(set(names)), "Duplicate Skill names"
     for p in ["README.md", "README_EN.md", "WORKFLOW.md"]:
@@ -37,6 +44,12 @@ def main():
         assert "CITATION_GUIDE.md" in (root / rel).read_text(encoding="utf-8"), \
             f"Citation guide not referenced by {rel}"
 
+    assert (root / "scripts/export_skills.py").exists(), "Missing portable Skill export"
+    assert (root / "tests/skill-scenarios.md").exists(), "Missing behavior review scenarios"
+    for file in ("README.md", "README_EN.md"):
+        page = (root / file).read_text(encoding="utf-8")
+        assert "scripts/export_skills.py" in page, f"Missing export instructions: {file}"
+        assert "tests/skill-scenarios.md" in page, f"Missing scenario guidance: {file}"
     links = 0
     for p in [*root.glob("*.md"), *root.glob("[0-9][0-9]-*/SKILL.md")]:
         doc = p.read_text(encoding="utf-8")
