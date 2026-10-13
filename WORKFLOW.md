@@ -41,6 +41,10 @@ Determine **task mode** (diagnose / rewrite / create / preserve-and-restructure)
 
 **Strength-first, evidence-safe:** identify the best supported insight early; omit irrelevant development chronology, not adverse findings that alter interpretation. Separate post-hoc interpretations from prespecified tests. If an outline or claim cannot be supported, narrow it before polishing and report the missing evidence.
 
+### Main text versus supplemental evidence
+
+For a restructuring task, classify results by **claim centrality, prespecification, and impact on interpretation**, not by whether they are favorable. Keep core positive and adverse outcomes visible in the main argument; send detailed secondary, exploratory and per-seed findings to appendices or submitted supplements when permitted. Keep brief main-text qualifiers and exact links whenever omitted detail changes how a claim should be read. Maintain a placement manifest with original table/figure, new location, unchanged values, cross-references and venue constraints. Do not move author-protected exhibits without permission. See [EDITORIAL_PLAYBOOK.md](EDITORIAL_PLAYBOOK.md).
+
 ## Choose the smallest useful workflow first
 
 Identify whether the user wants an **audit without edits**, a **single-section rewrite**, a **validated figure/table**, or a **coordinated full-paper revision**. Use the matching primary Skill rather than loading all 13 indiscriminately. Common boundaries: **07 Figure** checks conceptual visual meaning; **11 Research Plot** handles quantitative data visualizations; **12 PPTX Visual** handles editable PowerPoint creation; **10 LaTeX Table** handles table source. **09 Consistency Validation** is review-only unless the user requests changes; **13 Cross-Section Revision** performs authorized linked revisions with an artifact manifest.
