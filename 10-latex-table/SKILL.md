@@ -21,6 +21,12 @@ description: Use when creating, fixing or reviewing LaTeX research tables with s
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) and [Figure Story](../07-figure/SKILL.md). Use this guide for manuscript tables, not for inventing experimental results.
 
+### Decision and failure test
+
+- Preserve the mapping of each reported value to row, column, condition, metric and uncertainty. A table with the same numbers in swapped rows is **not** lossless.
+- Do not invent significance markers or recompute statistics from rounded summary scores.
+- Cite externally sourced models, benchmarks and datasets in readable names, caption or mapped notes where appropriate; use the user's LaTeX citation package and venue policy.
+
 ## 1. Identify the question answered by the table
 State what the reader must compare (methods, groups, interventions, resource trade-offs, or uncertainty). Choose rows, columns, and panels to expose that contrast. Every column should serve a scientific purpose.
 
