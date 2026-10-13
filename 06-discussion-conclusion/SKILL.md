@@ -68,9 +68,9 @@ Relevant boundaries may include population and sampling, task and output space, 
 
 Only mention dimensions actually relevant to the central claim. Explain *how* a limitation affects interpretation, not just that it exists.
 
-## 5. Treat negative evidence explicitly
+## 5. Discuss material negative evidence without turning the conclusion into self-criticism
 
-Acknowledge important counterexamples and heterogeneous groups. Avoid replacing "one material failure occurred" with a misleading "almost always succeeds." Distinguish inconclusive, underpowered, mixed, and directly contrary results.
+Keep the main Discussion focused on the **strongest valid interpretation**. Distinguish inconclusive, underpowered, mixed and directly contrary results. Secondary unfavorable metrics or peripheral subgroup results can be documented in appendices or supplements rather than dominating the discussion, provided doing so does not distort the conclusion. When a negative result changes the central claim, summarize its direction and implication in the main text and point to its complete supplementary evidence. Avoid replacing "one material failure occurred" with "almost always succeeds" or using generic self-deprecating language in place of scope.
 
 A failure can motivate a new experiment; it cannot automatically establish its preferred causal explanation. Proposed future experiments must be presented as future work, not as already completed evidence.
 
