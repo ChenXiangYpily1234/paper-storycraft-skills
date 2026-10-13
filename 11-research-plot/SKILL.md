@@ -21,6 +21,12 @@ description: Use when producing or reviewing research plots from actual data, in
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) and [Figure Story](../07-figure/SKILL.md) first.
 
+### Decision and failure test
+
+- Ask for data or locate permitted actual data before drawing result curves; without it, only a clearly labeled schematic or code template is valid.
+- Match error bars to their *actual* estimand (SD, SE, CI, interval across seeds), and disclose aggregation or smoothing.
+- Never claim the image is reproducible without identifying the data source, transformations and plotting script.
+
 ## 1. State the scientific question before choosing the chart
 Choose a graph that reveals the needed comparison: paired points for paired experiments, distributions for heterogeneity, line plots for ordered or continuous progression, scatter for relationships, and heat maps only for justified two-dimensional comparisons.
 
