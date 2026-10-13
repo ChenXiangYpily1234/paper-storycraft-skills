@@ -2,9 +2,9 @@
 
 # Paper StoryCraft
 
-### Don't just polish sentences. Make your research understandable to reviewers.
+### Great research deserves a sharper scientific story.
 
-**13 composable STEM paper-writing and review Skills** · Questions · Methods · Evidence · Citations
+**13 evidence-first STEM writing & review Skills** · Clear contribution · Fair comparisons · Verified sources
 
 [![GitHub Stars](https://img.shields.io/github/stars/ChenXiangYpily1234/paper-storycraft-skills?style=social)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)
 [![Docs CI](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/actions/workflows/skill-quality.yml/badge.svg)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/actions/workflows/skill-quality.yml)
@@ -26,9 +26,9 @@ Paper StoryCraft gives AI assistants an actionable set of research-writing Skill
 
 ## What changes in a revision?
 
-Two short animations illustrate how the **argument structure** can change. They are teaching examples, not measured model improvements.
+Two **animated research maps** show how an argument becomes easier to follow. They illustrate a writing workflow, not measured improvements by an AI model.
 
-### ① Methods: from a module list to a motivated design
+### ① Research argument: from module lists to an evidence chain
 
 ![Animated example: the Methods section is reorganized around a problem, a design requirement, a concrete operation and a testable claim](assets/demo-argument-en.gif)
 
@@ -36,13 +36,13 @@ Two short animations illustrate how the **argument structure** can change. They 
 
 **Better approach:** Describe the **specific input or task difficulty**, derive a design requirement, explain each module's inputs, operations and outputs, and identify the experiment that could test the proposed mechanism. Do not merely expand each module into a longer paragraph.
 
-### ② Related Work: from citation dumping to meaningful comparisons
+### ② Related Work: from paper lists to a mechanism map
 
-![Animated example: Related Work is grouped by relevant methodological distinctions with citations attached to the named methods and supported claims](assets/demo-citation-en.gif)
+![Animated example: six hypothetical studies are grouped into mechanism families and compared by shared dimensions, with an open question marked for verification](assets/demo-related-work-en.gif)
 
 **Before:** “Several distillation approaches have been explored (many citations).”
 
-**Better approach:** Compare verified dimensions such as fixed versus student-generated data, learning objectives and information access. Cite a **verified primary source next to a named method** when appropriate; cite specific performance or limitation claims at the relevant statement. Attribute models, benchmarks and constituent datasets separately.
+**Better approach:** Group studies by distinctions relevant to the paper, then compare on **shared axes** (e.g., training-data source, objective, information access, evaluation protocol). Include the strongest prior counterexamples fairly. An open question is **not** automatically a verified gap. Method/model/benchmark/dataset attribution remains governed by [CITATION_GUIDE.md](CITATION_GUIDE.md).
 
 ### ③ Experiments: from score announcements to defensible claims
 
@@ -54,9 +54,13 @@ Two short animations illustrate how the **argument structure** can change. They 
 
 **Want to use this the next time you're revising a paper? [⭐ Star Paper StoryCraft](https://github.com/ChenXiangYpily1234/paper-storycraft-skills) and try the workflow below.**
 
+## Why not simply copy Nature-writing or anti-defensive rules?
+
+**Adapt the useful principles; reject unsafe shortcuts.** [nature-skills](https://github.com/Yuan1z0825/nature-skills) illustrates choosing guidance by section, paper type, language and venue; [anti-defensive-writing-Skill](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill) emphasizes foregrounding genuine contributions. Paper StoryCraft **does not hide negative results or impose a Nature template without checking the actual journal**. See the independent [EDITORIAL_PLAYBOOK.md](EDITORIAL_PLAYBOOK.md) for decision rules and explicit non-adoptions.
+
 ## Quick start
 
-**Option A — Use the guidance files directly.** Best for revising a specific passage without installing a Skill.
+**Option A — No install: use the files as guidance.** Give your manuscript excerpt and the linked documents to an assistant that can read the repository; clone locally only if direct GitHub access is unavailable.
 
 ~~~bash
 git clone https://github.com/ChenXiangYpily1234/paper-storycraft-skills.git
@@ -75,6 +79,7 @@ Verify sources for models, benchmarks and datasets separately.
 Use only literature I provide or you have independently checked.
 List unresolved sources; do not invent BibTeX.
 Preserve supported conclusions and existing valid citation keys.
+Never suppress a conflicting result merely to make the prose sound stronger.
 Return the revision and all remaining verification gaps.
 ~~~
 
@@ -143,7 +148,7 @@ An optional revision path is **09 diagnose → 02/03 position → 04/05 build ar
 - **Keep review separate from editing:** review-only requests do not authorize modifying source files; lossless LaTeX revisions require an artifact inventory.
 - **Separate what was checked:** internal textual consistency, successful PDF compilation and empirical reproducibility are different guarantees.
 
-Global principles: [PRINCIPLES.md](PRINCIPLES.md). Discipline-specific evidence: [STEM_GUIDE.md](STEM_GUIDE.md). Citation provenance: [CITATION_GUIDE.md](CITATION_GUIDE.md).
+Global principles: [PRINCIPLES.md](PRINCIPLES.md). Consult [STEM_GUIDE.md](STEM_GUIDE.md), [CITATION_GUIDE.md](CITATION_GUIDE.md), and the [EDITORIAL_PLAYBOOK.md](EDITORIAL_PLAYBOOK.md) only as the task requires.
 
 ## Scope and limits
 
