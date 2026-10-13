@@ -121,13 +121,15 @@ Maintain an entity–source ledger, reconcile in-text citations with real biblio
 
 **Lead with the strongest defensible contribution rather than self-undermining language.** Identify what the paper actually establishes and explain its importance using the real comparison or proof. Avoid a chronological lab diary when the reader needs design logic. Replace gratuitous apologies with precise scope statements, but never conceal a negative result, unfair comparison, failed control or limitation that changes the central conclusion. Post-hoc metric selection must not be disguised as a prespecified primary endpoint.
 
+**Strength-first result placement:** Prioritize the strongest genuinely supported findings in the main narrative. Secondary, exploratory, additional-metric, per-seed, and extensive robustness results—including unfavorable ones—**may be moved to an appendix or submitted supplement**, where the target venue permits and the move does not change the main paper's interpretation. If a negative outcome is a prespecified primary result, decisive fair-baseline disadvantage, failed claim-critical control, safety-relevant cost, or material contradiction, disclose its implication briefly in the main text; detailed tables can remain supplementary. Verify that the appendix is included and cross-referenced. Moving existing exhibits requires authorization and a preservation manifest; never change results or silently switch endpoints. See [EDITORIAL_PLAYBOOK.md](EDITORIAL_PLAYBOOK.md).
+
 **Journal style is conditional.** A request for "Nature-style" writing calls for accessible framing and reader-friendly explanations; it does not license imposing Nature-specific page limits, abstract structure or section conventions without checking the exact journal and article type. Choose the paper type, user language and section before opening specialist guidance; use [EDITORIAL_PLAYBOOK.md](EDITORIAL_PLAYBOOK.md) **only when editorial framing, paragraph flow or defensive rhetoric is part of the task**.
 
 ## 7. Use paragraph-level information dependencies
 
 Give each paragraph one main argumentative job. Where the next paragraph depends on a specific unresolved question or design requirement, make that connection explicit; **do not force every paragraph to end as a question or cliffhanger**. Results, definitions and section summaries may legitimately end with a resolved point. Transitions should remain logical even if words such as "however", "moreover", and "therefore" are removed.
 
-Preserve important negative results; remove redundant restatements, not necessary qualifications. A contribution list should summarize *what is new, what was actually done, and why it matters*, not repeat a results table.
+Preserve important negative results; remove redundant restatements, not necessary qualifications. Relevant secondary detail may be reported in linked appendices or supplements instead of receiving equal main-text emphasis. A contribution list should summarize *what is new, what was actually done, and why it matters*, not repeat a results table.
 
 ## 8. Make visuals part of the same argument
 
