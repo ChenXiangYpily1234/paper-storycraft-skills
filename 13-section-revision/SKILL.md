@@ -23,6 +23,12 @@ Read [PRINCIPLES.md](../PRINCIPLES.md) first. Then use [04 Method](../04-method/
 
 **Trigger:** a user requests changes to multiple connected paper sections, asks whether the writing is a "stack of formulas / experiments", or requires a full LaTeX rewrite **without deleting tables or figures**.
 
+### Decision and failure test
+
+- Inventory before rewriting: equation environments, citations, labels, table/figure content, caption text, numerical values and scientific qualifications.
+- Treat an exact count match as insufficient: changed values, swapped rows, missing caption sentences or different statistical scopes break the preservation contract.
+- New verified citations may be added with an explicit change log; do not hide unresolved references or claim successful LaTeX compilation when the build was not executed.
+
 ## 1. State the scientific argument, not the contents list
 
 Read the *latest* supplied manuscript rather than an older draft. For each section, build:
