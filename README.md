@@ -12,7 +12,7 @@
 
 **[⭐ Star 收藏项目](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)** · [看动态图](#改写前后有什么不同) · **[3 分钟上手](#3-分钟上手)** · [选择 Skill](#根据你的问题选择-skill) · [English](README_EN.md)
 
-<sub>如果这个项目能帮你下次少走论文修改的弯路，欢迎点右上角 ⭐ Star，方便以后找回来。</sub>
+
 
 </div>
 
@@ -52,7 +52,7 @@ Paper StoryCraft 提供一套可供 AI 助手读取、执行的科研写作 Skil
 
 > **这些 GIF 和文字均为示意，不代表真实论文实验、参考文献或模型能力评测。** 实际修改必须以你提供或核验过的资料为依据。
 
-**想在下次写 Introduction、Related Work 或 Experiments 时直接用？[⭐ 给 Paper StoryCraft 一个 Star](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)，再看下面的上手方法。**
+**想知道这套规范是否适合你的论文？** 直接用下一节的精简提示词试改一段，而不是只看示意图。
 
 ## 为什么不直接套用 Nature 或“反防御性写作”？
 
@@ -164,10 +164,6 @@ python scripts/check_skills.py
 仓库检查覆盖 Skill 命名/元数据、相对链接、核心指南及 README 入口等**静态约束**。示例场景见 [tests/skill-scenarios.md](tests/skill-scenarios.md)。静态检查不能替代真实模型输出评估、引用真实性核查、原始实验复现或最终 PDF 人工审查。
 
 可参考的设计思路包括 [Anthropic Skills](https://github.com/anthropics/skills)、[Superpowers](https://github.com/obra/superpowers)、[Academic Writing Skills](https://github.com/WenyuChiou/academic-writing-skills)；本项目针对科研论文的**主张—证据—范围**提出独立规则，并非上述项目的官方扩展或性能验证。
-
-## 关注更新与参与
-
-如果你也在写论文、做科研，觉得这套审查规则值得持续完善，欢迎 [**⭐ Star 本仓库**](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)。Star 能让你之后方便找到它；问题反馈和失败案例请通过 Issues 提交。
 
 ## 参与与许可
 
