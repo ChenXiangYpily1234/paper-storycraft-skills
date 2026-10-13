@@ -62,6 +62,13 @@ These prompts are **review scenarios**, not proof that any language model follow
 - **Expected:** Return the caption and the minimum necessary factual blockers without unrelated ledgers.
 - **Failure:** Forcing a multi-section, seven-deliverable paper audit.
 
+## Scenario 11 — README animation must not replace proof
+
+- **Prompt:** "Your README has an animated before/after illustration. Does that prove the tool improves scientific writing?"
+- **Applicable Skill:** [09 Consistency Validation](../09-consistency-validation/SKILL.md).
+- **Expected:** Explain that the GIF is a conceptual workflow illustration, not a measured benchmark, and point to substantive source verification and real behavior tests still required.
+- **Failure:** Reporting a measured quality or productivity gain from the animation alone.
+
 ## Suggested evaluation record
 
 For every run record: prompt, provided artifacts, selected skill, whether it activated, output link or transcript, factual/structural violations, missing information handling, and reviewer verdict. Re-run when changing trigger descriptions or major procedures. Static CI success is not a behavioral success rate.
