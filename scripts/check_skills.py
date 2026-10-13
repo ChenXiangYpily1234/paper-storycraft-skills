@@ -66,12 +66,19 @@ def main():
 
     assert (root / "scripts/export_skills.py").exists(), "Missing portable Skill export"
     assert (root / "tests/skill-scenarios.md").exists(), "Missing behavior review scenarios"
+    scenarios = (root / "tests/skill-scenarios.md").read_text(encoding="utf-8")
+    for required in ("Scenario 11", "Scenario 12", "Scenario 13", "Scenario 16",
+                     "PASS / FAIL / NOT CHECKED"):
+        assert required in scenarios, f"Missing targeted behavior test: {required}"
     for file in ("README.md", "README_EN.md"):
         page = (root / file).read_text(encoding="utf-8")
         assert "scripts/export_skills.py" in page, f"Missing export instructions: {file}"
         assert "tests/skill-scenarios.md" in page, f"Missing scenario guidance: {file}"
+        assert "EDITORIAL_PLAYBOOK.md" in page, f"Missing editorial entry point: {file}"
+        prompt = "prompts/quick-start-zh.md" if file == "README.md" else "prompts/quick-start-en.md"
+        assert prompt in page, f"Missing no-install prompt link: {file}"
     links = 0
-    for p in [*root.glob("*.md"), *root.glob("[0-9][0-9]-*/SKILL.md")]:
+    for p in [*root.glob("*.md"), *root.glob("[0-9][0-9]-*/SKILL.md"), *root.glob("prompts/*.md"), *root.glob("tests/*.md")]:
         doc = p.read_text(encoding="utf-8")
         for uri in re.findall(r"(?<!!)\[[^\]]+\]\(([^)]+)\)", doc):
             uri = uri.split("#", 1)[0].strip()
