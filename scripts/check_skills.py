@@ -46,7 +46,7 @@ def main():
 
     gif = (root / "assets/storycraft-demo.gif").read_bytes()
     assert gif.startswith((b"GIF87a", b"GIF89a")) and gif.endswith(b";"), "Invalid demo GIF signature/trailer"
-    assert gif.count(b"\\x21\\xf9\\x04") >= 2, "Demo GIF must contain multiple frames"
+    assert gif.count(bytes((0x21, 0xF9, 0x04))) >= 2, "Demo GIF must contain multiple frames"
     assert len(gif) < 200_000, "Demo GIF should remain lightweight"
     for file in ("README.md", "README_EN.md"):
         page = (root / file).read_text(encoding="utf-8")
