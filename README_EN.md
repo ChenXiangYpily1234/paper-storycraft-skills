@@ -12,7 +12,7 @@
 
 **[⭐ Star this repository](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)** · [Animated examples](#what-changes-in-a-revision) · **[Quick start](#quick-start)** · [Choose a Skill](#choose-a-skill) · [简体中文](README.md)
 
-<sub>If this could save time in your next paper revision, click ⭐ Star in the top-right corner to bookmark the project.</sub>
+
 
 </div>
 
@@ -52,7 +52,7 @@ Two **animated research maps** show how an argument becomes easier to follow. Th
 
 > **The GIFs and examples are illustrative**, not genuine experimental findings, verified references or behavioral benchmarks. Actual revisions depend on supplied or independently checked manuscript evidence.
 
-**Want to use this the next time you're revising a paper? [⭐ Star Paper StoryCraft](https://github.com/ChenXiangYpily1234/paper-storycraft-skills) and try the workflow below.**
+**Want to see whether the rules help your manuscript?** Try the copy-ready prompt on one real paragraph rather than relying on the illustration.
 
 ## Why not simply copy Nature-writing or anti-defensive rules?
 
@@ -169,10 +169,6 @@ python scripts/check_skills.py
 Checks cover **static contracts** such as Skill naming/frontmatter, links, shared documentation and README entry points. See [tests/skill-scenarios.md](tests/skill-scenarios.md) for realistic behavioral scenarios. Passing static checks is **not** evidence of model behavior quality, bibliographic accuracy, experimental reproducibility or rendered PDF correctness.
 
 Design references include [Anthropic Skills](https://github.com/anthropics/skills), [Superpowers](https://github.com/obra/superpowers), and [Academic Writing Skills](https://github.com/WenyuChiou/academic-writing-skills). This project is an independent set of research-writing rules, not an official extension or validated benchmark of those projects.
-
-## Follow updates
-
-If these research-writing checks would be useful in a future revision, [**⭐ Star the repository**](https://github.com/ChenXiangYpily1234/paper-storycraft-skills) to keep it handy. Concrete failures and suggestions are best shared in Issues.
 
 ## Contribute and license
 
