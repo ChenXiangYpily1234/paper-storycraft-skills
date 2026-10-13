@@ -35,6 +35,12 @@ flowchart TD
  Q -->|Yes| R["Human verification and submission"]
 ```
 
+## Choose the smallest useful workflow first
+
+Identify whether the user wants an **audit without edits**, a **single-section rewrite**, a **validated figure/table**, or a **coordinated full-paper revision**. Use the matching primary Skill rather than loading all 13 indiscriminately. Common boundaries: **07 Figure** checks conceptual visual meaning; **11 Research Plot** handles quantitative data visualizations; **12 PPTX Visual** handles editable PowerPoint creation; **10 LaTeX Table** handles table source. **09 Consistency Validation** is review-only unless the user requests changes; **13 Cross-Section Revision** performs authorized linked revisions with an artifact manifest.
+
+Keep outputs proportional to the request. A model cannot claim to have compiled a PDF, verified a citation or reproduced an experiment unless it actually performed that check. If the user supplies only text, respond with text and verification gaps rather than inventing unavailable output files.
+
 ## Step 1 — Independently diagnose the scientific argument
 
 Read the latest accessible manuscript, proofs or experimental records, measurement and calibration methods, simulations, bibliography, figures and evidence as relevant. Identify whether its contribution is mathematical, experimental, observational, numerical, engineering, empirical, or methodological.
