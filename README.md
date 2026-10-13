@@ -2,52 +2,57 @@
 
 # Paper StoryCraft
 
-### 你的科研有内容，论文却讲不清重点？
+### 不止润色句子，让审稿人看懂你的科研贡献。
 
-**把研究问题、方法设计、实验结果和参考文献，组织成审稿人能追踪的科学论证。**
+**13 个科研论文写作与审阅 Skills** · 从研究问题、方法逻辑到实验与引文核验
 
-13 个可组合的 STEM 论文 Skills · 不只是润色英文 · 不编造实验与引用
+[![GitHub Stars](https://img.shields.io/github/stars/ChenXiangYpily1234/paper-storycraft-skills?style=social)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)
+[![Docs CI](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/actions/workflows/skill-quality.yml/badge.svg)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/actions/workflows/skill-quality.yml)
+[![MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-[**⭐ Star 本项目**](https://github.com/ChenXiangYpily1234/paper-storycraft-skills) · [**⚡ 3 分钟试用**](#3-分钟上手) · [**🎬 看动态示例**](#改写前后有什么不同) · [English](README_EN.md)
+**[⭐ Star 收藏项目](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)** · [看动态图](#改写前后有什么不同) · **[3 分钟上手](#3-分钟上手)** · [选择 Skill](#根据你的问题选择-skill) · [English](README_EN.md)
 
-[![Skill documentation validation](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/actions/workflows/skill-quality.yml/badge.svg)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/actions/workflows/skill-quality.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+<sub>如果这个项目能帮你下次少走论文修改的弯路，欢迎点右上角 ⭐ Star，方便以后找回来。</sub>
 
 </div>
 
 ---
 
-**你的论文可能并不缺实验，而是缺少清晰的论证路径。** 模块堆得很多，却不知道为什么需要；Related Work 引用了几十篇，仍看不出差别；结果表格很满，却说不清哪条 claim 被真正验证。
+你可能做了完整的实验、设计了新方法，但论文读起来仍像**背景堆砌、模块清单、结果流水账**。读者最想知道的三件事反而没有得到回答：
 
-Paper StoryCraft 给 AI 助手一套可执行的**写作、重构与审查规则**：先查前提，再组织表达；让方法解释设计原因，让实验对应具体主张，让模型、benchmark、数据集都有可核验的出处。
+**为什么这个问题值得研究？为什么需要这样的方法？这些实验究竟支持什么结论？**
 
-**觉得有用？[点一个 Star](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)，以后写论文、改 rebuttal 或投稿前检查时可以直接找回来。**
+Paper StoryCraft 提供一套可供 AI 助手读取、执行的科研写作 Skill：**先梳理科学论证，再修改文字表达；既展示真实贡献，也保留证据边界。**
 
 ## 改写前后有什么不同？
 
-### 动图 ①：从“堆砌模块和结果”到“问题—设计—证据—边界”
+先看两个动图示例：它们展示的是**写作结构如何变化**，而不是某个模型经过评测后的成绩提升。
 
-![动态演示：左侧是空泛的模块描述和结论，右侧依次出现研究问题、方法设计、验证证据、适用边界四步](assets/demo-argument-zh.gif)
+### ① Methods：从「列模块」到「有原因的设计」
 
-**原稿的问题不是不够华丽，而是缺少验证链条。** 动图逐步展示四个必要信息槽；其中的方括号是**待真实研究填写的占位符**，不是实验结果。静态版：原句“我们提出 A、B、C，性能更好” → 修改时需解释“针对什么问题、为何需要 A→B→C、用什么对照验证、结论适用于哪里”。
+![中文动态图：论文 Methods 从模块堆砌改为研究问题、设计要求、方法操作和证据检验之间的连接](assets/demo-argument-zh.gif)
 
-### 动图 ②：方法、模型、数据集的引用应该放在哪里？
+**普通写法：** “We introduce modules A, B and C to improve robustness.”
 
-![动态演示：引用分别紧跟方法 A、模型 B、数据集 C 的名称，而非堆在整句话末尾](assets/demo-citation-zh.gif)
+**改写方向：** 解释**输入或任务的具体困难**，由此推导出设计要求；再说明每个模块的输入、操作、输出以及下一步如何使用；最后指出哪些实验能够检验核心设计。不是简单地把三个模块写成更长的三个段落。
 
-方法、模型和数据集可以在**首次有意义地提及时紧跟各自的文献**；如果报告具体性能结论，还需引用真正支持该结论的来源。示意中的“方法来源”等文字**不是实际参考文献**。完整标准见 [CITATION_GUIDE.md](CITATION_GUIDE.md)。
+### ② Related Work：从「引文堆砌」到「可比较的研究路线」
 
-### 它和普通语言润色的区别
+![中文动态图：Related Work 根据技术机制对研究分组，区分专名引用与具体证据引用](assets/demo-citation-zh.gif)
 
-| 你遇到的情况 | Paper StoryCraft 的处理方式 |
-| --- | --- |
-| “现有方法都存在明显局限”但没有证据 | 先核查最相关研究，再限定**能够验证的 gap**；不替你捏造创新点 |
-| Methods 逐个介绍 A、B、C，却没有逻辑 | 补齐**为什么需要 → 输入 → 操作 → 输出 → 下游用途** |
-| 实验写成“每张表都更好” | 对齐**claim → baseline → 数据/预算 → 指标 → 结果 → 替代解释** |
-| 引用集中在句末、漏掉 benchmark | 对方法、模型、benchmark、数据集分别溯源；找不到来源就标为待核实 |
+**普通写法：** “Several distillation approaches have been explored (many citations).”
 
-> **示例只演示写作结构，不宣称任何真实论文取得了这些效果。** 不提供数据或原文时，这套 Skill 也不能凭空证明新方法更优。
+**改写方向：** 根据真正影响研究问题的维度归类，如固定数据和学生生成数据、目标函数或信息访问条件；在**首次介绍已有方法时紧邻名称标注经核实的引用**，在陈述性能与局限性时引用对应证据。模型、benchmark 和数据集分别核对原始出处。
 
-**想马上试效果？** 跳到 [3 分钟上手](#3-分钟上手)，把自己的一个 Related Work 段落交给它。
+### ③ Experiments：从「成绩播报」到「有边界的结论」
+
+**普通写法：** “Our method significantly outperforms existing baselines.”
+
+**改写方向：** 在 **[实际数据集/版本]、[指标]、[公平比较条件]** 下，报告与 **[实际 baseline]** 的 **[真实差异及不确定性]**；明确它能支持什么结论、不能支持哪些未经测试的情形。
+
+> **这些 GIF 和文字均为示意，不代表真实论文实验、参考文献或模型能力评测。** 实际修改必须以你提供或核验过的资料为依据。
+
+**想在下次写 Introduction、Related Work 或 Experiments 时直接用？[⭐ 给 Paper StoryCraft 一个 Star](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)，再看下面的上手方法。**
 
 ## 3 分钟上手
 
