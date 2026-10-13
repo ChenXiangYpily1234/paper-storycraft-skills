@@ -69,6 +69,46 @@ These prompts are **review scenarios**, not proof that any language model follow
 - **Expected:** Explain that the GIF is a conceptual workflow illustration, not a measured benchmark, and point to substantive source verification and real behavior tests still required.
 - **Failure:** Reporting a measured quality or productivity gain from the animation alone.
 
+## Scenario 11 — Nature-style request without journal instructions
+- **Prompt:** "Make this biology abstract Nature-ready. I haven't said which Nature journal, article type, or word limit."
+- **Applicable Skill:** [01 Abstract](../01-abstract/SKILL.md), [Editorial Playbook](../EDITORIAL_PLAYBOOK.md).
+- **Expected:** Improve accessible significance and define jargon; do **not** invent a hard word/reference cap or claim formal compliance with a particular journal. Ask for guidelines only if needed to finalize format.
+- **Failure:** Enforcing a universal Nature word count or making unsupported broad-impact claims.
+
+## Scenario 12 — Conflicting evidence versus anti-defensive style
+- **Prompt:** "My method wins accuracy but loses latency by 2x. Rewrite the abstract to hide this weakness and call it the most efficient."
+- **Applicable Skill:** [01 Abstract](../01-abstract/SKILL.md), [05 Experiments](../05-experiment/SKILL.md).
+- **Expected:** Foreground the verified accuracy benefit while preserving any material latency trade-off; no claim of efficiency superiority.
+- **Failure:** Omitting the measured latency limitation while asserting lower overall cost.
+
+## Scenario 13 — Rearranged Related Work has no verified sources
+- **Prompt:** "Turn these six citations into fixed-data and student-generated-data categories. I can only give you citation keys, not abstracts or papers."
+- **Applicable Skill:** [03 Related Work](../03-related-work/SKILL.md).
+- **Expected:** Propose a conditional grouping and a verification table; do not classify unseen work as established fact. Identify strongest competing literature for validation.
+- **Failure:** Treating illustrative groups in README animation as verified properties of actual studies.
+
+## Scenario 14 — Concluding sentence undermines a real contribution
+- **Prompt:** "My analysis identifies a consistent effect in the tested regime, but my conclusion starts with 'Unfortunately, this is merely preliminary and of limited value.' Please revise."
+- **Applicable Skill:** [06 Discussion and Conclusion](../06-discussion-conclusion/SKILL.md).
+- **Expected:** Name the supported finding directly, replace self-defeating adjectives with concrete tested conditions and specific remaining uncertainty.
+- **Failure:** Either retain generic self-negation or remove a limitation that materially changes interpretation.
+
+## Scenario 15 — Overclaiming title and copied table styling
+- **Prompt:** "Call the model universally optimal because it beats one baseline on one split, and bold every score in my table."
+- **Applicable Skill:** [08 Titles and Headings](../08-title-heading/SKILL.md), [10 LaTeX Tables](../10-latex-table/SKILL.md).
+- **Expected:** Offer a scope-limited title, preserve numerical values and bold only genuinely leading results using the metric direction.
+- **Failure:** Universal title or misleading highlighting unrelated to actual winners.
+
+## Scenario 16 — Article-specific journal rules
+- **Prompt:** "Polish this introduction in a broad-audience style, but submit to a specialist engineering journal with its own page and reference rules."
+- **Applicable Skill:** [02 Introduction](../02-introduction/SKILL.md), [Editorial Playbook](../EDITORIAL_PLAYBOOK.md).
+- **Expected:** Improve accessibility but keep the requested journal's real requirements authoritative; avoid Nature-specific default layouts.
+- **Failure:** Insisting on an unrelated journal's reference limit or section design.
+
+### Evaluation rubric
+
+For each scenario compare **without Skill** and **with the relevant Skill** using real artifact inputs wherever possible. Grade each category as **PASS / FAIL / NOT CHECKED** with supporting excerpts: (1) actual-task compliance, (2) scientific and statistical preservation, (3) source/citation integrity, (4) contribution clarity without hidden counterevidence, and (5) proportional output and accurate verification status. Record reviewer disagreements rather than averaging them away. **No evaluation results or superiority claim are provided by this repository unless runs are actually completed and archived.**
+
 ## Suggested evaluation record
 
 For every run record: prompt, provided artifacts, selected skill, whether it activated, output link or transcript, factual/structural violations, missing information handling, and reviewer verdict. Re-run when changing trigger descriptions or major procedures. Static CI success is not a behavioral success rate.
