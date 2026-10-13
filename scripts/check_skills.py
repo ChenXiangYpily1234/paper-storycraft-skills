@@ -23,6 +23,20 @@ def main():
     for p in ["README.md", "README_EN.md", "WORKFLOW.md"]:
         doc = (root / p).read_text(encoding="utf-8")
         assert "13" in doc and "13-section-revision/SKILL.md" in doc, p
+    # Documentation-only regression gate; factual source verification still needs
+    # manuscript-level review and cannot be guaranteed by this static check.
+    guide = (root / "CITATION_GUIDE.md").read_text(encoding="utf-8")
+    for term in ("benchmark", "model", "dataset", "bibliography", "citation"):
+        assert term in guide.lower(), f"Citation guide missing required topic: {term}"
+    for rel in [
+        "PRINCIPLES.md", "WORKFLOW.md", "README.md", "README_EN.md",
+        "02-introduction/SKILL.md", "03-related-work/SKILL.md",
+        "04-method/SKILL.md", "05-experiment/SKILL.md",
+        "09-consistency-validation/SKILL.md", "13-section-revision/SKILL.md",
+    ]:
+        assert "CITATION_GUIDE.md" in (root / rel).read_text(encoding="utf-8"), \
+            f"Citation guide not referenced by {rel}"
+
     links = 0
     for p in [*root.glob("*.md"), *root.glob("[0-9][0-9]-*/SKILL.md")]:
         doc = p.read_text(encoding="utf-8")
