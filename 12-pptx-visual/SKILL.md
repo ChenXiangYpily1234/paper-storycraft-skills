@@ -21,6 +21,12 @@ description: Use when a researcher needs an editable PowerPoint diagram for a ve
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) and [Figure Story](../07-figure/SKILL.md). PowerPoint is an editing format—not permission to invent components, data, arrows, or results.
 
+## Section-specific editorial judgement
+
+**Editorial choice:** Visual hierarchy should make the scientific question and operations clearer, not embellish an unsupported argument. Differentiate data flow, control flow and hypothesized mechanisms. Highlighting a box must not imply that its causal importance was measured. State separately which shapes and links are verified, inferred or conceptual.
+
+Consult [EDITORIAL_PLAYBOOK.md](../EDITORIAL_PLAYBOOK.md) only for relevant editorial work; scientific and source-preservation rules in [PRINCIPLES.md](../PRINCIPLES.md) take priority.
+
 ### Decision and failure test
 
 - A static rendered image is **not** an editable PowerPoint diagram. Verify the deliverable is a real PPTX containing manipulable elements, if that is what the user requested.
