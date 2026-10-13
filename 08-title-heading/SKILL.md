@@ -7,8 +7,6 @@ description: Use when revising paper titles, subsection headings, figure/table t
 
 ## Execute this skill
 
-**Use for:** revising paper titles, subsection headings, figure/table titles or navigational structure to reflect the actual contribution and evidence.
-
 **Typical request:** “标题是不是承诺了文中没有验证的事情？”
 
 **Procedure**
@@ -20,8 +18,6 @@ description: Use when revising paper titles, subsection headings, figure/table t
 **Deliver:** Return 2–4 title alternatives when helpful, a preferred heading hierarchy and rationale tied to evidence.
 
 **Evidence boundary:** Do not add 'causal', 'optimal', 'general' or 'state-of-the-art' without direct support.
-
-**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Follow [PRINCIPLES.md](../PRINCIPLES.md). Titles and headings are navigation aids; they should clarify the paper's argument rather than exaggerate its novelty.
 
@@ -70,8 +66,6 @@ For each suggested title, explain the implicit claim and evidence needed to defe
 
 Check whether scanning titles reveals the actual question → method/proof → discriminating test → interpretation. Avoid headings that claim superiority, statistical equivalence, necessity or a formal proof when the corresponding section only supplies descriptive evidence. Use section names that reflect real scientific work, not software module names alone.
 
-## Required outputs
-
-Provide a title/heading diagnosis, several candidate titles when alternatives are useful, a consistent heading tree, caption wording if requested, and a scope/overclaim audit.
+## Acceptance check
 
 **Acceptance:** The heading hierarchy serves as an accurate mini-map of the paper, and each title promises no more than the content delivers.
