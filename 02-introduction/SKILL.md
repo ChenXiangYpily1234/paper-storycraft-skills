@@ -1,9 +1,27 @@
 ---
-name: introduction-story
-description: Restructure an Introduction so that background, genuine research gap, design requirement, method, evidence, and contributions follow a reviewer-comprehensible argument.
+name: 02-introduction
+description: Use when an Introduction has weak motivation, a vague research gap, abrupt contributions or poor paragraph flow. Revise the argument from known evidence to the actual question and contribution.
 ---
 
 # Introduction: From Problem to Evidence
+
+## Execute this skill
+
+**Use for:** an Introduction has weak motivation, a vague research gap, abrupt contributions or poor paragraph flow. Revise the argument from known evidence to the actual question and contribution.
+
+**Typical request:** “引言说不清研究问题，请按审稿人的阅读顺序重构。”
+
+**Procedure**
+
+1. Extract the actual problem, nearest alternative, demonstrated gap, method response and tested claim from available material.
+2. Reverse-outline each paragraph by its reader question; reorder or connect only when the evidence permits.
+3. Write a concrete transition to the method and contributions; attach sources where external methods or findings are named.
+
+**Deliver:** Return the revised Introduction (if requested), a before/after argument map and unresolved evidence or citation gaps.
+
+**Evidence boundary:** A research gap must be evidenced, not created by vague claims that existing work is inadequate.
+
+**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) before editing. Preserve scientific accuracy, verified citations, experimental boundaries, and canonical terms.
 
