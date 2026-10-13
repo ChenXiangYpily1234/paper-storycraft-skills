@@ -21,6 +21,12 @@ description: Use when an Introduction has weak motivation, a vague research gap,
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) before editing. Preserve scientific accuracy, verified citations, experimental boundaries, and canonical terms.
 
+### Decision and failure test
+
+- Start by separating a **verified gap**, a **plausible but untested gap**, and an **author's design preference**. Only the first can be stated as an established literature limitation.
+- If no closest relevant literature or evidence is available, return a gap-verification plan before asserting novelty.
+- Check the final contribution sentences against the actual method and results: do not promise causality, universality, or first-of-kind status based on one evaluation.
+
 ## Diagnose before revising
 Identify the existing paragraph functions, central question, claimed gap, closest alternatives, actual contribution, available proof or experiment, and unsupported leaps. Mark sentences that sound academic but convey no actionable information. Distinguish conceptual contribution from an implementation example used to test it.
 
