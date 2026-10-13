@@ -7,8 +7,6 @@ description: Use when an Introduction has weak motivation, a vague research gap,
 
 ## Execute this skill
 
-**Use for:** an Introduction has weak motivation, a vague research gap, abrupt contributions or poor paragraph flow. Revise the argument from known evidence to the actual question and contribution.
-
 **Typical request:** “引言说不清研究问题，请按审稿人的阅读顺序重构。”
 
 **Procedure**
@@ -20,8 +18,6 @@ description: Use when an Introduction has weak motivation, a vague research gap,
 **Deliver:** Return the revised Introduction (if requested), a before/after argument map and unresolved evidence or citation gaps.
 
 **Evidence boundary:** A research gap must be evidenced, not created by vague claims that existing work is inadequate.
-
-**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) before editing. Preserve scientific accuracy, verified citations, experimental boundaries, and canonical terms.
 
@@ -68,7 +64,6 @@ A first substantive mention of an external model, benchmark, dataset or prior me
 
 A useful STEM opening is **observed performance or phenomenon → tempting inference or limitation → why existing evidence does not settle it → direct research question**. Do not attribute an assumption to an entire field without evidence. Read each pair of adjacent paragraphs and check what question the first leaves and how the next answers it. Replace abstract noun chains with concrete questions. Define new models, datasets and technical terms at first use.
 
-## Deliverables and acceptance
-Return a story diagnosis, story spine, paragraph-by-paragraph plan, complete revised Introduction if requested, citation-support notes, and a change log. Preserve actual citation keys, quantitative values, LaTeX references, and limitations unless explicitly authorized to change them.
+## Acceptance check
 
 **Acceptance:** The reader understands the scientific question before unfamiliar jargon, and each next paragraph follows naturally from the previous one.
