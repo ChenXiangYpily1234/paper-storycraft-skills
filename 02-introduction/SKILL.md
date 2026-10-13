@@ -21,6 +21,12 @@ description: Use when an Introduction has weak motivation, a vague research gap,
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) before editing. Preserve scientific accuracy, verified citations, experimental boundaries, and canonical terms.
 
+## Section-specific editorial judgement
+
+**Editorial choice:** Use a verified nearest-work contrast, not generic "existing methods struggle" language. Distinguish an important unresolved question from an author's preference for a new architecture. State the contribution confidently after showing what motivates it; do not front-load self-criticism or claim that every preceding paper fails. For broad-audience venues, add accessible significance without masking the actual technical question.
+
+Consult the [Editorial Playbook](../EDITORIAL_PLAYBOOK.md) **only** when narrative focus, paragraph flow, Nature-style framing or defensive wording is relevant; keep scientific and source-preservation rules in [PRINCIPLES.md](../PRINCIPLES.md) higher priority.
+
 ### Decision and failure test
 
 - Start by separating a **verified gap**, a **plausible but untested gap**, and an **author's design preference**. Only the first can be stated as an established literature limitation.
