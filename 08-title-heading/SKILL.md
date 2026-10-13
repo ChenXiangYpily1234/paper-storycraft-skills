@@ -21,6 +21,12 @@ description: Use when revising paper titles, subsection headings, figure/table t
 
 Follow [PRINCIPLES.md](../PRINCIPLES.md). Titles and headings are navigation aids; they should clarify the paper's argument rather than exaggerate its novelty.
 
+### Decision and failure test
+
+- Test each suggested title against the actual main claim and evidence; reject titles implying proven mechanisms, generality or priority unsupported by the manuscript.
+- A heading should distinguish the function of the section, not promise a result before its evidence appears.
+- When changing terminology in headings, track dependent text, captions and internal references rather than editing a heading in isolation.
+
 ## 1. Write the paper title from the actual contribution
 
 Identify the scientific object, distinguishing contribution, and supported scope. Useful strategies vary by type:
