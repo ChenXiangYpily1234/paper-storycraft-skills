@@ -1,9 +1,27 @@
 ---
-name: abstract-story
-description: Build or revise research abstracts around a verifiable question, a specific gap, a contribution, evidence, and scoped conclusions without imposing a venue template.
+name: 01-abstract
+description: Use when drafting, rewriting or auditing a research paper abstract. Turn verified problem, method and results into a concise, evidence-bounded summary; do not invent outcomes.
 ---
 
 # Abstract Storytelling and Revision
+
+## Execute this skill
+
+**Use for:** drafting, rewriting or auditing a research paper abstract. Turn verified problem, method and results into a concise, evidence-bounded summary; do not invent outcomes.
+
+**Typical request:** “把这个摘要改得更有逻辑，但不要编造数字。”
+
+**Procedure**
+
+1. Ask for the research question, exact contribution, strongest available result, comparison and scope. If missing, write a bounded draft with clearly marked information gaps.
+2. Map each proposed sentence to its role: context/gap → approach → evidence → conclusion. Use only roles the paper can support.
+3. Compare numbers, settings and terminology with the paper; delete unfounded superlatives, not important qualifications.
+
+**Deliver:** Return a revised abstract (if requested), a short evidence/missing-input note, and any unsupported claim to resolve.
+
+**Evidence boundary:** If results are absent, offer an explicitly provisional abstract without made-up metrics.
+
+**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 **Global rule:** Read [PRINCIPLES.md](../PRINCIPLES.md) first. Apply its reviewer-first narrative, first-use definitions, terminology ledger, and claim–evidence–scope checks.
 
