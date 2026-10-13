@@ -1,9 +1,27 @@
 ---
-name: title-heading-story
-description: Revise paper titles, section headings, figure titles, and table captions to accurately signal research questions, contributions, and evidence boundaries.
+name: 08-title-heading
+description: Use when revising paper titles, subsection headings, figure/table titles or navigational structure to reflect the actual contribution and evidence.
 ---
 
 # Titles and Headings as a Narrative Map
+
+## Execute this skill
+
+**Use for:** revising paper titles, subsection headings, figure/table titles or navigational structure to reflect the actual contribution and evidence.
+
+**Typical request:** “标题是不是承诺了文中没有验证的事情？”
+
+**Procedure**
+
+1. Distill the studied object, distinct contribution, evaluation or theoretical scope into a plain claim.
+2. Propose compact titles and headings that convey content without overclaiming first/best/general.
+3. Check term consistency and ensure a title does not promise evidence absent from the manuscript.
+
+**Deliver:** Return 2–4 title alternatives when helpful, a preferred heading hierarchy and rationale tied to evidence.
+
+**Evidence boundary:** Do not add 'causal', 'optimal', 'general' or 'state-of-the-art' without direct support.
+
+**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Follow [PRINCIPLES.md](../PRINCIPLES.md). Titles and headings are navigation aids; they should clarify the paper's argument rather than exaggerate its novelty.
 
