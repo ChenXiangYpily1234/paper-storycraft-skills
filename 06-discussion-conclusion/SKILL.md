@@ -7,8 +7,6 @@ description: Use when Discussion, Limitations or Conclusion repeats results, ove
 
 ## Execute this skill
 
-**Use for:** Discussion, Limitations or Conclusion repeats results, overclaims mechanisms or fails to answer the paper's research question.
-
 **Typical request:** “结论夸大了泛化性，改成证据支持的表述。”
 
 **Procedure**
@@ -20,8 +18,6 @@ description: Use when Discussion, Limitations or Conclusion repeats results, ove
 **Deliver:** Return revised requested closing section, claim-scope alignment notes and unresolved limitations.
 
 **Evidence boundary:** Failure to find an effect is not proof that the effect is zero.
-
-**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md). This Skill produces an evidence-aligned narrative ending, not a second abstract or a place to quietly introduce unsupported contributions.
 
@@ -78,8 +74,6 @@ Verify that the conclusion's subject, comparison target, primary metric, stronge
 
 **Results:** report the supported observation and its boundaries. **Discussion:** interpret the evidence, rival explanations and scope (including proof assumptions or physical-validation limits). **Conclusion:** directly answer the opening question in concise scientific language. Do not repeat every figure result or describe weaker subgroup performance as inability to operate. A negative result marks the limits of the tested approach; it is not automatic proof that a particular mechanism is necessary.
 
-## Required outputs
-
-Provide an opening-to-ending claim mapping, Discussion and Conclusion revision plan, full revised text when requested, an evidence-strength audit, important limitations and alternative explanations, and unresolved verification items.
+## Acceptance check
 
 **Acceptance:** The conclusion answers the opening question in language a reviewer can defend using only the paper's actual evidence and declared assumptions.
