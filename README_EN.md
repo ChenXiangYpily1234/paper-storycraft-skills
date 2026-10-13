@@ -2,219 +2,140 @@
 
 # Paper StoryCraft
 
-### Help reviewers follow your research—not guess what you mean.
+### Turn a collection of research results into an argument reviewers can verify
 
-**13 open-source AI Skills · Research narratives · Terminology consistency · Figures & tables · Evidence checks**
+**13 composable writing and review Skills for STEM manuscripts** · Structure · Methods & evidence · Citations · Figures & tables
 
-[![GitHub Stars](https://img.shields.io/github/stars/ChenXiangYpily1234/paper-storycraft-skills?style=social)](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/stargazers)
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/Research_Skills-13-blue.svg)](#13-skills-one-coherent-workflow)
-[![Language](https://img.shields.io/badge/Core_Skills-English-informational.svg)](PRINCIPLES.md)
-
-[简体中文（默认）](README.md) · **English** · [Global principles](PRINCIPLES.md) · [STEM guide](STEM_GUIDE.md) · [Workflow](WORKFLOW.md)
-
-**[Quick start](#try-it-in-30-seconds) · [Before / after](#what-changes-a-concrete-example) · [Explore the Skills](#13-skills-one-coherent-workflow) · [⭐ Star this repo](https://github.com/ChenXiangYpily1234/paper-storycraft-skills)**
+[Quick start](#quick-start) · [Before & after](#what-changes-in-a-revision) · [Choose a Skill](#choose-a-skill) · [简体中文](README.md)
 
 </div>
 
 ---
 
-> **A paper is not a lab log—and editing is not only sentence polishing.**
->
-> A reviewer needs to understand **why the question matters, what prior evidence cannot establish, why your method is designed this way, and which conclusions the evidence actually supports.**
+> **This project will not invent research for you.** It helps an AI assistant explain existing work: where the question comes from, why the design is necessary, which evidence supports which claim, and where the conclusion stops applying.
 
-Does your manuscript have any of these problems?
+## What changes in a revision?
 
-- The Introduction contains plenty of background but no **precise question or defensible gap**.
-- The Method reads like a list of modules instead of an explanation of **why and how the system works**.
-- Abbreviations, symbols, and evaluation metrics appear **before being explained**, then change names.
-- Experiments and figures accumulate without mapping to **specific scientific claims**.
-- The Abstract, main text, captions, and Conclusion **disagree on terminology or evidence scope**.
+All examples below are **illustrative placeholders**, not verified research claims. Replace bracketed text with evidence from your manuscript.
 
-**Paper StoryCraft** is a collection of **13 Markdown-based research-writing Skills** that can guide an AI writing or coding assistant through scientific narrative diagnosis and revision. It does not generate new research or magically guarantee acceptance. Its purpose is to make an existing scientific argument **easier to follow, verify, and critique**.
-
-**One argument:** Context → question → demonstrated gap → design rationale → method or test → evidence → qualified conclusion.
-
-Focused on **STEM research**: mathematics, physics, chemistry, biology, earth/environmental science, materials, engineering, computing, numerical methods and technical interdisciplinary research. **Not a general humanities, legal or non-technical social-science writing guide.** No built-in venue, page-limit, or experiment-count assumptions. See [STEM Guide](STEM_GUIDE.md).
-
-## What changes? A concrete example
-
-The following examples are **illustrative**, not actual experimental findings.
-
-| Common draft | Reviewer-first revision |
+| Common draft | Intended revision |
 | --- | --- |
-| “We propose MAF and achieve significant improvements.” | “Because input sources may differ in reliability, fixed fusion weights may not suit every example. We therefore use **multi-stage adaptive fusion (MAF)**: the procedure estimates the reliability of each input source and uses the estimates to adjust fusion weights. Its effect must be tested in controlled comparisons.” |
-| “Experiments prove our method is better.” | State the **actual data, metric, comparator, uncertainty, and resource budget** before interpreting what the evidence establishes. |
-| “Router” in a diagram, “Controller” in the text, “Policy” in a table. | Use one **canonical term** if these refer to the same concept; otherwise explain the real difference at first use. |
+| “Existing methods have significant limitations. We propose Method A.” | “Previous [closest method] addresses [verified task], but has not evaluated [specific question] under [documented condition]. To test that question, we design [actual operation].” |
+| “We introduce modules A, B, and C.” | “To meet [design requirement], A performs [operation], B consumes its output to address [specific need], and C produces [final output]. Define inputs, outputs, and notation at first use.” |
+| “Our approach significantly outperforms baselines.” | “On [dataset/version] under [metric] and [matched budget], the observed difference from [baseline] is [verified result and uncertainty]. This does not establish behavior under [untested shift].” |
+| “We use Model X and Benchmark Y.” | “Attach verified sources to **Model X (model source)**, **Benchmark Y (benchmark source)**, and **Dataset Z (dataset source)** at first relevant use; attach citations for performance claims to those particular claims.” |
 
-**The aim is clarity and defensible framing—not bigger claims.**
+The goal is not longer prose. It is prose in which statements have clear jobs: **definition, reasoning, evidence, or qualification**.
 
-## Try it in 30 seconds
+## Quick start
 
-There is **no extra program required to read the guides**. If your assistant can access repository files, point it to the relevant Markdown. Otherwise, download or clone the repository and supply the files as context.
+**Option A — Use the guidance files directly.** Best for revising a specific passage without installing a Skill.
 
-**1. Get the repository**
-
-```bash
+~~~bash
 git clone https://github.com/ChenXiangYpily1234/paper-storycraft-skills.git
 cd paper-storycraft-skills
-```
+~~~
 
-**2. Copy this prompt for a diagnostic pass**
+Provide your manuscript excerpt and the following prompt to an AI assistant **that can actually read local files or repository URLs**:
 
-```text
-Read paper-storycraft-skills/PRINCIPLES.md,
-paper-storycraft-skills/WORKFLOW.md, and
-paper-storycraft-skills/09-consistency-validation/SKILL.md.
+~~~text
+Read PRINCIPLES.md, CITATION_GUIDE.md and 03-related-work/SKILL.md.
+Rewrite my Related Work by grouping verified literature by research question
+and technical mechanism instead of listing papers in chronological order.
+Compare actual objectives, training data and evaluation conditions.
+Cite methods next to their names when that best conveys attribution.
+Verify sources for models, benchmarks and datasets separately.
+Use only literature I provide or you have independently checked.
+List unresolved sources; do not invent BibTeX.
+Preserve supported conclusions and existing valid citation keys.
+Return the revision and all remaining verification gaps.
+~~~
 
-Review the manuscript and evidence I provide:
-1. State the actual research question, contribution, and supported conclusion.
-2. Identify logical jumps, unsupported research gaps, and broken transitions.
-3. Flag technical terms, symbols, and acronyms not explained near first use.
-4. Create a canonical terminology ledger including figures and captions.
-5. Map major claims to evidence, assumptions, and alternative explanations.
-6. Provide location-specific P0/P1/P2/PASS findings.
+**Option B — Export a Skill collection** for a compatible agent that scans Skill folders:
 
-Diagnose before rewriting. Do not invent references, experiments,
-numbers, results, or novelty.
-```
+~~~bash
+python scripts/export_skills.py --output ./my-agent-skills
+~~~
 
-**3. Apply the relevant Skill**
+The script copies the 13 Skill directories **and their shared guides**, keeping cross-file links intact. Configure the output as a Skill search directory **according to your particular agent's documentation**. It does not install anything into accounts or change agent settings. For one-off writing help, Option A avoids the problems of copying a single SKILL.md without its dependencies.
 
-For example, revise only the Introduction:
+### Copyable requests
 
-```text
-Read paper-storycraft-skills/PRINCIPLES.md and
-paper-storycraft-skills/02-introduction/SKILL.md.
-Revise the Introduction so its question, gap, method motivation,
-and evidence form a logical sequence. Explain unfamiliar terms at
-first use and preserve actual results, citations, and limitations.
-```
+~~~text
+# Audit only — don't rewrite
+Read PRINCIPLES.md and 09-consistency-validation/SKILL.md.
+Audit the paper's research gap, claim–evidence links, citations,
+fairness of comparisons, and consistency. Give section locations and
+P0/P1/P2 priorities. Mark unavailable checks NOT CHECKED.
+~~~
 
-> These are **Markdown guides, not a universally auto-installing plugin**. Your assistant must be able to read their contents. The core guides are in English, but revised manuscript text should retain the manuscript's original language unless translation is requested.
+~~~text
+# Experiments
+Read 05-experiment/SKILL.md. For each experiment, identify the research
+question, comparator, metric, key observation and rival explanations.
+Retain actual numbers, uncertainty and limitations; don't narrate tables cell by cell.
+~~~
 
-## Skills workflow diagram
+~~~text
+# Lossless cross-section edit
+Read 13-section-revision/SKILL.md. Rewrite Methods and Experiments as one
+scientific argument while preserving every LaTeX table, figure path,
+caption, label, equation, citation key and result. Inventory what changed
+and separate source/PDF/raw-experiment verification statuses.
+~~~
 
-Choose the applicable **proof, experiment, observation, simulation, or engineering validation** route. This is a dependency map, not a required chapter sequence. Figure tools are optional.
+## Choose a Skill
 
-```mermaid
-flowchart TD
- A["Manuscript, question and primary evidence"] --> B["PRINCIPLES + STEM_GUIDE"]
- B --> C["09 · Initial claims and terminology audit"]
- C --> D["02 · Introduction + 03 · Related work"]
- D --> E["04 · Method, research design or proof"]
- E --> F{"Evidence route?"}
- F -->|Experiments, observations, simulations| G["05 · Experiments and findings"]
- F -->|Theory and mathematical proof| H["Theorems, derivations and examples; 05 optional"]
- G --> I["06 · Discussion and conclusion"]
- H --> I
- I --> J["01 · Abstract + 08 · Titles"]
- E -.optional figures.-> K["07 · Figures"]
- G -.optional figures.-> K
- K --> L{"Output form?"}
- L --> M["10 · LaTeX tables"]
- L --> N["11 · Research plots"]
- L --> O["12 · Editable PPTX figures"]
- J --> P["09 · Final consistency audit"]
- M --> P
- N --> P
- O --> P
- P --> Q{"Issues resolved?"}
- Q -->|No: revise| D
- Q -->|Yes| R["Human verification and submission"]
-```
+**Do not activate all 13 for every task.** Pick the nearest entry point. Combine only where the work genuinely spans sections.
 
-See [WORKFLOW.md](WORKFLOW.md) and [STEM_GUIDE.md](STEM_GUIDE.md).
-
-## 13 Skills, one coherent workflow
-
-| Area | Skill | What it addresses |
-| --- | --- | --- |
-| Narrative | [01 Abstract](01-abstract/SKILL.md) | Concise, evidence-aligned research story |
-| Narrative | [02 Introduction](02-introduction/SKILL.md) | Concrete problem, justified gap, and motivation |
-| Narrative | [03 Related Work](03-related-work/SKILL.md) | Fair closest-work comparison, not citation dumping |
-| Narrative | [04 Method](04-method/SKILL.md) | Definitions, rationale, formulas, real data flow |
-| Narrative | [05 Experiments](05-experiment/SKILL.md) | Claim-led comparisons, controls, valid interpretation |
-| Narrative | [06 Discussion & Conclusion](06-discussion-conclusion/SKILL.md) | Meaning, competing explanations, and boundaries |
-| Visuals | [07 Figures](07-figure/SKILL.md) | Diagrams that advance a scientific argument |
-| Structure | [08 Titles & Headings](08-title-heading/SKILL.md) | Accurate reader navigation |
-| Audit | [09 Consistency Validation](09-consistency-validation/SKILL.md) | Claims, citations, statistics, terminology |
-| Tables | [10 LaTeX Tables](10-latex-table/SKILL.md) | Readable, statistically faithful evidence tables |
-| Plots | [11 Research Plotting](11-research-plot/SKILL.md) | Reproducible figures from verified data |
-| Diagrams | [12 Editable PPTX Visuals](12-pptx-visual/SKILL.md) | Editable visuals aligned with the manuscript |
-| Revision | [13 Cross-Section Revision](13-section-revision/SKILL.md) | Connect formalism and experiments without dropping existing LaTeX evidence |
-
-### One global standard
-
-[**PRINCIPLES.md**](PRINCIPLES.md) governs the 13 Skills:
-
-1. **Reviewer-first:** explain the problem before the unfamiliar terminology.
-2. **First-use definitions:** describe every new term, acronym, metric, and symbol in the same or immediately adjacent sentence.
-3. **Canonical vocabulary:** use consistent names across title, abstract, text, equations, figures, tables, and appendices.
-4. **Evidence-bound claims:** link claims to direct evidence, explicit assumptions, and meaningful alternative explanations.
-5. **Strong but honest framing:** highlight genuine contributions without hiding material negative results.
-
-## Citation placement and reference integrity
-
-The new [**Citation Guide**](CITATION_GUIDE.md) requires verified attribution for external **models, benchmarks, datasets, and methods**. A citation may sit directly after the entity name—for example, “DistillM (Ko et al., 2024)” illustrates author–year placement—rather than being forced to the end of a sentence. Verify the actual bibliographic record before use, and distinguish benchmark sources from underlying datasets. The guide covers existing BibTeX keys, bibliography inclusion, unsupported claims, and rendered reference-list checks.
-
-## New: lossless cross-section rewriting
-
-Use [13 Cross-Section Revision](13-section-revision/SKILL.md) if several middle sections read like disconnected formulas and experiments. The Skill maps **research question → formal criterion → method → direct test → diagnostic evidence → boundary** (as supported by the actual study), then revises transitions and subsection roles.
-
-Every central equation needs a scientific purpose and downstream use. Each table or image needs one main evidence role. Do not confuse benchmark accuracy, paired statistical claims, ablations and robustness; a substitute's success is not automatically a causal claim about the original model.
-
-**Copyable prompt:**
-
-```text
-Read PRINCIPLES.md, 04-method/SKILL.md, 05-experiment/SKILL.md,
-09-consistency-validation/SKILL.md and 13-section-revision/SKILL.md.
-Rewrite adjacent sections into a question-driven argument.
-Preserve every existing table, figure, equation, caption, label,
-numeric result and citation. Return replacement LaTeX plus a
-preservation inventory and NOT CHECKED items (logs, PDF, etc.).
-Do not invent evidence or overstate causal or statistical conclusions.
-```
-
-
-## Where should I start?
-
-| You are facing… | Start here |
+| Problem | Skill |
 | --- | --- |
-| A readable but disconnected manuscript | [Global principles](PRINCIPLES.md) + [Introduction](02-introduction/SKILL.md) |
-| Method details hide the actual innovation | [Method](04-method/SKILL.md) + [Headings](08-title-heading/SKILL.md) |
-| Results do not test the headline claim | [Experiments](05-experiment/SKILL.md) + [Validation](09-consistency-validation/SKILL.md) |
-| Attractive figures that fail to explain the work | [Figures](07-figure/SKILL.md) + [Plotting](11-research-plot/SKILL.md) |
-| A full paper needing a reviewer-style audit | [Consistency Validation](09-consistency-validation/SKILL.md) |
+| Abstract is generic or oversells results | [01 · Abstract](01-abstract/SKILL.md) |
+| Introduction never reaches a precise question | [02 · Introduction](02-introduction/SKILL.md) |
+| Related Work is a bibliography in prose | [03 · Related Work](03-related-work/SKILL.md) |
+| Methods lists modules and formulas without rationale | [04 · Method](04-method/SKILL.md) |
+| Experiments fail to link claims, controls and metrics | [05 · Experiments](05-experiment/SKILL.md) |
+| Discussion repeats results; conclusion exceeds evidence | [06 · Discussion & Conclusion](06-discussion-conclusion/SKILL.md) |
+| Scientific diagram or caption is unclear or misleading | [07 · Figures](07-figure/SKILL.md) |
+| Titles and headings promise the wrong contribution | [08 · Titles & Headings](08-title-heading/SKILL.md) |
+| Paper needs a submission-readiness integrity audit | [09 · Consistency Audit](09-consistency-validation/SKILL.md) |
+| LaTeX table needs accurate scientific formatting | [10 · LaTeX Tables](10-latex-table/SKILL.md) |
+| Chart needs authentic data and reproducible source | [11 · Research Plots](11-research-plot/SKILL.md) |
+| Diagram must be editable in PowerPoint | [12 · Editable PPTX Diagrams](12-pptx-visual/SKILL.md) |
+| Adjacent sections need a coordinated lossless rewrite | [13 · Cross-Section Revision](13-section-revision/SKILL.md) |
 
-Typical sequence: **Diagnose → Introduction/Related Work → Method → Experiments/visuals → Abstract/title → Discussion/Conclusion → final independent audit.** Adapt it to the paper type; see [WORKFLOW.md](WORKFLOW.md).
+An optional revision path is **09 diagnose → 02/03 position → 04/05 build argument → 06 interpret → 01 refresh abstract → 09 verify**. This is an example dependency, **not a mandated section order**. See [WORKFLOW.md](WORKFLOW.md).
 
-Useful outputs to request include a narrative map, claim–evidence–scope ledger, canonical terminology ledger, revised sections, reviewer questions, and P0/P1/P2/PASS findings. Never mark an unperformed verification as PASS.
+## Beyond ordinary proofreading
 
-## Found this useful? Consider starring the repository
+- **Verify the premise before polishing:** reject unsupported claims rather than giving them more confident wording.
+- **Explain and cite named entities near first use:** methods, models, benchmarks and datasets have distinct provenance. Citations do not have to sit at sentence endings; see [CITATION_GUIDE.md](CITATION_GUIDE.md).
+- **Treat experiments as inference:** check matched protocols, statistical units, uncertainty and alternatives.
+- **Keep review separate from editing:** review-only requests do not authorize modifying source files; lossless LaTeX revisions require an artifact inventory.
+- **Separate what was checked:** internal textual consistency, successful PDF compilation and empirical reproducibility are different guarantees.
 
-A **Star** makes it easier to find the project later and helps other researchers discover these research-writing guides.
+Global principles: [PRINCIPLES.md](PRINCIPLES.md). Discipline-specific evidence: [STEM_GUIDE.md](STEM_GUIDE.md). Citation provenance: [CITATION_GUIDE.md](CITATION_GUIDE.md).
 
-[**⭐ Star Paper StoryCraft**](https://github.com/ChenXiangYpily1234/paper-storycraft-skills) · [Suggest an improvement](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/issues)
+## Scope and limits
 
-Issues and contributions are welcome—especially domain-specific pitfalls, reproducible formatting problems, and new evidence-aware writing checks. Share public examples only; please do not post confidential manuscripts or private data.
+Designed for mathematics, computer science, engineering, physical and life sciences, materials, earth/environmental science and other STEM work. Choose proof, experiment, observation, simulation or system validation standards as appropriate. **No default venue, page limit, section count or experiment count is imposed.**
 
-## Related project and acknowledgement
+This is a collection of **Markdown Skills and workflows**, not a hosted literature search, experimental platform or LaTeX service. Whether an assistant can load Skills, search scholarly sources, edit source files, render plots or create an editable PPTX depends on its own tools and permissions. Missing source papers, BibTeX, experiment logs or compilation assets must be reported as unverified.
 
-[**anti-defensive-writing-en**](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill/blob/main/skills/anti-defensive-writing-en/SKILL.md), from [Adkid-Zephyr/anti-defensive-writing-Skill](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill), is a complementary reference for emphasizing real strengths without turning the manuscript into a chronological lab report. Paper StoryCraft is independent and additionally insists on disclosing material negative evidence and limitations. Upstream content is not copied here. See [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md).
+## Development and validation
 
-## Scope and license
+~~~bash
+python scripts/check_skills.py
+~~~
 
-These guides do not replace actual experiments, source verification, human peer review, or rendered PDF inspection. Placeholder examples are not scientific results; plotting and table tools require verified underlying data. Proprietary PPTX tools are not included.
+Checks cover **static contracts** such as Skill naming/frontmatter, links, shared documentation and README entry points. See [tests/skill-scenarios.md](tests/skill-scenarios.md) for realistic behavioral scenarios. Passing static checks is **not** evidence of model behavior quality, bibliographic accuracy, experimental reproducibility or rendered PDF correctness.
 
-Original repository content is licensed under the **[MIT License](LICENSE)** (Copyright © 2026 ChenXiangYpily1234). Linked third-party projects retain their own licenses.
+Design references include [Anthropic Skills](https://github.com/anthropics/skills), [Superpowers](https://github.com/obra/superpowers), and [Academic Writing Skills](https://github.com/WenyuChiou/academic-writing-skills). This project is an independent set of research-writing rules, not an official extension or validated benchmark of those projects.
 
----
+## Contribute and license
 
-<div align="center">
+Report incorrect rules, vague procedures and reproducible failure cases via [Issues](https://github.com/ChenXiangYpily1234/paper-storycraft-skills/issues). Do not publish unpublished or confidential research material without permission.
 
-**Make your research understandable. Make every claim defensible.**
+Released under the [MIT License](LICENSE). Independent project acknowledgements: [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md).
 
-[中文 README](README.md) · [Global principles](PRINCIPLES.md) · [Workflow](WORKFLOW.md)
-
-</div>
+**Rewrite the argument, not the facts.**
