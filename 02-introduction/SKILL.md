@@ -36,6 +36,8 @@ Attach citations to exact supported propositions. Do not cite prior literature a
 
 Use meaningful numerical evidence, not all seed-level scores. Keep failure cases visible when they change the main conclusion; move secondary qualifications to the appropriate Results or Limitations section rather than hiding them.
 
+A first substantive mention of an external model, benchmark, dataset or prior method should receive a verified primary-source citation at the name or attached factual claim, even in motivating examples. Cite separate sources when a benchmark and its constituent dataset differ. Do not constrain placement to the sentence end; follow [CITATION_GUIDE.md](../CITATION_GUIDE.md).
+
 ## Revision workflow
 1. Write the central research question in ordinary language.
 2. Map existing paragraphs to their narrative functions; flag duplicates, missing prerequisites, and overly early terminology.
