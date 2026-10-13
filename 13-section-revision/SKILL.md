@@ -1,9 +1,27 @@
 ---
-name: section-argument-revision
-description: Revise adjacent STEM manuscript sections into a question-driven scientific argument while preserving supplied LaTeX formulas, figures, tables, citations, values, and claims.
+name: 13-section-revision
+description: Use for coordinated rewrites across adjacent manuscript sections while preserving existing LaTeX, figures, tables, equations, labels, citations and empirical claims.
 ---
 
 # Cross-Section Revision: From Formula and Experiment Stacks to an Argument
+
+## Execute this skill
+
+**Use for:** coordinated rewrites across adjacent manuscript sections while preserving existing LaTeX, figures, tables, equations, labels, citations and empirical claims.
+
+**Typical request:** “重写第 3–5 节，保留所有表格、公式和 label。”
+
+**Procedure**
+
+1. Inventory immutable source artifacts and create a before-change manifest.
+2. Rebuild section-to-section argument dependencies without silently rewriting protected data or citing invented work.
+3. Produce the revised sections and mechanically compare protected items, then check claim/figure/paragraph linkages.
+
+**Deliver:** Return revised sections, an artifact change manifest and separate source/PDF/results verification statuses.
+
+**Evidence boundary:** If a genuine scientific contradiction appears, flag it for author decision rather than 'fixing' an experiment.
+
+**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. For a narrow task, return only the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and [CITATION_GUIDE.md](../CITATION_GUIDE.md) for externally sourced claims.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) first. Then use [04 Method](../04-method/SKILL.md), [05 Experiment](../05-experiment/SKILL.md), and [09 Consistency Validation](../09-consistency-validation/SKILL.md) as needed. This skill coordinates existing skills; it does not replace their domain-specific checks.
 
