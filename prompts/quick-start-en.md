@@ -13,8 +13,11 @@ Protected material: [numbers / tables / formulas / figures / LaTeX labels / cita
 Identify the research question, real contribution, direct evidence and scope.
 Group related work by scientific distinctions, not author chronology. Motivate each
 method decision and make experimental comparisons fair and informative.
-Foreground supported strengths without needlessly defensive language, but do not
-conceal material negative findings or methodological limits.
+Foreground supported strengths without needless self-criticism. With authorization
+and within venue rules, place secondary unfavorable results and expanded analyses
+in appendices or submitted supplements. Retain full values and links. Briefly
+disclose in the main text any contrary result or limitation that changes the
+headline conclusion; do not conceal primary outcomes or switch endpoints.
 Verify methods, models, benchmarks and datasets separately. Cite near the named
 entity or claim; do not force all citations to sentence endings.
 
