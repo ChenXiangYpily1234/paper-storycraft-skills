@@ -21,6 +21,12 @@ description: Use when producing or reviewing research plots from actual data, in
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) and [Figure Story](../07-figure/SKILL.md) first.
 
+## Section-specific editorial judgement
+
+**Editorial choice:** A polished figure should clarify a legitimate pattern, not inflate the apparent effect. Avoid manipulated scales, cherry-picked examples, smoothed-away failures or unlabeled uncertainty. Prefer distributions, intervals and trade-off plots where averages hide important variability. Apply the target venue's format only after checking its actual requirements.
+
+Consult [EDITORIAL_PLAYBOOK.md](../EDITORIAL_PLAYBOOK.md) only for relevant editorial work; scientific and source-preservation rules in [PRINCIPLES.md](../PRINCIPLES.md) take priority.
+
 ### Decision and failure test
 
 - Ask for data or locate permitted actual data before drawing result curves; without it, only a clearly labeled schematic or code template is valid.
