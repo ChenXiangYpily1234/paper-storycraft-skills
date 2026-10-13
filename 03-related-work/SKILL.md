@@ -10,6 +10,12 @@ Follow [PRINCIPLES.md](../PRINCIPLES.md), especially evidence precision, termino
 ## Purpose and source discipline
 The goal is to explain **what is known, which important differences remain, and precisely where this paper fits**. Gather genuine bibliographic records and read primary sources where possible. Do not invent papers, methods, limitations, publication years, or citation keys. Label unverified bibliographic claims.
 
+## Citation placement and source coverage
+
+Apply [CITATION_GUIDE.md](../CITATION_GUIDE.md). Cite a prior method **next to its first named mention** when that clearly attributes the method, e.g., “DistillM (Ko et al., 2024)” in an author–year style; a citation does **not** need to be at a sentence's end. Use author-led citations where the researcher's contribution is the focus, and claim-adjacent citations for reported results or limitations. Check the example's actual bibliography before reusing it: it illustrates placement, not independently verified metadata.
+
+Build an entity–source ledger for every named prior method, model, benchmark and dataset, including variants and citations in comparison tables. Verify that the work introducing a method is not confused with a paper that merely evaluates or extends it. Do not substitute an easy-to-find survey for a verifiable primary source when attributing the original method; flag missing sources rather than improvising references.
+
 ## Organize by question and mechanism, not just chronology
 Useful grouping axes include task definition, available information, modeling or algorithmic principle, supervision, evaluation target, assumptions, computational cost, and deployment constraints. A group must lead to a clear point of comparison; "traditional versus recent" is often too vague.
 
