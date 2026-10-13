@@ -31,6 +31,20 @@ Examples below are **fictional phrasing demonstrations**, not evidence or citati
 | "We first tried A, then failed with B, then built C." | "To address [verified requirement], the final design uses C to [operation]." Preserve development failures if scientifically consequential. |
 | "No previous study addresses this." | "In the surveyed [precisely defined] setting, [specific unanswered comparison] remains to be tested." Verify the search before claiming this. |
 
+## C. Place negative results by decision relevance, not by their sign
+
+The main paper should foreground the **strongest defensible contribution**, without giving every ancillary unfavorable result equal narrative prominence. Unfavorable findings may be presented in **appendices or submitted supplementary materials** when they are secondary, exploratory, per-seed, additional-metric, peripheral-subgroup or extended robustness results, and moving them does not mislead readers of the main paper.
+
+| Evidence type | Appropriate placement | What the main paper must communicate |
+| --- | --- | --- |
+| Prespecified primary outcome, decisive comparison to a strong baseline, failed claim-critical control, material safety or cost trade-off, result contradicting the headline claim | **Main text for direction, magnitude where material, and interpretation**; extended tables may move to supplement | State the finding accurately and point to full supporting results |
+| Additional baselines, per-seed values, secondary metrics, exploratory subgroups, extensive sensitivity tests with no material change to the headline conclusion | **Appendix/supplement generally appropriate** | Keep the evidence accessible, label exploratory analyses, and add a precise main-text cross-reference where needed |
+| Redundant implementation chronology not material to validity | May shorten or omit subject to reporting requirements | Never imply the omitted work was never performed if its existence matters |
+
+**Writing pattern (placeholders, not results):** “We observe [verified primary result] under [setting]. [Material trade-off or limitation] qualifies this result; further per-seed and subgroup analyses are reported in Appendix [X].”
+
+**Safeguards:** Never move or omit a primary/prespecified outcome, key contradictory baseline, safety-relevant disadvantage, or essential negative control in a way that obscures a consequential limitation. Do not quietly change a primary endpoint after seeing results, omit mandated reporting, or cite an appendix that is absent from the actual submission. Check venue policies. When the source-preservation contract is in force, propose relocations first and move only after authorization; retain all values, captions, keys and labels with corrected cross-references.
+
 ## C. Paragraphs should move the argument
 
 Before rewriting a section, note its **one-sentence purpose** and each paragraph's **function** (context, distinction, technical reason, evidence, interpretation, limitation). One paragraph may legitimately contain background plus contrast; do not mechanically enforce exactly one rhetorical label.
@@ -58,7 +72,7 @@ For a **verified Nature-family submission**, foreground why a broader scientific
 
 - **Contribution:** clear and neither diminished nor inflated?
 - **Source:** each externally sourced method/model/benchmark/dataset properly attributed and matched to supported claims?
-- **Counterevidence:** substantive contrary results, study limitations, and strong fair baselines retained?
+- **Counterevidence:** claim-changing unfavorable outcomes disclosed in the main text, with optional detailed secondary evidence in accessible and correctly referenced appendices/supplements?
 - **Flow:** do paragraphs actually form a causal or logical dependency where claimed?
 - **Artifact:** protected numbers, equations, figures, citations and labels preserved as requested?
 - **Status:** explicitly say what was inspected, changed, and **NOT CHECKED**. Static Markdown CI cannot certify good writing or accurate citations.
@@ -68,7 +82,7 @@ For a **verified Nature-family submission**, foreground why a broader scientific
 These independent projects informed **general design ideas**, not copied text or bundled upstream files:
 
 - [nature-skills / nature-writing](https://github.com/Yuan1z0825/nature-skills/tree/main/skills/nature-writing): select paper type, section, language and venue; load task-relevant guidance and inspect paragraph flow. **Not adopted:** universal Nature formatting, hard-coded word counts or unconditional writing formulas.
-- [anti-defensive-writing-Skill](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill): expose the real contribution and avoid a chronological experiment diary or needless self-deprecation. **Not adopted:** concealing material negative evidence or changing metrics silently to manufacture a win.
+- [anti-defensive-writing-Skill](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill): expose the real contribution and avoid a chronological experiment diary or needless self-deprecation. **Adapted carefully:** secondary unfavorable detail may move to an appendix or supplement, but material counterevidence must remain clear in the main text; no concealed outcome or silent metric switch.
 - [Anthropic Skills](https://github.com/anthropics/skills): clear triggering instructions, optional resources and behavior-oriented tests. **Not claimed:** compatibility with every agent or empirically established writing-quality gains.
 
 Always respect each upstream project's separate license; the above are attribution links, not imports.
