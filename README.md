@@ -60,6 +60,10 @@ Paper StoryCraft 提供一套可供 AI 助手读取、执行的科研写作 Skil
 
 ## 3 分钟上手
 
+**最快方式：直接复制 [中文精简提示词](prompts/quick-start-zh.md)**，连同你的一段论文和已有证据交给 AI 助手。无需安装，先验证这套写作约束是否适合你的论文；英文版见 [English prompt](prompts/quick-start-en.md)。
+
+
+
 **方式 A：免安装，给现有 AI 助手一个明确任务。** 将论文片段与三个相关文档交给能读取本仓库链接的助手；如果助手不能直接读 GitHub，可先克隆到本地。
 
 ~~~bash
