@@ -7,8 +7,6 @@ description: Use when planning, editing or reviewing scientific figures, archite
 
 ## Execute this skill
 
-**Use for:** planning, editing or reviewing scientific figures, architecture diagrams, workflows or explanatory captions for a manuscript.
-
 **Typical request:** “框架图看起来很好但没有说明数据如何流动。”
 
 **Procedure**
@@ -20,8 +18,6 @@ description: Use when planning, editing or reviewing scientific figures, archite
 **Deliver:** Return figure specification or revision instructions, caption draft and a visual-data consistency checklist.
 
 **Evidence boundary:** Do not invent data, structural connections or quantitative labels to improve appearance.
-
-**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md). Coordinate with [Research Plotting](../11-research-plot/SKILL.md) for quantitative plots and [Editable PPTX Visuals](../12-pptx-visual/SKILL.md) for conceptual diagrams.
 
@@ -87,8 +83,6 @@ Check exported and **embedded** renderings at actual publication size: labels, m
 
 Use system architecture, apparatus, workflow, proof-dependency, solver or experiment-design diagrams only when they explain something prose does not. If the Introduction already contains a useful overview, prioritize improving its shared-input → distinct method branch → result flow before creating a second figure. Arrows must correctly distinguish data flow, control flow and causal evidence. The repository's Skills flowchart is available in [WORKFLOW.md](../WORKFLOW.md).
 
-## Required outputs
-
-Provide figure purpose, a content/layout plan, element-to-term map, caption draft, scientific/visual risk list, and created editable/rendered files only if actually produced. Clearly label any visual inspection or export step not performed.
+## Acceptance check
 
 **Acceptance:** A reviewer can answer what the figure is about, what each key arrow/curve means, and what the visual supports—without supplying missing definitions from imagination.
