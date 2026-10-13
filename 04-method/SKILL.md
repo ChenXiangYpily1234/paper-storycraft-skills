@@ -1,9 +1,27 @@
 ---
-name: method-story
-description: Explain formal definitions, design rationale, computations, interfaces, and reproducibility in a method section through a coherent, reviewer-followable data or reasoning flow.
+name: 04-method
+description: Use when a Methods section presents unexplained modules, symbols, formulas or pipelines. Turn the actual scientific design into a reproducible problem-to-operation explanation.
 ---
 
 # Method: Explain Why, Then How
+
+## Execute this skill
+
+**Use for:** a Methods section presents unexplained modules, symbols, formulas or pipelines. Turn the actual scientific design into a reproducible problem-to-operation explanation.
+
+**Typical request:** “Methods 里公式很多但看不出设计原因，重写。”
+
+**Procedure**
+
+1. Inventory inputs, outputs, assumptions, internal states, algorithm stages and equations from the real source.
+2. Trace each core step as why needed → inputs → operation → outputs → downstream use, with symbols defined before use.
+3. Verify that notation, data/control flow, pseudocode and diagram agree; separate novel design from inherited components.
+
+**Deliver:** Return revised method text (if requested), a formula/operation dependency map and reproducibility blockers.
+
+**Evidence boundary:** Do not infer missing architecture, training details or theorem conditions from a diagram alone.
+
+**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) first. Use this Skill for STEM methods, including algorithms, proofs, lab protocols, numerical models, engineering systems and multi-stage pipelines. The objective is **technical reproducibility with conceptual comprehension**, not a list of code modules.
 
