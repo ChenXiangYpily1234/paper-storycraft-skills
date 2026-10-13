@@ -1,5 +1,10 @@
 # Acknowledgements and Related Work
 
+## Additional research-writing inspiration
+
+- [Yuan1z0825/nature-skills](https://github.com/Yuan1z0825/nature-skills), particularly its [nature-writing router](https://github.com/Yuan1z0825/nature-skills/tree/main/skills/nature-writing), illustrates selective loading by section, paper type, language and journal. The independent Paper StoryCraft editorial playbook adapts the **idea of task-specific routing**, not any upstream implementation or journal-format guarantee.
+- [anthropics/skills](https://github.com/anthropics/skills) illustrates scoped Skill descriptions, progressive disclosure and qualitative evaluation. Documentation inspiration is not a claim of official affiliation or validated performance.
+
 ## Related academic-writing Skill
 
 The following project is recommended as **complementary reading**, not included as a dependency, vendored Skill, or copy:
