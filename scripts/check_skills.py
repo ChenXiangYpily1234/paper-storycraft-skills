@@ -47,16 +47,22 @@ def main():
     # Both language READMEs show reproducible, small animated examples.
     for lang, page_name in (("zh", "README.md"), ("en", "README_EN.md")):
         page = (root / page_name).read_text(encoding="utf-8")
-        for topic in ("argument", "citation"):
+        for topic in ("argument", "related-work"):
             image_path = f"assets/demo-{topic}-{lang}.gif"
             image = (root / image_path).read_bytes()
             assert image.startswith((b"GIF87a", b"GIF89a")) and image.endswith(b";"), image_path
             assert image.count(bytes((0x21, 0xF9, 0x04))) >= 3, image_path
             assert len(image) < 300_000, f"README animation too large: {image_path}"
             assert image_path in page, f"README missing animated example: {image_path}"
+    # Shared editorial guidance is exported and linked from every Skill.
+    editorial = (root / "EDITORIAL_PLAYBOOK.md").read_text(encoding="utf-8")
+    assert "negative results" in editorial.lower() and "nature" in editorial.lower()
+    exported = (root / "scripts/export_skills.py").read_text(encoding="utf-8")
+    assert '"EDITORIAL_PLAYBOOK.md"' in exported
     for path in files:
         body = path.read_text(encoding="utf-8")
         assert "### Decision and failure test" in body, f"Missing skill-specific failure gate: {path}"
+        assert "EDITORIAL_PLAYBOOK.md" in body, f"Missing editorial routing: {path}"
 
     assert (root / "scripts/export_skills.py").exists(), "Missing portable Skill export"
     assert (root / "tests/skill-scenarios.md").exists(), "Missing behavior review scenarios"
