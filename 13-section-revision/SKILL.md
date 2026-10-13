@@ -30,6 +30,8 @@ Before rewriting, inventory every relevant `table`, `table*`, `figure`, `figure*
 
 **Experiment provenance matters:** the same method name, metric and rounded mean do not demonstrate that two reports use identical runs. Record run IDs/seeds, pairing and candidate pools where known. Distinguish an unresolved mismatch from a verified contradiction.
 
+**Citation correction exception:** preserving existing citations does not excuse missing provenance for imported models, benchmarks, datasets or prior methods. Apply [CITATION_GUIDE.md](../CITATION_GUIDE.md): retain valid existing citations/keys, add **verified** missing attributions adjacent to entity names or supported claims, and record additions/relocations in the preservation manifest. If the source cannot be verified, list a specific missing citation instead of inventing a reference or silently altering the bibliography.
+
 ## 3. Give formulas a narrative purpose
 
 For **each central formula**, provide:
