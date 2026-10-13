@@ -21,6 +21,12 @@ description: Use when designing, rewriting or auditing experiments, results or b
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) first. Use for empirical, numerical and engineering evidence sections in STEM; it is optional for proof-only papers.
 
+### Decision and failure test
+
+- Separate results obtained by this paper from values copied from earlier work; identify run provenance before assuming same-budget comparisons.
+- For each superiority claim, name the comparator, metric, dataset/split, tuning and compute assumptions, statistical unit and uncertainty available. If those are missing, report descriptive observations only.
+- A missing or non-significant result is not automatically proof of equivalence, mechanism necessity or failed generalization.
+
 ## 1. Start from claims, not datasets
 
 Build an evidence matrix **before** reorganizing figures:
