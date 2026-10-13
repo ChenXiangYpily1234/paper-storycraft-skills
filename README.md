@@ -56,7 +56,7 @@ Paper StoryCraft 提供一套可供 AI 助手读取、执行的科研写作 Skil
 
 ## 为什么不直接套用 Nature 或“反防御性写作”？
 
-**借鉴思路，不机械照搬。** 我们参考 [nature-skills](https://github.com/Yuan1z0825/nature-skills) 的按章节、论文类型、语言与期刊选择写作指导，以及 [anti-defensive-writing-Skill](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill) 的优势优先写法；但**不会把对比失利的结果藏起来，也不会把 Nature 模板强加给任意期刊**。真正的原则是：准确指出研究贡献，保留改变结论的反证，遵守具体投稿规范。可执行细则见 [EDITORIAL_PLAYBOOK.md](EDITORIAL_PLAYBOOK.md)。
+**优势优先，但不掩盖关键反证。** 借鉴 [nature-skills](https://github.com/Yuan1z0825/nature-skills) 的按论文类型选择指导，以及 [anti-defensive-writing-Skill](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill) 的贡献优先叙事。**正文集中展示核心贡献；非核心的不利指标、额外对照、探索性分析和详细随机种子结果可放附录/补充材料。** 若主要指标失败、关键对照不利或成本代价会影响结论，正文仍需简要说明并指向完整数据。不得为了显得更强而偷偷换指标或遗漏规定必须报告的结果。具体分类见 [EDITORIAL_PLAYBOOK.md](EDITORIAL_PLAYBOOK.md)。
 
 ## 3 分钟上手
 
@@ -80,7 +80,7 @@ cd paper-storycraft-skills
 不要机械地把所有文献放句末。模型、benchmark、数据集分别核验来源。
 只使用我提供或你确实核实过的文献；缺失来源列清单，不得编造 BibTeX。
 保留原始科学结论与已有引用键，输出修改稿和仍需核查的部分。
-不必因为语言不够“自信”就隐藏不利结果。
+突出最有证据的贡献；如经授权，可将非核心的不利结果详细数据放入附录/补充材料。主要结论依赖的反例与代价必须在正文交代。
 ~~~
 
 **方式 B：把 13 个目录导出为可扫描的 Skills 集合**，适合支持 Agent Skills 文件夹加载的工具：
