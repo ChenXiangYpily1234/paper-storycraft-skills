@@ -56,7 +56,7 @@ Two **animated research maps** show how an argument becomes easier to follow. Th
 
 ## Why not simply copy Nature-writing or anti-defensive rules?
 
-**Adapt the useful principles; reject unsafe shortcuts.** [nature-skills](https://github.com/Yuan1z0825/nature-skills) illustrates choosing guidance by section, paper type, language and venue; [anti-defensive-writing-Skill](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill) emphasizes foregrounding genuine contributions. Paper StoryCraft **does not hide negative results or impose a Nature template without checking the actual journal**. See the independent [EDITORIAL_PLAYBOOK.md](EDITORIAL_PLAYBOOK.md) for decision rules and explicit non-adoptions.
+**Strength first, with accountable supplementary evidence.** Inspired by [nature-skills](https://github.com/Yuan1z0825/nature-skills) and [anti-defensive-writing-Skill](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill), Paper StoryCraft keeps the main text centered on what the evidence establishes. **Secondary unfavorable metrics, extra baselines, exploratory analyses and detailed seed results may live in appendices or submitted supplements** rather than dominating the narrative. Results that change the headline conclusion must still be disclosed briefly in the main paper and linked to the full evidence. Never conceal a primary endpoint or silently switch metrics. See [EDITORIAL_PLAYBOOK.md](EDITORIAL_PLAYBOOK.md).
 
 ## Quick start
 
@@ -83,7 +83,7 @@ Verify sources for models, benchmarks and datasets separately.
 Use only literature I provide or you have independently checked.
 List unresolved sources; do not invent BibTeX.
 Preserve supported conclusions and existing valid citation keys.
-Never suppress a conflicting result merely to make the prose sound stronger.
+Prioritize the strongest verified contribution; secondary unfavorable detail can be placed in authorized supplements, while claim-changing counterevidence remains disclosed in the main text.
 Return the revision and all remaining verification gaps.
 ~~~
 
