@@ -21,6 +21,12 @@ description: Use when writing or revising Related Work, literature positioning o
 
 Follow [PRINCIPLES.md](../PRINCIPLES.md), especially evidence precision, terminology, and reviewer-first dependencies.
 
+## Section-specific editorial judgement
+
+**Editorial choice:** Replace one-paper-per-sentence listings with mechanism-based comparisons using *the same meaningful axis* (data source, supervision, objective, information access, cost or evaluation). Describe predecessors' real achievements before identifying the precise remaining distinction. Test against the strongest prior counterexample; do not call every method "limited" merely to strengthen the author's novelty. Where citations are unverified, leave attribution unresolved rather than inventing a contrast.
+
+Consult the [Editorial Playbook](../EDITORIAL_PLAYBOOK.md) **only** when narrative focus, paragraph flow, Nature-style framing or defensive wording is relevant; keep scientific and source-preservation rules in [PRINCIPLES.md](../PRINCIPLES.md) higher priority.
+
 ### Decision and failure test
 
 - When citations are supplied without papers or abstracts, classify comparisons as **source-unverified** instead of inventing the methods' objectives or disadvantages.
