@@ -21,6 +21,12 @@ description: Use when revising paper titles, subsection headings, figure/table t
 
 Follow [PRINCIPLES.md](../PRINCIPLES.md). Titles and headings are navigation aids; they should clarify the paper's argument rather than exaggerate its novelty.
 
+## Section-specific editorial judgement
+
+**Editorial choice:** Prefer a precise and memorable result or problem descriptor over hype words such as "Revolutionary" or "Universal". A broad-audience title should be understandable without a glossary, but must not hide the actual research object. Section headings should describe meaningful questions or evidentiary roles, not simply rebrand every subsection as an advantage. Check alignment with abstract and main results.
+
+Consult the [Editorial Playbook](../EDITORIAL_PLAYBOOK.md) **only** when narrative focus, paragraph flow, Nature-style framing or defensive wording is relevant; keep scientific and source-preservation rules in [PRINCIPLES.md](../PRINCIPLES.md) higher priority.
+
 ### Decision and failure test
 
 - Test each suggested title against the actual main claim and evidence; reject titles implying proven mechanisms, generality or priority unsupported by the manuscript.
