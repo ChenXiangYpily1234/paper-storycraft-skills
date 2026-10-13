@@ -113,7 +113,7 @@ Maintain an entity–source ledger, reconcile in-text citations with real biblio
 
 ## 7. Use paragraph-level information dependencies
 
-Give each paragraph one main argumentative job. End a paragraph with a concrete unresolved question or requirement, and begin the next with the corresponding answer or design step. Transitions should remain logical even if words such as "however", "moreover", and "therefore" are removed.
+Give each paragraph one main argumentative job. Where the next paragraph depends on a specific unresolved question or design requirement, make that connection explicit; **do not force every paragraph to end as a question or cliffhanger**. Results, definitions and section summaries may legitimately end with a resolved point. Transitions should remain logical even if words such as "however", "moreover", and "therefore" are removed.
 
 Preserve important negative results; remove redundant restatements, not necessary qualifications. A contribution list should summarize *what is new, what was actually done, and why it matters*, not repeat a results table.
 
@@ -151,7 +151,7 @@ Read the final manuscript **in its actual order**, with no privileged knowledge 
 
 ## 11. Standard deliverables
 
-Unless the user narrows the task, provide:
+For a **full-paper diagnostic or substantial rewrite**, provide the applicable materials below. For a narrow request (such as one paragraph, a citation audit, or a caption), return only the relevant checks and revised material; do not force all seven deliverables or invent unavailable verification artifacts:
 
 1. A one-paragraph narrative diagnosis and an explicit argument map.
 2. The claim–evidence–scope ledger.
