@@ -1,0 +1,38 @@
+name: Render README GIF demos
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/render_readme_demos.py'
+      - '.github/workflows/render-readme-demos.yml'
+permissions:
+  contents: write
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install rendering dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk fontconfig
+          python -m pip install "Pillow>=10,<13"
+      - name: Generate animated examples
+        run: python scripts/render_readme_demos.py
+      - name: Commit generated GIFs if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/demo-argument-zh.gif assets/demo-argument-en.gif assets/demo-citation-zh.gif assets/demo-citation-en.gif
+          if git diff --cached --quiet; then
+            echo "Animations already match source script"
+          else
+            git commit -m "docs: render lightweight animated README examples"
+            git push origin HEAD:main
+          fi
