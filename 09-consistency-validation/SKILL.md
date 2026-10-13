@@ -21,6 +21,12 @@ description: Use for independent full-paper or pre-submission audits of claims, 
 
 Read [PRINCIPLES.md](../PRINCIPLES.md). This is an **independent audit**, not a cosmetic language polish. Do not accept "already fixed" without checking the actual latest artifact.
 
+### Decision and failure test
+
+- This Skill is **review-only by default**. Do not rewrite manuscript source or change files unless the user explicitly authorizes edits.
+- Classify each finding as **confirmed in supplied artifacts**, **plausible risk requiring verification**, or **not checked**. Never upgrade a keyword-search hit to a scientific error without inspecting context.
+- An absent PDF, bibliography database or experiment log limits the audit: explicitly distinguish source/text checks from rendered-layout and empirical-reproducibility checks.
+
 ## 1. Evidence and artifacts
 
 Read the latest available manuscript and, where supplied, LaTeX source, bibliography, compiled PDF, figures, tables, supplementary materials, statistical protocol, and underlying results.
