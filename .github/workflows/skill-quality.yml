@@ -12,3 +12,4 @@ jobs:
         with:
           python-version: '3.11'
       - run: python scripts/check_skills.py
+      - run: python scripts/export_skills.py --output "${{ runner.temp }}/storycraft-skills-test"
