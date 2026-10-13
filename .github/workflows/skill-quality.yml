@@ -12,4 +12,17 @@ jobs:
         with:
           python-version: '3.11'
       - run: python scripts/check_skills.py
+      - name: Validate animated README GIF
+        run: |
+          python -m pip install 'Pillow>=10,<12'
+          python - <<'PY'
+          from PIL import Image
+          path = 'assets/storycraft-demo.gif'
+          with Image.open(path) as im:
+              assert im.n_frames >= 4, f'Expected a multi-step animation: {im.n_frames}'
+              for i in range(im.n_frames):
+                  im.seek(i)
+                  im.load()
+          print('PASS: README GIF decodes across all frames')
+          PY
       - run: python scripts/export_skills.py --output "${{ runner.temp }}/storycraft-skills-test"
