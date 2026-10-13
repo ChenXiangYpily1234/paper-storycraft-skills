@@ -44,6 +44,17 @@ def main():
         assert "CITATION_GUIDE.md" in (root / rel).read_text(encoding="utf-8"), \
             f"Citation guide not referenced by {rel}"
 
+    gif = (root / "assets/storycraft-demo.gif").read_bytes()
+    assert gif.startswith((b"GIF87a", b"GIF89a")) and gif.endswith(b";"), "Invalid demo GIF signature/trailer"
+    assert gif.count(b"\\x21\\xf9\\x04") >= 2, "Demo GIF must contain multiple frames"
+    assert len(gif) < 200_000, "Demo GIF should remain lightweight"
+    for file in ("README.md", "README_EN.md"):
+        page = (root / file).read_text(encoding="utf-8")
+        assert "assets/storycraft-demo.gif" in page, f"Demo GIF not documented in {file}"
+    for path in files:
+        body = path.read_text(encoding="utf-8")
+        assert "### Decision and failure test" in body, f"Missing skill-specific failure gate: {path}"
+
     assert (root / "scripts/export_skills.py").exists(), "Missing portable Skill export"
     assert (root / "tests/skill-scenarios.md").exists(), "Missing behavior review scenarios"
     for file in ("README.md", "README_EN.md"):
