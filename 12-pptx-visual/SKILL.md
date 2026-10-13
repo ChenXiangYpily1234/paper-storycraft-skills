@@ -1,9 +1,27 @@
 ---
-name: pptx-paper-figure-story
-description: Design and revise editable PowerPoint research diagrams with reviewer-first visual semantics, consistent scientific terms, and evidence-bound claims.
+name: 12-pptx-visual
+description: Use when a researcher needs an editable PowerPoint diagram for a verified pipeline, conceptual mechanism, experiment setup or paper figure.
 ---
 
 # Editable Research Diagrams with PPTX
+
+## Execute this skill
+
+**Use for:** a researcher needs an editable PowerPoint diagram for a verified pipeline, conceptual mechanism, experiment setup or paper figure.
+
+**Typical request:** “把算法结构图做成可编辑的 PPTX。”
+
+**Procedure**
+
+1. Identify verified entities and relationships and decide whether an editable diagram answers a useful question.
+2. Choose slide dimensions, shapes, labels and arrows that express the actual data/control/causal semantics.
+3. Check readability in final size, editability, captions and consistency with manuscript terminology.
+
+**Deliver:** Return editable PPTX only when creation tools are available; otherwise provide an implementable layout specification and NOT CREATED status.
+
+**Evidence boundary:** Do not claim an editable file was built merely from a static rendering.
+
+**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. For a narrow task, return only the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and [CITATION_GUIDE.md](../CITATION_GUIDE.md) for externally sourced claims.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) and [Figure Story](../07-figure/SKILL.md). PowerPoint is an editing format—not permission to invent components, data, arrows, or results.
 
