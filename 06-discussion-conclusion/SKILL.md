@@ -21,6 +21,12 @@ description: Use when Discussion, Limitations or Conclusion repeats results, ove
 
 Read [PRINCIPLES.md](../PRINCIPLES.md). This Skill produces an evidence-aligned narrative ending, not a second abstract or a place to quietly introduce unsupported contributions.
 
+### Decision and failure test
+
+- Discussion may propose competing explanations but must distinguish interpretations from directly measured results.
+- Limitations must be **specific to the study** (sample, task, protocol, regime or identification); do not automatically append generic caveats.
+- The conclusion must answer the opening research question under the tested conditions, not introduce a new guarantee or repeat every result.
+
 ## 1. Derive the ending from the opening question
 
 List the question and contributions promised in the Introduction. For each one, find its direct proof, analysis, or experimental evidence, plus material counterexamples. If there is a mismatch, revise either the promise or conclusion; do not paper over it with confident wording.
