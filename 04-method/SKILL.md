@@ -7,8 +7,6 @@ description: Use when a Methods section presents unexplained modules, symbols, f
 
 ## Execute this skill
 
-**Use for:** a Methods section presents unexplained modules, symbols, formulas or pipelines. Turn the actual scientific design into a reproducible problem-to-operation explanation.
-
 **Typical request:** “Methods 里公式很多但看不出设计原因，重写。”
 
 **Procedure**
@@ -20,8 +18,6 @@ description: Use when a Methods section presents unexplained modules, symbols, f
 **Deliver:** Return revised method text (if requested), a formula/operation dependency map and reproducibility blockers.
 
 **Evidence boundary:** Do not infer missing architecture, training details or theorem conditions from a diagram alone.
-
-**Scope control:** If the user requests diagnosis only, do not rewrite the manuscript. If the request covers only one paragraph, table, figure or subsection, return the relevant artifact and blockers rather than a full-paper report. Follow [PRINCIPLES.md](../PRINCIPLES.md) and use [CITATION_GUIDE.md](../CITATION_GUIDE.md) where external sources are involved.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) first. Use this Skill for STEM methods, including algorithms, proofs, lab protocols, numerical models, engineering systems and multi-stage pipelines. The objective is **technical reproducibility with conceptual comprehension**, not a list of code modules.
 
@@ -144,8 +140,6 @@ Choose only sections justified by the actual study.
 
 For each equation state its purpose, domain, summation range, units and edge cases. For a framework figure, distinguish shared inputs, alternative branches and actual control flow; do not add a redundant architecture graphic if the overview already does the job.
 
-## Required outputs
-
-Provide (1) problem/design/data-flow map, (2) symbol and definition ledger, (3) section/paragraph reordering plan, (4) revised Method when requested, (5) unverified assumptions and reproducibility gaps, and (6) connections to experiments that would discriminate the main claims.
+## Acceptance check
 
 **Acceptance:** A technically trained reviewer can follow one example input through the described computation or reasoning and independently identify the actual innovation, formal assumptions, and evidence requirements.
