@@ -21,6 +21,12 @@ description: Use when creating, fixing or reviewing LaTeX research tables with s
 
 Read [PRINCIPLES.md](../PRINCIPLES.md) and [Figure Story](../07-figure/SKILL.md). Use this guide for manuscript tables, not for inventing experimental results.
 
+## Section-specific editorial judgement
+
+**Editorial choice:** A table should make the real comparison immediately visible, including meaningful adverse results and costs. Boldface/best-in-column formatting must follow the stated metric direction and actual values; don't hide unfavorable baselines. Prioritize grouping by question and fairness of evaluation before shrinking fonts. Check that captions independently explain conditions and provenance.
+
+Consult the [Editorial Playbook](../EDITORIAL_PLAYBOOK.md) **only** when narrative focus, paragraph flow, Nature-style framing or defensive wording is relevant; keep scientific and source-preservation rules in [PRINCIPLES.md](../PRINCIPLES.md) higher priority.
+
 ### Decision and failure test
 
 - Preserve the mapping of each reported value to row, column, condition, metric and uncertainty. A table with the same numbers in swapped rows is **not** lossless.
