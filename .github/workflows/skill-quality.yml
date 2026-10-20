@@ -11,27 +11,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python -m unittest discover -s tests -p 'test_*.py' -v
       - run: python scripts/check_skills.py
-      - name: Validate bilingual README GIFs and static PNGs
-        run: |
-          python -m pip install 'Pillow>=10,<13'
-          python - <<'PY'
-          from PIL import Image
-          for lang in ('zh', 'en'):
-              for topic in ('argument', 'related-work', 'experiments'):
-                  path = f'assets/demo-{topic}-{lang}.gif'
-                  with Image.open(path) as im:
-                      assert im.format == 'GIF', f'Expected GIF format: {path}'
-                      assert im.n_frames >= 3, f'Expected animated GIF: {path}'
-                      size = im.size
-                      for i in range(im.n_frames):
-                          im.seek(i)
-                          im.load()
-                  static_path = f'assets/demo-{topic}-{lang}.png'
-                  with Image.open(static_path) as im:
-                      assert im.format == 'PNG', f'Expected PNG format: {static_path}'
-                      im.load()
-                      assert im.size == size, f'GIF/PNG dimensions differ: {path}'
-          print('PASS: all six bilingual GIFs and matching static PNGs decode')
-          PY
       - run: python scripts/export_skills.py --output "${{ runner.temp }}/storycraft-skills-test"

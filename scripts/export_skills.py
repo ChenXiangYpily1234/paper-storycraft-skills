@@ -5,46 +5,32 @@ Usage:
     python scripts/export_skills.py --output ./my-agent-skills
 
 The output directory must not exist or must be empty. The script copies the
-13 Skill folders plus shared Markdown guides so '../PRINCIPLES.md' and
+13 Skill folders, shared Markdown guides and LICENSE so '../PRINCIPLES.md' and
 cross-Skill links remain valid. No installed agent is modified.
 """
 from __future__ import annotations
 
 import argparse
 from pathlib import Path
-import re
 import shutil
-import sys
 import tempfile
-from urllib.parse import unquote
+
+from validation import read_skill_metadata, validate_links
 
 ROOT = Path(__file__).resolve().parents[1]
-SHARED = ("PRINCIPLES.md", "CITATION_GUIDE.md", "EDITORIAL_PLAYBOOK.md", "STEM_GUIDE.md", "WORKFLOW.md")
-LINK = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
-
-
-def validate_links(folder: Path) -> int:
-    """Validate local Markdown links in the exported collection."""
-    total = 0
-    for file in folder.rglob("*.md"):
-        for value in LINK.findall(file.read_text(encoding="utf-8")):
-            path = unquote(value.split("#", 1)[0].strip())
-            if not path or path.startswith(("http://", "https://", "mailto:", "/")):
-                continue
-            if not (file.parent / path).exists():
-                raise ValueError(f"Unresolved link: {file.relative_to(folder)} -> {path}")
-            total += 1
-    return total
+SHARED = ("PRINCIPLES.md", "CITATION_GUIDE.md", "EDITORIAL_PLAYBOOK.md", "STEM_GUIDE.md", "WORKFLOW.md", "LICENSE")
 
 
 def export(output: Path) -> tuple[int, int]:
     folders = sorted(ROOT.glob("[0-9][0-9]-*/SKILL.md"))
     if len(folders) != 13:
         raise ValueError(f"Expected 13 Skills; found {len(folders)}")
+    for file in folders:
+        read_skill_metadata(file)
     target = output.expanduser().resolve()
-    if target == ROOT or ROOT in target.parents and any(
+    if target == ROOT or (ROOT in target.parents and any(
         target == f.parent or f.parent in target.parents for f in folders
-    ):
+    )):
         raise ValueError("Output cannot be inside an existing source Skill directory.")
     if target.exists() and any(target.iterdir()):
         raise FileExistsError(f"Target must be new or empty: {target}")

@@ -49,8 +49,8 @@ Separate (a) **provenance** of an entity, (b) **evidence** for a result claimed 
 2. Reuse correct manuscript citation keys. Add entries only with validated metadata. Never invent papers, BibTeX, DOI, author names or years.
 3. Match all in-text keys to real bibliography entries; check missing/duplicate entries, key collisions, year/author mismatches and stale references. Do not silently delete legitimate existing records.
 4. Check the **reference list is actually generated**: the correct bibliography resource/path and the appropriate BibTeX/Biber/output commands or document-native equivalents. A visible in-text cite alone does not prove the References section exists.
-5. When compilation assets are available, inspect undefined citation warnings and the rendered PDF References section. Without a build or bibliography, report **NOT CHECKED**, never PASS.
-6. In lossless edits, preserve valid existing citations and add/relocate only verified sources; list changes and any unresolved citation requests.
+5. Inspect the References section in the supplied or newly rendered PDF when available. Report visual inspection of that exact PDF separately from source-to-PDF consistency and reproducible compilation. Claim a successful build only if it was executed; without source, bibliography or build logs, mark the corresponding source/build checks **NOT CHECKED**, even when inspection of the supplied PDF is complete.
+6. In lossless edits, preserve valid existing citations and add/relocate only verified sources within the authorized edit scope; list changes and any unresolved citation requests. If the user explicitly freezes citations or bibliography content, report missing or incorrect attribution as a proposed correction without changing protected content.
 
 ## 5. Acceptance thresholds
 
@@ -60,4 +60,4 @@ Separate (a) **provenance** of an entity, (b) **evidence** for a result claimed 
 
 **P2:** non-substantive styling inconsistencies or redundant citations.
 
-Report separate outcomes for **entity coverage**, **claim-to-source accuracy**, **bibliography/key integrity**, and **compiled References verification**. Presence of citation syntax is not evidence that the source is correct.
+Report separate outcomes for **entity coverage**, **claim-to-source accuracy**, **bibliography/key integrity**, **rendered References inspection**, and **compilation/source-to-PDF verification**. Presence of citation syntax is not evidence that the source is correct.

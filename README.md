@@ -26,11 +26,11 @@ Paper StoryCraft 提供一套可供 AI 助手读取、执行的科研写作 Skil
 
 ## 改写前后有什么不同？
 
-先看三组 **深色科研工作流动图**，分别展示 Methods、Related Work 与 Experiments 如何重组论证。每组都附有完整静态图，方便按自己的节奏阅读；这些示意不代表 AI 在真实论文上的写作性能评测。
+三组**白底线条动图**，把重组过程直接演出来：模块归位、文献分组、比较条件对齐。每组都附有完整静态图，方便按自己的节奏阅读。
 
 ### ① 研究论证：从模块清单到证据链
 
-![中文动态图：从模块清单出发，将研究问题和设计要求连接到输入、操作、输出及下游用途，再对齐证据检验与结论范围](assets/demo-argument-zh.gif)
+![中文动态图：A、B、C 模块移动并缩小到方法节点，问题、方法、证据和边界依次连成论证链](assets/demo-argument-zh.gif)
 
 [查看完整静态图](assets/demo-argument-zh.png)
 
@@ -40,7 +40,7 @@ Paper StoryCraft 提供一套可供 AI 助手读取、执行的科研写作 Skil
 
 ### ② Related Work：从文献流水账到机制对比地图
 
-![中文动态图：将六个论文占位符按机制归组，用数据、目标、信息访问、评测协议和预算等共享字段比较，并核查最强前人反例与待验证差异](assets/demo-related-work-zh.gif)
+![中文动态图：六张文献占位纸片移入固定数据与生成数据两组，随后显示共同比较维度，放大镜提示核查前人工作](assets/demo-related-work-zh.gif)
 
 [查看完整静态图](assets/demo-related-work-zh.png)
 
@@ -50,7 +50,7 @@ Paper StoryCraft 提供一套可供 AI 助手读取、执行的科研写作 Skil
 
 ### ③ Experiments：从「成绩播报」到「有边界的结论」
 
-![中文动态图：将泛化的优越性主张改为公平比较、真实差异及不确定性、受证据约束的结论范围，并在正文披露影响核心主张的反证](assets/demo-experiments-zh.gif)
+![中文动态图：A、B 两种方案在天平上对齐公平条件，展开差异与不确定性，并把结论限定在已测试条件内](assets/demo-experiments-zh.gif)
 
 [查看完整静态图](assets/demo-experiments-zh.png)
 
@@ -91,13 +91,14 @@ cd paper-storycraft-skills
 突出最有证据的贡献；如经授权，可将非核心的不利结果详细数据放入附录/补充材料。主要结论依赖的反例与代价必须在正文交代。
 ~~~
 
-**方式 B：把 13 个目录导出为可扫描的 Skills 集合**，适合支持 Agent Skills 文件夹加载的工具：
+**方式 B：把 13 个目录导出为可扫描的 Skills 集合**，适合支持 Agent Skills 文件夹加载的工具。从仓库根目录运行：
 
 ~~~bash
+python -m pip install -r requirements-dev.txt
 python scripts/export_skills.py --output ./my-agent-skills
 ~~~
 
-脚本会复制 13 个 Skill 目录及其公共指南，保留原有相对引用；之后根据**你所使用工具的官方文档**，把生成的目录配置为 Skill 搜索路径。**它不会自动安装到 ChatGPT、Claude 或任何账户，也不会修改其他工具设置。** 若只打算使用一个 Skill，推荐方式 A，避免单独复制后丢失公共指南。
+脚本会复制 13 个 Skill 目录、公共指南与许可证，保留原有相对引用；之后根据**你所使用工具的官方文档**，把生成的目录配置为 Skill 搜索路径。**它不会自动安装到 ChatGPT、Claude 或任何账户，也不会修改其他工具设置。** 若只打算使用一个 Skill，推荐方式 A，避免单独复制后丢失公共指南。
 
 **兼容性提示：** 本次将各 Skill 的 YAML `name` 调整为与目录一致（例如 `05-experiment`），以符合 Agent Skills 的命名规范。若你的工具曾通过旧名称硬编码调用 Skill，请更新名称；原有目录链接保持不变。
 
@@ -165,18 +166,24 @@ python scripts/export_skills.py --output ./my-agent-skills
 
 ## 开发与质量检查
 
+从仓库根目录运行：
+
 ~~~bash
+python -m pip install -r requirements-dev.txt
+python -m unittest discover -s tests -p 'test_*.py' -v
 python scripts/check_skills.py
 ~~~
 
-仓库检查覆盖 Skill 命名/元数据、相对链接、核心指南及 README 入口等**静态约束**。示例场景见 [tests/skill-scenarios.md](tests/skill-scenarios.md)。静态检查不能替代真实模型输出评估、引用真实性核查、原始实验复现或最终 PDF 人工审查。
+仓库检查覆盖 Skill 命名与 YAML 元数据、执行约定标题、本地文件链接、公共指南及 README 入口，并检查六组 GIF/PNG 的格式、尺寸对应、GIF 体积与逐帧解码。单元测试覆盖元数据和链接解析、依赖越界检查，以及导出后的引用与许可证保留、现有目标保护和失败时不发布不完整集合。
+
+这些检查验证的是**仓库文件与导出工具**，不核验远程链接、页内锚点或文献真实性，也不能替代模型输出评估、原始实验复现或最终 PDF 人工审查。供人工或模型评估使用的示例场景见 [tests/skill-scenarios.md](tests/skill-scenarios.md)。
 
 ### 重新生成 README 演示
 
 [生成脚本](scripts/render_readme_demos.py) 会输出三组中英文 GIF，以及对应的完整静态 PNG。默认使用 **Noto Sans CJK SC** 字体与 **fontconfig**；先安装这两项系统依赖，再运行：
 
 ~~~bash
-python -m pip install 'Pillow>=10,<13'
+python -m pip install -r requirements-dev.txt
 python scripts/render_readme_demos.py
 ~~~
 

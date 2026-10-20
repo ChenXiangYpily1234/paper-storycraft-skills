@@ -26,11 +26,11 @@ Paper StoryCraft gives AI assistants an actionable set of research-writing Skill
 
 ## What changes in a revision?
 
-Three **animated research maps** show how to reorganize Methods, Related Work and Experiments. Each includes a complete static example for reading at your own pace. These illustrations do not report measured writing improvements by an AI model.
+Three **bright line animations** make the revision steps visible: modules move into place, papers form groups, and comparison conditions align. Each includes a complete static view for reading at your own pace.
 
 ### ① Research argument: from module lists to an evidence chain
 
-![Animated example: a module list becomes a research argument linking the question and design requirement to inputs, operations, outputs, downstream use, evidence and scope](assets/demo-argument-en.gif)
+![Animated example: modules A, B and C move and shrink into the method node, then problem, method, evidence and scope connect into an argument](assets/demo-argument-en.gif)
 
 [View the complete static example](assets/demo-argument-en.png)
 
@@ -40,7 +40,7 @@ Three **animated research maps** show how to reorganize Methods, Related Work an
 
 ### ② Related Work: from paper lists to a mechanism map
 
-![Animated example: six paper placeholders are grouped by mechanism and compared through shared data, objective, information access, evaluation protocol and budget fields, with prompts to check the strongest prior work and verify remaining differences](assets/demo-related-work-en.gif)
+![Animated example: six paper placeholders move into fixed-data and generated-data groups, shared comparison dimensions appear, and a magnifying glass prompts a check of prior work](assets/demo-related-work-en.gif)
 
 [View the complete static example](assets/demo-related-work-en.png)
 
@@ -50,7 +50,7 @@ Three **animated research maps** show how to reorganize Methods, Related Work an
 
 ### ③ Experiments: from score announcements to defensible claims
 
-![Animated example: a broad superiority claim is rebuilt around fair comparisons, verified differences and uncertainty, bounded conclusions and main-text disclosure of evidence that changes the core claim](assets/demo-experiments-en.gif)
+![Animated example: approaches A and B align on a balance under fair conditions, an effect and its uncertainty unfold, and the claim is bounded by tested conditions](assets/demo-experiments-en.gif)
 
 [View the complete static example](assets/demo-experiments-en.png)
 
@@ -95,13 +95,14 @@ Prioritize the strongest verified contribution; secondary unfavorable detail can
 Return the revision and all remaining verification gaps.
 ~~~
 
-**Option B — Export a Skill collection** for a compatible agent that scans Skill folders:
+**Option B — Export a Skill collection** for a compatible agent that scans Skill folders. From the repository root:
 
 ~~~bash
+python -m pip install -r requirements-dev.txt
 python scripts/export_skills.py --output ./my-agent-skills
 ~~~
 
-The script copies the 13 Skill directories **and their shared guides**, keeping cross-file links intact. Configure the output as a Skill search directory **according to your particular agent's documentation**. It does not install anything into accounts or change agent settings. For one-off writing help, Option A avoids the problems of copying a single SKILL.md without its dependencies.
+The script copies the 13 Skill directories **with their shared guides and license**, keeping cross-file links intact. Configure the output as a Skill search directory **according to your particular agent's documentation**. It does not install anything into accounts or change agent settings. For one-off writing help, Option A avoids the problems of copying a single SKILL.md without its dependencies.
 
 **Migration note:** Skill YAML `name` fields now match their folder names (for example, `05-experiment`) to follow the Agent Skills naming specification. If you previously configured old Skill names directly, update those references; directory paths are unchanged.
 
@@ -170,18 +171,24 @@ This is a collection of **Markdown Skills and workflows**, not a hosted literatu
 
 ## Development and validation
 
+From the repository root:
+
 ~~~bash
+python -m pip install -r requirements-dev.txt
+python -m unittest discover -s tests -p 'test_*.py' -v
 python scripts/check_skills.py
 ~~~
 
-Checks cover **static contracts** such as Skill naming/frontmatter, links, shared documentation and README entry points. See [tests/skill-scenarios.md](tests/skill-scenarios.md) for realistic behavioral scenarios. Passing static checks is **not** evidence of model behavior quality, bibliographic accuracy, experimental reproducibility or rendered PDF correctness.
+Repository checks cover Skill naming and YAML frontmatter, execution-contract headings, local file links, shared guides and README entry points. They also check the formats and matching dimensions of all six GIF/PNG pairs, GIF file sizes and decoding of every frame. Unit tests exercise metadata and link parsing, rejection of dependencies outside the collection, and export behavior: preserving links and the license, protecting existing targets, and avoiding partial exports on failure.
+
+These checks validate **repository files and export tooling**. They do not verify remote links, heading fragments or bibliographic accuracy, and cannot replace model-output evaluation, experimental reproduction or manual review of final PDFs. See [tests/skill-scenarios.md](tests/skill-scenarios.md) for scenarios to use in human or model evaluation.
 
 ### Regenerate the README examples
 
 The [rendering script](scripts/render_readme_demos.py) produces three bilingual GIF examples and matching complete static PNGs. It uses **Noto Sans CJK SC** and **fontconfig** by default. Install those system dependencies, then run:
 
 ~~~bash
-python -m pip install 'Pillow>=10,<13'
+python -m pip install -r requirements-dev.txt
 python scripts/render_readme_demos.py
 ~~~
 

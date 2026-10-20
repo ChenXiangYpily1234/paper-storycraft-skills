@@ -43,9 +43,9 @@ The main paper should foreground the **strongest defensible contribution**, with
 
 **Writing pattern (placeholders, not results):** “We observe [verified primary result] under [setting]. [Material trade-off or limitation] qualifies this result; further per-seed and subgroup analyses are reported in Appendix [X].”
 
-**Safeguards:** Never move or omit a primary/prespecified outcome, key contradictory baseline, safety-relevant disadvantage, or essential negative control in a way that obscures a consequential limitation. Do not quietly change a primary endpoint after seeing results, omit mandated reporting, or cite an appendix that is absent from the actual submission. Check venue policies. When the source-preservation contract is in force, propose relocations first and move only after authorization; retain all values, captions, keys and labels with corrected cross-references.
+**Safeguards:** Never move or omit a primary/prespecified outcome, key contradictory baseline, safety-relevant disadvantage, or essential negative control in a way that obscures a consequential limitation. Do not quietly change a primary endpoint after seeing results, omit mandated reporting, or cite an appendix that is absent from the actual submission. Check venue policies. When the source-preservation contract is in force, move exhibits only within existing authorization; if a proposed relocation is not authorized or conflicts with a preservation constraint, present the proposal and clarify before moving. Retain all values, captions, keys and labels with corrected cross-references.
 
-## C. Paragraphs should move the argument
+## D. Paragraphs should move the argument
 
 Before rewriting a section, note its **one-sentence purpose** and each paragraph's **function** (context, distinction, technical reason, evidence, interpretation, limitation). One paragraph may legitimately contain background plus contrast; do not mechanically enforce exactly one rhetorical label.
 
@@ -53,7 +53,7 @@ Before rewriting a section, note its **one-sentence purpose** and each paragraph
 
 For important technical concepts, define the type and purpose near first use. Favor concrete nouns and verbs over decorative modifiers. Avoid arbitrary rules such as every sentence being 10–30 words, every paragraph ending in a cliffhanger, or mandatory "Here we show" openings. Optimize for actual readers, target language and venue.
 
-## D. Section-specific editorial choices
+## E. Section-specific editorial choices
 
 - **Abstract:** task/question → actual intervention or theorem → strongest directly supported observation → implication with boundary. Scope varies with field and journal; do not fabricate significance.
 - **Introduction:** closest verified context → precise outstanding question → why the question matters → tested contribution. Do not manufacture a global gap.
@@ -64,11 +64,11 @@ For important technical concepts, define the type and purpose near first use. Fa
 - **Figures, plots, tables:** foreground the legitimate comparison; preserve exact data, uncertainties and provenance. Aesthetic improvement is not permission to alter measurements.
 - **Cross-section editing:** preserve the source inventory and produce a change manifest; verify text, PDF layout, bibliographic integrity, and empirical reproducibility separately.
 
-## E. Nature-family framing is conditional
+## F. Nature-family framing is conditional
 
 For a **verified Nature-family submission**, foreground why a broader scientific reader should care while preserving technical accuracy; explain specialized terms rather than deleting key distinctions. Check the **specific journal and current article type instructions** before making statements about abstract structure, word limits, headings, main-text placement or citation counts. Nature-like rhetoric is not a substitute for a Nature-appropriate contribution.
 
-## F. Exit gate — only report what was tested
+## G. Exit gate — only report what was tested
 
 - **Contribution:** clear and neither diminished nor inflated?
 - **Source:** each externally sourced method/model/benchmark/dataset properly attributed and matched to supported claims?

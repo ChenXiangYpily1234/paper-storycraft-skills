@@ -1,6 +1,6 @@
 ---
 name: 13-section-revision
-description: Use for coordinated rewrites across adjacent manuscript sections while preserving existing LaTeX, figures, tables, equations, labels, citations and empirical claims.
+description: Use for coordinated revisions or argument audits across adjacent manuscript sections while preserving existing LaTeX, figures, tables, equations, labels, citations and empirical claims. Diagnose only unless rewriting is requested.
 ---
 
 # Cross-Section Revision: From Formula and Experiment Stacks to an Argument
@@ -9,13 +9,15 @@ description: Use for coordinated rewrites across adjacent manuscript sections wh
 
 **Typical request:** “重写第 3–5 节，保留所有表格、公式和 label。”
 
+**Mode gate:** A question such as “Are these sections a stack of formulas and experiments?” requests diagnosis unless the user also asks for rewriting. In audit mode, return the argument map, located problems and a revision proposal; do not rewrite sections or modify files. Apply the editing procedure below only to authorized revisions.
+
 **Procedure**
 
 1. Inventory immutable source artifacts and create a before-change manifest.
 2. Rebuild section-to-section argument dependencies without silently rewriting protected data or citing invented work.
 3. Produce the revised sections and mechanically compare protected items, then check claim/figure/paragraph linkages.
 
-**Deliver:** Return revised sections, an artifact change manifest and separate source/PDF/results verification statuses.
+**Deliver:** For an authorized revision, return revised sections, an artifact change manifest and separate source/PDF/results verification statuses. For diagnosis only, return the audit findings and proposal without edited content.
 
 **Evidence boundary:** If a genuine scientific contradiction appears, flag it for author decision rather than 'fixing' an experiment.
 
@@ -33,7 +35,7 @@ Consult [EDITORIAL_PLAYBOOK.md](../EDITORIAL_PLAYBOOK.md) only for relevant edit
 
 - Inventory before rewriting: equation environments, citations, labels, table/figure content, caption text, numerical values and scientific qualifications.
 - Treat an exact count match as insufficient: changed values, swapped rows, missing caption sentences or different statistical scopes break the preservation contract.
-- New verified citations may be added with an explicit change log; do not hide unresolved references or claim successful LaTeX compilation when the build was not executed.
+- New verified citations may be added within the authorized edit scope with an explicit change log. If citations are explicitly frozen, propose corrections without editing them; do not hide unresolved references or claim successful LaTeX compilation when the build was not executed.
 
 ## 1. State the scientific argument, not the contents list
 
@@ -56,11 +58,11 @@ When a user authorizes restructuring, create a **placement ledger** for every pr
 
 Before rewriting, inventory every relevant `table`, `table*`, `figure`, `figure*`, `algorithm`, `longtable` and custom float; contents, captions, notes, placement, labels, figure paths and references. Inventory displayed mathematics, citations, numerical literals, exact experiment configurations, statistical conclusions and source macros.
 
-**Default no-deletion contract:** keep full LaTeX tables and images, all supplied values, mathematical definitions, source citations and `\\label` identifiers. Reordering intact exhibits is permissible only if their text references, meaning and float reading order remain valid. The user may permit a different level of change, but do not silently "fix" an unverified datum or manufacture an experiment.
+**Default no-deletion contract:** keep full LaTeX tables and images, all supplied values, mathematical definitions, source citations and `\label` identifiers. Reordering intact exhibits is permissible only if their text references, meaning and float reading order remain valid. The user may permit a different level of change, but do not silently "fix" an unverified datum or manufacture an experiment.
 
 **Experiment provenance matters:** the same method name, metric and rounded mean do not demonstrate that two reports use identical runs. Record run IDs/seeds, pairing and candidate pools where known. Distinguish an unresolved mismatch from a verified contradiction.
 
-**Citation correction exception:** preserving existing citations does not excuse missing provenance for imported models, benchmarks, datasets or prior methods. Apply [CITATION_GUIDE.md](../CITATION_GUIDE.md): retain valid existing citations/keys, add **verified** missing attributions adjacent to entity names or supported claims, and record additions/relocations in the preservation manifest. If the source cannot be verified, list a specific missing citation instead of inventing a reference or silently altering the bibliography.
+**Citation correction exception:** preserving existing citations does not excuse missing provenance for imported models, benchmarks, datasets or prior methods. Apply [CITATION_GUIDE.md](../CITATION_GUIDE.md): retain valid existing citations/keys, add **verified** missing attributions within the authorized edit scope adjacent to entity names or supported claims, and record additions/relocations in the preservation manifest. If citations or bibliography content are explicitly frozen, report the defect and proposed correction without changing the protected material. If the source cannot be verified, list a specific missing citation instead of inventing a reference or silently altering the bibliography.
 
 ## 3. Give formulas a narrative purpose
 
@@ -114,12 +116,12 @@ If data or text seem contradictory, **flag the discrepancy** with source locatio
 ## 7. Verify the before/after invariants
 
 When the source is available, compare:
-- multiset of figure/table/algorithm environments, `\\label`, caption content, figures paths and citation keys;
+- multiset of figure/table/algorithm environments, `\label`, caption content, figures paths and citation keys;
 - math environments and equations that the author instructed to preserve;
 - numerical cells, units, method/dataset names, threshold statements and inferential qualifiers;
 - first mention/citation order, section pointers, duplicated and undefined labels.
 
-**Counts alone are not enough**: equal numbers of tables do not establish equal content. Distinguish **source-text integrity**, **PDF rendering**, **statistical validity**, and **raw-result reproducibility** as four separate verification statuses. Only mark performed tests PASS. PDF layout cannot be confirmed without the rendered output and required compilation assets; numerical agreement in a .tex file cannot verify raw experiment logs.
+**Counts alone are not enough**: equal numbers of tables do not establish equal content. Distinguish **source-text integrity**, **rendered-PDF inspection**, **compilation/source-to-PDF verification**, **statistical validity**, and **raw-result reproducibility** as separate verification statuses. Only mark performed tests PASS. A supplied PDF permits checks of its visible layout; verifying that the revised source reproduces that PDF requires an actual build from the relevant source and assets. Numerical agreement in a .tex file cannot verify raw experiment logs.
 
 ## Acceptance check
 

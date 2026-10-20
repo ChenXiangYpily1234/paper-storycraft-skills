@@ -1,4 +1,4 @@
 interface:
   display_name: "Evidence-Centered LaTeX Tables"
-  short_description: "Design readable, scientifically faithful LaTeX tables with clear captions, metrics, and statistical units."
-  default_prompt: "Use $latex-table-design to revise my paper table without changing any measured values. Check terminology, statistics, and the rendered PDF."
+  short_description: "Create faithful LaTeX tables and verify their layout."
+  default_prompt: "Use $10-latex-table to revise my research table while preserving values, citations, and statistical meaning; report source and PDF checks separately."

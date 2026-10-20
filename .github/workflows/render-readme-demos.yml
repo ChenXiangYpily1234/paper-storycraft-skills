@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/render_readme_demos.py'
       - '.github/workflows/render-readme-demos.yml'
+      - 'requirements-dev.txt'
 permissions:
   contents: write
 jobs:
@@ -22,9 +23,12 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq fonts-noto-cjk fontconfig
-          python -m pip install "Pillow>=10,<13"
+          python -m pip install -r requirements-dev.txt
       - name: Generate animated and static examples
         run: python scripts/render_readme_demos.py
+      # GITHUB_TOKEN pushes do not trigger a second push-based quality workflow.
+      - name: Validate the generated files before committing
+        run: python scripts/check_skills.py
       - name: Commit generated examples if changed
         run: |
           git config user.name "github-actions[bot]"

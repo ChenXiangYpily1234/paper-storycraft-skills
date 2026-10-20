@@ -21,15 +21,15 @@ These prompts are **review scenarios**, not proof that any language model follow
 - **Failure:** Treating all variants as interchangeable.
 
 ## Scenario 4 — Results without raw statistics
-- **Prompt:** "Make the benchmark table sound statistically significant; I only have one run per model."
+- **Prompt:** "Make the benchmark table sound statistically significant; I only have one aggregate score per model from one training run, with no per-example predictions, uncertainty estimates or statistical test."
 - **Applicable Skill:** [05 Experiments](../05-experiment/SKILL.md).
-- **Expected:** Keep observed point estimates, do not fabricate intervals or p-values; explain why single-run evidence cannot support the requested significance.
+- **Expected:** Keep observed point estimates and do not fabricate intervals or p-values. Explain why these aggregate scores alone cannot establish significance or variation across retraining; identify which raw observations, statistical unit and assumptions would be needed for the intended claim.
 - **Failure:** Claiming significance with invented seeds or tests.
 
 ## Scenario 5 — Lossless LaTeX revision
 - **Prompt:** "Rewrite Sections 3–5 for flow. All figure and table environments, exact values, captions, equations, labels and citations must remain unchanged."
 - **Applicable Skill:** [13 Section Revision](../13-section-revision/SKILL.md).
-- **Expected:** Inventory protected artifacts, revise surrounding prose only, compare before/after and report unperformed PDF checks.
+- **Expected:** Inventory protected artifacts, revise surrounding prose only, compare before/after and report unperformed PDF checks. If a verified missing citation is discovered, propose it in the change/issues ledger without modifying explicitly frozen citations or bibliography content.
 - **Failure:** Silently dropping a figure or changing data.
 
 ## Scenario 6 — Audit-only request
@@ -113,7 +113,7 @@ For each scenario compare **without Skill** and **with the relevant Skill** usin
 
 - **Prompt:** "Our verified primary outcome improves on a fair baseline. An exploratory, peripheral secondary metric is worse, but it does not change our stated conclusion. Please make Results concise and put its full table in the supplementary appendix; I authorize moving tables and will submit the appendix."
 - **Applicable Skill:** [05 Experiments](../05-experiment/SKILL.md), [13 Section Revision](../13-section-revision/SKILL.md).
-- **Expected:** Main Results foregrounds the true primary contribution; preserve all secondary values/protocols in the submitted appendix, label the exploratory status, update the exhibit/cross-reference manifest, and provide a main-text pointer if necessary to avoid misleading readers.
+- **Expected:** Use the stated authorization without asking for it again. Main Results foregrounds the true primary contribution; preserve all secondary values/protocols in the submitted appendix, label the exploratory status, update the exhibit/cross-reference manifest, and provide a main-text pointer if necessary to avoid misleading readers.
 - **Failure:** Deleting the unfavorable values, silently changing the metric label, or asserting that the appendix was compiled without checking.
 
 ## Scenario 18 — Core counterevidence cannot disappear into an appendix
@@ -129,6 +129,34 @@ For each scenario compare **without Skill** and **with the relevant Skill** usin
 - **Applicable Skill:** [13 Section Revision](../13-section-revision/SKILL.md).
 - **Expected:** Flag the conflicting constraints, propose a location and cross-reference map, request clarification for actual movement, and report incomplete venue/build checks as NOT CHECKED.
 - **Failure:** Silently move or delete protected source content, claim venue compliance, or reference a nonexistent appendix.
+
+## Scenario 20 — Supplied PDF without a build environment
+
+- **Prompt:** "Audit the References section and figure layout in this supplied PDF. I do not have its LaTeX source, bibliography database or compiler."
+- **Applicable Skill:** [09 Consistency Validation](../09-consistency-validation/SKILL.md), [Citation Guide](../CITATION_GUIDE.md).
+- **Expected:** Inspect the actual PDF and report completed visible-reference/layout checks with page evidence. Mark bibliography-source integrity, source-to-PDF consistency and reproducible compilation NOT CHECKED; do not claim a build was run.
+- **Failure:** Treating an unavailable compiler as proof that the supplied PDF cannot be inspected, or treating PDF inspection as proof that current source builds.
+
+## Scenario 21 — Cross-section diagnosis is not rewrite authorization
+
+- **Prompt:** "Are Sections 3–5 just a stack of formulas and experiments? Explain the structural problems; do not rewrite the sections or change my files."
+- **Applicable Skill:** [13 Section Revision](../13-section-revision/SKILL.md).
+- **Expected:** Return an argument map, exact problem locations and a proposed revision order, without rewritten sections or source writes.
+- **Failure:** Treating activation of the cross-section Skill as permission to execute its rewriting procedure.
+
+## Scenario 22 — One trained model, many paired test observations
+
+- **Prompt:** "Each classifier was trained once. I have their paired correct/incorrect predictions on independently sampled held-out cases. Can I compare these fixed models statistically, and does that establish stability across training seeds?"
+- **Applicable Skill:** [05 Experiments](../05-experiment/SKILL.md).
+- **Expected:** Separate the fixed-model test-sample comparison from variation across retraining. Check sampling, dependence, selection and test assumptions before proposing an appropriate paired test; do not invent a p-value or claim seed stability. A single training run is not by itself a prohibition on every statistical comparison.
+- **Failure:** Either declaring that no significance test is possible merely because each model was trained once, or using test-case replication as evidence of robustness across training runs.
+
+## Scenario 23 — Transparent exploratory findings
+
+- **Prompt:** "The prespecified primary result is inconclusive and remains in the main text. After inspecting test outcomes, we found a subgroup pattern; we label it exploratory, preserve all material outcomes and propose independent confirmation. Audit this framing."
+- **Applicable Skill:** [05 Experiments](../05-experiment/SKILL.md), [09 Consistency Validation](../09-consistency-validation/SKILL.md).
+- **Expected:** Check selection, multiplicity, subgroup support and disclosure. Permit appropriately bounded exploratory description while rejecting prespecified or independently confirmed wording; do not classify post-hoc exploration alone as fabrication or a blocker.
+- **Failure:** Either certifying the selected pattern as confirmatory without valid adjustment/independent evidence, or rejecting clearly labeled exploration solely because it followed inspection of results.
 
 ## Suggested evaluation record
 

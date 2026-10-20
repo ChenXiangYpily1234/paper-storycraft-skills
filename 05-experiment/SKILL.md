@@ -74,6 +74,8 @@ Separate:
 
 Report statistical units, confidence level, directional or two-sided tests, and multiplicity adjustment where needed. Do not invent p-values, intervals, or missing seeds.
 
+Distinguish **test-sample uncertainty for fixed trained models** from **variation across retraining, seeds or datasets**. An aggregate score without sufficient counts or prediction records and a justified sampling model does not establish uncertainty. With suitable paired predictions or sufficient paired counts and valid sampling assumptions, a test may assess a fixed-model comparison; it does not establish stability across retraining. For a concrete classification example, see [Dietterich (1998)](https://doi.org/10.1162/089976698300017197) on McNemar's test; do not impose that test on unrelated metrics or study designs.
+
 ## 4. Controls must discriminate competing explanations
 
 A useful comparison ladder can include a simple baseline, strong contemporary baselines, information/budget-matched controls, targeted ablations, negative controls, and leakage tests. More baselines are not always better; each must serve a scientific role.
@@ -109,7 +111,7 @@ Distinguish genuinely worse performance, insufficient power, protocol incompatib
 
 **Use an evidence placement triage:** (a) *claim-critical* results—including a decisive baseline loss, failed critical ablation, primary-endpoint failure or material trade-off—need concise main-text disclosure with the consequence for the claim; (b) *secondary or exploratory* unfavorable findings, additional baselines, extended robustness, subgroup analyses, per-seed tables and extra metrics **may move to the appendix/submitted supplementary files** and need not occupy equal space in the main Results narrative; (c) irrelevant process history may be shortened if reporting obligations permit.
 
-For supplemental findings, preserve complete values and protocols, label preplanned versus exploratory analyses honestly, provide precise appendix/table references when needed, and ensure the supplementary files accompany the paper. The main text should still be accurate when read on its own. Selection based solely on the sign of a result is not a defensible reason to omit material evidence. For actual source edits, obey the user's no-deletion and exhibit-preservation contract and request permission before moving exhibits.
+For supplemental findings, preserve complete values and protocols, label preplanned versus exploratory analyses honestly, provide precise appendix/table references when needed, and ensure the supplementary files accompany the paper. The main text should still be accurate when read on its own. Selection based solely on the sign of a result is not a defensible reason to omit material evidence. For actual source edits, obey the user's no-deletion and exhibit-preservation contract. Proceed with exhibit moves already authorized; ask only when authorization is absent or conflicts with a preservation constraint.
 
 ## Evidence hierarchy and anti-stacking revision
 

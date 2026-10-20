@@ -1,4 +1,4 @@
 interface:
   display_name: "Research Plotting"
-  short_description: "Make reproducible plots from verified results with accurate uncertainty and accessible labels."
-  default_prompt: "Use $research-plotting to plot verified experiment data, export publication-ready PDF/PNG, and check scientific interpretation."
+  short_description: "Plot verified data with clear, reproducible visuals."
+  default_prompt: "Use $11-research-plot to plot verified data, preserve uncertainty, and return source files with explicit validation status."

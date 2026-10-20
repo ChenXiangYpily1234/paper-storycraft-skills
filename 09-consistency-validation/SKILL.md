@@ -17,7 +17,7 @@ description: Use for independent full-paper or pre-submission audits of claims, 
 
 **Deliver:** Return location → risk → evidence → precise fix, ranked P0/P1/P2, plus PASS/NOT CHECKED by verification class.
 
-**Evidence boundary:** Do not claim reproducibility or rendered layout PASS without the logs/build needed to test it.
+**Evidence boundary:** Inspect the actual rendered artifact before reporting layout PASS. Report source-to-PDF consistency and reproducible compilation separately; claim a successful build only if it was executed. Distinguish inspecting recorded results, recomputing statistics from raw outputs, and reproducing results by rerunning experiments; report only the level actually completed.
 
 Read [PRINCIPLES.md](../PRINCIPLES.md). This is an **independent audit**, not a cosmetic language polish. Do not accept "already fixed" without checking the actual latest artifact.
 
@@ -55,7 +55,7 @@ Check:
 - Relative percent mistaken for absolute percentage points.
 - Correlation reported as causation or non-significance reported as equivalence.
 - Baselines compared with unequal information, extra pretraining, unequal search space, or incomparable tuning budgets without disclosure.
-- Fabricated references, wrong citations, unsupported numbers, or evidence selected only after seeing test performance.
+- Fabricated references, wrong citations, unsupported numbers, or post-hoc selection presented as prespecified or independently confirmed evidence. Transparent exploratory analyses are allowed, but must retain material outcomes and account for selection when making inferential claims.
 - Data contamination, test leakage, invalid filtering, pseudo-replication, misleading uncertainty, or multiplicity issues where relevant.
 - Headline figures differing between Abstract, Introduction, Results, plots, and Conclusion.
 
@@ -75,7 +75,7 @@ Detect duplicate keys, duplicated records, undefined citations, and stale unused
 
 Run the [CITATION_GUIDE.md](../CITATION_GUIDE.md) **entity–source audit**, not just a reference-count scan. Inventory every named external method, **model/checkpoint, benchmark, dataset**, evaluation protocol, and adapted resource across prose, tables, captions and supplements. Cross-check original/official sources, versions, bibliography keys, and which claims the sources establish. Attribute benchmark and underlying dataset separately when they have different sources. Check that first meaningful mentions carry accurate adjacent attribution, but do **not** require citations at sentence ends.
 
-Check the **actual reference list**, not only syntax: the bibliography resource/path and output command must fit the document format; inspect undefined and duplicate BibTeX entries, missing keys and author–year mismatches. If compilation is possible, verify the produced PDF's References section and undefined-citation warnings. Report **entity coverage**, **claim support**, **key/bibliography integrity**, and **rendered reference-list verification** as separate PASS / issue / NOT CHECKED outcomes. Never claim a PDF check passed without compiling.
+Check the **actual reference list**, not only syntax: the bibliography resource/path and output command must fit the document format; inspect undefined and duplicate BibTeX entries, missing keys and author–year mismatches where source is available. Inspect the supplied or newly rendered PDF's References section; if compilation is performed, also inspect undefined-citation warnings. Report **entity coverage**, **claim support**, **key/bibliography integrity**, **rendered reference-list inspection**, and **compilation/source-to-PDF verification** as separate PASS / issue / NOT CHECKED outcomes. Inspecting a supplied PDF can verify its visible reference list without a local build; it does not verify that current source reproduces that PDF.
 
 ## 5. LaTeX and cross-reference integrity
 

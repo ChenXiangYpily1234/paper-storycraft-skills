@@ -1,23 +1,25 @@
 #!/usr/bin/env python3
-"""Render the three bilingual README demonstrations and static reading copies.
+"""Render light, diagram-first README animations with actual object motion.
 
-Requires Pillow and Noto Sans CJK SC (installed by the rendering workflow).
-Set STORYCRAFT_FONT_REGULAR / STORYCRAFT_FONT_BOLD to use local font files.
-All tasks, paper labels and comparison fields are explicitly illustrative.
+Requires Pillow and Noto Sans CJK SC, or STORYCRAFT_FONT_REGULAR and
+STORYCRAFT_FONT_BOLD pointing to local font files. All examples are schematic:
+paper labels, interval marks and moving tokens are not measured results.
 """
 from functools import lru_cache
 from pathlib import Path
+import math
 import os
 import subprocess
 
 from PIL import Image, ImageDraw, ImageFont
 
 OUT = Path(__file__).resolve().parents[1] / "assets"
-W, H = 1200, 780
-INK, PAPER, MUTE = "#0B1423", "#EDF5FF", "#A1B4CC"
-CYAN, VIOLET, AMBER, CORAL = "#62E2C5", "#B6A3F5", "#F1C87C", "#EF9CA6"
-PANEL, LINE, QUIET = "#142136", "#344A63", "#7E93AD"
-DURATIONS = (1200, 1800, 2200, 2600, 2600, 5000)
+W, H = 1200, 620
+BG, INK, MUTED, FAINT = "#FFFFFF", "#273448", "#68778C", "#D9E1E9"
+BLUE, TEAL, ORANGE, VIOLET = "#3C73C4", "#258C80", "#D98A3D", "#8761B2"
+FPS = 12.5
+TIMES = [0.0] + [1.2 + i / FPS for i in range(76)] + [7.3]
+DURATIONS = [1200] + [80] * 76 + [2800]
 
 
 @lru_cache(maxsize=64)
@@ -36,272 +38,286 @@ def font(size, bold=False):
                 "STORYCRAFT_FONT_REGULAR and STORYCRAFT_FONT_BOLD."
             ) from exc
         if len(match) != 2 or "Noto Sans CJK SC" not in match[0]:
-            raise RuntimeError(
-                "Noto Sans CJK SC is missing; refusing to render missing Chinese glyphs. "
-                "Install fonts-noto-cjk or set the STORYCRAFT_FONT_* paths."
-            )
+            raise RuntimeError("Noto Sans CJK SC is missing; refusing to render missing glyphs.")
         path = match[1]
     return ImageFont.truetype(path, size)
 
 
-def put(draw, xy, text, size=22, color=PAPER, bold=False, width=None):
-    """Draw top-aligned text, failing instead of silently clipping a label."""
-    text = str(text)
+def progress(t, start, end):
+    value = min(1.0, max(0.0, (t-start)/(end-start)))
+    return value * value * (3-2*value)
+
+
+def mix(a, b, fraction):
+    return a + (b-a)*fraction
+
+
+def tint(color, alpha=1.0):
+    rgb = tuple(int(color[i:i+2], 16) for i in (1, 3, 5))
+    return tuple(round(255+(value-255)*alpha) for value in rgb)
+
+
+def text(draw, xy, value, size=24, color=INK, bold=False, center=False, alpha=1.0, width=None):
     face = font(size, bold)
-    if width is not None and draw.textlength(text, font=face) > width:
-        raise ValueError(f"Label exceeds {width}px at {size}px: {text}")
-    draw.text(xy, text, font=face, fill=color, anchor="lt")
+    value = str(value)
+    length = draw.textlength(value, font=face)
+    if width is not None and length > width:
+        raise ValueError(f"Text exceeds {width}px: {value}")
+    x, y = xy
+    if center:
+        x -= length/2
+    draw.text((x, y), value, font=face, fill=tint(color, alpha), anchor="lt")
 
 
-def block(draw, rect, text, size=22, color=PAPER, bold=False, gap=8):
-    """Wrap English at spaces and Chinese at characters within a fixed box."""
-    left, top, right, bottom = rect
-    face = font(size, bold)
-    lines = []
-    for paragraph in text.split("\n"):
-        remaining = paragraph
-        while remaining:
-            end = 1
-            while end <= len(remaining) and draw.textlength(remaining[:end], font=face) <= right-left:
-                end += 1
-            end -= 1
-            if end == 0:
-                raise ValueError(f"Text box is too narrow: {text}")
-            if end < len(remaining):
-                space = remaining.rfind(" ", 0, end+1)
-                if space > 0:
-                    end = space
-            lines.append(remaining[:end].rstrip())
-            remaining = remaining[end:].lstrip()
-        if not paragraph:
-            lines.append("")
-    if lines and top + len(lines) * (size+gap) - gap > bottom:
-        raise ValueError(f"Text box is too short: {text}")
-    for i, line in enumerate(lines):
-        put(draw, (left, top+i*(size+gap)), line, size, color, bold, right-left)
+def line(draw, points, color=FAINT, width=3, alpha=1.0):
+    draw.line(points, fill=tint(color, alpha), width=width, joint="curve")
 
 
-def card(draw, rect, fill=PANEL, outline=LINE, radius=16, width=1):
-    draw.rounded_rectangle(rect, radius=radius, fill=fill, outline=outline, width=width)
+def circle(draw, center, radius, color, alpha=1.0, fill=None, width=3):
+    x, y = center
+    draw.ellipse((x-radius, y-radius, x+radius, y+radius),
+                 fill=tint(fill, alpha) if fill else None,
+                 outline=tint(color, alpha), width=width)
 
 
-def step_style(stage, number, color=CYAN):
-    active = stage >= number
-    return (
-        "#193541" if active else "#17263A",
-        color if active else LINE,
-        PAPER if active else MUTE,
-    )
+def arrow(draw, start, end, amount=1.0, color=MUTED, alpha=1.0, width=3):
+    if amount <= 0:
+        return
+    x1, y1 = start
+    x2, y2 = (mix(x1, end[0], amount), mix(y1, end[1], amount))
+    line(draw, (x1, y1, x2, y2), color, width, alpha)
+    angle = math.atan2(y2-y1, x2-x1)
+    points = [(x2-12*math.cos(angle-offset), y2-12*math.sin(angle-offset))
+              for offset in (-0.45, 0.45)]
+    line(draw, (*points[0], x2, y2, *points[1]), color, width, alpha)
 
 
-def row(draw, rect, stage, number, label, detail, color=CYAN, size=22):
-    fill, edge, text_color = step_style(stage, number, color)
-    card(draw, rect, fill, edge, radius=12, width=2 if stage == number else 1)
-    x1, y1, x2, _ = rect
-    put(draw, (x1+18, y1+10), label, 17, edge if stage >= number else QUIET, True, x2-x1-36)
-    put(draw, (x1+18, y1+36), detail, size, text_color, width=x2-x1-36)
-
-
-def base(topic, title, subtitle, stage, steps, zh):
-    image = Image.new("RGB", (W, H), INK)
+def base(title, subtitle, zh):
+    image = Image.new("RGB", (W, H), BG)
     draw = ImageDraw.Draw(image)
-    # A fixed, flat background keeps the animation light and avoids flicker.
-    draw.rectangle((0, 0, 9, H), fill=CYAN)
-    put(draw, (44, 31), "PAPER STORYCRAFT", 20, CYAN, True)
-    put(draw, (285, 34), topic, 16, MUTE)
-    card(draw, (1040, 27, 1156, 61), "#18343D", "#396D70", radius=10)
-    counter = f"{stage:02} / 05" if stage else ("开始" if zh else "START")
-    put(draw, (1061, 36), counter, 16, CYAN, True, 85)
-    put(draw, (44, 82), title, 34, PAPER, True, 1112)
-    put(draw, (44, 134), subtitle, 20, MUTE, width=1112)
-    draw.line((44, 164, 1156, 164), fill=LINE, width=1)
-    card(draw, (44, 184, 326, 680), PANEL, "#544653")
-    card(draw, (348, 184, 1156, 680), "#102735", "#37646A")
-    put(draw, (66, 204), "BEFORE / 原始写法" if zh else "BEFORE / DRAFT", 18, CORAL, True, 238)
-    put(draw, (370, 204), "AFTER / 论证重构" if zh else "AFTER / REVISED ARGUMENT", 18, CYAN, True, 764)
-    for index, label in enumerate(steps, 1):
-        x = 44 + (index-1)*224
-        color = CYAN if stage >= index else QUIET
-        draw.line((x, 706, x+202, 706), fill=color if stage >= index else LINE, width=3)
-        put(draw, (x, 717), f"{index:02}  {label}", 16, color, stage == index, 210)
-    note = "流程示意 · 不含真实实验结果或已核验文献" if zh else "ILLUSTRATIVE WORKFLOW · NO REAL RESULTS OR VERIFIED REFERENCES"
-    put(draw, (44, 753), note, 14, MUTE, width=1112)
+    text(draw, (54, 40), title, 36, INK, True, width=1092)
+    text(draw, (54, 99), subtitle, 24, MUTED, width=1092)
+    text(draw, (54, 589), "PAPER STORYCRAFT", 15, MUTED, True)
+    note = "写作示意 · 不含真实实验结果" if zh else "ILLUSTRATIVE · NO REAL EXPERIMENTAL RESULTS"
+    text(draw, (W-54-draw.textlength(note, font=font(15)), 589), note, 15, MUTED)
     return image, draw
 
 
-def missing_links(draw, heading, labels, start=443):
-    put(draw, (66, start-38), heading, 17, CORAL, True, 238)
-    for i, label in enumerate(labels):
-        y = start+i*48
-        draw.ellipse((67, y+8, 73, y+14), fill=CORAL)
-        put(draw, (85, y), label, 19, MUTE, width=219)
+def paper(image, cx, cy, label, color=BLUE, angle=0, scale=1.0, alpha=1.0):
+    """A recognizable paper glyph, not a UI card."""
+    if alpha <= 0:
+        return
+    glyph = Image.new("RGBA", (120, 148), (255, 255, 255, 0))
+    d = ImageDraw.Draw(glyph)
+    edge = tint(color, alpha)
+    polygon = [(25, 17), (79, 17), (99, 37), (99, 124), (25, 124), (25, 17)]
+    d.polygon(polygon, fill=(255, 255, 255, round(255*alpha)))
+    d.line(polygon, fill=edge, width=3, joint="curve")
+    d.line((79, 17, 79, 37, 99, 37), fill=edge, width=2)
+    for y, stop in ((80, 85), (93, 80), (106, 87)):
+        d.line((38, y, stop, y), fill=tint(FAINT, alpha), width=3)
+    text(d, (61, 48), label, 22, color, True, center=True, alpha=alpha, width=72)
+    if scale != 1.0:
+        glyph = glyph.resize((round(120*scale), round(148*scale)), Image.Resampling.LANCZOS)
+    if angle:
+        glyph = glyph.rotate(angle, Image.Resampling.BICUBIC, expand=True)
+    image.paste(glyph, (round(cx-glyph.width/2), round(cy-glyph.height/2)), glyph)
 
 
-def arrow(draw, x, y, active):
-    color = CYAN if active else QUIET
-    draw.line((x, y, x+17, y), fill=color, width=2)
-    draw.line((x+11, y-5, x+17, y, x+11, y+5), fill=color, width=2)
+def balance(draw, cx, cy, alpha=1.0, tilt=0.0, color=TEAL):
+    line(draw, (cx, cy-42, cx, cy+42), color, 4, alpha)
+    line(draw, (cx-35, cy+42, cx+35, cy+42), color, 4, alpha)
+    line(draw, (cx-65, cy-28+tilt, cx+65, cy-28-tilt), color, 4, alpha)
+    circle(draw, (cx, cy-28), 6, color, alpha, fill=color, width=1)
+    for direction in (-1, 1):
+        x = cx+direction*51
+        y = cy-28-direction*tilt
+        line(draw, (x, y, x-24, y+48, x+24, y+48, x, y), color, 2, alpha)
+        line(draw, (x-24, y+48, x+24, y+48), color, 4, alpha)
 
 
-def argument_frame(zh, stage):
-    title = "Methods：让每一步都有依据" if zh else "Methods: make every operation earn its place"
-    subtitle = "具体困难 → 设计要求 → 操作过程 → 证据与范围" if zh else "Connect a concrete difficulty to a design, its operations, evidence and scope"
-    steps = ("明确问题", "解释要求", "展开操作", "对齐证据", "限定范围") if zh else (
-        "Question", "Requirement", "Operation", "Evidence", "Scope")
-    image, draw = base("01 / METHODS", title, subtitle, stage, steps, zh)
-    block(draw, (66, 256, 302, 324), "我们提出三个模块。" if zh else "We introduce three modules.", 24)
-    for index, letter in enumerate("ABC"):
-        x = 66+index*84
-        card(draw, (x, 340, x+68, 395), "#2C2D42", "#745662", radius=12)
-        put(draw, (x+24, 355), letter, 26, CORAL, True)
-    missing_links(draw, "尚未说清" if zh else "MISSING LINKS", (
-        "为什么需要它？", "具体如何处理？", "用什么证据检验？") if zh else (
-        "Why is it needed?", "What does it do?", "What would test it?"), start=470)
-    block(draw, (66, 625, 302, 664), "假设性示例，非真实方法。" if zh else "Hypothetical method only.", 17, QUIET)
-    row(draw, (370, 235, 1134, 304), stage, 1,
-        "研究问题 / QUESTION" if zh else "QUESTION / HYPOTHETICAL SETUP",
-        "示例假设：含噪观测使估计不稳定（需验证）" if zh else "Suppose noisy observations destabilize an estimate; verify this.")
-    row(draw, (370, 316, 1134, 385), stage, 2,
-        "设计要求 / REQUIREMENT" if zh else "DESIGN REQUIREMENT",
-        "保留可靠信息，同时测量额外的处理代价" if zh else "Retain reliable information and measure the added processing cost.", VIOLET)
-    fill, edge, text_color = step_style(stage, 3)
-    card(draw, (370, 397, 1134, 505), fill, edge, radius=12, width=2 if stage == 3 else 1)
-    put(draw, (388, 407), "方法操作 / OPERATION" if zh else "OPERATION / EXPLICIT DATA FLOW", 17, edge, True, 728)
-    nodes = (("输入", "含噪观测"), ("操作", "估计并应用权重"), ("输出", "加权观测"), ("下游用途", "供估计器使用")) if zh else (
-        ("INPUT", "Noisy observations"), ("OPERATION", "Infer + apply weights"),
-        ("OUTPUT", "Weighted inputs"), ("NEXT USE", "Feed the estimator"))
-    for i, (label, value) in enumerate(nodes):
-        x = 388+i*186
-        put(draw, (x, 438), label, 15, edge if stage >= 3 else QUIET, True, 170)
-        put(draw, (x, 470), value, 21 if zh else 17, text_color, width=170)
-        if i < 3:
-            arrow(draw, x+148, 447, stage >= 3)
-    row(draw, (370, 517, 1134, 586), stage, 4,
-        "证据检验 / EVIDENCE" if zh else "EVIDENCE / TEST THE PROPOSED MECHANISM",
-        "匹配对照 + 去除该操作 + 不确定性与成本" if zh else "Matched controls + remove the operation + uncertainty and cost.", AMBER)
-    row(draw, (370, 598, 1134, 667), stage, 5,
-        "结论范围 / SCOPE" if zh else "SCOPE / KEEP THE CLAIM WITHIN THE EVIDENCE",
-        "只陈述已检验条件下的结论，保留失败情形" if zh else "Limit conclusions to tested conditions and retain failure cases.", CORAL)
-    return image
+def methods(zh, t):
+    title = "Methods｜从模块清单到论证链" if zh else "Methods | From a module list to an argument"
+    subtitle = "把“为什么、怎么做、凭什么”连起来。" if zh else "Connect why it is needed, how it works and what supports it."
+    image, draw = base(title, subtitle, zh)
+    change = progress(t, 1.2, 3.2)
+    reveal = progress(t, 2.1, 3.1)
+    xs, y = (170, 455, 740, 1025), 278
 
+    # Components visibly converge into the method; the argument grows around it.
+    for x, color in zip(xs, (ORANGE, BLUE, TEAL, VIOLET)):
+        circle(draw, (x, y), 61, color, reveal, fill="#FAFBFD")
+    text(draw, (170, 243), "?", 65, ORANGE, True, center=True, alpha=reveal)
+    balance(draw, 740, y+3, reveal)
+    line(draw, (992, y-35, 978, y-35, 978, y+35, 992, y+35), VIOLET, 4, reveal)
+    line(draw, (1058, y-35, 1072, y-35, 1072, y+35, 1058, y+35), VIOLET, 4, reveal)
+    for dx, dy in ((-18, 13), (0, -10), (19, 16)):
+        circle(draw, (1025+dx, y+dy), 5, VIOLET, reveal, fill=VIOLET, width=1)
 
-def related_work_frame(zh, stage):
-    title = "Related Work：比较机制，再核验差异" if zh else "Related Work: compare mechanisms, then verify"
-    subtitle = "保持文献身份一致，用相同字段比较，检查最强前人反例" if zh else "Keep paper identities stable; compare shared fields; check the strongest prior work"
-    steps = ("核对来源", "按机制分组", "同轴比较", "检查反例", "核验空白") if zh else (
-        "Sources", "Mechanisms", "Shared axes", "Counterexamples", "Verify the gap")
-    image, draw = base("02 / RELATED WORK", title, subtitle, stage, steps, zh)
-    block(draw, (66, 252, 304, 326), "按年份逐篇罗列，\n读完仍不知区别。" if zh else "A paper-by-paper list hides the distinctions.", 23)
-    for i in range(6):
-        x, y = 66+(i % 2)*124, 350+(i//2)*64
-        card(draw, (x, y, x+114, y+46), "#263149", CYAN if stage == 1 else LINE, radius=10)
-        put(draw, (x+12, y+14), f"Paper {i+1:02}", 18, PAPER, width=90)
-    block(draw, (66, 578, 302, 662), "Paper 01–06 均为占位符；不是已核验的真实文献。" if zh else "Paper 01–06 are placeholders, not verified publications.", 18, MUTE)
-    groups = (("路线 A · 固定数据", CYAN), ("路线 B · 生成数据", VIOLET)) if zh else (
-        ("FAMILY A / FIXED DATA", CYAN), ("FAMILY B / GENERATED DATA", VIOLET))
-    for group, (label, color) in enumerate(groups):
-        x = 370+group*390
-        fill, edge, text_color = step_style(stage, 2, color)
-        card(draw, (x, 239, x+374, 329), fill, edge, radius=12, width=2 if stage == 2 else 1)
-        put(draw, (x+16, 252), label, 18 if zh else 17, edge, True, 342)
-        for k in range(3):
-            bx = x+16+k*116
-            card(draw, (bx, 287, bx+110, 315), "#223A4B", LINE, radius=7)
-            put(draw, (bx+13, 294), f"Paper {group*3+k+1:02}", 16, text_color, width=84)
-    # Identical fields in both columns expose what is known and what needs checking.
-    x0, x1, x2, x3 = 370, 550, 842, 1134
-    fill, edge, text_color = step_style(stage, 3)
-    card(draw, (x0, 343, x3, 505), fill, edge, radius=12, width=2 if stage == 3 else 1)
-    headers = ("共同比较字段", "路线 A（示意）", "路线 B（示意）") if zh else (
-        "SHARED FIELD", "FAMILY A / EXAMPLE", "FAMILY B / EXAMPLE")
-    for x, right, label in zip((x0, x1, x2), (x1, x2, x3), headers):
-        put(draw, (x+14, 356), label, 17 if zh else 15, edge, True, right-x-28)
-    entries = (
-        ("训练数据", "固定训练集", "生成训练集"),
-        ("目标函数", "[核对损失 / 目标]", "[核对损失 / 目标]"),
-        ("信息访问", "[核对参数 / 输出]", "[核对参数 / 输出]"),
-        ("评测与预算", "[核对协议 / 资源]", "[核对协议 / 资源]"),
+    starts = ((300, 250), (600, 312), (900, 235))
+    for i, label in enumerate("ABC"):
+        sx, sy = starts[i]
+        x = mix(sx, 420+i*35, change)
+        py = mix(sy, y, change)
+        side = mix(94, 27, change)
+        draw.rectangle((x-side/2, py-side/2, x+side/2, py+side/2),
+                       fill=tint("#E9F0FB"), outline=tint(BLUE), width=2)
+        text(draw, (x, py-mix(18, 8, change)), label, round(mix(36, 16, change)), BLUE, True, center=True)
+    if change < 1:
+        text(draw, (600, 443), "只有 A、B、C，还看不出研究逻辑。" if zh else
+             "A + B + C does not explain the research logic.", 28, MUTED,
+             center=True, alpha=1-change, width=1092)
+
+    labels = ("问题", "方法", "证据", "边界") if zh else ("Problem", "Method", "Evidence", "Scope")
+    notes = (
+        ("具体困难是什么？", ""),
+        ("输入 → 操作 → 输出", "交代输出的下游用途"),
+        ("公平对照", "指标与不确定性"),
+        ("结论限于", "已验证的条件"),
     ) if zh else (
-        ("Data", "Fixed training set", "Generated training set"),
-        ("Objective", "[Verify loss / target]", "[Verify loss / target]"),
-        ("Access", "[Verify weights / outputs]", "[Verify weights / outputs]"),
-        ("Eval / budget", "[Verify protocol / cost]", "[Verify protocol / cost]"),
+        ("What is the difficulty?", ""),
+        ("Input → operation → output", "Show how the output is used"),
+        ("Matched controls", "Metrics and uncertainty"),
+        ("Limit the conclusion", "to tested conditions"),
     )
-    for i, values in enumerate(entries):
-        y = 387+i*30
-        draw.line((x0+1, y-9, x3-1, y-9), fill=LINE, width=1)
-        for x, right, value in zip((x0, x1, x2), (x1, x2, x3), values):
-            put(draw, (x+14, y), value, 20 if zh else 18, text_color, width=right-x-28)
-    for x in (x1, x2):
-        draw.line((x, 344, x, 504), fill=LINE, width=1)
-    row(draw, (370, 517, 1134, 586), stage, 4,
-        "最强前人反例 / COUNTEREXAMPLE" if zh else "STRONGEST PRIOR WORK / CHECK BEFORE CLAIMING NOVELTY",
-        "最接近的工作是否已经覆盖同一设定？" if zh else "Does the strongest prior work already cover this setup?", VIOLET, size=20)
-    row(draw, (370, 598, 1134, 667), stage, 5,
-        "仍待核验 / UNVERIFIED" if zh else "UNVERIFIED / AN OPEN QUESTION IS NOT AN ESTABLISHED GAP",
-        "有差异不代表已证实新颖性；有反例就收窄主张" if zh else "A difference alone does not establish novelty; check counterexamples.", AMBER, size=20)
+    for x, label, note, color in zip(xs, labels, notes, (ORANGE, BLUE, TEAL, VIOLET)):
+        text(draw, (x, 367), label, 30, color, True, True, reveal, 255)
+        for j, value in enumerate(note):
+            text(draw, (x, 416+j*35), value, 23 if zh else 18, INK, center=True, alpha=reveal, width=265)
+    for i in range(3):
+        arrow(draw, (xs[i]+76, y), (xs[i+1]-76, y),
+              progress(t, 3.05+i*0.5, 3.55+i*0.5), MUTED)
+    if 4.7 < t < 6.9:
+        travel = progress(t, 4.7, 6.9)
+        x = mix(xs[0], xs[-1], travel)
+        circle(draw, (x, y-95), 8, ORANGE, fill=ORANGE, width=1)
+        line(draw, (xs[0], y-95, x, y-95), ORANGE, 2, 0.35)
+    text(draw, (600, 530), "模块是方法的一部分，论证还需要问题、证据和边界。" if zh else
+         "Modules belong inside a method. The argument also needs evidence and scope.",
+         24, INK, center=True, alpha=progress(t, 5.1, 5.8), width=1092)
     return image
 
 
-def experiments_frame(zh, stage):
-    title = "Experiments：让证据决定结论范围" if zh else "Experiments: let the evidence set the claim"
-    subtitle = "公平比较 → 真实观察 → 可支持的解释 → 正文与补充材料" if zh else "Matched comparisons, actual observations, bounded inference and retained evidence"
-    steps = ("明确问题", "公平比较", "报告观察", "限制推断", "保留证据") if zh else (
-        "Question", "Fair comparison", "Observation", "Inference", "Disclosure")
-    image, draw = base("03 / EXPERIMENTS", title, subtitle, stage, steps, zh)
-    block(draw, (66, 254, 304, 394), "“我们的方法显著优于现有基线。”" if zh else '“Our method significantly outperforms existing baselines.”', 24)
-    put(draw, (66, 406), "未核验的原稿表述" if zh else "UNVERIFIED DRAFT CLAIM", 16, CORAL, True, 238)
-    missing_links(draw, "仍需回答" if zh else "QUESTIONS TO ANSWER", (
-        "是否公平比较？", "差异有多不确定？", "结论适用于哪里？") if zh else (
-        "A fair comparison?", "How uncertain?", "Which conditions?"), start=500)
-    block(draw, (66, 646, 304, 670), "不填造实验数字。" if zh else "No invented measurements.", 16, QUIET)
-    row(draw, (370, 235, 1134, 304), stage, 1,
-        "检验问题 / QUESTION" if zh else "QUESTION / DEFINE WHAT THE EXPERIMENT TESTS",
-        "在 [任务 / 数据集] 上，是否改善 [预设指标]？" if zh else "On [task / dataset], does it improve [prespecified metric]?")
-    row(draw, (370, 316, 1134, 385), stage, 2,
-        "公平比较 / COMPARISON" if zh else "COMPARISON / MAKE THE CONDITIONS COMPARABLE",
-        "[实际 baseline] · 同协议 · 可比数据、信息与预算" if zh else "[Actual baseline] + matched protocol, data, access and budget.", VIOLET)
-    row(draw, (370, 397, 1134, 466), stage, 3,
-        "观察与不确定性 / OBSERVATION" if zh else "OBSERVATION / REPORT THE EFFECT AND AVAILABLE UNCERTAINTY",
-        "[真实差异] + [可用区间 / 重复实验变异]" if zh else "[Actual effect] + [available interval / variation across repeats].", AMBER)
-    row(draw, (370, 478, 1134, 547), stage, 4,
-        "推断边界 / INFERENCE" if zh else "INFERENCE / RETAIN COMPETING EXPLANATIONS",
-        "只支持已测试条件；说明仍未排除的解释" if zh else "Stay within tested conditions; state explanations not ruled out.")
-    fill, edge, text_color = step_style(stage, 5, CORAL)
-    card(draw, (370, 559, 1134, 667), fill, edge, radius=12, width=2 if stage == 5 else 1)
-    put(draw, (388, 570), "证据放置 / DISCLOSURE" if zh else "DISCLOSURE / KEEP THE FULL EVIDENCE TRACEABLE", 17, edge, True, 728)
-    draw.line((751, 600, 751, 653), fill=LINE, width=1)
-    put(draw, (388, 600), "正文" if zh else "MAIN PAPER", 16, edge, True, 345)
-    put(draw, (771, 600), "附录 / 补充材料" if zh else "APPENDIX / SUPPLEMENT", 16, edge, True, 345)
-    block(draw, (388, 625, 733, 664), "影响核心结论的反证与代价" if zh else "Claim-changing evidence / costs;\nlink to the complete data.", 20 if zh else 15, text_color, gap=5)
-    block(draw, (771, 625, 1116, 664), "次要细节保留，并可追溯" if zh else "Retain secondary details\nwith traceable evidence.", 20 if zh else 15, text_color, gap=5)
+def literature(zh, t):
+    title = "Related Work｜从文献清单到机制比较" if zh else "Related Work | Group papers, then compare"
+    subtitle = "先按机制归组，再用同一把尺子比较。" if zh else "Group by mechanism, then compare on the same dimensions."
+    image, draw = base(title, subtitle, zh)
+    colors = (BLUE, TEAL)
+    starts = ((190, 245, -12), (355, 310, 10), (520, 235, -8),
+              (685, 305, 12), (850, 225, -10), (1015, 290, 8))
+    label_alpha = progress(t, 1.8, 3.2)
+    for group, x in enumerate((345, 855)):
+        label = ("固定数据", "生成数据")[group] if zh else ("Fixed data", "Generated data")[group]
+        text(draw, (x, 173), label, 28, colors[group], True, True, label_alpha, 450)
+    for i, (sx, sy, angle) in enumerate(starts):
+        moving = progress(t, 1.2+i*0.09, 2.8+i*0.09)
+        group, within = divmod(i, 3)
+        x = mix(sx, 240+group*510+within*105, moving)
+        y = mix(sy, 275, moving)
+        paper(image, x, y, f"P{i+1:02}", colors[group], angle*(1-moving))
+    draw = ImageDraw.Draw(image)
+    # Brackets and converging arrows make the grouping and common comparison explicit.
+    for x, color in zip((345, 855), colors):
+        alpha = progress(t, 3.15, 3.6)
+        line(draw, (x-155, 353, x-155, 366, x+155, 366, x+155, 353), color, 3, alpha)
+        arrow(draw, (x, 380), (600+(x-600)*0.25, 432), progress(t, 3.6, 4.3), color)
+    compare_alpha = progress(t, 3.9, 4.6)
+    fields = ("数据", "目标", "信息访问", "评测 / 预算") if zh else ("Data", "Objective", "Access", "Protocol / cost")
+    for i, value in enumerate(fields):
+        x = 250+i*235
+        text(draw, (x, 462), value, 25 if zh else 23, INK, True, True, compare_alpha, 220)
+        line(draw, (x-65, 505, x+65, 505), BLUE if i % 2 == 0 else TEAL, 3, compare_alpha)
+    # The magnifying glass scans both families, then stops over a possible counterexample.
+    lens_alpha = progress(t, 4.8, 5.1)
+    lx = mix(450, 960, progress(t, 5.1, 6.5))
+    ly = 253
+    circle(draw, (lx, ly), 41, ORANGE, lens_alpha, width=4)
+    line(draw, (lx+30, ly+30, lx+57, ly+57), ORANGE, 7, lens_alpha)
+    text(draw, (600, 540), "核对最强前人工作；研究空白仍需验证。" if zh else
+         "Check the strongest prior work. A gap still needs verification.",
+         25, ORANGE, True, True, progress(t, 5.8, 6.5), 1092)
+    # Stable identities and explicit placeholders prevent fake bibliography claims.
+    text(draw, (600, 140), "P01–P06：文献占位符" if zh else "P01–P06: paper placeholders",
+         17, MUTED, center=True)
+    return image
+
+
+def experiments(zh, t):
+    title = "Experiments｜从成绩播报到有依据的结论" if zh else "Experiments | Turn a result into a supported claim"
+    subtitle = "先对齐比较条件，再看差异，最后限定结论。" if zh else "Match the comparison, show the difference, then bound the claim."
+    image, draw = base(title, subtitle, zh)
+    xs, y = (215, 600, 985), 295
+    # The unsupported phrase physically gives way to the conditions it omitted.
+    initial = 1-progress(t, 1.2, 2.2)
+    text(draw, (600, 206-55*(1-initial)), "“显著更好！”" if zh else '“Significantly better!”',
+         39, ORANGE, True, True, initial, 1092)
+    fairness = progress(t, 1.2, 2.7)
+    balance(draw, xs[0], y+2, fairness, tilt=24*(1-fairness), color=BLUE)
+    # Two study sheets slide into alignment before any comparison is interpreted.
+    paper(image, mix(95, 164, fairness), mix(250, 231, fairness), "A", BLUE,
+          angle=-10*(1-fairness), scale=0.47, alpha=fairness)
+    paper(image, mix(325, 266, fairness), mix(185, 231, fairness), "B", BLUE,
+          angle=10*(1-fairness), scale=0.47, alpha=fairness)
+    draw = ImageDraw.Draw(image)
+    observed = progress(t, 2.9, 4.2)
+    span = 82*observed
+    line(draw, (xs[1]-span, y, xs[1]+span, y), TEAL, 4, observed)
+    for x in (xs[1]-span, xs[1]+span):
+        line(draw, (x, y-19, x, y+19), TEAL, 3, observed)
+    circle(draw, (xs[1], y), 10, TEAL, observed, fill=TEAL, width=1)
+    text(draw, (xs[1], 221), "差异与不确定性" if zh else "Effect + uncertainty",
+         23, TEAL, center=True, alpha=observed, width=280)
+    scope = progress(t, 4.2, 5.6)
+    left, right = xs[2]-78, xs[2]+78
+    line(draw, (left+18, y-55, left, y-55, left, y+55, left+18, y+55), VIOLET, 4, scope)
+    line(draw, (right-18, y-55, right, y-55, right, y+55, right-18, y+55), VIOLET, 4, scope)
+    text(draw, (xs[2], y-12), "已测试" if zh else "TESTED", 26, VIOLET, True, True, scope, 142)
+    for x in (left-32, right+32):
+        text(draw, (x, y-70), "?", 26, MUTED, center=True, alpha=scope)
+    for i, (start, end) in enumerate(((2.7, 3.3), (4.0, 4.8))):
+        arrow(draw, (xs[i]+105, y), (xs[i+1]-115, y), progress(t, start, end))
+    labels = ("公平比较", "真实差异", "结论范围") if zh else ("Fair comparison", "Actual difference", "Bounded claim")
+    notes = (
+        ("同协议 · 可比信息与预算", ""),
+        ("[真实差异] + [可用不确定性]", ""),
+        ("已测条件能支持什么？", "未测条件不外推"),
+    ) if zh else (
+        ("Matched protocol, access and budget", ""),
+        ("[Effect] + [available uncertainty]", ""),
+        ("What do tested conditions support?", "Do not extrapolate to untested settings"),
+    )
+    for x, label, note, color, alpha in zip(xs, labels, notes, (BLUE, TEAL, VIOLET), (fairness, observed, scope)):
+        text(draw, (x, 392), label, 29 if zh else 27, color, True, True, alpha, 335)
+        for j, value in enumerate(note):
+            text(draw, (x, 441+j*32), value, 21 if zh else 17, INK, center=True, alpha=alpha, width=350)
+    if 5.5 < t < 6.8:
+        x = mix(xs[0]+100, xs[-1]-100, progress(t, 5.5, 6.8))
+        circle(draw, (x, y+65), 7, ORANGE, fill=ORANGE, width=1)
+    text(draw, (600, 540), "关键反证留在正文；次要细节可入附录。" if zh else
+         "Disclose claim-changing evidence in the main text; retain secondary details.",
+         24, INK, center=True, alpha=progress(t, 5.8, 6.6), width=1092)
     return image
 
 
 def write(frames, stem):
     OUT.mkdir(parents=True, exist_ok=True)
-    # One palette across every frame avoids text/color shimmer. Disposal 1 keeps
-    # unchanged regions, so a readable hold does not duplicate full-size images.
-    sample = Image.new("RGB", (W, H*2))
-    sample.paste(frames[0], (0, 0))
-    sample.paste(frames[-1], (0, H))
-    palette = sample.quantize(colors=128, method=Image.Quantize.MEDIANCUT)
+    # A shared palette and retained unchanged pixels keep moving diagrams compact.
+    sample = Image.new("RGB", (W, H*3))
+    for row, index in enumerate((0, len(frames)//2, len(frames)-1)):
+        sample.paste(frames[index], (0, row*H))
+    palette = sample.quantize(colors=96, method=Image.Quantize.MEDIANCUT)
     indexed = [frame.quantize(palette=palette, dither=Image.Dither.NONE) for frame in frames]
-    gif = OUT / f"{stem}.gif"
+    gif, png = OUT / f"{stem}.gif", OUT / f"{stem}.png"
     indexed[0].save(gif, save_all=True, append_images=indexed[1:],
-                    loop=0, duration=DURATIONS, optimize=True, disposal=1)
-    png = OUT / f"{stem}.png"
+                    duration=DURATIONS, loop=0, disposal=1, optimize=True)
     frames[-1].save(png, optimize=True)
-    if gif.stat().st_size >= 300_000:
-        raise ValueError(f"Animation exceeds the README size budget: {gif}")
-    print(f"{stem}: {gif.stat().st_size / 1024:.1f} KiB GIF, "
+    print(f"{stem}: {gif.stat().st_size / 1024:.1f} KiB GIF; "
           f"{png.stat().st_size / 1024:.1f} KiB PNG")
+    if gif.stat().st_size >= 900_000:
+        raise ValueError(f"Animation exceeds the 900 kB README budget: {gif}")
 
 
 if __name__ == "__main__":
     for language in ("zh", "en"):
-        for topic, render in (("argument", argument_frame),
-                              ("related-work", related_work_frame),
-                              ("experiments", experiments_frame)):
-            write([render(language == "zh", stage) for stage in range(6)],
-                  f"demo-{topic}-{language}")
+        for topic, render in (("argument", methods), ("related-work", literature), ("experiments", experiments)):
+            write([render(language == "zh", t) for t in TIMES], f"demo-{topic}-{language}")

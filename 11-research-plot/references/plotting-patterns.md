@@ -3,9 +3,12 @@
 ## Ordered categorical series template
 The companion [plot_ordered_series.py](../scripts/plot_ordered_series.py) reads UTF-8 CSV with columns `series,category,value`. Each `(series, category)` pair must appear once, and the provided sequence defines the order. The script expects values already aggregated according to the experimental protocol; it does **not** compute means or uncertainty intervals.
 
-Example usage (replace paths and units with actual data):
+Example usage from the repository root or exported collection root (replace paths and units with actual data):
 
-    python3 scripts/plot_ordered_series.py --input /path/to/verified.csv --output /path/to/figure/output --xlabel "Evaluation condition" --ylabel "Verified metric (unit)"
+```bash
+cd 11-research-plot
+python3 scripts/plot_ordered_series.py --input /path/to/verified.csv --output /path/to/figure/output --xlabel "Evaluation condition" --ylabel "Verified metric (unit)"
+```
 
 It writes PDF/PNG files. Adapt dimensions, category order, series count, error representation, and dependencies to the manuscript. Verify the selected Python environment has `pandas`, `matplotlib`, and `seaborn`.
 
