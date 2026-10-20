@@ -26,31 +26,39 @@ Paper StoryCraft gives AI assistants an actionable set of research-writing Skill
 
 ## What changes in a revision?
 
-Two **animated research maps** show how an argument becomes easier to follow. They illustrate a writing workflow, not measured improvements by an AI model.
+Three **animated research maps** show how to reorganize Methods, Related Work and Experiments. Each includes a complete static example for reading at your own pace. These illustrations do not report measured writing improvements by an AI model.
 
 ### ① Research argument: from module lists to an evidence chain
 
-![Animated example: the Methods section is reorganized around a problem, a design requirement, a concrete operation and a testable claim](assets/demo-argument-en.gif)
+![Animated example: a module list becomes a research argument linking the question and design requirement to inputs, operations, outputs, downstream use, evidence and scope](assets/demo-argument-en.gif)
+
+[View the complete static example](assets/demo-argument-en.png)
 
 **Before:** “We introduce modules A, B and C to improve robustness.”
 
-**Better approach:** Describe the **specific input or task difficulty**, derive a design requirement, explain each module's inputs, operations and outputs, and identify the experiment that could test the proposed mechanism. Do not merely expand each module into a longer paragraph.
+**Better approach:** Describe the **specific input or task difficulty**, derive a design requirement, and explain each essential step through **input → operation → output → downstream use**. Connect the design to controls, metrics and uncertainty that could test it. Keep design intent distinct from established properties, and limit conclusions to the conditions supported by evidence.
 
 ### ② Related Work: from paper lists to a mechanism map
 
-![Animated example: six hypothetical studies are grouped into mechanism families and compared by shared dimensions, with an open question marked for verification](assets/demo-related-work-en.gif)
+![Animated example: six paper placeholders are grouped by mechanism and compared through shared data, objective, information access, evaluation protocol and budget fields, with prompts to check the strongest prior work and verify remaining differences](assets/demo-related-work-en.gif)
+
+[View the complete static example](assets/demo-related-work-en.png)
 
 **Before:** “Several distillation approaches have been explored (many citations).”
 
-**Better approach:** Group studies by distinctions relevant to the paper, then compare on **shared axes** (e.g., training-data source, objective, information access, evaluation protocol). Include the strongest prior counterexamples fairly. An open question is **not** automatically a verified gap. Method/model/benchmark/dataset attribution remains governed by [CITATION_GUIDE.md](CITATION_GUIDE.md).
+**Better approach:** Group studies by distinctions relevant to the research question, then compare on **shared fields** such as training-data source, objective, information access, evaluation protocol and resource budget. Represent the **strongest prior counterexample** fairly; narrow the contribution if existing work already covers the claimed gap. A difference awaiting verification does not establish that no prior work exists. Method/model/benchmark/dataset attribution remains governed by [CITATION_GUIDE.md](CITATION_GUIDE.md).
 
 ### ③ Experiments: from score announcements to defensible claims
 
+![Animated example: a broad superiority claim is rebuilt around fair comparisons, verified differences and uncertainty, bounded conclusions and main-text disclosure of evidence that changes the core claim](assets/demo-experiments-en.gif)
+
+[View the complete static example](assets/demo-experiments-en.png)
+
 **Before:** “Our method significantly outperforms existing baselines.”
 
-**Better approach:** On **[actual dataset/version]** with **[metric and comparable protocol]**, report **[verified difference and uncertainty]** versus **[baseline]**, then distinguish what the experiment establishes from untested generalization.
+**Better approach:** On **[actual dataset/version]** with **[metric and statistical unit]** under **[fair comparison conditions]**, report **[verified difference and available uncertainty]** versus **[actual baseline]**. Disclose whether information access, tuning and compute budgets are comparable. State the supported scope and unresolved rival explanations; mark missing statistical information for verification instead of inventing significance. **Failed controls, unfavorable results and costs that change the core claim belong in the main text**, with a pointer to the complete evidence.
 
-> **The GIFs and examples are illustrative**, not genuine experimental findings, verified references or behavioral benchmarks. Actual revisions depend on supplied or independently checked manuscript evidence.
+> **The GIFs, static images and text examples are illustrative**, not genuine experimental findings, verified references or behavioral benchmarks. Actual revisions depend on supplied or independently checked manuscript evidence.
 
 **Want to see whether the rules help your manuscript?** Try the copy-ready prompt on one real paragraph rather than relying on the illustration.
 
@@ -167,6 +175,17 @@ python scripts/check_skills.py
 ~~~
 
 Checks cover **static contracts** such as Skill naming/frontmatter, links, shared documentation and README entry points. See [tests/skill-scenarios.md](tests/skill-scenarios.md) for realistic behavioral scenarios. Passing static checks is **not** evidence of model behavior quality, bibliographic accuracy, experimental reproducibility or rendered PDF correctness.
+
+### Regenerate the README examples
+
+The [rendering script](scripts/render_readme_demos.py) produces three bilingual GIF examples and matching complete static PNGs. It uses **Noto Sans CJK SC** and **fontconfig** by default. Install those system dependencies, then run:
+
+~~~bash
+python -m pip install 'Pillow>=10,<13'
+python scripts/render_readme_demos.py
+~~~
+
+To use custom fonts, set `STORYCRAFT_FONT_REGULAR` and `STORYCRAFT_FONT_BOLD` to regular and bold font file paths with both Chinese and English glyph coverage.
 
 Design references include [Anthropic Skills](https://github.com/anthropics/skills), [Superpowers](https://github.com/obra/superpowers), and [Academic Writing Skills](https://github.com/WenyuChiou/academic-writing-skills). This project is an independent set of research-writing rules, not an official extension or validated benchmark of those projects.
 

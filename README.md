@@ -26,31 +26,39 @@ Paper StoryCraft 提供一套可供 AI 助手读取、执行的科研写作 Skil
 
 ## 改写前后有什么不同？
 
-先看两组 **深色科研工作流动图**。它们展示如何重组论证，不是声称 AI 已在真实论文上达到某项写作性能。
+先看三组 **深色科研工作流动图**，分别展示 Methods、Related Work 与 Experiments 如何重组论证。每组都附有完整静态图，方便按自己的节奏阅读；这些示意不代表 AI 在真实论文上的写作性能评测。
 
 ### ① 研究论证：从模块清单到证据链
 
-![中文动态图：论文 Methods 从模块堆砌改为研究问题、设计要求、方法操作和证据检验之间的连接](assets/demo-argument-zh.gif)
+![中文动态图：从模块清单出发，将研究问题和设计要求连接到输入、操作、输出及下游用途，再对齐证据检验与结论范围](assets/demo-argument-zh.gif)
+
+[查看完整静态图](assets/demo-argument-zh.png)
 
 **普通写法：** “We introduce modules A, B and C to improve robustness.”
 
-**改写方向：** 解释**输入或任务的具体困难**，由此推导出设计要求；再说明每个模块的输入、操作、输出以及下一步如何使用；最后指出哪些实验能够检验核心设计。不是简单地把三个模块写成更长的三个段落。
+**改写方向：** 解释**输入或任务的具体困难**，由此推导出设计要求；沿着**输入 → 操作 → 输出 → 下游用途**说明每个关键步骤，再指出哪些对照、指标与不确定性能够检验核心设计。区分设计意图与已经验证的性质，结论只覆盖已有证据支持的条件。
 
 ### ② Related Work：从文献流水账到机制对比地图
 
-![中文动态图：六个论文占位符按固定数据和生成数据两类技术机制归组，通过同一组比较维度寻找仍待核验的研究问题](assets/demo-related-work-zh.gif)
+![中文动态图：将六个论文占位符按机制归组，用数据、目标、信息访问、评测协议和预算等共享字段比较，并核查最强前人反例与待验证差异](assets/demo-related-work-zh.gif)
+
+[查看完整静态图](assets/demo-related-work-zh.png)
 
 **普通写法：** “Several distillation approaches have been explored (many citations).”
 
-**改写方向：** 先按与研究问题相关的机制分组，再使用**相同的比较维度**（如训练数据来源、目标函数、信息访问与评测协议）解释各路线的已知证据。最强的前人工作应得到公平对比。研究空白必须核验，不能凭动图推断“前人都没做过”。**引用规则仍在 [CITATION_GUIDE.md](CITATION_GUIDE.md)**，支持在方法名后紧邻放置来源。
+**改写方向：** 先按与研究问题相关的机制分组，再使用**相同的比较字段**（如训练数据来源、目标函数、信息访问、评测协议与资源预算）解释各路线的已知证据。公平呈现**最强的前人反例**；若已有工作覆盖所声称的空白，就缩小贡献范围。尚待验证的差异不能直接写成“前人都没做过”。**引用规则仍在 [CITATION_GUIDE.md](CITATION_GUIDE.md)**，支持在方法名后紧邻放置来源。
 
 ### ③ Experiments：从「成绩播报」到「有边界的结论」
 
+![中文动态图：将泛化的优越性主张改为公平比较、真实差异及不确定性、受证据约束的结论范围，并在正文披露影响核心主张的反证](assets/demo-experiments-zh.gif)
+
+[查看完整静态图](assets/demo-experiments-zh.png)
+
 **普通写法：** “Our method significantly outperforms existing baselines.”
 
-**改写方向：** 在 **[实际数据集/版本]、[指标]、[公平比较条件]** 下，报告与 **[实际 baseline]** 的 **[真实差异及不确定性]**；明确它能支持什么结论、不能支持哪些未经测试的情形。
+**改写方向：** 在 **[实际数据集/版本]、[指标与统计单位]、[公平比较条件]** 下，报告与 **[实际 baseline]** 的 **[真实差异及可用的不确定性]**，交代信息访问、调参与计算预算是否可比。明确证据支持的结论范围和仍未排除的替代解释；缺失的统计信息标为待核验，不补造显著性。**影响核心主张的失败对照、不利结果与成本代价须在正文披露**，并指向完整证据。
 
-> **这些 GIF 和文字均为示意，不代表真实论文实验、参考文献或模型能力评测。** 实际修改必须以你提供或核验过的资料为依据。
+> **这些 GIF、静态图和文字均为示意，不代表真实论文实验、参考文献或模型能力评测。** 实际修改必须以你提供或核验过的资料为依据。
 
 **想知道这套规范是否适合你的论文？** 直接用下一节的精简提示词试改一段，而不是只看示意图。
 
@@ -162,6 +170,17 @@ python scripts/check_skills.py
 ~~~
 
 仓库检查覆盖 Skill 命名/元数据、相对链接、核心指南及 README 入口等**静态约束**。示例场景见 [tests/skill-scenarios.md](tests/skill-scenarios.md)。静态检查不能替代真实模型输出评估、引用真实性核查、原始实验复现或最终 PDF 人工审查。
+
+### 重新生成 README 演示
+
+[生成脚本](scripts/render_readme_demos.py) 会输出三组中英文 GIF，以及对应的完整静态 PNG。默认使用 **Noto Sans CJK SC** 字体与 **fontconfig**；先安装这两项系统依赖，再运行：
+
+~~~bash
+python -m pip install 'Pillow>=10,<13'
+python scripts/render_readme_demos.py
+~~~
+
+如需使用自定义字体，将环境变量 `STORYCRAFT_FONT_REGULAR` 和 `STORYCRAFT_FONT_BOLD` 分别设为支持中英文的常规、粗体字体文件路径。
 
 可参考的设计思路包括 [Anthropic Skills](https://github.com/anthropics/skills)、[Superpowers](https://github.com/obra/superpowers)、[Academic Writing Skills](https://github.com/WenyuChiou/academic-writing-skills)；本项目针对科研论文的**主张—证据—范围**提出独立规则，并非上述项目的官方扩展或性能验证。
 

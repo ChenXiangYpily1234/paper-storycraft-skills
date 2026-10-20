@@ -44,16 +44,20 @@ def main():
         assert "CITATION_GUIDE.md" in (root / rel).read_text(encoding="utf-8"), \
             f"Citation guide not referenced by {rel}"
 
-    # Both language READMEs show reproducible, small animated examples.
+    # Both language READMEs show three small animations with static alternatives.
     for lang, page_name in (("zh", "README.md"), ("en", "README_EN.md")):
         page = (root / page_name).read_text(encoding="utf-8")
-        for topic in ("argument", "related-work"):
+        for topic in ("argument", "related-work", "experiments"):
             image_path = f"assets/demo-{topic}-{lang}.gif"
             image = (root / image_path).read_bytes()
             assert image.startswith((b"GIF87a", b"GIF89a")) and image.endswith(b";"), image_path
             assert image.count(bytes((0x21, 0xF9, 0x04))) >= 3, image_path
             assert len(image) < 300_000, f"README animation too large: {image_path}"
             assert image_path in page, f"README missing animated example: {image_path}"
+            static_path = f"assets/demo-{topic}-{lang}.png"
+            static_image = (root / static_path).read_bytes()
+            assert static_image.startswith(b"\x89PNG\r\n\x1a\n"), static_path
+            assert static_path in page, f"README missing static example: {static_path}"
     # Shared editorial guidance is exported and linked from every Skill.
     editorial = (root / "EDITORIAL_PLAYBOOK.md").read_text(encoding="utf-8")
     assert "negative results" in editorial.lower() and "nature" in editorial.lower()
